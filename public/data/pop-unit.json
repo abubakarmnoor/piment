@@ -1,0 +1,104 @@
+{"data":[
+    {"val":"cl"},
+    {"val":"cm"},
+    {"val":"cm2"},
+    {"val":"g"},
+    {"val":"gram"},
+    {"val":"jam"},
+    {"val":"kg"},
+    {"val":"kl"},
+    {"val":"l"},
+    {"val":"br"},
+    {"val":"lr"},
+    {"val":"m"},
+    {"val":"pack"},
+    {"val":"pc"},
+    {"val":"roll"},
+    {"val":"set"}
+]}
+{"data":[
+    {
+        "pop_type":"unit",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"cl",
+        "active": true
+    },{
+        "pop_type":"unit",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"cm",
+        "active": true
+    },{
+        "pop_type":"unit",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"cm2",
+        "active": true
+    },{
+        "pop_type":"unit",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"g",
+        "active": true
+    },{
+        "pop_type":"unit",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"gram",
+        "active": true
+    },{
+        "pop_type":"unit",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"jam",
+        "active": true
+    },{
+        "pop_type":"unit",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"kg",
+        "active": true
+    },{
+        "pop_type":"unit",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"kl",
+        "active": true
+    },{
+        "pop_type":"unit",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"l",
+        "active": true
+    },{
+        "pop_type":"unit",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"br",
+        "active": true
+    },{
+        "pop_type":"unit",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"lr",
+        "active": true
+    },{
+        "pop_type":"unit",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"m",
+        "active": true
+    },{
+        "pop_type":"unit",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"pack",
+        "active": true
+    },{
+        "pop_type":"unit",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"pc",
+        "active": true
+    },{
+        "pop_type":"unit",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"roll",
+        "active": true
+    },{
+        "pop_type":"unit",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"set",
+        "active": true
+    },
+
+    
+    ]
+}

@@ -1,0 +1,50 @@
+{
+    "data": [
+      {
+        "id": "3rfsfsf343dd",
+        "username": "admin",
+        "password": "12345",
+        "first_name": "Admin",
+        "last_name": "-",
+        "position": "System Administrator",
+        "email": "admin@pimentrougelighting.com",
+        "phone": "08231241244523",
+        "created_date": "25-Apr-2011",
+        "created_by": "Admin",
+        "active": true,
+        "updated_date": "25-May-2011",
+        "updated_by": "Admin"
+      },
+      {
+        "id": "345dgdfgd5",
+        "username": "tiger",
+        "password": "12345",
+        "first_name": "Tiger",
+        "last_name": "Nixon",
+        "position": "System Architect",
+        "email": "t.nixon@datatables.net",
+        "phone": "082124324324",
+        "active": true,
+        "created_date": "01-Jan-2011",
+        "created_by": "Admin",
+        "updated_date": "02-Feb-2011",
+        "updated_by": "Admin"
+      },
+      {
+        "id": "2414dsfsr3fv",
+        "username": "garret",
+        "password": "12345",
+        "first_name": "Garrett",
+        "last_name": "Winters",
+        "position": "Accountant",
+        "email": "g.winters@datatables.net",
+        "phone": "08213235352",
+        "active": true,
+        "created_date": "03-Mar-2011",
+        "created_by": "Admin",
+        "updated_date": "04-Apr-2011",
+        "updated_by": "Admin"
+      }
+    ]
+    
+  }

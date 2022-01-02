@@ -1,0 +1,25 @@
+{
+    "data": [
+      {
+        "id": "3525vdsfdfsd43",
+        "supplier_name": "247 CHROME",
+        "address": "---",
+        "state": "---",
+        "country": "Brazil",
+        "zipcode": "---",
+        "email": "scott_burns@gmail.com",
+        "phone": "+1-361-847-6118/9",
+        "fax": "---",
+        "whatsapp": "+18231241244523",
+        "pic": "John",
+        "product_family": "Finishing",
+        "memo": "...",
+        "active": true,
+        "created_date": "01-Apr-2021",
+        "created_by": "Admin",
+        "updated_date": "21-May-2021",
+        "updated_by": "Staff"
+      }
+    ]
+    
+  }

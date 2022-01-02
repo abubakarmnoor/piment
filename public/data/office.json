@@ -1,0 +1,24 @@
+{
+    "data": [
+      {
+        "id": "3525vdsvs242",
+        "office_desc": "Piment Rouge Lighting Head Office",
+        "address_line_1": "Jl. Pengubengan Kauh No.99Z, Kerobokan Kelod",
+        "address_line_2": "Kec. Kuta Utara, Kabupaten Badung, Bali Indonesia",
+        "zipcode": "80361",
+        "google_map": "https://www.google.com/maps/place/Piment+Rouge+Lighting+Head+Office/@-8.6661987,115.1682672,17z/data=!3m1!4b1!4m5!3m4!1s0x2dd247439c551d8f:0x877e7e9807553d4!8m2!3d-8.6661978!4d115.170481",
+        "sales_retail_inquiries_email":"piment@pimentrougelighting.com",
+        "custom_lighting_project_inquiries_email":"piment@pimentrougelighting.com",
+        "phone_1": "+62-361-847-6118/9",
+        "phone_2": "+62-811-389-462",
+        "fax": "+62-361-847-6120",
+        "whatsapp": "08231241244523",
+        "default": true,
+        "created_date": "25-Apr-2011",
+        "created_by": "Admin",
+        "updated_date": "25-May-2011",
+        "updated_by": "Admin"
+      }
+    ]
+    
+  }

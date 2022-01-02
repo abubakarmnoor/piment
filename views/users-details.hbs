@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{> head}}
+{{> css}}
+<body>
+
+    <div id="wrapper">
+
+        {{> navbar}}
+
+        {{> sidenav}}
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="page-header">USER UPDATES</h3>
+                        {{!-- <p>Coming soon</p> --}}
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <form id="form_">
+                        <div class="col-sm pull-right cancel">
+                            <a href="/users"  type="button" class="btn btn-outline btn-primary" id="btn_cancel">
+                                <i class="fa fa-times"></i> Cancel
+                            </a>
+                        </div>
+                        <div class="col-sm pull-right">&nbsp;</div>
+                        <div class="col-sm pull-right">
+                            <button type="submit" class="btn btn-outline btn-primary" id="btn_save"><i class="fa fa-save"></i> Save</button>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4 mb-3">
+                                <label for="txt_Username">Username</label>
+                                <input type="text" class="form-control" id="txt_username" name="username" placeholder="Username" value="" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label>Password</label>
+                                <div class="input-group" id="txt_password_">
+                                <input class="form-control" type="password" id="txt_password" name="password" required>
+                                <div class="input-group-addon">
+                                    <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4 mb-3">
+                                <label for="txt_first_name">First name</label>
+                                <input type="text" class="form-control" id="txt_first_name" name="first_name" placeholder="First name" value="" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="txt_last_name">Last name</label>
+                                <input type="text" class="form-control" id="txt_last_name" name="last_name" placeholder="Last name" value="" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="txt_position">Position</label>
+                                <input type="text" class="form-control" id="txt_position" name="position" placeholder="Position" value="" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="txt_email">Email</label>
+                                <input type="email" class="form-control" id="txt_email" name="email" placeholder="Email" value="" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="txt_phone">Phone</label>
+                                <input type="text" class="form-control" id="txt_phone" name="phone" placeholder="Phone" value="" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ck_active" name="active">
+                                <label class="form-check-label" for="ck_active">
+                                    Active
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group row invisible">
+                            <div class="col-md-4 mb-3">
+                                <label>Created by</label>
+                                <input type="text" class="form-control" id="txt_created_by" name="created_by" readonly>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label>Created Date</label>
+                                <input type="text" class="form-control" id="txt_created_date" name="created_date" readonly>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label>Updated by</label>
+                                <input type="text" class="form-control" id="txt_updated_by" name="updated_by" readonly>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label>Updated Date</label>
+                                <input type="text" class="form-control" id="txt_updated_date" name="updated_date" readonly>
+                            </div>
+                            <div class="col-md-4 mb-3 invisible">
+                                <label>Id</label>
+                                <input type="text" class="form-control" id="id" name="id" readonly>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+        <div class="modal fade spinner-bg modal-popup" tabindex="-1" role="dialog" data-backdrop="false">
+            <div role="document">
+                <span class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></span>
+                {{!-- <div class="row">
+                    <div class="col-md-3">
+                        <div class="loader" id="loader-4">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+               </div> --}}
+            </div>
+        </div>
+    </div>
+    
+    <!-- /#wrapper -->
+{{> scripts}}
+<script src="/dist/js/user-details.js"></script>
+</body>
+
+</html>

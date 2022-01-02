@@ -1,0 +1,75 @@
+{"data":[
+    {
+        "pop_type":"creator",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"Accounting",
+        "active": true
+    },
+    {
+        "pop_type":"creator",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"Akuntansi",
+        "active": true
+    },
+    {
+        "pop_type":"creator",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"Assistant",
+        "active": true
+    },
+    {
+        "pop_type":"creator",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"Cashier",
+        "active": true
+    },
+    {
+        "pop_type":"creator",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"Developer",
+        "active": true
+    },
+    {
+        "pop_type":"creator",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"Manager",
+        "active": true
+    },
+    {
+        "pop_type":"creator",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"Marketing",
+        "active": true
+    },
+    {
+        "pop_type":"creator",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"Production",
+        "active": true
+    },
+    {
+        "pop_type":"creator",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"Purchaser",
+        "active": true
+    },
+    {
+        "pop_type":"creator",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"Reciper",
+        "active": true
+    },
+    {
+        "pop_type":"creator",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"Stockist",
+        "active": true
+    },
+    {
+        "pop_type":"creator",
+        "id":"sfsf4454fdsf",
+        "pop_desc":"Supervisor",
+        "active": true
+    }
+    ]
+}

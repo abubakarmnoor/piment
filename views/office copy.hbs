@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{> head}}
+{{> scripts}}
+<script src="/dist/js/office.js"></script>
+<body>
+
+    <div id="wrapper">
+
+        {{> navbar}}
+
+        {{> sidenav}}
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="page-header">OFFICE</h3>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <div class="col">
+                        <a href="/office-details"  type="button" class="btn btn-outline btn-primary pull-left">
+                            <i class="glyphicon-plus"></i> Add New
+                        </a>
+                    </div>
+                    <div class="col" style="padding-top: 45px;">
+                        <div id="reportrange" class="pull-left form-control" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 29%;margin-right: 10px;">
+                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+                            <span></span> <b class="caret"></b>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <a href="#"  type="button" class="btn btn-outline btn-primary pull-left" id="btn_refresh">
+                            <i class="fa fa-refresh"></i> Refresh
+                        </a>
+                    </div>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <table id="dtTbl" class="table table-striped" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th>Id</th>
+                            <th>Office Name </th>
+                            <th>Address 1 </th>
+                            <th>Address 2</th>
+                            <th>Zipcode</th>
+                            <th>Sales Retail Inquiries</th>
+                            <th>Custom Lighting Project Inquiries</th>
+                            <th>phone 1</th>
+                            <th>phone 2</th>
+                            <th>Fax</th>
+                            <th>Whatapp</th>
+                            <th>Default</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <div class="row">&nbsp;</div>
+                <div class="row">&nbsp;</div>
+                <div class="row">&nbsp;</div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    
+    
+</body>
+
+</html>

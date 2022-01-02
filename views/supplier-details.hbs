@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{> head}}
+{{> css}}
+
+<style>
+    .col-md-6{
+        width: 0%;
+    }
+    #dtTbl_pop{
+        width: 100% !important;
+    }
+</style>
+<body>
+
+    <div id="wrapper">
+
+        {{> navbar}}
+
+        {{> sidenav}}
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="page-header">SUPPLIER UPDATES</h3>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <form id="form_">
+                        <div class="col-sm pull-right cancel">
+                            <a href="/suppliers"  type="button" class="btn btn-outline btn-primary" id="btn_cancel">
+                                <i class="fa fa-times"></i> Cancel
+                            </a>
+                        </div>
+                        <div class="col-sm pull-right">&nbsp;</div>
+                        <div class="col-sm pull-right">
+                            <button type="submit" class="btn btn-outline btn-primary" id="btn_save"><i class="fa fa-save"></i> Save</button>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-9 mb-3">
+                                <label for="product_family_desc">Supplier Name</label>
+                                <input type="text" class="form-control" name="supplier_name" placeholder="Supplier Name" value="" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-9 mb-3">
+                                <label for="address">Address</label>
+                                <textarea class="form-control" name="address" placeholder="Address" value="" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4 mb-3">
+                                <label for="state">State</label>
+                                <input type="text" class="form-control" name="state" placeholder="State" value="" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="country">Country</label>
+                                <select class="form-control selectpicker" id="sp_country" name="country" data-live-search="true">
+                                    <option value="-">-</option>
+                                    {{#each __data_countries}}
+                                        <option>{{name}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="zipcode">Zipcode</label>
+                                <input type="text" class="form-control" name="zipcode" placeholder="Zipcode" value="" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4 mb-3">
+                                <label for="txt_email">PIC</label>
+                                <input type="text" class="form-control" name="pic" placeholder="PIC" value="" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="txt_email">Email</label>
+                                <input type="email" class="form-control" name="email" placeholder="Email" value="" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="txt_phone">Phone</label>
+                                <input type="text" class="form-control" id="txt_phone" name="phone" placeholder="Phone" value="" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="fax">Fax</label>
+                                <input type="text" class="form-control" name="fax" placeholder="Fax" value="" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="whatsapp">WhatsApp</label>
+                                <input type="text" class="form-control" name="whatsapp" placeholder="WhatsApp" value="" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4 mb-3">
+                                <label for="product_family">Product Family</label>
+                                <select class="form-control selectpicker" id="sp_product_family" name="product_family" data-live-search="true">
+                                    <option value="-">-</option>
+                                    {{#each data_select.data}}
+                                        <option>{{val}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ck_active" name="active">
+                                <label class="form-check-label" for="ck_active">
+                                    Active
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group row invisible">
+                            <div class="col-md-4 mb-3">
+                                <label>Created by</label>
+                                <input type="text" class="form-control" name="created_by" readonly>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label>Created Date</label>
+                                <input type="text" class="form-control" name="created_date" readonly>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label>Updating by</label>
+                                <input type="text" class="form-control" name="updated_by" readonly>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label>Updating Date</label>
+                                <input type="text" class="form-control" name="updated_date" readonly>
+                            </div>
+                            <div class="col-md-4 mb-3 invisible">
+                                <label>Id</label>
+                                <input type="text" class="form-control" id="id" name="id" readonly>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+        {{!-- popup modal form --}}
+        <!-- Modal -->
+        
+        <div class="modal fade" id="pop-modal-form" tabindex="-1" role="dialog" aria-labelledby="pop-modal-form" aria-hidden="true" data-backdrop="false">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">POPULATION - PRODUCT FAMILY</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="form__">
+                        <div class="form-group row">
+                            <div class="col-md-12 mb-3">
+                                <label>Product Family Desc</label>
+                                <input type="text" class="form-control" name="product_family_desc" placeholder="Type New Product Family Desc then click Save" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm pull-right">
+                                <button type="submit" class="btn btn-outline btn-primary" id="btn_save_activity"><i class="fa fa-save"></i> Save</button>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ck_active_pop" name="pop_active" checked="true">
+                                <label class="form-check-label" for="ck_active_pop">
+                                    Active
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group row invisible" style="position: absolute;">
+                            <div class="col-md-4 mb-3">
+                                <label>Updating by</label>
+                                <input type="text" class="form-control" name="updated_by" readonly>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label>Updating Date</label>
+                                <input type="text" class="form-control" name="updated_date" readonly>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label>Id</label>
+                                <input type="text" class="form-control" id="pop_id" name="pop_id" readonly>
+                            </div>
+                        </div>
+                        <hr/>
+                    </form>
+                    <div class="form-group row">
+                        <table id="dtTbl_pop" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th>Id</th>
+                                    <th>Product Family Desc</th>
+                                    <th>Active</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    {{!-- <button type="button" clss="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+                    <a href="#"  type="button" class="btn btn-outline btn-primary" id="btn_close" data-dismiss="modal">
+                        <i class="fa fa-times"></i> Close
+                    </a>
+                    {{!-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+                </div>
+                </div>
+            </div>
+        </div>
+        {{!-- spinner --}}
+        <div class="modal fade spinner-bg modal-popup" tabindex="-1" role="dialog" data-backdrop="false">
+            <div role="document">
+                <span class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></span>
+                {{!-- <div class="row">
+                    <div class="col-md-3">
+                        <div class="loader" id="loader-4">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+               </div> --}}
+            </div>
+        </div>
+    </div>
+    
+    <!-- /#wrapper -->
+{{> scripts}}
+{{!-- <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap-select/2.0.0-beta1/js/bootstrap-select.js"></script>    
+<link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/bootstrap-select/2.0.0-beta1/css/bootstrap-select.css">     --}}
+<script type="text/javascript" src="/vendor/bootstrap/js/bootstrap-select.js"></script>    
+<link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap-select.css">    
+
+</body>
+
+</html>

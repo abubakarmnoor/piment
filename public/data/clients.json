@@ -1,0 +1,23 @@
+{
+    "data": [
+      {
+        "id": "3525vdsfdfe33",
+        "client_name": "SCOTT BURNS",
+        "address": "---",
+        "state": "---",
+        "country": "Indonesia",
+        "zipcode": "---",
+        "email": "scott_burns@gmail.com",
+        "phone": "+1-361-847-6118/9",
+        "fax": "---",
+        "whatsapp": "+18231241244523",
+        "activity": "Other",
+        "active": true,
+        "created_date": "01-Apr-2021",
+        "created_by": "Admin",
+        "updated_date": "21-May-2021",
+        "updated_by": "Staff"
+      }
+    ]
+    
+  }

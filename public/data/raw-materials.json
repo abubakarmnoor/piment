@@ -1,0 +1,26 @@
+{
+    "data": [
+      {
+        "id": "3525vdsfdfsd43",
+        "rm_code": "247 CHROME",
+        "rm_desc": "---",
+        "product_family": "vdsfs45454",
+        "cost": 1500000,
+        "unit": "pc",
+        "box_size_w": "-",
+        "box_size_l": "-",
+        "box_size_h": "-",
+        "kayu": "sfsd535435",
+        "cost_last_updated": "01-Feb-2021",
+        "creator": "Stockist",
+        "validated": true,
+        "out": false,
+        "active": true,
+        "created_date": "01-Apr-2021",
+        "created_by": "Admin",
+        "updated_date": "21-May-2021",
+        "updated_by": "Staff 1"
+      }
+    ]
+    
+  }

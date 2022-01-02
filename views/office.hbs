@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{> head}}
+{{> css}}
+
+<body>
+
+    <div id="wrapper">
+
+        {{> navbar}}
+
+        {{> sidenav}}
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="page-header">OFFICE DETAILS</h3>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <form id="form_">
+                        <div class="col-sm pull-right cancel">
+                            <a href="#"  type="button" class="btn btn-outline btn-primary" id="btn_cancel" style="display: none;">
+                                <i class="fa fa-times"></i> Cancel
+                            </a>
+                        </div>
+                        <div class="col-sm pull-right">&nbsp;</div>
+                        <div class="col-sm pull-right">
+                            <button type="submit" class="btn btn-outline btn-primary" id="btn_save" style="display: none;"><i class="fa fa-save"></i> Save</button>
+                        </div>
+                        <div class="col-sm pull-right">&nbsp;</div>
+                        <div class="col-sm pull-right">
+                            <a href="#"  type="button" class="btn btn-outline btn-primary" id="btn_edit">
+                                <i class="fa fa-edit"></i> Edit
+                            </a>
+                        </div>
+                        <div class="col-sm pull-right">&nbsp;</div>
+                        <div class="col-sm pull-right">
+                            <a href="#"  type="button" class="btn btn-outline btn-primary" id="btn_refresh">
+                                <i class="fa a-refresh"></i> Refresh
+                            </a>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-9 mb-3">
+                                <label for="txt_Username">Office Desc</label>
+                                <input type="text" class="form-control" name="office_desc" placeholder="Office Desc" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4 mb-3">
+                                <label for="txt_first_name">Address Line 1</label>
+                                <input type="text" class="form-control" name="address_line_1" placeholder="Address Line 1" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="txt_last_name">Address Line 2</label>
+                                <input type="text" class="form-control" name="address_line_2" placeholder="Address Line 2" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="txt_position">Zipcode</label>
+                                <input type="text" class="form-control" name="zipcode" placeholder="Zipcode" required>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="txt_position">Google Map</label>
+                                <input type="text" class="form-control" name="google_map" placeholder="Google Map" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4 mb-3">
+                                <label for="txt_email">Sales Retail Inquiries Email</label>
+                                <input type="email" class="form-control" name="sales_retail_inquiries_email" placeholder="Sales Retail Inquiries Email" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="txt_phone">Custom Lighting Project Inquiries Email</label>
+                                <input type="text" class="form-control" name="custom_lighting_project_inquiries_email" placeholder="Custom Lighting Project Inquiries Email" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="txt_phone">Phone 1</label>
+                                <input type="text" class="form-control" name="phone_1" placeholder="Phone 1" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="txt_phone">Phone 2</label>
+                                <input type="text" class="form-control" name="phone_2" placeholder="Phone 2" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="txt_phone">Fax</label>
+                                <input type="text" class="form-control" name="fax" placeholder="Fax" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="txt_phone">WhatsApp</label>
+                                <input type="text" class="form-control" name="whatsapp" placeholder="WhatsApp" required>
+                            </div>
+                        </div>
+                        <div class="form-group row invisible">
+                            <div class="col-md-4 mb-3">
+                                <label>Created by</label>
+                                <input type="text" class="form-control" name="created_by" readonly>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label>Created Date</label>
+                                <input type="text" class="form-control" name="created_date" readonly>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label>Updated by</label>
+                                <input type="text" class="form-control" name="updated_by" readonly>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label>Updated Date</label>
+                                <input type="text" class="form-control" name="updated_date" readonly>
+                            </div>
+                            <div class="col-md-4 mb-3 invisible">
+                                <label>Id</label>
+                                <input type="text" class="form-control" id="id" name="id" readonly>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    {{!--  spinner --}}
+    <div class="modal fade spinner-bg modal-popup" tabindex="-1" role="dialog" data-backdrop="false">
+        <div role="document">
+            <span class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></span>
+        </div>
+    </div>
+{{> scripts}}
+<script src="/dist/js/office.js"></script>  
+</body>
+
+</html>
