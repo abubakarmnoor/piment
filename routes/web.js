@@ -77,7 +77,30 @@ router.get('/clients', (req, res) => {
 });
 
 router.get('/client-details', (req, res) => {
-	const _data_opp_act = {data: [{val:"Other"},{val:"Other 1"},{val:"Other 2"}]};
+	const _data_opp_act = {"data":[
+		{
+			"pop_type":"activity",
+			"id":"sfsf4454fdsf",
+			"pop_desc":"Other",
+			"active": true
+		},{
+			"pop_type":"activity",
+			"id":"dsf4343434",
+			"pop_desc":"Other 1",
+			"active": true
+		},{
+			"pop_type":"activity",
+			"id":"vdsfs45454",
+			"pop_desc":"Other 2",
+			"active": true
+		},{
+			"pop_type":"activity",
+			"id":"vdsfs45424",
+			"pop_desc":"Other 3",
+			"active": true
+		}
+		]
+	};
 	res.render('client-details.hbs', {
 		client_details: true, _data_opp_act, tables_bs4: true
 	});
