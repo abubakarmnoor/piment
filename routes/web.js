@@ -4,8 +4,9 @@ const router = express.Router();
 // const tsqlPull = require('../tsql/pull');
 //fs = require('fs');
 const axios = require('axios');
-const fetch = require('node-fetch');
 const _api_url_default = 'http://localhost:3000'
+const _data_pop_activity = require("../public/data/pop-activity.json");
+const _data_countries = require("../public/data/countries.json");
 
 router.use(function (req, res, next) {
 	//console.log('app use 123');
@@ -77,47 +78,11 @@ router.get('/clients', (req, res) => {
 });
 
 router.get('/client-details', (req, res) => {
-	const _data_opp_act = {"data":[
-		{
-			"pop_type":"activity",
-			"id":"sfsf4454fdsf",
-			"pop_desc":"Other",
-			"active": true
-		},{
-			"pop_type":"activity",
-			"id":"dsf4343434",
-			"pop_desc":"Other 1",
-			"active": true
-		},{
-			"pop_type":"activity",
-			"id":"vdsfs45454",
-			"pop_desc":"Other 2",
-			"active": true
-		},{
-			"pop_type":"activity",
-			"id":"vdsfs45424",
-			"pop_desc":"Other 3",
-			"active": true
-		}
-		]
-	};
+	const __data_pop_activity = _data_pop_activity.data;
+	const __data_countries = _data_countries.data;
 	res.render('client-details.hbs', {
-		client_details: true, _data_opp_act, tables_bs4: true
+		client_details: true, __data_pop_activity, tables_bs4: true, __data_countries
 	});
-	
-	// fetch(_api_url_default+'/data/pop-activity.json', {
-	// 	method: 'GET'
-	// })
-	// .then(res => res.json())
-	// .then(json => {
-	// 	// Do something...
-	// 	const _data_opp_act = json;
-	// 	// console.log(json);
-	// 	res.render('client-details.hbs', {
-	// 		client_details: true, _data_opp_act, tables_bs4: true
-	// 	});
-	// })
-	// .catch(err => console.log(err));
 	
 });
 router.get('/suppliers', (req, res) => {
