@@ -2,8 +2,8 @@ $(document).ready(function() {
             
     //default
     $('.selectpicker').selectpicker();
-    insert_element();insert_element_2();
-    load_data_dt('/data/pop-product-family.json'); //pop pf ini t
+    insert_element_pf();insert_element_kayu();insert_element_unit();insert_element_creator();
+    load_data_dt('/data/pop-product-family.json'); //init
 
     //edit or add new
     if (location.href.includes('eid')) {
@@ -191,7 +191,7 @@ $(document).ready(function() {
 
     
     //btn add new pop
-    $('#btn_pop_add_new').on('click', function(){
+    $('#btn_pop_pf').on('click', function(){
         // e.preventDefault();
         
         $('#txt_pop_type').val('Product Family')
@@ -200,17 +200,36 @@ $(document).ready(function() {
         $("input[name=pop_desc").val("")
         table.ajax.url("/data/pop-product-family.json", null, false).load(); // pop pf
     });
-    $('#btn_pop_add_new_2').on('click', function(){
+    $('#btn_pop_kayu').on('click', function(){
         // e.preventDefault();
         
         $('#txt_pop_type').val('Kayu')
         $('#th_pop_desc').text('Kayu Desc')
         $('#lbl_pf_desc').text('Kayu Desc')
         $("input[name=pop_desc").val("")
-        table.ajax.url("/data/pop-kayu.json", null, false).load(); // pop pf
+        table.ajax.url("/data/pop-kayu.json", null, false).load(); // pop kayu
         
     })
-    
+    $('#btn_pop_unit').on('click', function(){
+        // e.preventDefault();
+        
+        $('#txt_pop_type').val('Unit')
+        $('#th_pop_desc').text('Unit Desc')
+        $('#lbl_pf_desc').text('Unit Desc')
+        $("input[name=pop_desc").val("")
+        table.ajax.url("/data/pop-unit.json", null, false).load(); // pop unit
+        
+    })
+    $('#btn_pop_creator').on('click', function(){
+        // e.preventDefault();
+        
+        $('#txt_pop_type').val('Creator')
+        $('#th_pop_desc').text('Creator Desc')
+        $('#lbl_pf_desc').text('Creator Desc')
+        $("input[name=pop_desc").val("")
+        table.ajax.url("/data/pop-creator.json", null, false).load(); // pop creator
+        
+    })
     
 //end  doc ready
 });
@@ -265,13 +284,19 @@ function get_details(){
 }
 
 //insert element
-function insert_element(){
-    $('<a href="#" type="button" class="pull-right" id="btn_pop_add_new" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(5) > div:nth-child(1) > div > div > div');
+function insert_element_pf(){
+    $('<a href="#" type="button" class="pull-right" id="btn_pop_pf" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(5) > div:nth-child(1) > div > div > div');
 }
-function insert_element_2(){
-    $('<a href="#" type="button" class="pull-right" id="btn_pop_add_new_2" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(6) > div:nth-child(2) > div > div > div');
+function insert_element_kayu(){
+    $('<a href="#" type="button" class="pull-right" id="btn_pop_kayu" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(6) > div:nth-child(2) > div > div > div');
 }
-
+function insert_element_unit(){
+    $('<a href="#" type="button" class="pull-right" id="btn_pop_unit" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(5) > div:nth-child(3) > div > div > div');
+}
+function insert_element_creator(){
+    $('<a href="#" type="button" class="pull-right" id="btn_pop_creator" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(6) > div:nth-child(3) > div > div > div');
+    
+}
 //load data dt
 function load_data_dt(_url){
     // ajax

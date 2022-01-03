@@ -111,8 +111,10 @@ router.get('/raw-material-details', (req, res) => {
 
 	const __data_pop_product_family = _data_pop_product_family.data;
 	const __data_pop_kayu = _data_pop_kayu.data;
+	const __data_pop_unit = _data_pop_unit.data;
+	const __data_pop_creator = _data_pop_creator.data;
 	res.render('raw-material-details.hbs', {
-		tables_bs4: true, raw_material_details:true,__data_pop_product_family,__data_pop_kayu
+		tables_bs4: true, raw_material_details:true,__data_pop_product_family,__data_pop_kayu, __data_pop_unit, __data_pop_creator
 	});
 	
 
