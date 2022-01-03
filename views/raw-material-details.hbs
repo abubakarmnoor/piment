@@ -56,7 +56,7 @@
                                 <label for="product_family">Product Family</label>
                                 <select class="form-control selectpicker" id="sp_product_family" name="product_family" data-live-search="true">
                                     <option value="-">-</option>
-                                    {{#each __data_pop_family.data}}
+                                    {{#each __data_pop_family}}
                                         <option value={{id}}>{{pop_desc}}</option>
                                     {{/each}}
                                 </select>
@@ -98,7 +98,7 @@
                                 <label for="kayu">Kayu</label>
                                 <select class="form-control selectpicker" id="sp_kayu" name="kayu" data-live-search="true">
                                     <option value="-">-</option>
-                                    {{#each __data_pop_kayu.data}}
+                                    {{#each __data_pop_kayu}}
                                         <option value={{id}}>{{pop_desc}}</option>
                                     {{/each}}
                                 </select>

@@ -5,8 +5,12 @@ const router = express.Router();
 //fs = require('fs');
 const axios = require('axios');
 const _api_url_default = 'http://localhost:3000'
-const _data_pop_activity = require("../public/data/pop-activity.json");
 const _data_countries = require("../public/data/countries.json");
+const _data_pop_activity = require("../public/data/pop-activity.json");
+const _data_pop_product_family = require("../public/data/pop-product-family.json");
+const _data_pop_kayu = require("../public/data/pop-kayu.json");
+const _data_pop_unit = require("../public/data/pop-unit.json");
+const _data_pop_creator = require("../public/data/pop-creator.json");
 
 router.use(function (req, res, next) {
 	//console.log('app use 123');
@@ -91,14 +95,11 @@ router.get('/suppliers', (req, res) => {
 	});
 });
 router.get('/supplier-details', (req, res) => {
-	//const data_select = {data: [{val:"Finishing"},{val:"Object"},{val:"Mix"},{val:"Handicraft"},{val:"Box"}]};
-	axios.get(_api_url_default+'/data/pop-product-family.json')
-	.then(function(_data_select){
-		const __data_pop_family = _data_select.data;
-		res.render('supplier-details.hbs', {
-			tables_bs4: true, supplier_details:true, __data_pop_family
-		});
-	})
+	const __data_countries = _data_countries.data;
+	const __data_pop_product_family = _data_pop_product_family.data;
+	res.render('supplier-details.hbs', {
+		tables_bs4: true, supplier_details:true, __data_countries, __data_pop_product_family
+	});
 	
 });
 router.get('/raw-materials', (req, res) => {
@@ -108,20 +109,11 @@ router.get('/raw-materials', (req, res) => {
 });
 router.get('/raw-material-details', (req, res) => {
 
-	axios.get(_api_url_default+'/data/pop-product-family.json')
-	.then(function(_data){
-		const __data_pop_family = _data.data;
-		axios.get(_api_url_default+'/data/pop-kayu.json')
-		.then(function(_data1){
-			const __data_pop_kayu = _data1.data;
-			res.render('raw-material-details.hbs', {
-				tables_bs4: true, raw_material_details:true,__data_pop_family,__data_pop_kayu
-			});
-		})
-		
-		
-	})
-
+	const __data_pop_product_family = _data_pop_product_family.data;
+	const __data_pop_kayu = _data_pop_kayu.data;
+	res.render('raw-material-details.hbs', {
+		tables_bs4: true, raw_material_details:true,__data_pop_product_family,__data_pop_kayu
+	});
 	
 
 });

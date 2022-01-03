@@ -1,22 +1,4 @@
 {"data":[
-    {"val":"cl"},
-    {"val":"cm"},
-    {"val":"cm2"},
-    {"val":"g"},
-    {"val":"gram"},
-    {"val":"jam"},
-    {"val":"kg"},
-    {"val":"kl"},
-    {"val":"l"},
-    {"val":"br"},
-    {"val":"lr"},
-    {"val":"m"},
-    {"val":"pack"},
-    {"val":"pc"},
-    {"val":"roll"},
-    {"val":"set"}
-]}
-{"data":[
     {
         "pop_type":"unit",
         "id":"sfsf4454fdsf",
@@ -97,8 +79,6 @@
         "id":"sfsf4454fdsf",
         "pop_desc":"set",
         "active": true
-    },
-
-    
+    }    
     ]
 }
