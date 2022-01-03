@@ -148,14 +148,7 @@ $(document).ready(function() {
 
     } );
     
-    // Details record
-    $('#dtTbl_pop').on('click', 'td.editor-details', function (e) {
-        e.preventDefault();
-        //console.log( table.row( this ).data().id );
-        const _id = table.row( this ).data().id;
-
-        
-    } );
+    
     // Delete a record
     $('#dtTbl_pop').on('click', 'td.editor-delete', function (e) {
         e.preventDefault();

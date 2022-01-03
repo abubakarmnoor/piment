@@ -230,7 +230,45 @@ $(document).ready(function() {
         table.ajax.url("/data/pop-creator.json", null, false).load(); // pop creator
         
     })
+
+    // Edit record
+    $('#dtTbl_pop').on('click', 'td.editor-edit', function (e) {
+        e.preventDefault();
+        //console.log( table.row( this ).data().id );
+        const _id = table.row( this ).data().id;
+        const _pop_desc = table.row( this ).data().pop_desc;
+        const _active = table.row( this ).data().active;
+        
+        $("#pop_id").val(_id);
+        $("input[name=pop_desc]").val(_pop_desc);
+        $("#ck_active_pop").prop('checked', _active);
+
+    } );
     
+    
+    // Delete a record
+    $('#dtTbl_pop').on('click', 'td.editor-delete', function (e) {
+        e.preventDefault();
+        //console.log( table.row( this ).data().id );
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+                )
+            }
+        })
+    } );
 //end  doc ready
 });
 //default-edit

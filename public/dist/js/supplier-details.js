@@ -143,7 +143,7 @@ $(document).ready(function() {
         const _active = table.row( this ).data().active;
         
         $("#pop_id").val(_id);
-        $("input[name=activity_desc]").val(_pop_desc);
+        $("input[name=pop_desc]").val(_pop_desc);
         $("#ck_active_pop").prop('checked', _active);
 
     } );
