@@ -4,7 +4,7 @@ const router = express.Router();
 // const tsqlPull = require('../tsql/pull');
 //fs = require('fs');
 const axios = require('axios');
-const async = require('hbs/lib/async');
+const fetch = require('node-fetch');
 const _api_url_default = 'http://localhost:3000'
 
 router.use(function (req, res, next) {
@@ -75,29 +75,26 @@ router.get('/clients', (req, res) => {
 		tables_bs4: true, clients: true
 	});
 });
+
 router.get('/client-details', (req, res) => {
-	// const data_select = {data: [{val:"Other"},{val:"Other 1"},{val:"Other 2"}]};
+	// const _data_opp_act = {data: [{val:"Other"},{val:"Other 1"},{val:"Other 2"}]};
 	// res.render('client-details.hbs', {
 	// 	client_details: true, data_select, tables_bs4: true
 	// });
-	axios.get(_api_url_default+'/data/pop-activity.json')
-	.then(function(_data){
-		//console.log(_data_countries.data.countries);
-		const _data_opp_act = _data.data;
+	
+	fetch(_api_url_default+'/data/pop-activity.json', {
+		method: 'GET'
+	})
+	.then(res => res.json())
+	.then(json => {
+		// Do something...
+		const _data_opp_act = json;
+		// console.log(json);
 		res.render('client-details.hbs', {
-			client_details: true, tables_bs4: true,_data_opp_act
+			client_details: true, _data_opp_act, tables_bs4: true
 		});
 	})
-
-	// axios.get(_api_url_default+'/data/countries.json')
-	// .then(function(_data_countries){
-	// 	//console.log(_data_countries.data.countries);
-	// 	const __data_countries = _data_countries.data.countries;
-	// 	res.render('client-details.hbs', {
-	// 		client_details: true, data_select, tables_bs4: true,__data_countries
-	// 	});
-	// })
-	
+	.catch(err => console.log(err));
 	
 });
 router.get('/suppliers', (req, res) => {
