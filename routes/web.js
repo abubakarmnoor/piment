@@ -77,14 +77,17 @@ router.get('/clients', (req, res) => {
 });
 router.get('/client-details', (req, res) => {
 	const data_select = {data: [{val:"Other"},{val:"Other 1"},{val:"Other 2"}]};
-	axios.get(_api_url_default+'/data/countries.json')
-	.then(function(_data_countries){
-		//console.log(_data_countries.data.countries);
-		const __data_countries = _data_countries.data.countries;
-		res.render('client-details.hbs', {
-			client_details: true, data_select, tables_bs4: true,__data_countries
-		});
-	})
+	res.render('client-details.hbs', {
+		client_details: true, data_select, tables_bs4: true
+	});
+	// axios.get(_api_url_default+'/data/countries.json')
+	// .then(function(_data_countries){
+	// 	//console.log(_data_countries.data.countries);
+	// 	const __data_countries = _data_countries.data.countries;
+	// 	res.render('client-details.hbs', {
+	// 		client_details: true, data_select, tables_bs4: true,__data_countries
+	// 	});
+	// })
 	
 	
 });
@@ -94,12 +97,12 @@ router.get('/suppliers', (req, res) => {
 	});
 });
 router.get('/supplier-details', (req, res) => {
-	const data_select = {data: [{val:"Finishing"},{val:"Object"},{val:"Mix"},{val:"Handicraft"},{val:"Box"}]};
-	axios.get(_api_url_default+'/data/countries.json')
-	.then(function(_data_countries){
-		const __data_countries = _data_countries.data.countries;
+	//const data_select = {data: [{val:"Finishing"},{val:"Object"},{val:"Mix"},{val:"Handicraft"},{val:"Box"}]};
+	axios.get(_api_url_default+'/data/pop-product-family.json')
+	.then(function(_data_select){
+		const __data_pop_family = _data_select.data;
 		res.render('supplier-details.hbs', {
-			tables_bs4: true, supplier_details:true, __data_countries, data_select
+			tables_bs4: true, supplier_details:true, __data_pop_family
 		});
 	})
 	
