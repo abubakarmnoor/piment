@@ -76,10 +76,19 @@ router.get('/clients', (req, res) => {
 	});
 });
 router.get('/client-details', (req, res) => {
-	const data_select = {data: [{val:"Other"},{val:"Other 1"},{val:"Other 2"}]};
-	res.render('client-details.hbs', {
-		client_details: true, data_select, tables_bs4: true
-	});
+	// const data_select = {data: [{val:"Other"},{val:"Other 1"},{val:"Other 2"}]};
+	// res.render('client-details.hbs', {
+	// 	client_details: true, data_select, tables_bs4: true
+	// });
+	axios.get(_api_url_default+'/data/pop-activity.json')
+	.then(function(_data){
+		//console.log(_data_countries.data.countries);
+		const _data_opp_act = _data.data;
+		res.render('client-details.hbs', {
+			client_details: true, tables_bs4: true,_data_opp_act
+		});
+	})
+
 	// axios.get(_api_url_default+'/data/countries.json')
 	// .then(function(_data_countries){
 	// 	//console.log(_data_countries.data.countries);

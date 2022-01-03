@@ -341,8 +341,8 @@
                                 <label for="activity">Activity</label>
                                 <select class="form-control selectpicker" id="sp_activity" name="activity" data-live-search="true">
                                     <option value="-">-</option>
-                                    {{#each data_select.data}}
-                                        <option>{{val}}</option>
+                                    {{#each _data_opp_act.data}}
+                                        <option value={{id}}>{{pop_desc}}</option>
                                     {{/each}}
                                 </select>
                             </div>
