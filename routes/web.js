@@ -79,7 +79,7 @@ router.get('/clients', (req, res) => {
 router.get('/client-details', (req, res) => {
 	const _data_opp_act = {data: [{val:"Other"},{val:"Other 1"},{val:"Other 2"}]};
 	res.render('client-details.hbs', {
-		client_details: true, data_select, tables_bs4: true
+		client_details: true, _data_opp_act, tables_bs4: true
 	});
 	
 	// fetch(_api_url_default+'/data/pop-activity.json', {
