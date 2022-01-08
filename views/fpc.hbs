@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{> head}}
+{{> css}}
+<style>
+    #dtTbl_filter {
+        margin-left: 585px !important;
+    }
+</style>
+
+<body>
+
+    <div id="wrapper">
+
+        {{> navbar}}
+
+        {{> sidenav}}
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h3 class="page-header">FINISH PRODUCT COMPONENTS (FPC)</h3>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="row">
+                    <div class="col" style="padding-top: 45px;">
+                        <div id="reportrange" class="pull-left form-control" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 29%;margin-right: 10px;">
+                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+                            <span></span> <b class="caret"></b>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <a href="#"  type="button" class="btn btn-outline btn-primary pull-left" id="btn_refresh">
+                            <i class="fa fa-refresh"></i> Refresh
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="#" type="button" class="btn btn-outline btn-primary pull-right" id="btn_back">
+                            <i class="fa fa-long-arrow-left"></i> Back
+                        </a>
+                    </div>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <div class="tabbable-panel">
+                        <div class="tabbable-line">
+                            <ul class="nav nav-tabs ">
+                                <li class="active">
+                                    <a href="#tab_lampshade" data-toggle="tab" id="btn_tab_lampshade">
+                                    LAMPSHADE </a>
+                                </li>
+                                <li>
+                                    <a href="#tab_stand" data-toggle="tab" id="btn_tab_stand">
+                                    STAND </a>
+                                </li>
+                                <li>
+                                    <a href="#tab_euro" data-toggle="tab" id="btn_tab_euro">
+                                    EURO </a>
+                                </li>
+                                <li>
+                                    <a href="#tab_us" data-toggle="tab" id="btn_tab_us">
+                                    US </a>
+                                </li>
+                                <li>
+                                    <a href="#tab_japan" data-toggle="tab" id="btn_tab_japan">
+                                    JAPAN </a>
+                                </li>
+                                <li>
+                                    <a href="#tab_uk" data-toggle="tab" id="btn_tab_uk">
+                                    UK </a>
+                                </li>
+                                <li>
+                                    <a href="#tab_aus" data-toggle="tab" id="btn_tab_aus">
+                                    AUS </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                 <div class="tab-pane active" id="tab_lampshade"><h4>LAMPSHADE</h4></div>
+                                 <div class="tab-pane" id="tab_stand"><h4>STAND</h4></div>
+                                 <div class="tab-pane" id="tab_euro"><h4>EURO</h4></div>
+                                 <div class="tab-pane" id="tab_us"><h4>US</h4></div>
+                                 <div class="tab-pane" id="tab_japan"><h4>JAPAN</h4></div>
+                                 <div class="tab-pane" id="tab_uk"><h4>UK</h4></div>
+                                 <div class="tab-pane" id="tab_aus"><h4>AUS</h4></div>
+
+
+                                <a href="#" id="btn_add" type="button" class="btn btn-outline btn-primary pull-left">
+                                    <i class="glyphicon-plus"></i> Add New
+                                </a>
+                                <table id="dtTbl" class="table table-striped display nowrap" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th></th>
+                                            <th>Id</th>
+                                            <th>RM Code</th>
+                                            <th>Desc</th>
+                                            <th>Qty</th>
+                                            <th>Unit</th>
+                                            <th>Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot align="right">
+                                        <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+                                    </tfoot>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <div class="col-md-4 mb-3 invisible">
+                        <label>FP Id</label>
+                        <input type="text" class="form-control" id="fpid" name="fpid" value="{{fpid}}"readonly>
+                        <input type="text" class="form-control" id="act" name="act" value="{{act}}"readonly>
+                    </div>
+                    <div class="row">&nbsp;</div>
+                    <div class="row">&nbsp;</div>
+                    <div class="row">&nbsp;</div>
+                    <div class="row">&nbsp;</div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+        {{!-- //modal spinner --}}
+        <div class="modal fade spinner-bg" tabindex="-1" role="dialog" data-backdrop="false">
+            <div role="document">
+                <span class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></span>
+            </div>
+        </div>
+    </div>
+    <!-- /#wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+{{> scripts}}
+{{!-- <script src="https://cdn.datatables.net/plug-ins/1.11.3/api/sum().js"></script> --}}
+</body>
+
+</html>

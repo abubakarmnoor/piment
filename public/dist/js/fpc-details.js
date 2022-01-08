@@ -2,33 +2,38 @@ $(document).ready(function() {
             
     //default
     $('.selectpicker').selectpicker();
-    insert_element_pf();insert_element_kayu();insert_element_unit();insert_element_creator();
-    load_data_dt('/data/pop-product-family.json'); //init
+    insert_element_unit();
+    load_data_dt('/data/pop-unit.json'); //init
 
     //edit or add new
-    if (location.href.includes('eid')) {
-        $('.page-header').text('RAW MATERIAL UPDATES')
-        
-        let url = location.href;
-        let id = getURLParameter(url, 'eid');
-        $("#id").val(id);
+    if (location.href.includes('ZWlk')) {
+        $('.page-header').text('FPC UPDATES')
+        $("#btn_fpc").show();
+        // let url = location.href;
+        // let id = getURLParameter(url, 'eid');
+        // $("#id").val(id);
         get_details();
         
-    }else if (location.href.includes('did')) {
-        $('.page-header').text('RAW MATERIAL DETAILS');
+    }else if (location.href.includes('ZGlk')) {
+        $('.page-header').text('FPC DETAILS');
         $("#btn_save").hide();
+        $("#btn_fpc").show();
         $("#form_ :input").prop('readonly', true);
         
         $('.selectpicker').prop('disabled', true);
         $('.selectpicker').selectpicker('refresh');
 
         $("#ck_active").attr("disabled", true);
-        $(".cancel").html("<a href='/raw-materials'  type='button' class='btn btn-outline btn-primary'><i class='fa fa-long-arrow-left'></i> Back</a>");
+        $(".cancel").html("<a href='#' id='btn_back' type='button' class='btn btn-outline btn-primary'><i class='fa fa-long-arrow-left'></i> Back</a>");
+        let url = location.href;
+        let id = getURLParameter(url, 'did');
+        $("#id").val(id);
         get_details();
         
     
     }else{
-        $('.page-header').text('RAW MATERIAL ADD NEW')
+        $('.page-header').text('FPC ADD NEW')
+        $("#btn_fpc").hide();
         let username = 'test';
         get_date_default(username,null, username, null)
     }
@@ -43,18 +48,17 @@ $(document).ready(function() {
         e.preventDefault();
         const form = $(e.target);
         const _data = convertFormToJSON(form);
-        _data.txt_created_date = new Date(_data.txt_created_date);
-        _data.txt_created_date = formatDate(_data.txt_created_date)
-        _data.txt_updated_date = new Date(_data.txt_updated_date);
-        _data.txt_updated_date = formatDate(_data.txt_updated_date)
-        _data.active = $("#ck_active").prop('checked')
-        //console.log(json);
+        _data.created_date = new Date(_data.created_date);
+        _data.created_date = formatDate(_data.created_date)
+        _data.updated_date = new Date(_data.updated_date);
+        _data.updated_date = formatDate(_data.updated_date)
+        // console.log(_data);
 
         // ajax - save/post data
         spinner_popup();
         $.ajax({
             type:"GET", // must be POST 
-            url: "/data/raw-materials.json", 
+            url: "/data/fpc-lampshade.json", 
             dataType: "json",
             data: _data,
             success: function(data) {
@@ -65,7 +69,7 @@ $(document).ready(function() {
                         title: '',
                         text: "Data Saved"
                     }).then(function(){
-                        location.href='/raw-materials'
+                        location.href='/fpc/'+$("#fpid").val()
                     });
                     
                 }, 3000);
@@ -134,6 +138,30 @@ $(document).ready(function() {
 
     });
 
+    //btn
+    $("#btn_fpc").on("click", function(e){
+        e.preventDefault();
+        location.href = "/fpc?id="+$("#id").val();
+    })
+    $("#btn_back").on("click", function(e){
+        e.preventDefault();
+        history.go(-1); // go back
+        window.location=document.referrer; //refresh
+    })
+    $("#btn_cancel").on("click", function(e){
+        e.preventDefault();
+        history.go(-1); // go back
+        window.location=document.referrer; //refresh
+    })
+    //number
+    $("#price").on('keyup', function(e){
+        e.preventDefault();
+        let _amt = $(this).val().replace(/,/g,"");
+        $(this).val(numberWithCommas(_amt));
+        
+    })
+    
+
     // Edit record
     $('#dtTbl_pop').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
@@ -184,6 +212,7 @@ $(document).ready(function() {
     $("#cost").on('keyup', function(){
         
         let _amt = $(this).val().replace(/,/g,"");
+        console.log(_amt);
         $(this).val(numberWithCommas(_amt));
         
     })
@@ -229,7 +258,16 @@ $(document).ready(function() {
         table.ajax.url("/data/pop-creator.json", null, false).load(); // pop creator
         
     })
-
+    $('#btn_pop_origin').on('click', function(){
+        // e.preventDefault();
+        
+        $('#txt_pop_type').val('Origin')
+        $('#th_pop_desc').text('Origin Desc')
+        $('#lbl_pf_desc').text('Origin Desc')
+        $("input[name=pop_desc").val("")
+        table.ajax.url("/data/pop-origin.json", null, false).load(); // pop creator
+        
+    })
     // Edit record
     $('#dtTbl_pop').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
@@ -267,25 +305,25 @@ $(document).ready(function() {
                 )
             }
         })
-    } );
+    });
+    // btn back
+    
+
 //end  doc ready
 });
 //default-edit
 function default_edit(data){
 
-    let _date = new Date(data[0].cost_last_updated)
+    let _c_date = new Date(data[0].created_date)
+    let _rlu_date = new Date(data[0].receipt_last_updated)
     //_date.setDate(_date.getDate()+1)
     
-    $("input[name=rm_code").val(data[0].rm_code)
-    $("input[name=rm_desc").val(data[0].rm_desc)
+    $("input[name=fp_desc").val(data[0].fp_desc)
     $('#sp_product_family').selectpicker('val',data[0].product_family)
-    $("input[name=cost").val(numberWithCommas(data[0].cost))
-    $('#sp_unit').selectpicker('val',data[0].unit)
-    $("input[name=box_size_w").val(data[0].box_size_w)
-    $("input[name=box_size_l").val(data[0].box_size_l)
-    $("input[name=box_size_h").val(data[0].box_size_h)
-    $('#sp_kayu').selectpicker('val',data[0].kayu)
-    $("input[name=cost_last_updated").val(formatDate(_date,true))
+    $("input[name=h").val(data[0].h)
+    $("input[name=created_date").val(formatDate(_c_date,true))
+    $("input[name=receipt_last_updated").val(formatDate(_rlu_date,true))
+    $('#sp_origin').selectpicker('val',data[0].origin)
     $('#sp_creator').selectpicker('val',data[0].creator)
     $("#ck_validated").prop('checked', data[0].validated)
     $("#ck_out").prop('checked', data[0].out)
@@ -301,7 +339,7 @@ function get_details(){
     //ajax
     $.ajax({
         type:"GET", 
-        url: "/data/raw-materials.json", 
+        url: "/data/finish-product.json", 
         dataType: "json",
         success: function(data) {
             setTimeout(function () {
@@ -321,19 +359,10 @@ function get_details(){
 }
 
 //insert element
-function insert_element_pf(){
-    $('<a href="#" type="button" class="pull-right" id="btn_pop_pf" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(5) > div:nth-child(1) > div > div > div');
-}
-function insert_element_kayu(){
-    $('<a href="#" type="button" class="pull-right" id="btn_pop_kayu" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(6) > div:nth-child(2) > div > div > div');
-}
 function insert_element_unit(){
-    $('<a href="#" type="button" class="pull-right" id="btn_pop_unit" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(5) > div:nth-child(3) > div > div > div');
+    $('<a href="#" type="button" class="pull-right" id="btn_pop_unit" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(7) > div:nth-child(2) > div > div > div');
 }
-function insert_element_creator(){
-    $('<a href="#" type="button" class="pull-right" id="btn_pop_creator" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(6) > div:nth-child(3) > div > div > div');
-    
-}
+
 //load data dt
 function load_data_dt(_url){
     // ajax

@@ -1,0 +1,62 @@
+{
+    "data": [
+      {
+        "id": "3525vdsfdfe53",
+        "fp_id": "1234567",
+        "type": "stand",
+        "rm_code": "E-CCE",
+        "rm_desc": "Cordset Europe Black",
+        "qty": 1,
+        "unit": "set",
+        "price": 23500,
+        "active": true,
+        "created_date": "01-Apr-2021",
+        "created_by": "Admin",
+        "updated_date": "21-May-2021",
+        "updated_by": "Staff"
+      },{
+        "id": "3525vdsfdfe54",
+        "fp_id": "1234567",
+        "type": "stand",
+        "rm_code": "E-E27HT",
+        "rm_desc": "E27 Half Threaded",
+        "qty": 1,
+        "unit": "pc",
+        "price": 34000,
+        "active": true,
+        "created_date": "01-Apr-2021",
+        "created_by": "Admin",
+        "updated_date": "21-May-2021",
+        "updated_by": "Staff"
+      },{
+        "id": "3525vdsfdfe55",
+        "fp_id": "1234567",
+        "type": "stand",
+        "rm_code": "E-SH27",
+        "rm_desc": "Shade Ring 27",
+        "qty": 1,
+        "unit": "m",
+        "price": 24000,
+        "active": true,
+        "created_date": "01-Apr-2021",
+        "created_by": "Admin",
+        "updated_date": "21-May-2021",
+        "updated_by": "Staff"
+      },{
+        "id": "3525vdsfdfe56",
+        "fp_id": "1234567",
+        "type": "stand",
+        "rm_code": "E-NUTB",
+        "rm_desc": "Nut Stelll Acier",
+        "qty": 1,
+        "unit": "cm",
+        "price": 800,
+        "active": true,
+        "created_date": "01-Apr-2021",
+        "created_by": "Admin",
+        "updated_date": "21-May-2021",
+        "updated_by": "Staff"
+      }
+    ]
+    
+  }

@@ -4,14 +4,14 @@
 {{> head}}
 {{> css}}
 
-<style>
+{{!-- <style>
     .col-md-6{
         width: 0%;
     }
     #dtTbl_pop{
         width: 100% !important;
     }
-</style>
+</style> --}}
 <body>
 
     <div id="wrapper">
@@ -25,7 +25,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h3 class="page-header">SUPPLIER UPDATES</h3>
+                        <h3 class="page-header">FINISH PRODUCT UPDATES</h3>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -33,7 +33,7 @@
                 <div class="row">
                     <form id="form_">
                         <div class="col-sm pull-right cancel">
-                            <a href="/suppliers"  type="button" class="btn btn-outline btn-primary" id="btn_cancel">
+                            <a href="/finish-product"  type="button" class="btn btn-outline btn-primary" id="btn_cancel">
                                 <i class="fa fa-times"></i> Cancel
                             </a>
                         </div>
@@ -43,55 +43,8 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-md-9 mb-3">
-                                <label for="product_family_desc">Supplier Name</label>
-                                <input type="text" class="form-control" name="supplier_name" placeholder="Supplier Name" value="" required>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-9 mb-3">
-                                <label for="address">Address</label>
-                                <textarea class="form-control" name="address" placeholder="Address" value="" required></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-4 mb-3">
-                                <label for="state">State</label>
-                                <input type="text" class="form-control" name="state" placeholder="State" value="" required>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="country">Country</label>
-                                <select class="form-control selectpicker" id="sp_country" name="country" data-live-search="true">
-                                    <option value="-">-</option>
-                                    {{#each __data_countries}}
-                                        <option>{{name}}</option>
-                                    {{/each}}
-                                </select>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="zipcode">Zipcode</label>
-                                <input type="text" class="form-control" name="zipcode" placeholder="Zipcode" value="" required>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-4 mb-3">
-                                <label for="txt_email">PIC</label>
-                                <input type="text" class="form-control" name="pic" placeholder="PIC" value="" required>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="txt_email">Email</label>
-                                <input type="email" class="form-control" name="email" placeholder="Email" value="" required>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="txt_phone">Phone</label>
-                                <input type="text" class="form-control" id="txt_phone" name="phone" placeholder="Phone" value="" required>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="fax">Fax</label>
-                                <input type="text" class="form-control" name="fax" placeholder="Fax" value="" required>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="whatsapp">WhatsApp</label>
-                                <input type="text" class="form-control" name="whatsapp" placeholder="WhatsApp" value="" required>
+                                <label for="product_family_desc">Finish Product Desc</label>
+                                <input type="text" class="form-control" name="fp_desc" placeholder="Finish Product Desc" value="" required>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -103,6 +56,53 @@
                                         <option value={{id}}>{{pop_desc}}</option>
                                     {{/each}}
                                 </select>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="state">H</label>
+                                <input type="text" class="form-control" name="h" placeholder="H" value="" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4 mb-3">
+                                <label for="zipcode">Created Date</label>
+                                <input type="text" class="form-control" name="created_date" placeholder="Created Date" value="" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="txt_email">Receipt Last Updated</label>
+                                <input type="text" class="form-control" name="receipt_last_updated" placeholder="Receipt Last Updated" value="" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4 mb-3">
+                                <label for="origin">Origin</label>
+                                <select class="form-control selectpicker" id="sp_origin" name="origin" data-live-search="true">
+                                    <option value="-">-</option>
+                                    {{#each __data_pop_origin}}
+                                        <option value={{id}}>{{pop_desc}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="creator">Creator</label>
+                                <select class="form-control selectpicker" id="sp_creator" name="creator" data-live-search="true">
+                                    <option value="-">-</option>
+                                    {{#each __data_pop_creator}}
+                                        <option value={{id}}>{{pop_desc}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4 mb-3 form-check form-check-inline">
+                                <div class="row">&nbsp;</div>
+                                <input class="form-check-input" type="checkbox" value="" id="ck_validated" name="validated">
+                                <label class="form-check-label" for="ck_validated">
+                                    Validated
+                                </label>
+                                <input class="form-check-input" type="checkbox" value="" id="ck_out" name="out">
+                                <label class="form-check-label" for="ck_out">
+                                    Out
+                                </label>
                             </div>
                         </div>
                         <div class="form-group">
@@ -152,7 +152,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">POPULATION - PRODUCT FAMILY</h5>
+                    <h5 class="modal-title">POPULATION TABLE</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -161,8 +161,8 @@
                     <form id="form__">
                         <div class="form-group row">
                             <div class="col-md-12 mb-3">
-                                <label>Product Family Desc</label>
-                                <input type="text" class="form-control" name="pop_desc" placeholder="Type New Product Family Desc then click Save" required>
+                                <label id="lbl_pf_desc">Product Family Desc</label>
+                                <input type="text" class="form-control" name="pop_desc" placeholder="Type New Desc then click Save" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -199,7 +199,7 @@
                                     <th></th>
                                     <th></th>
                                     <th>Id</th>
-                                    <th>Product Family Desc</th>
+                                    <th id="th_pop_desc">Product Family Desc</th>
                                     <th>Active</th>
                                     
                                 </tr>

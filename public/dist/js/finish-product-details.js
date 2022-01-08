@@ -2,33 +2,38 @@ $(document).ready(function() {
             
     //default
     $('.selectpicker').selectpicker();
-    insert_element_pf();insert_element_kayu();insert_element_unit();insert_element_creator();
+    insert_element_pf(); insert_element_origin(); insert_element_creator();
     load_data_dt('/data/pop-product-family.json'); //init
 
     //edit or add new
-    if (location.href.includes('eid')) {
-        $('.page-header').text('RAW MATERIAL UPDATES')
-        
-        let url = location.href;
-        let id = getURLParameter(url, 'eid');
-        $("#id").val(id);
+    if (location.href.includes('ZWlk')) {
+        $('.page-header').text('FINISH PRODUCT UPDATES')
+        $("#btn_fpc").show();
+        // let url = location.href;
+        // let id = getURLParameter(url, 'ZWlk');
+        // $("#id").val(id);
         get_details();
         
-    }else if (location.href.includes('did')) {
-        $('.page-header').text('RAW MATERIAL DETAILS');
+    }else if (location.href.includes('ZGlk')) {
+        $('.page-header').text('FINISH PRODUCT DETAILS');
         $("#btn_save").hide();
+        $("#btn_fpc").show();
         $("#form_ :input").prop('readonly', true);
         
         $('.selectpicker').prop('disabled', true);
         $('.selectpicker').selectpicker('refresh');
 
         $("#ck_active").attr("disabled", true);
-        $(".cancel").html("<a href='/raw-materials'  type='button' class='btn btn-outline btn-primary'><i class='fa fa-long-arrow-left'></i> Back</a>");
+        $(".cancel").html("<a href='/finish-product'  type='button' class='btn btn-outline btn-primary'><i class='fa fa-long-arrow-left'></i> Back</a>");
+        // let url = location.href;
+        // let id = getURLParameter(url, 'did');
+        // $("#id").val(id);
         get_details();
         
     
     }else{
-        $('.page-header').text('RAW MATERIAL ADD NEW')
+        $('.page-header').text('FINISH PRODUCT ADD NEW')
+        $("#btn_fpc").hide();
         let username = 'test';
         get_date_default(username,null, username, null)
     }
@@ -54,7 +59,7 @@ $(document).ready(function() {
         spinner_popup();
         $.ajax({
             type:"GET", // must be POST 
-            url: "/data/raw-materials.json", 
+            url: "/data/finish-product.json", 
             dataType: "json",
             data: _data,
             success: function(data) {
@@ -65,7 +70,7 @@ $(document).ready(function() {
                         title: '',
                         text: "Data Saved"
                     }).then(function(){
-                        location.href='/raw-materials'
+                        location.href='/finish-product'
                     });
                     
                 }, 3000);
@@ -133,6 +138,11 @@ $(document).ready(function() {
         });
 
     });
+    //btn
+    $("#btn_fpc").on("click", function(e){
+        e.preventDefault();
+        location.href = "/fpc/"+$("#fpid").val()+"/"+$("#act").val();
+    })
 
     // Edit record
     $('#dtTbl_pop').on('click', 'td.editor-edit', function (e) {
@@ -184,6 +194,7 @@ $(document).ready(function() {
     $("#cost").on('keyup', function(){
         
         let _amt = $(this).val().replace(/,/g,"");
+        console.log(_amt);
         $(this).val(numberWithCommas(_amt));
         
     })
@@ -229,7 +240,16 @@ $(document).ready(function() {
         table.ajax.url("/data/pop-creator.json", null, false).load(); // pop creator
         
     })
-
+    $('#btn_pop_origin').on('click', function(){
+        // e.preventDefault();
+        
+        $('#txt_pop_type').val('Origin')
+        $('#th_pop_desc').text('Origin Desc')
+        $('#lbl_pf_desc').text('Origin Desc')
+        $("input[name=pop_desc").val("")
+        table.ajax.url("/data/pop-origin.json", null, false).load(); // pop creator
+        
+    })
     // Edit record
     $('#dtTbl_pop').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
@@ -273,19 +293,16 @@ $(document).ready(function() {
 //default-edit
 function default_edit(data){
 
-    let _date = new Date(data[0].cost_last_updated)
+    let _c_date = new Date(data[0].created_date)
+    let _rlu_date = new Date(data[0].receipt_last_updated)
     //_date.setDate(_date.getDate()+1)
     
-    $("input[name=rm_code").val(data[0].rm_code)
-    $("input[name=rm_desc").val(data[0].rm_desc)
+    $("input[name=fp_desc").val(data[0].fp_desc)
     $('#sp_product_family').selectpicker('val',data[0].product_family)
-    $("input[name=cost").val(numberWithCommas(data[0].cost))
-    $('#sp_unit').selectpicker('val',data[0].unit)
-    $("input[name=box_size_w").val(data[0].box_size_w)
-    $("input[name=box_size_l").val(data[0].box_size_l)
-    $("input[name=box_size_h").val(data[0].box_size_h)
-    $('#sp_kayu').selectpicker('val',data[0].kayu)
-    $("input[name=cost_last_updated").val(formatDate(_date,true))
+    $("input[name=h").val(data[0].h)
+    $("input[name=created_date").val(formatDate(_c_date,true))
+    $("input[name=receipt_last_updated").val(formatDate(_rlu_date,true))
+    $('#sp_origin').selectpicker('val',data[0].origin)
     $('#sp_creator').selectpicker('val',data[0].creator)
     $("#ck_validated").prop('checked', data[0].validated)
     $("#ck_out").prop('checked', data[0].out)
@@ -301,7 +318,7 @@ function get_details(){
     //ajax
     $.ajax({
         type:"GET", 
-        url: "/data/raw-materials.json", 
+        url: "/data/finish-product.json", 
         dataType: "json",
         success: function(data) {
             setTimeout(function () {
@@ -322,16 +339,14 @@ function get_details(){
 
 //insert element
 function insert_element_pf(){
-    $('<a href="#" type="button" class="pull-right" id="btn_pop_pf" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(5) > div:nth-child(1) > div > div > div');
-}
-function insert_element_kayu(){
-    $('<a href="#" type="button" class="pull-right" id="btn_pop_kayu" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(6) > div:nth-child(2) > div > div > div');
-}
-function insert_element_unit(){
-    $('<a href="#" type="button" class="pull-right" id="btn_pop_unit" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(5) > div:nth-child(3) > div > div > div');
+    $('<a href="#" type="button" class="pull-right" id="btn_pop_pf" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(9) > div:nth-child(1) > div > div > div');
 }
 function insert_element_creator(){
-    $('<a href="#" type="button" class="pull-right" id="btn_pop_creator" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(6) > div:nth-child(3) > div > div > div');
+    $('<a href="#" type="button" class="pull-right" id="btn_pop_creator" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(11) > div:nth-child(2) > div > div > div');
+    
+}
+function insert_element_origin(){
+    $('<a href="#" type="button" class="pull-right" id="btn_pop_origin" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(11) > div:nth-child(1) > div > div > div');
     
 }
 //load data dt

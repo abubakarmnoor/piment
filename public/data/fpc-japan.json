@@ -1,0 +1,62 @@
+{
+    "data": [
+      {
+        "id": "3525vdsfdfe03",
+        "fp_id": "1234567",
+        "type": "japan",
+        "rm_code": "ALEX",
+        "rm_desc": "Lamshade Alexia",
+        "qty": 1,
+        "unit": "set",
+        "price": 26000,
+        "active": true,
+        "created_date": "01-Apr-2021",
+        "created_by": "Admin",
+        "updated_date": "21-May-2021",
+        "updated_by": "Staff"
+      },{
+        "id": "3525vdsfdfe04",
+        "fp_id": "1234567",
+        "type": "japan",
+        "rm_code": "AC-RHOL",
+        "rm_desc": "Ring holder",
+        "qty": 1,
+        "unit": "pc",
+        "price": 25000,
+        "active": true,
+        "created_date": "01-Apr-2021",
+        "created_by": "Admin",
+        "updated_date": "21-May-2021",
+        "updated_by": "Staff"
+      },{
+        "id": "3525vdsfdfe05",
+        "fp_id": "1234567",
+        "type": "japan",
+        "rm_code": "DIF-AK",
+        "rm_desc": "Acrylique",
+        "qty": 1,
+        "unit": "m",
+        "price": 24000,
+        "active": true,
+        "created_date": "01-Apr-2021",
+        "created_by": "Admin",
+        "updated_date": "21-May-2021",
+        "updated_by": "Staff"
+      },{
+        "id": "3525vdsfdfe06",
+        "fp_id": "1234567",
+        "type": "japan",
+        "rm_code": "DIF-ERO",
+        "rm_desc": "Fabric 2700cm",
+        "qty": 41,
+        "unit": "cm",
+        "price": 4000,
+        "active": true,
+        "created_date": "01-Apr-2021",
+        "created_by": "Admin",
+        "updated_date": "21-May-2021",
+        "updated_by": "Staff"
+      }
+    ]
+    
+  }

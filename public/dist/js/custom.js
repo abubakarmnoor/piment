@@ -1,3 +1,5 @@
+
+
 //formatDate
 function formatDate(date, display=false) {
     var d = new Date(date),
@@ -99,6 +101,8 @@ $(function() {
 });
 
 //number
-function numberWithCommas(x) {
-    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+function numberWithCommas(x, dec) {
+    const _val = x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+    return (!dec, _val, _val);
+
 }
