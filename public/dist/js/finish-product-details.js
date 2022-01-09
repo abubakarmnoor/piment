@@ -288,6 +288,21 @@ $(document).ready(function() {
             }
         })
     } );
+    
+    //date datepicker
+    $("#created_date").datepicker({
+        format: "dd-M-yyyy",
+    });
+    $("#receipt_last_updated").datepicker({
+        format: "dd-M-yyyy",
+    });
+
+    //number
+    $("#cost, #b_sale, #b_profit, #b_markup, #r_sale, #r_profit, #r_markup").on('keyup', function(){
+        let _amt = $(this).val().replace(/,/g,"");
+        $(this).val(numberWithCommas(_amt));
+    })
+
 //end  doc ready
 });
 //default-edit

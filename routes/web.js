@@ -158,8 +158,9 @@ router.get('/fpc-details/:fpid/:fcpid/:act', (req, res) => {
 	const __data_pop_unit = _data_pop_unit.data;
 	const _fpcid = req.params.fcpid
 	const _fpid = req.params.fpid
+	const _act = req.params.act
 	res.render('fpc-details.hbs', {
-		tables_bs4: true, fpc_details: true, fpid:_fpid, fpcid:_fpcid, __data_pop_unit
+		tables_bs4: true, fpc_details: true, fpid:_fpid, fpcid:_fpcid, __data_pop_unit, act:_act
 	});
 })
 router.get('/sales-price-calc', (req, res) => {

@@ -15,6 +15,10 @@ $(document).ready(function() {
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
         //"serverSide": true,
+        "columnDefs": [{
+            "targets": [ 2 ],
+            "visible": false
+        }],
         "columns": [
             {
                 data: null,
@@ -28,12 +32,12 @@ $(document).ready(function() {
                 defaultContent: '<i class="fa fa-trash"/>',
                 orderable: false
             },
+            { "data": "id" },
             {
-                data: "id",
+                data: "fp_desc",
                 className: "dt-center editor-details",
                 orderable: true
             },
-            { "data": "fp_desc" },
             { "data": "product_family" },
             { "data": "h" },
             { "data": "created_date" },

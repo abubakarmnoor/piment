@@ -23,6 +23,10 @@ $(document).ready(function() {
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
         //"serverSide": true,
+        "columnDefs": [{
+            "targets": [ 2 ],
+            "visible": false
+        }],
         "columns": [
             {
                 data: null,
@@ -36,12 +40,12 @@ $(document).ready(function() {
                 defaultContent: '<i class="fa fa-trash"/>',
                 orderable: false
             },
+            { "data": "id" },
             {
-                data: "id",
+                data: "username",
                 className: "dt-center editor-details",
                 orderable: true
             },
-            { "data": "username" },
             { data: null, render: function ( data, type, row ) {
                 // Combine the first and last names into a single table field
                 return data.first_name+' '+data.last_name;

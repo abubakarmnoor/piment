@@ -24,7 +24,10 @@ $(document).ready(function() {
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
         //"serverSide": true,
-        
+        "columnDefs": [{
+            "targets": [ 2 ],
+            "visible": false
+        }],
         "columns": [
             {
                 data: null,
@@ -38,12 +41,12 @@ $(document).ready(function() {
                 defaultContent: '<i class="fa fa-trash"/>',
                 orderable: false
             },
+            { "data": "id" },
             {
-                data: "id",
+                data: "rm_code",
                 className: "dt-center editor-details",
                 orderable: true
             },
-            { "data": "rm_code" },
             { "data": "rm_desc" },
             { "data": "product_family" },
             {"data": "cost", render: $.fn.dataTable.render.number(',', '.', 2, '')},

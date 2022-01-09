@@ -69,7 +69,7 @@ $(document).ready(function() {
                         title: '',
                         text: "Data Saved"
                     }).then(function(){
-                        location.href='/fpc/'+$("#fpid").val()
+                        location.href='/fpc/'+$("#fpid").val()+"/"+$("#act").val()
                     });
                     
                 }, 3000);
@@ -314,21 +314,12 @@ $(document).ready(function() {
 //default-edit
 function default_edit(data){
 
-    let _c_date = new Date(data[0].created_date)
-    let _rlu_date = new Date(data[0].receipt_last_updated)
-    //_date.setDate(_date.getDate()+1)
+    $("input[name=rm_code").val(data[0].rm_code)
+    $("input[name=rm_desc").val(data[0].rm_desc)
+    $("input[name=qty").val(data[0].qty)
+    $('#sp_unit').selectpicker('val',data[0].unit)
+    $("input[name=price").val(data[0].price)
     
-    $("input[name=fp_desc").val(data[0].fp_desc)
-    $('#sp_product_family').selectpicker('val',data[0].product_family)
-    $("input[name=h").val(data[0].h)
-    $("input[name=created_date").val(formatDate(_c_date,true))
-    $("input[name=receipt_last_updated").val(formatDate(_rlu_date,true))
-    $('#sp_origin').selectpicker('val',data[0].origin)
-    $('#sp_creator').selectpicker('val',data[0].creator)
-    $("#ck_validated").prop('checked', data[0].validated)
-    $("#ck_out").prop('checked', data[0].out)
-    $("#ck_active").prop('checked', data[0].active)
-
     let user_login = 'test';
     get_date_default(data[0].created_by,data[0].created_date, user_login, null)
 }
@@ -339,7 +330,7 @@ function get_details(){
     //ajax
     $.ajax({
         type:"GET", 
-        url: "/data/finish-product.json", 
+        url: "/data/fpc-lampshade.json", 
         dataType: "json",
         success: function(data) {
             setTimeout(function () {
@@ -349,11 +340,12 @@ function get_details(){
         }, 
         error: function(jqXHR, textStatus, errorThrown) {
             //alert(jqXHR.status);
-            swal({
-                title: "Error!",
-                text: jqXHR.status,
-                icon: "error"
-            });
+            Swal.fire({
+                icon: 'error',
+                title: '',
+                text: textStatus
+            })
+            
         }
     });
 }

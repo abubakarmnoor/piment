@@ -73,11 +73,11 @@
                         <div class="form-group row">
                             <div class="col-md-4 mb-3">
                                 <label for="created_date">Created Date</label>
-                                <input type="text" class="form-control" name="created_date" placeholder="Created Date" value="" required>
+                                <input type="text" class="form-control" name="created_date" id="created_date" placeholder="Created Date" autocomplete="off" required>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="receipt_last_updated">Receipt Last Updated</label>
-                                <input type="text" class="form-control" name="receipt_last_updated" placeholder="Receipt Last Updated" value="" required>
+                                <input type="text" class="form-control" id="receipt_last_updated" name="receipt_last_updated" placeholder="Receipt Last Updated" autocomplete="off" required >
                             </div>
                         </div>
                         <div class="form-group row">
@@ -114,13 +114,60 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <div class="form-group row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="cost">Cost</label>
+                                    <input type="text" class="form-control number-seperator" id ="cost" name="cost" placeholder="Cost" autocomplete="off" required>
+                                </div>
+                            </div>
+                            <div class="form-group row" style="text-align: center;">
+                                <div class="col-lg">
+                                    <label>Business</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="b_sale">Sale</label>
+                                    <input type="text" class="form-control number-seperator" id ="b_sale" name="b_sale" placeholder="Sale" autocomplete="off" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="b_profit">Profit</label>
+                                    <input type="text" class="form-control number-seperator" id ="b_profit" name="b_profit" placeholder="Profit" autocomplete="off" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="b_markup">Markup</label>
+                                    <input type="text" class="form-control number-seperator" id ="b_markup" name="b_markup" placeholder="Markup" autocomplete="off" required>
+                                </div>
+                            </div>
+                            <div class="form-group row" style="text-align: center;">
+                                <div class="col-lg">
+                                    <label>Retail</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="r_sale">Sale</label>
+                                    <input type="text" class="form-control number-seperator" id ="r_sale" name="r_sales" placeholder="Sale" autocomplete="off" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="r_profit">Profit</label>
+                                    <input type="text" class="form-control number-seperator" id ="r_profit" name="r_profit" placeholder="Profit" autocomplete="off" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="r_markup">Markup</label>
+                                    <input type="text" class="form-control number-seperator" id ="r_markup" name="r_markup" placeholder="Markup" autocomplete="off" required>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        {{!-- <div class="form-group">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="ck_active" name="active">
                                 <label class="form-check-label" for="ck_active">
                                     Active
                                 </label>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-group row invisible">
                             <div class="col-md-4 mb-3">
                                 <label>Created by</label>
@@ -249,7 +296,14 @@
     
     <!-- /#wrapper -->
 {{> scripts}}
-
+<link
+      href=
+"https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css"
+      rel="stylesheet"
+    />
+    <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js">
+    </script>
 </body>
 
 </html>
