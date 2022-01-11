@@ -25,7 +25,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h3 class="page-header">SUPPLIER UPDATES</h3>
+                        <h3 class="page-header">PURCHASE LIST DETAILS</h3>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -33,7 +33,7 @@
                 <div class="row">
                     <form id="form_">
                         <div class="col-sm pull-right cancel">
-                            <a href="/suppliers"  type="button" class="btn btn-outline btn-primary" id="btn_cancel">
+                            <a href="/purchase"  type="button" class="btn btn-outline btn-primary" id="btn_cancel">
                                 <i class="fa fa-times"></i> Cancel
                             </a>
                         </div>
@@ -42,74 +42,57 @@
                             <button type="submit" class="btn btn-outline btn-primary" id="btn_save"><i class="fa fa-save"></i> Save</button>
                         </div>
                         <div class="form-group row">
-                            <div class="col-md-9 mb-3">
-                                <label for="product_family_desc">Supplier Name</label>
-                                <input type="text" class="form-control" name="supplier_name" placeholder="Supplier Name" value="" required>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-9 mb-3">
-                                <label for="address">Address</label>
-                                <textarea class="form-control" name="address" placeholder="Address" value="" required></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-4 mb-3">
-                                <label for="state">State</label>
-                                <input type="text" class="form-control" name="state" placeholder="State" value="" required>
+                            <div class="col-md-2 mb-3">
+                                <label for="purchase_date">Purchase Date</label>
+                                <input type="text" class="form-control" name="purchase_date" id="purchase_date" placeholder="Purchase Date" autocomplete="off" required>
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="country">Country</label>
-                                <select class="form-control selectpicker" id="sp_country" name="country" data-live-search="true">
+                                <label for="purchase_code">Purchase Code#</label>
+                                <input type="text" class="form-control" name="purchase_code" placeholder="Purchase Code#" value="" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="sp_supplier">Supplier</label>
+                                <select class="form-control selectpicker" id="sp_supplier" name="supplier" data-live-search="true">
                                     <option value="-">-</option>
-                                    {{#each __data_countries}}
-                                        <option>{{name}}</option>
+                                    {{#each __data_pop_supplier }}
+                                        <option value={{id}}>{{pop_desc}}</option>
                                     {{/each}}
                                 </select>
                             </div>
+                        </div>
+                        <div class="form-group row">
+                             <div class="col-md-4 mb-3">
+                                <label for="order_amt">Order</label>
+                                <input type="text" class="form-control number-seperator" id ="order_amt" name="order_amt" placeholder="Order Amt" value="" required autocomplete="off">
+                            </div>
                             <div class="col-md-4 mb-3">
-                                <label for="zipcode">Zipcode</label>
-                                <input type="text" class="form-control" name="zipcode" placeholder="Zipcode" value="" required>
+                                <label for="dp_amt">DP</label>
+                                <input type="text" class="form-control number-seperator" id ="dp_amt" name="dp_amt" placeholder="DP Amt" value="" required autocomplete="off">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="to_pay_amt">To Pay</label>
+                                <input type="text" class="form-control number-seperator" id ="to_pay_amt" name="to_pay_amt" placeholder="TO Pay Amt" value="" required autocomplete="off">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-4 mb-3">
-                                <label for="txt_email">PIC</label>
-                                <input type="text" class="form-control" name="pic" placeholder="PIC" value="" required>
+                                <label for="delivered_amt">Delivered</label>
+                                <input type="text" class="form-control number-seperator" id ="delivered_amt" name="delivered_amt" placeholder="Delivered Amt" value="" required autocomplete="off">
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="txt_email">Email</label>
-                                <input type="email" class="form-control" name="email" placeholder="Email" value="" required>
+                                <label for="to_be_delivered_amt">To Be Delivered</label>
+                                <input type="text" class="form-control number-seperator" id ="to_be_delivered_amt" name="to_be_delivered_amt" placeholder="To Be Delivered Amt" value="" required autocomplete="off">
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="txt_phone">Phone</label>
-                                <input type="text" class="form-control" id="txt_phone" name="phone" placeholder="Phone" value="" required>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="fax">Fax</label>
-                                <input type="text" class="form-control" name="fax" placeholder="Fax" value="" required>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="whatsapp">WhatsApp</label>
-                                <input type="text" class="form-control" name="whatsapp" placeholder="WhatsApp" value="" required>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-4 mb-3">
-                                <label for="product_family">Product Family</label>
-                                <select class="form-control selectpicker" id="sp_product_family" name="product_family" data-live-search="true">
-                                    <option value="-">-</option>
-                                    {{#each __data_pop_product_family}}
-                                        <option value="{{id}}">{{pop_desc}}</option>
-                                    {{/each}}
-                                </select>
+                                <label for="balance_amt">Balance</label>
+                                <input type="text" class="form-control number-seperator" id ="balance_amt" name="balance_amt" placeholder="Balance Amt" value="" required autocomplete="off">
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="ck_active" name="active">
-                                <label class="form-check-label" for="ck_active">
-                                    Active
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="" id="ck_complete" name="active">
+                                <label class="form-check-label" for="ck_complete">
+                                    Complete
                                 </label>
                             </div>
                         </div>
@@ -130,9 +113,10 @@
                                 <label>Updating Date</label>
                                 <input type="text" class="form-control" name="updated_date" readonly>
                             </div>
-                            <div class="col-md-4 mb-3 invisible">
+                            <div class="col-md-4 mb-3">
                                 <label>Id</label>
-                                <input type="text" class="form-control" id="id" name="id" readonly>
+                                <input type="text" class="form-control" id="id" name="id" value="{{_pid}}" readonly>
+                                <input type="text" class="form-control" id="act" name="acr" value="{{_act}}" readonly>
                             </div>
                         </div>
                     </form>
@@ -152,7 +136,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">POPULATION - PRODUCT FAMILY</h5>
+                    <h3 class="modal-title">POPULATION TABLE</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -160,14 +144,16 @@
                 <div class="modal-body">
                     <form id="form__">
                         <div class="form-group row">
+                            <input type="text" class="form-control invisible" name="txt_pop_type" id="txt_pop_id" style="position:absolute;" required readonly>
                             <div class="col-md-12 mb-3">
-                                <label>Product Family Desc</label>
-                                <input type="text" class="form-control" name="pop_desc" placeholder="Type New Product Family Desc then click Save" required>
+                                <label id="lbl_pf_desc">Product Family Desc</label>
+                                <input type="text" class="form-control" name="pop_desc" placeholder="Type New Desc then click Save" value="" required>
+                                
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm pull-right">
-                                <button type="submit" class="btn btn-outline btn-primary" id="btn_save_activity"><i class="fa fa-save"></i> Save</button>
+                                <button type="submit" class="btn btn-outline btn-primary" id="btn_save_pop"><i class="fa fa-save"></i> Save</button>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="ck_active_pop" name="pop_active" checked="true">
@@ -199,7 +185,7 @@
                                     <th></th>
                                     <th></th>
                                     <th>Id</th>
-                                    <th>Product Family Desc</th>
+                                    <th id="th_pop_desc">Product Family Desc</th>
                                     <th>Active</th>
                                     
                                 </tr>

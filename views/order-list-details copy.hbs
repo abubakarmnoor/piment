@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{> head}}
+{{> css}}
+
+<style>
+    .col-md-6{
+        width: 0%;
+    }
+    #dtTbl_pop{
+        width: 100% !important;
+    }
+
+    td, th {
+        text-align: center;
+        padding: 8px;
+    }
+</style>
+<body>
+
+    <div id="wrapper">
+
+        {{> navbar}}
+
+        {{> sidenav}}
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="page-header">ORDER LIST DETAILS</h3>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <form id="form_">
+                        <div class="col-sm pull-right cancel">
+                            <a href="/order-list"  type="button" class="btn btn-outline btn-primary" id="btn_cancel">
+                                <i class="fa fa-times"></i> Cancel
+                            </a>
+                        </div>
+                        <div class="col-sm pull-right">&nbsp;</div>
+                        <div class="col-sm pull-right">
+                            <button type="submit" class="btn btn-outline btn-primary" id="btn_save"><i class="fa fa-save"></i> Save</button>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4 mb-3">
+                                <label for="order_id">Order Id #</label>
+                                <input type="text" class="form-control" name="order_id" placeholder="Order Id" value="" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="order_date">Order Date</label>
+                                <input type="text" class="form-control" name="order_date" id="order_date" placeholder="Order Date" autocomplete="off" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4 mb-3">
+                                <label for="sp_client">Client</label>
+                                <select class="form-control selectpicker" id="sp_client" name="client" data-live-search="true">
+                                    <option value="-">-</option>
+                                    {{#each __data_pop_client}}
+                                        <option value={{id}}>{{pop_desc}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="standard">Standard</label>
+                                <select class="form-control selectpicker" id="sp_standard" name="standard" data-live-search="true">
+                                    <option value="-">-</option>
+                                    {{#each __data_pop_standard}}
+                                        <option value={{id}}>{{pop_desc}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="currency">Currency</label>
+                                <select class="form-control selectpicker" id="sp_currency" name="currency" data-live-search="true">
+                                    <option value="-">-</option>
+                                    {{#each __data_pop_currency}}
+                                        <option value={{id}}>{{pop_desc}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4 mb-3">
+                                <label for="export">Export</label>
+                                <select class="form-control selectpicker" id="sp_export" name="export" data-live-search="true">
+                                    <option value="-">-</option>
+                                    {{#each __data_pop_export}}
+                                        <option value={{id}}>{{pop_desc}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="rate">Rate</label>
+                                <input type="text" class="form-control number-seperator" id ="rate" name="rate" placeholder="Rate" autocomplete="off" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4 mb-3">
+                                <label for="delivery_date">Delivery Date</label>
+                                <input type="text" class="form-control" name="delivery_date" id="delivery_date" placeholder="Delivery Date" autocomplete="off" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="delivery_time">Delivery Time</label>
+                                <input type="time" class="form-control" name="delivery_time" id="delivery_time" placeholder="Delivery Time" autocomplete="off" required>
+                            </div>
+                        </div>
+                        <div class="form-group row invisible" style="position: absolute;">
+                            <div class="col-md-4 mb-3">
+                                <label>Created by</label>
+                                <input type="text" class="form-control" name="created_by" readonly>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label>Created Date</label>
+                                <input type="text" class="form-control" name="created_date" readonly>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label>Updating by</label>
+                                <input type="text" class="form-control" name="updated_by" readonly>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label>Updating Date</label>
+                                <input type="text" class="form-control" name="updated_date" readonly>
+                            </div>
+                            <div class="col-md-4 mb-3 invisible">
+                                <label>Id</label>
+                                <input type="text" class="form-control" id="olid" name="olid" value="{{olid}}" readonly>
+                                <input type="text" class="form-control" id="act" name="act" value="{{act}}" readonly>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <div class="row">
+                        <div class="tabbable-panel">
+                            <div class="tabbable-line">
+                                <ul class="nav nav-tabs ">
+                                    <li class="active">
+                                        <a href="#tab_order" data-toggle="tab" id="btn_tab_order">
+                                        ORDER </a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_po" data-toggle="tab" id="btn_tab_po">
+                                        PO </a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_invoicing" data-toggle="tab" id="btn_tab_invoicing">
+                                        INVOICING </a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_general_remarks" data-toggle="tab" id="btn_tab_general_remarks">
+                                        GENERAL REMARKS </a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tab_order"><h4>ORDER</h4>
+                                        <a href="#" id="btn_add" type="button" class="btn btn-outline btn-primary pull-left">
+                                            <i class="glyphicon-plus"></i> Add New
+                                        </a>
+                                        <table id="dtTbl_Order" class="table table-striped display nowrap" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th>Id</th>
+                                                    <th>Desc</th>
+                                                    <th>Finish</th>
+                                                    <th>LS Color</th>
+                                                    <th>Standard</th>
+                                                    <th>Origin</th>
+                                                    <th>Specifications</th>
+                                                    <th>Qty</th>
+                                                    <th>LS</th>
+                                                    <th>Stand</th>
+                                                    <th>Sales</th>
+                                                    <th>Total</th>
+                                                </tr>
+                                            </thead>
+                                            
+                                            <tbody>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="tab-pane" id="tab_po"><h4>PO</h4>
+                                        <a href="#" id="btn_add" type="button" class="btn btn-outline btn-primary pull-left">
+                                            <i class="glyphicon-plus"></i> Add New
+                                        </a>
+                                        <table id="dtTbl_Order" class="table table-striped display nowrap" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th>Id</th>
+                                                    <th>Date</th>
+                                                    <th>PO</th>
+                                                    <th>Category</th>
+                                                </tr>
+                                            </thead>
+                                            
+                                            <tbody>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="tab-pane" id="tab_invoicing">
+                                        <h4>INVOICING</h4>
+                                        <div class="form-group row">
+                                            <table>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>%</th>
+                                                    <th>Amount</th>
+                                                    <th>Date</th>
+                                                    <th>Paid</th>
+                                                    <th>Mode</th>
+                                                    <th>Bank</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>1st DP</td>
+                                                    <td>
+                                                        <input type="text" class="form-control" name="1st_percent" placeholder="1st Percent" value="" required>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control" name="1st_amt" placeholder="1st DP Amt" value="" required>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control" id ="1st_date" name="1st_date" required>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="" id="ck_1st_paid" name="1st_paid" checked="true">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control selectpicker" id="sp_1st_mode" name="1st_mode" data-live-search="true">
+                                                            <option value="-">-</option>
+                                                            {{#each __data_pop_mode}}
+                                                                <option value="{{id}}">{{pop_desc}}</option>
+                                                            {{/each}}
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control selectpicker" id="sp_1st_bank" name="1st_bank" data-live-search="true">
+                                                            <option value="-">-</option>
+                                                            {{#each __data_pop_bank}}
+                                                                <option value="{{id}}">{{pop_desc}}</option>
+                                                            {{/each}}
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2nd DP</td>
+                                                    <td>
+                                                        <input type="text" class="form-control" name="2nd_percent" placeholder="2nd Percent" value="" required>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control" name="2nd_amt" placeholder="2nd DP Amt" value="" required>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control" id ="2nd_date" name="2nd_date" required>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="" id="ck_2nd_paid" name="2nd_paid" checked="false">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control selectpicker" id="sp_2nd_mode" name="2nd_mode" data-live-search="true">
+                                                            <option value="-">-</option>
+                                                            {{#each __data_pop_mode}}
+                                                                <option value="{{id}}">{{pop_desc}}</option>
+                                                            {{/each}}
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control selectpicker" id="sp_2nd_bank" name="2nd_bank" data-live-search="true">
+                                                            <option value="-">-</option>
+                                                            {{#each __data_pop_bank}}
+                                                                <option value="{{id}}">{{pop_desc}}</option>
+                                                            {{/each}}
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3rd DP</td>
+                                                    <td>
+                                                        <input type="text" class="form-control" name="3rd_percent" placeholder="3rd Percent" value="" required>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control" name="3rd_amt" placeholder="3rd DP Amt" value="" required>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control" id ="3rd_date" name="3rd_date" required>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="" id="ck_3rd_paid" name="3rd_paid" checked="false">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control selectpicker" id="sp_3rd_mode" name="3rd_mode" data-live-search="true">
+                                                            <option value="-">-</option>
+                                                            {{#each __data_pop_mode}}
+                                                                <option value="{{id}}">{{pop_desc}}</option>
+                                                            {{/each}}
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control selectpicker" id="sp_3rd_bank" name="3rd_bank" data-live-search="true">
+                                                            <option value="-">-</option>
+                                                            {{#each __data_pop_bank}}
+                                                                <option value="{{id}}">{{pop_desc}}</option>
+                                                            {{/each}}
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4th DP</td>
+                                                    <td>
+                                                        <input type="text" class="form-control" name="4th_percent" placeholder="4th Percent" value="" required>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control" name="4th_amt" placeholder="4th DP Amt" value="" required>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control" id ="4th_date" name="4th_date" required>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="" id="ck_4th_paid" name="4th_paid" checked="false">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control selectpicker" id="sp_4th_mode" name="4th_mode" data-live-search="true">
+                                                            <option value="-">-</option>
+                                                            {{#each __data_pop_mode}}
+                                                                <option value="{{id}}">{{pop_desc}}</option>
+                                                            {{/each}}
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control selectpicker" id="sp_4th_bank" name="4th_bank" data-live-search="true">
+                                                            <option value="-">-</option>
+                                                            {{#each __data_pop_bank}}
+                                                                <option value="{{id}}">{{pop_desc}}</option>
+                                                            {{/each}}
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab_general_remarks">
+                                        <h4>GENERAL REMARKS</h4>
+                                        <div class="form-group row">
+                                            <div class="col-md-12">
+                                                <textarea type="time" class="form-control rounded-0" name="gen_remarks" id="gen_remarks" autocomplete="off" rows="3"></textarea>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{!-- end tab --}}
+                    <div class="row">&nbsp;</div>
+                    <div class="row">&nbsp;</div>
+                    <div class="row">&nbsp;</div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+        {{!-- popup modal form --}}
+        <!-- Modal -->
+        
+        <div class="modal fade" id="pop-modal-form" tabindex="-1" role="dialog" aria-labelledby="pop-modal-form" aria-hidden="true" data-backdrop="false">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">POPULATION TABLE</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="form__">
+                        <div class="form-group row">
+                            <input type="text" class="form-control invisible" name="txt_pop_type" id="txt_pop_id" style="position:absolute;" required readonly>
+                            <div class="col-md-12 mb-3">
+                                <label id="lbl_pf_desc">Product Family Desc</label>
+                                <input type="text" class="form-control" name="pop_desc" placeholder="Type New Desc then click Save" value="" required>
+                                
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm pull-right">
+                                <button type="submit" class="btn btn-outline btn-primary" id="btn_save_pop"><i class="fa fa-save"></i> Save</button>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ck_active_pop" name="pop_active" checked="true">
+                                <label class="form-check-label" for="ck_active_pop">
+                                    Active
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group row invisible" style="position: absolute;">
+                            <div class="col-md-4 mb-3">
+                                <label>Updating by</label>
+                                <input type="text" class="form-control" name="updated_by" readonly>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label>Updating Date</label>
+                                <input type="text" class="form-control" name="updated_date" readonly>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label>Id</label>
+                                <input type="text" class="form-control" id="pop_id" name="pop_id" readonly>
+                            </div>
+                        </div>
+                        <hr/>
+                    </form>
+                    <div class="form-group row">
+                        <table id="dtTbl_pop" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th>Id</th>
+                                    <th id="th_pop_desc">Product Family Desc</th>
+                                    <th>Active</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    {{!-- <button type="button" clss="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+                    <a href="#"  type="button" class="btn btn-outline btn-primary" id="btn_close" data-dismiss="modal">
+                        <i class="fa fa-times"></i> Close
+                    </a>
+                    {{!-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+                </div>
+                </div>
+            </div>
+        </div>
+        {{!-- spinner --}}
+        <div class="modal fade spinner-bg modal-popup" tabindex="-1" role="dialog" data-backdrop="false">
+            <div role="document">
+                <span class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></span>
+                {{!-- <div class="row">
+                    <div class="col-md-3">
+                        <div class="loader" id="loader-4">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+               </div> --}}
+            </div>
+        </div>
+    </div>
+    
+    <!-- /#wrapper -->
+{{> scripts}}
+
+</body>
+
+</html>

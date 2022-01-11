@@ -1,5 +1,5 @@
 //doc ready
-// YWRkbmV3 => idnull
+// YWRkbmV3 => add new
 // ZWlk => eid
 // ZGlk => did
 var table;

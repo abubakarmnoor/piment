@@ -1,0 +1,24 @@
+{
+    "data": [
+      {
+        "id": "3525vdsfdfsd43",
+        "order_id": "#01530",
+        "order_date": "2020-03-02",
+        "status": "Confirmed",
+        "client": "Pment Pengipian",
+        "standard": "Euro",
+        "currency": "IDR",
+        "area": "export",
+        "rate": "1",
+        "delivery_date": "2020-03-21",
+        "delivery_time": "01:12:00",
+        "vip": true,
+        "lamps": "2",
+        "created_date": "2021-04-21",
+        "created_by": "Admin",
+        "updated_date": "2021-05-09",
+        "updated_by": "Staff 1"
+      }
+    ]
+    
+  }

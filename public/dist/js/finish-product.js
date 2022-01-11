@@ -52,9 +52,8 @@ $(document).ready(function() {
     
     // New record
     $('a.editor-create').on('click', function (e) {
-        //e.preventDefault();
-        //alert('create')
-        
+        e.preventDefault();
+        location.href = "/finish-product-details/null/YWRkbmV3";
     } );
 
     // Edit record

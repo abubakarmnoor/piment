@@ -19,18 +19,20 @@ $(document).ready(function() {
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/data/raw-materials.json?sdate="+sdate_+"?edate="+edate_,
+        "ajax": "/data/purchase.json?sdate="+sdate_+"?edate="+edate_,
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
         //"serverSide": true,
-        "columnDefs": [{
-            "targets": [ 2 ],
-            "visible": false
-        },{
-            targets:[12], render:function(data){
-            return moment(data).format('DD-MMM-YYYY');
-        }}],
+        "columnDefs": [
+            {
+                "targets": [ 2 ],
+                "visible": false
+            },{
+                targets:[3], render:function(data){
+                return moment(data).format('DD-MMM-YYYY');
+            }}
+        ],
         "columns": [
             {
                 data: null,
@@ -45,31 +47,27 @@ $(document).ready(function() {
                 orderable: false
             },
             { "data": "id" },
+            { "data": "purchase_date" },
             {
-                data: "rm_code",
+                data: "purchase_code",
                 className: "dt-center editor-details",
                 orderable: true
             },
-            { "data": "rm_desc" },
-            { "data": "product_family" },
-            {"data": "cost", render: $.fn.dataTable.render.number(',', '.', 2, '')},
-            { "data": "unit" },
-            { "data": "box_size_w" },
-            { "data": "box_size_l" },
-            { "data": "box_size_h" },
-            { "data": "kayu" },
-            { "data": "cost_last_updated" },
-            { "data": "creator" },
-            { "data": "validated" },
-            { "data": "out" },
+            { "data": "supplier" },
+            { "data": "order_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+            { "data": "dp_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+            { "data": "to_pay_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+            { "data": "delivered_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+            { "data": "to_be_delivered_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+            { "data": "balance_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+            { "data": "complete" },
         ]
     });
     
     // New record
     $('a.editor-create').on('click', function (e) {
         e.preventDefault();
-        location.href = "/raw-material-details/null/YWRkbmV3";
-        
+        location.href = "/purchase-details/null/YWRkbmV3";
     } );
 
     // Edit record
@@ -77,7 +75,7 @@ $(document).ready(function() {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
         const _id = table.row( this ).data().id;
-        location.href = "/raw-material-details/"+_id+"/ZWlk";
+        location.href = "/purchase-details/"+_id+"/ZWlk";
     } );
     
     // Details record
@@ -85,7 +83,7 @@ $(document).ready(function() {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
         const _id = table.row( this ).data().id;
-        location.href = "/raw-material-details/"+_id+"/ZGlk";
+        location.href = "/purchase-details/"+_id+"/ZGlk/";
         
     } );
     // Delete a record
@@ -104,9 +102,9 @@ $(document).ready(function() {
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
                 )
             }
         })
@@ -123,7 +121,7 @@ $(document).ready(function() {
         // console.log(sdate_);
         // console.log(edate_);
         //var table = $('#registrationTable').DataTable();
-        table.ajax.url("/data/raw-materials.json?sdate="+sdate_+"?edate="+edate_, null, false).load();
+        table.ajax.url("/data/purchase.json?sdate="+sdate_+"?edate="+edate_, null, false).load();
     })
 
 //end doc ready

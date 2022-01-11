@@ -1,0 +1,22 @@
+{
+    "data": [
+      {
+        "id": "3525vdsfdfsd43",
+        "purchase_date": "2021-01-11",
+        "purchase_code": "12176",
+        "supplier": "Heru Resin",
+        "order_amt": 5100000,
+        "dp_amt": 0,
+        "to_pay_amt": 5100000,
+        "delivered_amt": 0,
+        "to_be_delivered_amt": 5100000,
+        "balance_amt": 0,
+        "complete": false,
+        "created_date": "2021-04-21",
+        "created_by": "Admin",
+        "updated_date": "2021-05-09",
+        "updated_by": "Staff 1"
+      }
+    ]
+    
+  }

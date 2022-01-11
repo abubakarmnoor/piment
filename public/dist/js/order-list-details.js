@@ -2,21 +2,20 @@ $(document).ready(function() {
             
     //default
     $('.selectpicker').selectpicker();
-    insert_element_pf();insert_element_kayu();insert_element_unit();insert_element_creator();
-    load_data_dt('/data/pop-product-family.json'); //init
+    // insert_element_curr();insert_element_kayu();insert_element_unit();insert_element_creator();
+    // load_data_dt('/data/pop-product-family.json'); //init
 
     //edit or add new
     if (location.href.includes('ZWlk')) {
-        $('.page-header').text('RAW MATERIAL UPDATES')
+        $('.page-header').text('ORDER LIST UPDATES')
         
         // let url = location.href;
         // let id = getURLParameter(url, 'eid');
         // $("#id").val(id);
-        
         get_details();
         
     }else if (location.href.includes('ZGlk')) {
-        $('.page-header').text('RAW MATERIAL DETAILS');
+        $('.page-header').text('ORDER LIST DETAILS');
         $("#btn_save").hide();
         $("#form_ :input").prop('readonly', true);
         
@@ -24,13 +23,12 @@ $(document).ready(function() {
         $('.selectpicker').selectpicker('refresh');
 
         $("#ck_active").attr("disabled", true);
-        $(".cancel").html("<a href='/raw-materials'  type='button' class='btn btn-outline btn-primary'><i class='fa fa-long-arrow-left'></i> Back</a>");
+        $(".cancel").replaceWith("<a href='/order-list' type='button' class='btn btn-outline btn-primary'><i class='fa fa-long-arrow-left'></i> Back</a>");
         get_details();
         
     
     }else{
-        $('.page-header').text('RAW MATERIAL ADD NEW')
-        $("input[name=rm_desc]").val($(this).find("option:selected").attr("desc"))
+        $('.page-header').text('ORDER LIST ADD NEW')
         let username = 'test';
         get_date_default(username,null, username, null)
     }
@@ -49,14 +47,13 @@ $(document).ready(function() {
         _data.txt_created_date = formatDate(_data.txt_created_date)
         _data.txt_updated_date = new Date(_data.txt_updated_date);
         _data.txt_updated_date = formatDate(_data.txt_updated_date)
-        _data.active = $("#ck_active").prop('checked')
         //console.log(json);
 
         // ajax - save/post data
         spinner_popup();
         $.ajax({
             type:"GET", // must be POST 
-            url: "/data/raw-materials.json", 
+            url: "/data/order-list.json", 
             dataType: "json",
             data: _data,
             success: function(data) {
@@ -67,7 +64,7 @@ $(document).ready(function() {
                         title: '',
                         text: "Data Saved"
                     }).then(function(){
-                        location.href='/raw-materials'
+                        location.href='/order-list'
                     });
                     
                 }, 3000);
@@ -270,17 +267,18 @@ $(document).ready(function() {
             }
         })
     } );
-
-    //dropdown
-     $('#sp_rm_code').on('change', function(e) {
-         e.preventDefault();
-         $("input[name=rm_desc]").val($(this).find("option:selected").attr("desc"))
-         //console.log($(this).find("option:selected").attr("desc"))
-        // console.log(this.value,
-        //    this.options[this.selectedIndex].value,
-        //    $(this).find("option:selected").val(), );
-     });
-   
+    //number
+    $("#rate").on('keyup', function(){
+        let _amt = $(this).val().replace(/,/g,"");
+        $(this).val(numberWithCommas(_amt));
+    })
+    //date datepicker
+    $("#order_date").datepicker({
+        format: "dd-M-yyyy",
+    });
+    $("#delivery_date").datepicker({
+        format: "dd-M-yyyy",
+    });
     
 //end  doc ready
 });
@@ -290,8 +288,8 @@ function default_edit(data){
     let _date = new Date(data[0].cost_last_updated)
     //_date.setDate(_date.getDate()+1)
     
-    $('#sp_rm_code').selectpicker('val',data[0].rm_code)
-    $("input[name=rm_desc]").val($(this).find("option:selected").attr("desc"))
+    $("input[name=rm_code").val(data[0].rm_code)
+    $("input[name=rm_desc").val(data[0].rm_desc)
     $('#sp_product_family').selectpicker('val',data[0].product_family)
     $("input[name=cost").val(numberWithCommas(data[0].cost))
     $('#sp_unit').selectpicker('val',data[0].unit)

@@ -2,21 +2,20 @@ $(document).ready(function() {
             
     //default
     $('.selectpicker').selectpicker();
-    insert_element_pf();insert_element_kayu();insert_element_unit();insert_element_creator();
-    load_data_dt('/data/pop-product-family.json'); //init
+    // insert_element_curr();insert_element_kayu();insert_element_unit();insert_element_creator();
+    // load_data_dt('/data/pop-product-family.json'); //init
 
     //edit or add new
     if (location.href.includes('ZWlk')) {
-        $('.page-header').text('RAW MATERIAL UPDATES')
+        $('.page-header').text('PURCHASE LIST UPDATES')
         
         // let url = location.href;
         // let id = getURLParameter(url, 'eid');
         // $("#id").val(id);
-        
         get_details();
         
     }else if (location.href.includes('ZGlk')) {
-        $('.page-header').text('RAW MATERIAL DETAILS');
+        $('.page-header').text('PURCHASE LIST DETAILS');
         $("#btn_save").hide();
         $("#form_ :input").prop('readonly', true);
         
@@ -24,13 +23,12 @@ $(document).ready(function() {
         $('.selectpicker').selectpicker('refresh');
 
         $("#ck_active").attr("disabled", true);
-        $(".cancel").html("<a href='/raw-materials'  type='button' class='btn btn-outline btn-primary'><i class='fa fa-long-arrow-left'></i> Back</a>");
+        $(".cancel").replaceWith("<a href='/purchase' type='button' class='btn btn-outline btn-primary pull-right'><i class='fa fa-long-arrow-left'></i> Back</a>");
         get_details();
         
     
     }else{
-        $('.page-header').text('RAW MATERIAL ADD NEW')
-        $("input[name=rm_desc]").val($(this).find("option:selected").attr("desc"))
+        $('.page-header').text('PURCHASE LIST ADD NEW')
         let username = 'test';
         get_date_default(username,null, username, null)
     }
@@ -49,14 +47,13 @@ $(document).ready(function() {
         _data.txt_created_date = formatDate(_data.txt_created_date)
         _data.txt_updated_date = new Date(_data.txt_updated_date);
         _data.txt_updated_date = formatDate(_data.txt_updated_date)
-        _data.active = $("#ck_active").prop('checked')
         //console.log(json);
 
         // ajax - save/post data
         spinner_popup();
         $.ajax({
             type:"GET", // must be POST 
-            url: "/data/raw-materials.json", 
+            url: "/data/purchase.json", 
             dataType: "json",
             data: _data,
             success: function(data) {
@@ -67,7 +64,7 @@ $(document).ready(function() {
                         title: '',
                         text: "Data Saved"
                     }).then(function(){
-                        location.href='/raw-materials'
+                        location.href='/purchase'
                     });
                     
                 }, 3000);
@@ -270,40 +267,35 @@ $(document).ready(function() {
             }
         })
     } );
-
-    //dropdown
-     $('#sp_rm_code').on('change', function(e) {
-         e.preventDefault();
-         $("input[name=rm_desc]").val($(this).find("option:selected").attr("desc"))
-         //console.log($(this).find("option:selected").attr("desc"))
-        // console.log(this.value,
-        //    this.options[this.selectedIndex].value,
-        //    $(this).find("option:selected").val(), );
-     });
-   
+    //number
+    $("#order_amt, #dp_amt, #to_pay_amt, #delivered_amt, #to_be_delivered_amt, #balance_amt").on('keyup', function(){
+        let _amt = $(this).val().replace(/,/g,"");
+        $(this).val(numberWithCommas(_amt));
+    })
+    //date datepicker
+    $("#purchase_date").datepicker({
+        format: "dd-M-yyyy",
+    });
+    
     
 //end  doc ready
 });
 //default-edit
 function default_edit(data){
 
-    let _date = new Date(data[0].cost_last_updated)
-    //_date.setDate(_date.getDate()+1)
     
-    $('#sp_rm_code').selectpicker('val',data[0].rm_code)
-    $("input[name=rm_desc]").val($(this).find("option:selected").attr("desc"))
-    $('#sp_product_family').selectpicker('val',data[0].product_family)
-    $("input[name=cost").val(numberWithCommas(data[0].cost))
-    $('#sp_unit').selectpicker('val',data[0].unit)
-    $("input[name=box_size_w").val(data[0].box_size_w)
-    $("input[name=box_size_l").val(data[0].box_size_l)
-    $("input[name=box_size_h").val(data[0].box_size_h)
-    $('#sp_kayu').selectpicker('val',data[0].kayu)
-    $("input[name=cost_last_updated").val(formatDate(_date,true))
-    $('#sp_creator').selectpicker('val',data[0].creator)
-    $("#ck_validated").prop('checked', data[0].validated)
-    $("#ck_out").prop('checked', data[0].out)
-    $("#ck_active").prop('checked', data[0].active)
+    let _date = new Date(data[0].purchase_date)
+    //_date.setDate(_date.getDate()+1)
+    $("#purchase_date").datepicker("setDate", _date);
+    $("input[name=purchase_code").val(data[0].purchase_code)
+    $('#sp_supplier').selectpicker('val',data[0].supplier)
+    $("input[name=order_amt").val(numberWithCommas(data[0].order_amt))
+    $("input[name=dp_amt").val(numberWithCommas(data[0].dp_amt))
+    $("input[name=to_pay_amt").val(numberWithCommas(data[0].to_pay_amt))
+    $("input[name=delivered_amt").val(numberWithCommas(data[0].delivered_amt))
+    $("input[name=to_be_delivered_amt").val(numberWithCommas(data[0].to_be_delivered_amt))
+    $("input[name=balance_amt").val(numberWithCommas(data[0].balance_amt))
+    $("#ck_complete").prop('checked', data[0].complete)
 
     let user_login = 'test';
     get_date_default(data[0].created_by,data[0].created_date, user_login, null)
@@ -315,7 +307,7 @@ function get_details(){
     //ajax
     $.ajax({
         type:"GET", 
-        url: "/data/raw-materials.json", 
+        url: "/data/purchase.json", 
         dataType: "json",
         success: function(data) {
             setTimeout(function () {

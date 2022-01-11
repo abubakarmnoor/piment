@@ -44,11 +44,17 @@
                         <div class="form-group row">
                             <div class="col-md-4 mb-3">
                                 <label for="rm_code">RM Code</label>
-                                <input type="text" class="form-control" name="rm_code" placeholder="RM Code" value="" required>
+                                <select class="form-control selectpicker" id="sp_rm_code" name="rm_code" data-live-search="true">
+                                    <option value="-" desc="-">-</option>
+                                    {{#each __data_rm}}
+                                        <option value="{{id}}" desc="{{rm_desc}}">{{rm_code}}</option>
+                                    {{/each}}
+                                </select>
+
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="rm_desc">RM Desc</label>
-                                <input type="text" class="form-control" name="rm_desc" placeholder="RM Desc" value="" required>
+                                <input type="text" class="form-control" name="rm_desc" placeholder="RM Desc" value="" required readonly>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -63,7 +69,7 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="cost">Cost</label>
-                                <input type="text" class="form-control number-seperator" id ="cost" name="cost" placeholder="Cost" value="" required>
+                                <input type="text" class="form-control number-seperator" id ="cost" name="cost" placeholder="Cost" value="" required autocomplete="off">
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="unit">Unit</label>
@@ -161,9 +167,9 @@
                                 <label>Updating Date</label>
                                 <input type="text" class="form-control" name="updated_date" readonly>
                             </div>
-                            <div class="col-md-4 mb-3 invisible">
+                            <div class="col-md-4 mb-3">
                                 <label>Id</label>
-                                <input type="text" class="form-control" id="id" name="id" readonly>
+                                <input type="text" class="form-control" id="id" name="id" value="{{_rmid}}" readonly>
                             </div>
                         </div>
                     </form>

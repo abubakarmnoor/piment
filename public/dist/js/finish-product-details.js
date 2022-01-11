@@ -24,7 +24,7 @@ $(document).ready(function() {
         $('.selectpicker').selectpicker('refresh');
 
         $("#ck_active").attr("disabled", true);
-        $(".cancel").html("<a href='/finish-product'  type='button' class='btn btn-outline btn-primary'><i class='fa fa-long-arrow-left'></i> Back</a>");
+        $(".cancel").html("<a href='/finish-product' type='button' class='btn btn-outline btn-primary'><i class='fa fa-long-arrow-left'></i> Back</a>");
         // let url = location.href;
         // let id = getURLParameter(url, 'did');
         // $("#id").val(id);

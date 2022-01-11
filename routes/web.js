@@ -12,6 +12,8 @@ const _data_pop_kayu = require("../public/data/pop-kayu.json");
 const _data_pop_unit = require("../public/data/pop-unit.json");
 const _data_pop_creator = require("../public/data/pop-creator.json");
 const _data_pop_origin = require("../public/data/pop-origin.json");
+const _data_rm = require("../public/data/raw-materials.json");
+const _data_purchase = require("../public/data/purchase.json");
 
 router.use(function (req, res, next) {
 	//console.log('app use 123');
@@ -26,9 +28,17 @@ router.get('/', (req, res) => {
 
 router.get('/order-list', (req, res) => {
 	res.render('order-list.hbs', {
-		tables_bs4: true
+		tables_bs4: true, order_list:true
 	});
 });
+router.get('/order-list-details/:olid/:act', (req, res) => {
+	const _act = req.params.act
+	const _olid = req.params.olid
+	res.render('order-list-details.hbs', {
+		tables_bs4: true, order_list_details:true, olid:_olid, act:_act
+	});
+});
+
 router.get('/invoice', (req, res) => {
 	res.render('invoice.hbs', {
 		tables_bs4: true
@@ -36,7 +46,14 @@ router.get('/invoice', (req, res) => {
 });
 router.get('/purchase', (req, res) => {
 	res.render('purchase.hbs', {
-		tables_bs4: true
+		tables_bs4: true, purchase:true
+	});
+});
+router.get('/purchase-details/:pid/:act', (req, res) => {
+	const _act = req.params.act
+	const _pid = req.params.pid
+	res.render('purchase-details.hbs', {
+		tables_bs4: true, purchase_details:true, _pid, _act
 	});
 });
 router.get('/production', (req, res) => {
@@ -108,17 +125,18 @@ router.get('/raw-materials', (req, res) => {
 		tables_bs4: true, raw_materials:true
 	});
 });
-router.get('/raw-material-details', (req, res) => {
-
+router.get('/raw-material-details/:rmid/:act', (req, res) => {
+	const _act = req.params.act
+	const _rmid = req.params.rmid
 	const __data_pop_product_family = _data_pop_product_family.data;
 	const __data_pop_kayu = _data_pop_kayu.data;
 	const __data_pop_unit = _data_pop_unit.data;
 	const __data_pop_creator = _data_pop_creator.data;
+	const __data_rm = _data_rm.data;
 	res.render('raw-material-details.hbs', {
-		tables_bs4: true, raw_material_details:true,__data_pop_product_family,__data_pop_kayu, __data_pop_unit, __data_pop_creator
+		tables_bs4: true, raw_material_details:true,__data_pop_product_family,__data_pop_kayu, __data_pop_unit, __data_pop_creator, _rmid, _act, __data_rm
 	});
 	
-
 });
 router.get('/stock', (req, res) => {
 	res.render('stock.hbs', {
