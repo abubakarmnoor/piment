@@ -103,7 +103,7 @@ $(document).ready(function() {
         _data.txt_updated_date = new Date(_data.txt_updated_date);
         _data.txt_updated_date = formatDate(_data.txt_updated_date)
         _data.active = $("#ck_active").prop('checked')
-        console.log(_data);
+        // console.log(_data);
 
         // ajax - save/post data
         spinner_popup();
@@ -191,14 +191,14 @@ $(document).ready(function() {
     } );
 
     //number
-    $("#cost").on('keyup', function(){
+    $(".numeric").on('keypress', function(e){
         
+        isNumber(e)
         let _amt = $(this).val().replace(/,/g,"");
-        console.log(_amt);
+        // console.log(_amt);
         $(this).val(numberWithCommas(_amt));
         
     })
-
     
     //btn add new pop
     $('#btn_pop_pf').on('click', function(){

@@ -114,44 +114,78 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <div class="form-group row">&nbsp;</div>
+                            <div class="form-group row">
+                                {{!-- <div class="col-md-4 mb-3"> --}}
+                                    <strong>SALE CALCULATION</strong><hr>
+                                {{!-- </div> --}}
+                            </div>
                             <div class="form-group row">
                                 <div class="col-md-4 mb-3">
+                                    <label for="labour">Extra Cost</label>
+                                    <input type="text" class="numeric form-control number-seperator" id ="extra_cost" name="extra_cost" placeholder="Extra Cost" autocomplete="off" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="labour">Labour</label>
+                                    <input type="text" class="numeric form-control number-seperator" id ="labour" name="labour" placeholder="Labour" autocomplete="off" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
                                     <label for="cost">Cost</label>
-                                    <input type="text" class="form-control number-seperator" id ="cost" name="cost" placeholder="Cost" autocomplete="off" required>
+                                    <input type="text" class="numeric form-control number-seperator" id ="cost" name="cost" placeholder="Cost" autocomplete="off" required>
+                                </div>
+                                
+                            </div>
+                            <div class="row" style="text-align: center;">
+                                <div class="col-lg">
+                                    <label>WHOLESALE</label>
                                 </div>
                             </div>
-                            <div class="form-group row" style="text-align: center;">
+                            <div class="form-group row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="ws_sale">Sale</label>
+                                    <input type="text" class="numeric form-control number-seperator" id ="ws_sale" name="ws_sale" placeholder="Sale" autocomplete="off" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="ws_profit">Profit</label>
+                                    <input type="text" class="numeric form-control number-seperator" id ="ws_profit" name="ws_profit" placeholder="Profit" autocomplete="off" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="ws_markup">Markup</label>
+                                    <input type="text" class="form-control number-seperator" id ="ws_markup" name="ws_markup" placeholder="Markup" autocomplete="off" required>
+                                </div>
+                            </div>
+                            <div class="row" style="text-align: center;">
                                 <div class="col-lg">
-                                    <label>Business</label>
+                                    <label>BUSINESS</label>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-4 mb-3">
                                     <label for="b_sale">Sale</label>
-                                    <input type="text" class="form-control number-seperator" id ="b_sale" name="b_sale" placeholder="Sale" autocomplete="off" required>
+                                    <input type="text" class="numeric form-control number-seperator" id ="b_sale" name="b_sale" placeholder="Sale" autocomplete="off" required>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="b_profit">Profit</label>
-                                    <input type="text" class="form-control number-seperator" id ="b_profit" name="b_profit" placeholder="Profit" autocomplete="off" required>
+                                    <input type="text" class="numeric form-control number-seperator" id ="b_profit" name="b_profit" placeholder="Profit" autocomplete="off" required>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="b_markup">Markup</label>
                                     <input type="text" class="form-control number-seperator" id ="b_markup" name="b_markup" placeholder="Markup" autocomplete="off" required>
                                 </div>
                             </div>
-                            <div class="form-group row" style="text-align: center;">
+                            <div class="row" style="text-align: center;">
                                 <div class="col-lg">
-                                    <label>Retail</label>
+                                    <label>RETAIL</label>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-4 mb-3">
                                     <label for="r_sale">Sale</label>
-                                    <input type="text" class="form-control number-seperator" id ="r_sale" name="r_sales" placeholder="Sale" autocomplete="off" required>
+                                    <input type="text" class="numeric form-control number-seperator" id ="r_sale" name="r_sales" placeholder="Sale" autocomplete="off" required>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="r_profit">Profit</label>
-                                    <input type="text" class="form-control number-seperator" id ="r_profit" name="r_profit" placeholder="Profit" autocomplete="off" required>
+                                    <input type="text" class="numeric form-control number-seperator" id ="r_profit" name="r_profit" placeholder="Profit" autocomplete="off" required>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="r_markup">Markup</label>

@@ -106,3 +106,14 @@ function numberWithCommas(x, dec) {
     return (!dec, _val, _val);
 
 }
+function isNumber(event) {
+    var allowed = "";
+    if (event.target.value.includes(".")) {
+      allowed = "0123456789";
+    } else {
+      allowed = "0123456789.";
+    }
+    if (!allowed.includes(event.key)) {
+      event.preventDefault();
+    }
+}

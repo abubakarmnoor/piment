@@ -32,7 +32,7 @@ app.use((err, req, res, next) => {
 // app.listen(1337, () => {
 // 	console.log('http://localhost:1337');
 // });
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 const link = `http://localhost:${ PORT }`;
 app.listen(PORT, () => {
     console.log(`Our app is running on port ${ link }`);

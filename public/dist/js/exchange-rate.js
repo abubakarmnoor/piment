@@ -27,6 +27,9 @@ $(document).ready(function(){
         $("#btn_refresh").show()
         $("#btn_cancel").hide()
         $("#btn_save").hide()
+        
+        $("#btn_refresh").click();
+
     })
 
     //btn save
@@ -49,17 +52,27 @@ $(document).ready(function(){
                 title: '',
                 text: "Data Saved"
             }).then(function(){
-                load_data(); //re-popupate data to make sure data were saved properly
                 $("form :input").prop("disabled", true);
                 $("#btn_edit").show()
                 $("#btn_refresh").show()
                 $("#btn_cancel").hide()
                 $("#btn_save").hide()
+                
+                load_data(); //re-popupate data to make sure data were saved properly
+
             })
         },3000)
 
     });
     
+    //number
+    $("input[name=usd], input[name=eur]").on('keyup', function(){
+        
+        let _amt = $(this).val().replace(/,/g,"");
+        // console.log(_amt);
+        $(this).val(numberWithCommas(_amt));
+        
+    })
 //end doc ready
 })
 
