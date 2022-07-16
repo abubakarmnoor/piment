@@ -5,7 +5,8 @@ const web = require('./routes/web');
 
 const app = express();
 
-hbs.registerPartials("./views/partials");
+// hbs.registerPartials("./views/partials");
+hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
