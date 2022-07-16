@@ -5,13 +5,13 @@ const web = require('./routes/web');
 
 const app = express();
 
-// hbs.registerPartials("./views/partials");
 hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.use(express.static("./public"));
+
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', web);
 
 //The 404 Route (ALWAYS Keep this as the last route)
