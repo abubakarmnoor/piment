@@ -42,7 +42,7 @@
                             <button type="submit" class="btn btn-outline btn-primary" id="btn_save"><i class="fa fa-save"></i> Save</button>
                         </div>
                         <div class="form-group row">
-                            <div class="col-md-4 mb-3">
+                            {{!-- <div class="col-md-4 mb-3">
                                 <label for="rm_code">RM Code</label>
                                 <select class="form-control selectpicker" id="sp_rm_code" name="rm_code" data-live-search="true">
                                     <option value="-" desc="-">-</option>
@@ -50,11 +50,14 @@
                                         <option value="{{id}}" desc="{{rm_desc}}">{{rm_code}}</option>
                                     {{/each}}
                                 </select>
-
+                            </div> --}}
+                            <div class="col-md-4 mb-3">
+                                <label for="rm_desc">RM Code</label>
+                                <input type="text" class="form-control" name="rm_code" placeholder="RM Code" value="" required>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="rm_desc">RM Desc</label>
-                                <input type="text" class="form-control" name="rm_desc" placeholder="RM Desc" value="" required readonly>
+                                <input type="text" class="form-control" name="rm_desc" placeholder="RM Desc" value="" required>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -86,16 +89,16 @@
                                 <label for="box_size_w">Box Size</label>
                                 <div class="form-group row">
                                     <div class="col-md-4 mb-3">
-                                        <label for="box_size_w" class="col-sm-1 col-form-label col-form-label-sm" style="padding-left: 0px;">W</label>
-                                        <div class="col-md-2">
-                                            <input type="text" class="form-control" name="box_size_w" placeholder="W" style="width: 71px;" required>
-                                        </div>    
-                                    </div>
-                                    <div class="col-md-4 mb-3">
                                         <label for="box_size_l" class="col-sm-1 col-form-label col-form-label-sm" style="padding-left: 0px;">L</label>
                                         <div class="col-md-2">
                                             <input type="text" class="form-control" name="box_size_l" placeholder="L" style="width: 71px;" required>
                                         </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="box_size_w" class="col-sm-1 col-form-label col-form-label-sm" style="padding-left: 0px;">W</label>
+                                        <div class="col-md-2">
+                                            <input type="text" class="form-control" name="box_size_w" placeholder="W" style="width: 71px;" required>
+                                        </div>    
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="box_size_h" class="col-sm-1 col-form-label col-form-label-sm" style="padding-left: 0px;">H</label>
