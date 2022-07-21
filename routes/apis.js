@@ -23,6 +23,8 @@ router.use(function (req, res, next) {
 // /* GET programming languages. */
 router.get('/getdata', async function(req, res, next) {
 	try {
+		console.log(req.query.tbl);
+		console.log(req.query.page);
 	  res.json(await tsqlPull._getdata(req.query.tbl, req.query.page));
 	} catch (err) {
 	  console.error(`Error while getting programming languages `, err.message);
