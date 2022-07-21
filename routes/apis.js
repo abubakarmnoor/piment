@@ -31,5 +31,28 @@ router.get('/getdata', async function(req, res, next) {
 });
 
 //functions
+//this code is for conenct to db
+const mysql = require('mysql2');
+require('dotenv').config();
+router.get('/test', async function(req, res, next) {
+return new Promise((resolve,reject)=>{
+  const con = mysql.createConnection( {
+    host: process.env.DB_HOST||localhost,
+    user: process.env.DB_USER_NAME||myUserName ,
+    password: process.env.DB_PASSWORD||mypassword,
+    database: process.env.DB_NAME||mydb
+  });
+  con.connect((err) => {
+    if(err){
+      reject(err);
+    }
+    resolve(con);
+  });
+  
+})
+})
 
+module.exports.closeDbConnection =(con)=> {
+  con.destroy();
+}
 module.exports = router;

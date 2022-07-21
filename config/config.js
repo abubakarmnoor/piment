@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const env = process.env;
-console.log(env.DB_HOST);
+// console.log(env.DB_NAME);
 
 const config = {
   db: { 
