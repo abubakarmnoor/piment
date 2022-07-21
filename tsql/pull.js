@@ -3,6 +3,7 @@ const helper = require('../config/helper');
 const config = require('../config/config');
 
 async function _getdata(tbl, page = 1){
+  
   const offset = helper.getOffset(page, config.listPerPage);
   const rows = await db.query(
     `SELECT * 
