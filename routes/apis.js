@@ -32,22 +32,22 @@ router.get('/getdata', async function(req, res, next) {
 const {stablishedConnection,closeDbConnection}  =require('../config/conn');
 
 router.get('/test',function(req,res){
-	res.status(200).json({sucess:false});
-//   stablishedConnection()
-//   .then((db)=>{
-//     console.log("Db connection stablished");
-//     db.query(`select * from tbl_rm`, null, function (err,data) { 
-//       if (!data) {
-//         res.status(200).json({sucess:false,err});
-//       }else{
-//         res.status(200).json({sucess:true,data});
-//         closeDbConnection(db);
-//         console.log("Db Connection close Successfully");
-//       }
-//   })                         
-// }).catch((error)=>{
-//   console.log("Db not connected successfully",error);
-// });   
+	// res.status(200).json({sucess:false});
+  stablishedConnection()
+  .then((db)=>{
+    console.log("Db connection stablished");
+    db.query(`select * from tbl_rm`, null, function (err,data) { 
+      if (!data) {
+        res.status(200).json({sucess:false,err});
+      }else{
+        res.status(200).json({sucess:true,data});
+        closeDbConnection(db);
+        console.log("Db Connection close Successfully");
+      }
+  })                         
+}).catch((error)=>{
+  console.log("Db not connected successfully",error);
+});   
 });
 
 //functions

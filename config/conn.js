@@ -4,10 +4,10 @@ require('dotenv').config();
 module.exports.stablishedConnection = ()=>{
 return new Promise((resolve,reject)=>{
   const con = mysql.createConnection( {
-    host: localhost,
-    user: piment ,
+    host: `localhost`,
+    user: `piment` ,
     password: `1Gw02wJYPM6@`,
-    database: piment
+    database: `piment`
   });
   con.connect((err) => {
     if(err){
