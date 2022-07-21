@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const hbs = require('hbs');
 const web = require('./routes/web');
-
+const apis = require('./routes/apis');
 const app = express();
 
 hbs.registerPartials(path.join(__dirname, 'views/partials'));
@@ -13,6 +13,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', web);
+app.use('/apis/', apis);
 
 //The 404 Route (ALWAYS Keep this as the last route)
 app.use('*', function(req, res){
