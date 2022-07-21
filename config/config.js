@@ -5,10 +5,10 @@ const env = process.env;
 
 const config = {
   db: { 
-    host: env.DB_HOST,
+    host: `localhost`,
     user: `piment`,
     password: `1Gw02wJYPM6@`,
-    database: env.DB_NAME,
+    database: `piment`,
   },
   listPerPage: env.LIST_PER_PAGE || 10,
 };
