@@ -4,7 +4,7 @@ const router = express.Router();
 // const tsqlPull = require('../tsql/pull');
 //fs = require('fs');
 const axios = require('axios');
-const _api_url_default = 'http://localhost:3000'
+// const _api_url_default = 'http://localhost:3000'
 const _data_countries = require("../public/data/countries.json");
 const _data_pop_activity = require("../public/data/pop-activity.json");
 const _data_pop_product_family = require("../public/data/pop-product-family.json");
@@ -133,6 +133,7 @@ router.get('/raw-material-details/:rmid/:act', (req, res) => {
 	const __data_pop_unit = _data_pop_unit.data;
 	const __data_pop_creator = _data_pop_creator.data;
 	const __data_rm = _data_rm.data;
+	// console.log(_rmid);
 	res.render('raw-material-details.hbs', {
 		tables_bs4: true, raw_material_details:true,__data_pop_product_family,__data_pop_kayu, __data_pop_unit, __data_pop_creator, _rmid, _act, __data_rm
 	});
