@@ -19,5 +19,5 @@ async function _getdata(tbl, page = 1){
 }
 
 module.exports = {
-  getMultiple
+  _getdata
 }
