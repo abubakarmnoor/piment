@@ -32,7 +32,7 @@ router.get('/getdata', async function(req, res, next) {
 const {stablishedConnection,closeDbConnection}  =require('../config/conn');
 
 router.get('/test',function(req,res){
-	res.status(200).json({sucess:false,"test"});
+	res.status(200).json({sucess:false});
 //   stablishedConnection()
 //   .then((db)=>{
 //     console.log("Db connection stablished");
