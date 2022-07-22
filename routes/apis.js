@@ -32,7 +32,7 @@ router.get('/getdata',function(req,res){
   stablishedConnection()
   .then((db)=>{
     // console.log("Db connection stablished");
-    db.query(`select * from tbl_rm limit ?,?`,[_offset, _page], function (err,data) { 
+    db.query(`select * from `+_tbl+` limit `+_offset+`,`+_page+` `,null, function (err,data) { 
       if (!data) {
         res.status(200).json({sucess:false,err});
       }else{
