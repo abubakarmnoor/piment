@@ -34,7 +34,7 @@ router.get('/pull/:tblname',function(req,res){
       if (!data) {
         res.status(200).json({success:false,err});
       }else{
-        res.status(200).json({success:true,data});
+        res.status(200).json({success:true,data[0]});
         closeDbConnection(db);
         // console.log("Db Connection close Successfully");
       }
