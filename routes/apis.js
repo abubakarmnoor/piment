@@ -23,7 +23,7 @@ router.use(function (req, res, next) {
 // 	}
 // });
 
-router.get('/getdata',function(req,res){
+router.get('/getdata/:tblname/:offset/:page',function(req,res){
 	// res.status(200).json({sucess:false});
   const _tbl = req.query.tbl
   const _offset = req.query.offset 
@@ -32,7 +32,7 @@ router.get('/getdata',function(req,res){
   stablishedConnection()
   .then((db)=>{
     // console.log("Db connection stablished");
-    db.query(`select * from ? limit `+_offset+`,`+_page+` `,[_tbl], function (err,data) { 
+    db.query(`select * from ? limit `+_offset+`,`+_page+` `,null, function (err,data) { 
       if (!data) {
         res.status(200).json({sucess:false,err});
       }else{
