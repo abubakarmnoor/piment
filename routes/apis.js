@@ -5,6 +5,7 @@ const router = express.Router();
 //fs = require('fs');
 const axios = require('axios');
 const {stablishedConnection,closeDbConnection}  =require('../config/conn');
+require('dotenv').config()
 
 router.use(function (req, res, next) {
 	res.set('Cache-Control', 'max-age=0');// 60s x 60m x24 x ? day
@@ -23,15 +24,11 @@ router.use(function (req, res, next) {
 // 	}
 // });
 
-router.get('/getdata/:tblname/:offset/:page',function(req,res){
+router.get('/getdata/:tblname',function(req,res){
 	// res.status(200).json({sucess:false});
-  let _tbl;
-    if (req.params.tblname == 'rm'){
-      _tbl = 'tbl_rm'
-    }
-
-  const _offset = req.params.offset
-  const _page = req.params.page 
+  const _tbl = req.params.tblname;
+  const _offset = process.env.OFFSET
+  const _page = process.env.PAGE
 
   stablishedConnection()
   .then((db)=>{
@@ -44,11 +41,38 @@ router.get('/getdata/:tblname/:offset/:page',function(req,res){
         closeDbConnection(db);
         // console.log("Db Connection close Successfully");
       }
-  })                         
-}).catch((error)=>{
-  console.log("Db not connected successfully",error);
-});   
+    })                         
+  }).catch((error)=>{
+    console.log("Db not connected",error);
+  });   
 });
+
+router.post('/upd',(req,res)=>{
+  const _data = req.body.upd_data
+  let query='';
+  if (_data.tblname == 'rm'){
+    query='sp_save_rm ? ? ? ? ?'
+
+  }
+
+  stablishedConnection()
+  .then((db)=>{
+    stablishedConnection()
+    .then((db)=>{
+      db.query(` `+query+` `,null, (err, data)=>{
+        if (!data){
+          res.status(200).json({success:false, err})
+        }else{
+          res.status(200).json({success:true, data})
+          closeDbConnection(db)
+        }
+      })
+    })
+  }).catch((error)=>{
+    console.log("Db not connected",error);
+  }); 
+
+})
 
 //functions
 
