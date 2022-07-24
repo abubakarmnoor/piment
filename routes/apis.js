@@ -25,9 +25,9 @@ router.use(function (req, res, next) {
 
 router.get('/getdata/:tblname/:offset/:page',function(req,res){
 	// res.status(200).json({sucess:false});
-  const _tbl = req.query.tbl
-  const _offset = req.query.offset 
-  const _page = req.query.page 
+  const _tbl = req.params.tblname
+  const _offset = req.params.offset
+  const _page = req.params.page 
 
   stablishedConnection()
   .then((db)=>{
