@@ -25,9 +25,8 @@ router.use(function (req, res, next) {
 
 router.get('/getdata/:tblname/:offset/:page',function(req,res){
 	// res.status(200).json({sucess:false});
-  const _tbl=''; 
     if (req.params.tblname == 'rm'){
-      _tbl = 'tbl_rm'
+      const _tbl = 'tbl_rm'
     }
 
   const _offset = req.params.offset
