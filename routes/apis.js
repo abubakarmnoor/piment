@@ -5,7 +5,6 @@ const router = express.Router();
 //fs = require('fs');
 const axios = require('axios');
 const {stablishedConnection,closeDbConnection}  =require('../config/conn');
-require('dotenv').config()
 
 router.use(function (req, res, next) {
 	res.set('Cache-Control', 'max-age=0');// 60s x 60m x24 x ? day
@@ -24,16 +23,14 @@ router.use(function (req, res, next) {
 // 	}
 // });
 
-router.get('/getdata/:tblname',function(req,res){
+router.get('/pull/:tblname',function(req,res){
 	// res.status(200).json({sucess:false});
   const _tbl = req.params.tblname;
-  const _offset = process.env.OFFSET
-  const _page = process.env.PAGE
-
+  
   stablishedConnection()
   .then((db)=>{
     // console.log("Db connection stablished");
-    db.query(`select * from `+_tbl+` limit `+_offset+`,`+_page+` `,null, function (err,data) { 
+    db.query(`call spSelect(```+_tbl+```) `,null, function (err,data) { 
       if (!data) {
         res.status(200).json({sucess:false,err});
       }else{
