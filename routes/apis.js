@@ -30,11 +30,12 @@ router.get('/pull/:tblname',function(req,res){
   stablishedConnection()
   .then((db)=>{
     // console.log("Db connection stablished");
-    db.query(`call spSelect('`+ _tbl +`');`,null, function (err, results, fields) { 
+    db.query(`call spSelect('`+ _tbl +`');`,null, function (err, data) { 
       if (!data) {
         res.status(200).json({success:false,err});
       }else{
-        res.status(200).json({success:true,results});
+        let data_ = data[0]
+        res.status(200).json({success:true,data_});
         closeDbConnection(db);
         // console.log("Db Connection close Successfully");
       }
@@ -66,7 +67,7 @@ router.post('/upd',(req,res)=>{
       })
     })
   }).catch((error)=>{
-    console.log("Db not connected",error);
+    console.log("Db not connected",err);
   }); 
 
 })
