@@ -27,10 +27,13 @@ $(document).ready(function() {
         "columnDefs": [{
             "targets": [ 2 ],
             "visible": false
-        },{
-            targets:[12], render:function(data){
-            return moment(data).format('DD-MMM-YYYY');
-        }}],
+        }
+        // ,{
+        //     targets:[12], render:function(data){
+        //         return moment(data).format('DD-MMM-YYYY');
+        //     }
+        // }
+        ],
         "columns": [
             {
                 data: null,
@@ -59,7 +62,7 @@ $(document).ready(function() {
             { "data": "rm_box_size_h" },
             { "data": "rm_kayu" },
             // { "data": "cost_last_updated" },
-            { "data": "rm_kayu" },
+            { "data": "rm_creator" },
             { "data": "rm_validated" },
             { "data": "rm_active" },
         ]
