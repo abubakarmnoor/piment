@@ -44,7 +44,7 @@ $(document).ready(function() {
                 defaultContent: '<i class="fa fa-trash"/>',
                 orderable: false
             },
-            { "data": "id" },
+            { "data": "rm_guid" },
             {
                 data: "rm_code",
                 className: "dt-center editor-details",
