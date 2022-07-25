@@ -34,8 +34,8 @@ router.get('/pull/:tblname',function(req,res){
       if (!data) {
         res.status(200).json({success:false,err});
       }else{
-        let data_ = data[0]
-        res.status(200).json({success:true,data_});
+        let data = data[0]
+        res.status(200).json({success:true,data});
         closeDbConnection(db);
         // console.log("Db Connection close Successfully");
       }
@@ -46,10 +46,10 @@ router.get('/pull/:tblname',function(req,res){
 });
 
 router.post('/upd',(req,res)=>{
-  const _data = req.body.upd_data
+  const _data = req.body.data
   let query='';
   if (_data.tblname == 'rm'){
-    query='sp_save_rm ? ? ? ? ?'
+    query='call spSave_rm ? ? ? ? ?'
 
   }
 
@@ -61,7 +61,8 @@ router.post('/upd',(req,res)=>{
         if (!data){
           res.status(200).json({success:false, err})
         }else{
-          res.status(200).json({success:true, data})
+          let data_ = data[0]
+          res.status(200).json({success:true, data_})
           closeDbConnection(db)
         }
       })

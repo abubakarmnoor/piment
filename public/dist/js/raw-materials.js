@@ -19,7 +19,7 @@ $(document).ready(function() {
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/data/raw-materials.json?sdate="+sdate_+"?edate="+edate_,
+        "ajax": "/apis/pull/rm",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -51,17 +51,17 @@ $(document).ready(function() {
                 orderable: true
             },
             { "data": "rm_desc" },
-            { "data": "product_family" },
-            {"data": "cost", render: $.fn.dataTable.render.number(',', '.', 2, '')},
-            { "data": "unit" },
-            { "data": "box_size_w" },
-            { "data": "box_size_l" },
-            { "data": "box_size_h" },
-            { "data": "kayu" },
-            { "data": "cost_last_updated" },
-            { "data": "creator" },
-            { "data": "validated" },
-            { "data": "out" },
+            { "data": "rm_prod_family" },
+            {"data": "rm_cost", render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "rm_unit" },
+            { "data": "rm_box_size_w" },
+            { "data": "rm_box_size_l" },
+            { "data": "rm_box_size_h" },
+            { "data": "rm_kayu" },
+            // { "data": "cost_last_updated" },
+            { "data": "rm_creator" },
+            { "data": "rm_validated" },
+            { "data": "rm_active" },
         ]
     });
     
