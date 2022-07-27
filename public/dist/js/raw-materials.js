@@ -62,7 +62,7 @@ $(document).ready(function() {
             { "data": "rm_box_size_h" },
             { "data": "rm_kayu" },
             // { "data": "cost_last_updated" },
-            { "data": "rm_creator" },
+            // { "data": "rm_creator" },
             // { "data": "rm_validated" },
             // { "data": "rm_active" },
         ]
