@@ -79,7 +79,7 @@ $(document).ready(function() {
     $('#dtTbl').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
-        const _id = table.row( this ).data().id;
+        const _id = table.row( this ).data().guid;
         location.href = "/raw-material-details/"+_id+"/ZWlk";
     } );
     
