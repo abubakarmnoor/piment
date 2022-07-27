@@ -25,8 +25,10 @@ router.use(function (req, res, next) {
 
 router.get('/pull/:tblname',function(req,res){
 	// res.status(200).json({sucess:false});
-  const _tbl = req.params.tblname;
-  
+  let _tbl = req.params.tblname;
+  if (_tbl == 'rm'){
+    _tbl = 'tbl_rm'
+  }
   stablishedConnection()
   .then((db)=>{
     // console.log("Db connection stablished");
