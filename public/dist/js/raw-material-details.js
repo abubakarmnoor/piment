@@ -321,7 +321,7 @@ function get_details(id){
         dataType: "json",
         success: function(data) {
             // setTimeout(function () {
-                default_edit(data.data);
+                default_edit(data.data[0]);
             //     $('.modal').modal('hide');
             // }, 3000);
         }, 
