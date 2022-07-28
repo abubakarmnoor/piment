@@ -23,16 +23,18 @@ router.use(function (req, res, next) {
 // 	}
 // });
 
-router.get('/pull/:tblname',function(req,res){
+router.get('/pull/:tblname/:id?',function(req,res){
 	// res.status(200).json({sucess:false});
   let _tbl = req.params.tblname;
+  let _id = req.params.id;
+  console.log(_id);
   if (_tbl == 'rm'){
     _tbl = 'tbl_rm'
   }
   stablishedConnection()
   .then((db)=>{
     // console.log("Db connection stablished");
-    db.query(`call spselect('`+ _tbl +`');`,null, function (err, data_) { 
+    db.query(`call spselect('`+ _tbl +`', '`+ _id +`');`,null, function (err, data_) { 
       if (!data_) {
         res.status(200).json({success:false,err});
       }else{

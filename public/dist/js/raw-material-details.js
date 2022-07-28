@@ -315,7 +315,8 @@ function get_details(){
     //ajax
     $.ajax({
         type:"GET", 
-        url: "/data/raw-materials.json", 
+        // url: "/data/raw-materials.json", 
+        url: "/pull/rm/", 
         dataType: "json",
         success: function(data) {
             setTimeout(function () {

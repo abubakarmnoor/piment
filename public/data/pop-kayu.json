@@ -1,32 +1,32 @@
 {"data":[
     {
         "pop_type":"kayu",
-        "id":"dsfsf45454",
+        "id":"Bengkirai",
         "pop_desc":"Bengkirai",
         "active": true
     },{
         "pop_type":"kayu",
-        "id":"sfsd535435",
+        "id":"Mahoni",
         "pop_desc":"Mahoni",
         "active": true
     },{
         "pop_type":"kayu",
-        "id":"sfsf454545",
+        "id":"Merbau",
         "pop_desc":"Merbau",
         "active": true
     },{
         "pop_type":"kayu",
-        "id":"sfsdg45455",
+        "id":"Teck",
         "pop_desc":"Teck",
         "active": true
     },{
         "pop_type":"kayu",
-        "id":"sfsf464654",
+        "id":"Bamboo",
         "pop_desc":"Bamboo",
         "active": true
     },{
         "pop_type":"kayu",
-        "id":"sfsf4454fdsf",
+        "id":"Mdf",
         "pop_desc":"Mdf",
         "active": true
     }
