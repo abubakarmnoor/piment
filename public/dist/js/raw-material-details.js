@@ -311,6 +311,7 @@ function default_edit(data){
 }
 //get details
 function get_details(id){
+    console.log(id);
     //ajax - get details
     spinner_popup();
     //ajax
@@ -320,9 +321,8 @@ function get_details(id){
         url: "/apis/pull/rm/"+id, 
         dataType: "json",
         success: function(data) {
-            console.log(data);
             // setTimeout(function () {
-                default_edit(data.data[0]);
+                default_edit(data.data);
             //     $('.modal').modal('hide');
             // }, 3000);
         }, 
