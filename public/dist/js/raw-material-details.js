@@ -320,6 +320,7 @@ function get_details(id){
         url: "/apis/pull/rm/"+id, 
         dataType: "json",
         success: function(data) {
+            console.log(data);
             // setTimeout(function () {
                 default_edit(data.data[0]);
             //     $('.modal').modal('hide');
