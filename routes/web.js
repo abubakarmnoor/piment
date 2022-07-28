@@ -5,7 +5,7 @@ const axios = require('axios').default;
 
 // const tsqlPull = require('../tsql/pull');
 //fs = require('fs');
-const axios = require('axios');
+// const axios = require('axios');
 // const _api_url_default = 'http://localhost:3000'
 const _data_countries = require("../public/data/countries.json");
 const _data_pop_activity = require("../public/data/pop-activity.json");
