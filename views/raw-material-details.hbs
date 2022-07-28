@@ -52,6 +52,7 @@
                                 </select>
                             </div> --}}
                             <div class="col-md-4 mb-3">
+                                <input type="text" class="form-control" name="guid" value={{}} required>
                                 <label for="rm_desc">RM Code</label>
                                 <input type="text" class="form-control" name="rm_code" placeholder="RM Code" value="" required>
                             </div>
@@ -172,7 +173,7 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label>Id</label>
-                                <input type="text" class="form-control" id="id" name="id" value="{{_rmid}}" readonly>
+                                <input type="text" class="form-control" id="id" name="id" value="{{_rm_guid}}" readonly>
                             </div>
                         </div>
                     </form>

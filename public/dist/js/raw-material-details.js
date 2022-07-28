@@ -1,6 +1,7 @@
 $(document).ready(function() {
             
     //default
+    let id=$("id").val()
     $('.selectpicker').selectpicker();
     insert_element_pf();insert_element_kayu();insert_element_unit();insert_element_creator();
     load_data_dt('/data/pop-product-family.json'); //init
@@ -13,7 +14,7 @@ $(document).ready(function() {
         // let id = getURLParameter(url, 'eid');
         // $("#id").val(id);
         
-        get_details();
+        get_details(id);
         
     }else if (location.href.includes('ZGlk')) {
         $('.page-header').text('RAW MATERIAL DETAILS');
@@ -25,7 +26,7 @@ $(document).ready(function() {
 
         $("#ck_active").attr("disabled", true);
         $(".cancel").html("<a href='/raw-materials'  type='button' class='btn btn-outline btn-primary'><i class='fa fa-long-arrow-left'></i> Back</a>");
-        get_details();
+        get_details(id);
         
     
     }else{
@@ -309,20 +310,20 @@ function default_edit(data){
     get_date_default(data[0].created_by,data[0].created_date, user_login, null)
 }
 //get details
-function get_details(){
+function get_details(id){
     //ajax - get details
     spinner_popup();
     //ajax
     $.ajax({
         type:"GET", 
         // url: "/data/raw-materials.json", 
-        url: "/pull/rm/", 
+        url: "/apis/pull/rm/"+id, 
         dataType: "json",
         success: function(data) {
-            setTimeout(function () {
+            // setTimeout(function () {
                 default_edit(data.data);
-                $('.modal').modal('hide');
-            }, 3000);
+            //     $('.modal').modal('hide');
+            // }, 3000);
         }, 
         error: function(jqXHR, textStatus, errorThrown) {
             //alert(jqXHR.status);

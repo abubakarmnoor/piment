@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
+const axios = require('axios').default;
+
 // const tsqlPull = require('../tsql/pull');
 //fs = require('fs');
 const axios = require('axios');
@@ -57,7 +59,7 @@ router.get('/purchase-details/:pid/:act', (req, res) => {
 	});
 });
 router.get('/production', (req, res) => {
-	res.set('Cache-Control', 'max-age=31536000');
+	res.set('Cache-Control', 'max-age=1');
 	res.render('production.hbs', {
 		// flot: true
 	});
@@ -127,16 +129,26 @@ router.get('/raw-materials', (req, res) => {
 });
 router.get('/raw-material-details/:rmid/:act', (req, res) => {
 	const _act = req.params.act
-	const _rmid = req.params.rmid
+	const _rm_guid = req.params.rmid
 	const __data_pop_product_family = _data_pop_product_family.data;
 	const __data_pop_kayu = _data_pop_kayu.data;
 	const __data_pop_unit = _data_pop_unit.data;
 	const __data_pop_creator = _data_pop_creator.data;
-	const __data_rm = _data_rm.data;
-	// console.log(_rmid);
+	// const __data_rm = _data_rm.data;
 	res.render('raw-material-details.hbs', {
-		tables_bs4: true, raw_material_details:true,__data_pop_product_family,__data_pop_kayu, __data_pop_unit, __data_pop_creator, _rmid, _act, __data_rm
+		tables_bs4: true, raw_material_details:true,__data_pop_product_family,__data_pop_kayu, __data_pop_unit, __data_pop_creator, _rm_guid, _act
 	});
+	// axios.get('/apis/pull/rm/')
+	// .then(function (response) {
+	// 	// handle success
+	// 	console.log(response);	
+	// })
+	// .catch(function (error) {
+	// 	// handle error
+	// 	console.log(error);
+	// })
+	// // console.log(_rmid);
+	
 	
 });
 router.get('/stock', (req, res) => {
