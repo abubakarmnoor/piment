@@ -325,11 +325,12 @@ function get_details(id){
         success: function(data) {
             // setTimeout(function () {
                 default_edit(data.data);
-            //     $('.modal').modal('hide');
+                $('.modal').modal('hide');
             // }, 3000);
         }, 
         error: function(jqXHR, textStatus, errorThrown) {
             //alert(jqXHR.status);
+            $('.modal').modal('hide');
             swal({
                 title: "Error!",
                 text: jqXHR.status,
