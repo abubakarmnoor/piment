@@ -101,7 +101,7 @@ $(document).ready(function() {
         _data.txt_updated_date = new Date(_data.txt_updated_date);
         _data.txt_updated_date = formatDate(_data.txt_updated_date)
         _data.active = $("#ck_active").prop('checked')
-        console.log(_data);
+        // console.log(_data);
 
         // ajax - save/post data
         spinner_popup();
@@ -291,23 +291,25 @@ function default_edit(data){
     let _date = new Date(data[0].cost_last_updated)
     //_date.setDate(_date.getDate()+1)
     
-    $('#sp_rm_code').selectpicker('val',data[0].rm_code)
-    $("input[name=rm_desc]").val($(this).find("option:selected").attr("desc"))
-    $('#sp_product_family').selectpicker('val',data[0].product_family)
-    $("input[name=cost").val(numberWithCommas(data[0].cost))
-    $('#sp_unit').selectpicker('val',data[0].unit)
-    $("input[name=box_size_w").val(data[0].box_size_w)
-    $("input[name=box_size_l").val(data[0].box_size_l)
-    $("input[name=box_size_h").val(data[0].box_size_h)
-    $('#sp_kayu').selectpicker('val',data[0].kayu)
-    $("input[name=cost_last_updated").val(formatDate(_date,true))
-    $('#sp_creator').selectpicker('val',data[0].creator)
-    $("#ck_validated").prop('checked', data[0].validated)
-    $("#ck_out").prop('checked', data[0].out)
-    $("#ck_active").prop('checked', data[0].active)
+    // $('#sp_rm_code').selectpicker('val',data[0].rm_code)
+    // $("input[name=rm_desc]").val($(this).find("option:selected").attr("desc"))
+    $("input[name=rm_code]").val(data[0].rm_code)
+    $("input[name=rm_desc]").val(data[0].rm_desc)
+    $('#sp_product_family').selectpicker('val',data[0].rm_prod_family)
+    $("input[name=cost").val(numberWithCommas(data[0].rm_cost))
+    $('#sp_unit').selectpicker('val',data[0].rm_unit)
+    $("input[name=box_size_l").val(data[0].rm_box_size_l)
+    $("input[name=box_size_w").val(data[0].rm_box_size_w)
+    $("input[name=box_size_h").val(data[0].rm_box_size_h)
+    $('#sp_kayu').selectpicker('val',data[0].rm_kayu)
+    // $("input[name=cost_last_updated").val(formatDate(_date,true))
+    // $('#sp_creator').selectpicker('val',data[0].creator)
+    // $("#ck_validated").prop('checked', data[0].validated)
+    // $("#ck_out").prop('checked', data[0].out)
+    // $("#ck_active").prop('checked', data[0].active)
 
-    let user_login = 'test';
-    get_date_default(data[0].created_by,data[0].created_date, user_login, null)
+    let user_login = data[0].rm_upd_by;
+    get_date_default(data[0].rm_created_by,data[0].rm_created_date, user_login, null)
 }
 //get details
 function get_details(id){
