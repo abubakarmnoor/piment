@@ -55,7 +55,7 @@ router.get('/pull/:tblname/:id?', function(req,res){
 });
 
 router.post('/upd',(req,res)=>{
-  const _data = req.body.data
+  const _data = req.body
   let query='';
   if (_data.tblname == 'rm'){
     query='call spsave_rm ? ? ? ? ? ? ? ? ? ? ? ?'

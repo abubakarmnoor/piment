@@ -57,7 +57,7 @@ $(document).ready(function() {
         // ajax - save/post data
         spinner_popup();
         $.ajax({
-            type:"GET", // must be POST 
+            type:"POST", // must be POST 
             url: "/apis/upd/", 
             dataType: "json",
             data: _data,
