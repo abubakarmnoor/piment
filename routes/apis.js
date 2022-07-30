@@ -100,7 +100,7 @@ router.post('/del',(req,res)=>{
   .then((db)=>{
     stablishedConnection()
     .then((db)=>{
-      db.query(` `+query+` `,[_data.rm_guid], (err, data_)=>{
+      db.query(` `+query+` `,[_data.id], (err, data_)=>{
         if (!data_){
           res.status(200).json({success:false, err})
         }else{
