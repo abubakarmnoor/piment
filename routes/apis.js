@@ -87,6 +87,7 @@ router.post('/upd',(req,res)=>{
 
 })
 router.post('/del',(req,res)=>{
+  const _data = req.body;
   let query='';
   if (_data.tblname == 'rm'){
     query='call spdelete_rm (?)'
