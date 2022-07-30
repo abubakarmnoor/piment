@@ -5,6 +5,11 @@ const router = express.Router();
 //fs = require('fs');
 const axios = require('axios');
 const {stablishedConnection,closeDbConnection}  =require('../config/conn');
+var cors = require('cors')
+var corsOptions = {
+  origin: 'http://localhost:8000',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
 router.use(function (req, res, next) {
 	res.set('Cache-Control', 'max-age=0');// 60s x 60m x24 x ? day
@@ -23,7 +28,7 @@ router.use(function (req, res, next) {
 // 	}
 // });
 
-router.get('/pull/:tblname/:id?',function(req,res){
+router.get('/pull/:tblname/:id?', cors(corsOptions), function(req,res){
 	// res.status(200).json({sucess:false});
   let _tbl = req.params.tblname;
   let _id = req.params.id;
@@ -45,7 +50,7 @@ router.get('/pull/:tblname/:id?',function(req,res){
       }
     })                         
   }).catch((error)=>{
-    console.log("Db not connected",err);
+    console.log("Db not connected",error);
   });   
 });
 
