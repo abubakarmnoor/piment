@@ -288,7 +288,7 @@ $(document).ready(function() {
 //default-edit
 function default_edit(data){
 
-    let _date = new Date(data[0].cost_last_updated)
+    // let _date = new Date(data[0].cost_last_updated)
     //_date.setDate(_date.getDate()+1)
     
     // $('#sp_rm_code').selectpicker('val',data[0].rm_code)
@@ -307,7 +307,7 @@ function default_edit(data){
     // $('#sp_creator').selectpicker('val',data[0].creator)
     // $("#ck_validated").prop('checked', data[0].validated)
     // $("#ck_out").prop('checked', data[0].out)
-    $("#ck_active").prop('checked', data[0].active)
+    $("#ck_active").prop('checked', data[0].rm_active)
 
     let user_login = data[0].rm_upd_by;
     get_date_default(data[0].rm_created_by,data[0].rm_created_date, user_login, null)
