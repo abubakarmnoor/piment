@@ -44,18 +44,39 @@ $(document).ready(function() {
         //$('#modal').modal('show');
         
         e.preventDefault();
-        const form = $(e.target);
-        const _data = convertFormToJSON(form);
+        // const form = $(e.target);
+        // const _data = convertFormToJSON(form);
         
-        _data.txt_created_date = new Date(_data.txt_created_date);
-        _data.txt_created_date = formatDate(_data.txt_created_date)
-        _data.txt_updated_date = new Date(_data.txt_updated_date);
-        _data.txt_updated_date = formatDate(_data.txt_updated_date)
-        _data.active = $("#ck_active").prop('checked')
-        _data.tblname = 'rm'
-        _data.cost = parseFloat(_data.cost).toFixed(2);
-        console.log(_data);
+        // _data.txt_created_date = new Date(_data.txt_created_date);
+        // _data.txt_created_date = formatDate(_data.txt_created_date)
+        // _data.txt_updated_date = new Date(_data.txt_updated_date);
+        // _data.txt_updated_date = formatDate(_data.txt_updated_date)
+        // _data.active = $("#ck_active").prop('checked')
+        // _data.tblname = 'rm'
+        // _data.cost = parseFloat(_data.cost).toFixed(2);
+        
 
+        _data = {
+            "active": true,
+            "box_size_h": "3",
+            "box_size_l": "2",
+            "box_size_w": "2",
+            "cost": "12.00",
+            "created_by": "test",
+            "created_date": "31-Jul-2022",
+            "id": "null",
+            "kayu": "Merbau",
+            "product_family": "Handicraft",
+            "rm_code": "test007",
+            "rm_desc": "test",
+            "tblname": "rm",
+            "txt_created_date": "NaN-NaN-NaN",
+            "txt_updated_date": "NaN-NaN-NaN",
+            "unit": "cm2",
+            "updated_by": "test",
+            "updated_date": "31-Jul-2022"
+        }
+        console.log(_data);
         // ajax - save/post data
         spinner_popup();
         $.ajax({
