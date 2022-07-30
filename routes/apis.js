@@ -7,7 +7,7 @@ const axios = require('axios');
 const {stablishedConnection,closeDbConnection}  =require('../config/conn');
 var cors = require('cors')
 var corsOptions = {
-  origin: 'http://localhost:8000',
+  origin: 'http://localhost:8001',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
