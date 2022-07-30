@@ -54,7 +54,7 @@ $(document).ready(function() {
         _data.active = $("#ck_active").prop('checked')
         _data.tblname = 'rm'
         _data.cost = parseFloat(_data.cost).toFixed(2);
-        console.log(JSON.stringify(_data));
+        console.log(_data);
 
         // ajax - save/post data
         spinner_popup();
@@ -62,9 +62,9 @@ $(document).ready(function() {
             type:"POST", // must be POST 
             url: "/apis/upd/", 
             dataType: "json",
-            data: JSON.stringify(_data),
+            data: _data,
             success: function(data) {
-                alert(data)
+                // alert(data)
                 // setTimeout(function () {
                     $('.modal').modal('hide');
                     Swal.fire({
