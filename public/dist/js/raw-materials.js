@@ -94,7 +94,7 @@ $(document).ready(function() {
     // Delete a record
     $('#dtTbl').on('click', 'td.editor-delete', function (e) {
         e.preventDefault();
-        let _data = table.row( this ).data().id;
+        let _data = table.row( this ).data().rm_guid;
         console.log(_data);
         //console.log( table.row( this ).data().id );
 
