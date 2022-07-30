@@ -55,9 +55,10 @@ $(document).ready(function() {
 
         // ajax - save/post data
         spinner_popup();
+        console.log(_data);
         $.ajax({
             type:"GET", // must be POST 
-            url: "/data/raw-materials.json", 
+            url: "/api/upd/", 
             dataType: "json",
             data: _data,
             success: function(data) {
@@ -65,7 +66,7 @@ $(document).ready(function() {
                     $('.modal').modal('hide');
                     Swal.fire({
                         icon: 'success',
-                        title: '',
+                        title: 'RM',
                         text: "Data Saved"
                     }).then(function(){
                         location.href='/raw-materials'
