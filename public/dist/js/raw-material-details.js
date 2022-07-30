@@ -72,7 +72,7 @@ $(document).ready(function() {
                         location.href='/raw-materials'
                     });
                     
-                // }, 3000);
+                // }, 3000) ;
                 
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
