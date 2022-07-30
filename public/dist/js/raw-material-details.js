@@ -60,7 +60,7 @@ $(document).ready(function() {
         $.ajax({
             type:"POST",
             url: "/apis/upd/", 
-            // dataType: "json",
+            dataType: "json",
             data: _data,
             success: function(data) {
                 // alert(data)

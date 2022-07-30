@@ -82,6 +82,7 @@ router.post('/upd',(req,res)=>{
     })
   }).catch((error)=>{
     console.log("Db not connected",err);
+    res.status(500).json({success:false, err})
   }); 
 
 })
