@@ -187,7 +187,7 @@ $(document).ready(function() {
     $("#cost").on('keyup', function(){
         
         let _amt = $(this).val().replace(/,/g,"");
-        $(this).val(numberWithCommas(_amt));
+        $(this).val(isnumber(numberWithCommas(_amt)));
         
     })
 
@@ -297,7 +297,7 @@ function default_edit(data){
     $("input[name=rm_code]").val(data[0].rm_code)
     $("input[name=rm_desc]").val(data[0].rm_desc)
     $('#sp_product_family').selectpicker('val',data[0].rm_prod_family)
-    $("input[name=cost").val(numberWithCommas(data[0].rm_cost),0)
+    $("input[name=cost").val(numberWithCommas(data[0].rm_cost))
     $('#sp_unit').selectpicker('val',data[0].rm_unit)
     $("input[name=box_size_l").val(data[0].rm_box_size_l)
     $("input[name=box_size_w").val(data[0].rm_box_size_w)

@@ -110,6 +110,9 @@ function isNumber(event) {
     var allowed = "";
     if (event.target.value.includes(".")) {
       allowed = "0123456789";
+    }
+    else if (event.target.value.includes(",")) {
+        allowed = "0123456789,";  
     } else {
       allowed = "0123456789.";
     }
