@@ -95,6 +95,7 @@ $(document).ready(function() {
     $('#dtTbl').on('click', 'td.editor-delete', function (e) {
         e.preventDefault();
         let _data = table.row( this ).data().rm_guid;
+        _data.tblname = 'rm'
         console.log(_data);
         //console.log( table.row( this ).data().id );
 
