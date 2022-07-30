@@ -46,6 +46,7 @@ $(document).ready(function() {
         e.preventDefault();
         const form = $(e.target);
         const _data = convertFormToJSON(form);
+        console.log(_data);
         _data.txt_created_date = new Date(_data.txt_created_date);
         _data.txt_created_date = formatDate(_data.txt_created_date)
         _data.txt_updated_date = new Date(_data.txt_updated_date);
@@ -55,14 +56,13 @@ $(document).ready(function() {
 
         // ajax - save/post data
         spinner_popup();
-        console.log(_data);
         $.ajax({
             type:"GET", // must be POST 
-            url: "/api/upd/", 
+            url: "/apis/upd/", 
             dataType: "json",
             data: _data,
             success: function(data) {
-                setTimeout(function () {
+                // setTimeout(function () {
                     $('.modal').modal('hide');
                     Swal.fire({
                         icon: 'success',
@@ -72,7 +72,7 @@ $(document).ready(function() {
                         location.href='/raw-materials'
                     });
                     
-                }, 3000);
+                // }, 3000);
                 
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
