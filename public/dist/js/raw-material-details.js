@@ -81,7 +81,7 @@ $(document).ready(function() {
         spinner_popup();
         $.ajax({
             type:"POST", // must be POST 
-            url: "/apis/upd/", 
+            url: "https://piment-admin.localpro100.com/apis/upd/", 
             dataType: "json",
             data: _data,
             success: function(data) {
