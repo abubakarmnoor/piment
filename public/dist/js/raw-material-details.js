@@ -57,18 +57,6 @@ $(document).ready(function() {
         console.log(_data);
         // ajax - save/post data
         spinner_popup();
-        // $.ajax({
-        //     type: "POST",
-        //     url: "/apis/upd/",
-        //     // The key needs to match your method's input parameter (case-sensitive).
-        //     data: JSON.stringify(_data),
-        //     contentType: "application/json; charset=utf-8",
-        //     dataType: "json",
-        //     success: function(data){alert(data);},
-        //     error: function(errMsg) {
-        //         alert(errMsg);
-        //     }
-        // });
         $.ajax({
             type:"POST",
             url: "/apis/upd/", 
@@ -266,7 +254,8 @@ $(document).ready(function() {
     // Delete a record
     $('#dtTbl_pop').on('click', 'td.editor-delete', function (e) {
         e.preventDefault();
-        //console.log( table.row( this ).data().id );
+        let _data = table.row( this ).data().id;
+        console.log(_data);
 
         Swal.fire({
             title: 'Are you sure?',
@@ -278,11 +267,42 @@ $(document).ready(function() {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-                )
+                // Swal.fire(
+                // 'Deleted!',
+                // 'Your file has been deleted.',
+                // 'success'
+                // )
+                spinner_popup();
+                $.ajax({
+                    type:"POST",
+                    url: "/apis/del/", 
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify(_data),
+                    success: function(data) {
+                        // setTimeout(function () {
+                            $('.modal').modal('hide');
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'RM',
+                                text: "Data Deleted"
+                            }).then(function(){
+                                location.href='/raw-materials'
+                            });
+                            
+                        // }, 3000) ;
+                        
+                    }, 
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        //alert(jqXHR.status);
+                        $('.modal').modal('hide');
+                        Swal.fire({
+                            title: "Error!",
+                            text: textStatus,
+                            icon: "error"
+                        });
+                    }
+                });
             }
         })
     } );

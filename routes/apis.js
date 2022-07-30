@@ -86,7 +86,35 @@ router.post('/upd',(req,res)=>{
   }); 
 
 })
+router.post('/del',(req,res)=>{
+  let query='';
+  if (_data.tblname == 'rm'){
+    query='call spdelete_rm (?)'
+    // query.concat(" ")
 
+  }
+  // res.status(200).json({success:true, query})
+
+  stablishedConnection()
+  .then((db)=>{
+    stablishedConnection()
+    .then((db)=>{
+      db.query(` `+query+` `,[_data.rm_guid], (err, data_)=>{
+        if (!data_){
+          res.status(200).json({success:false, err})
+        }else{
+          let data = data_;
+          res.status(200).json({success:true, data})
+          closeDbConnection(db)
+        }
+      })
+    })
+  }).catch((error)=>{
+    console.log("Db not connected",err);
+    res.status(500).json({success:false, err})
+  }); 
+
+})
 //functions
 
 module.exports = router;
