@@ -297,7 +297,7 @@ function default_edit(data){
     $("input[name=rm_code]").val(data[0].rm_code)
     $("input[name=rm_desc]").val(data[0].rm_desc)
     $('#sp_product_family').selectpicker('val',data[0].rm_prod_family)
-    $("input[name=cost").val(numberWithCommas(data[0].rm_cost))
+    $("input[name=cost").val(numberWithCommas(data[0].rm_cost),0)
     $('#sp_unit').selectpicker('val',data[0].rm_unit)
     $("input[name=box_size_l").val(data[0].rm_box_size_l)
     $("input[name=box_size_w").val(data[0].rm_box_size_w)
@@ -307,14 +307,14 @@ function default_edit(data){
     // $('#sp_creator').selectpicker('val',data[0].creator)
     // $("#ck_validated").prop('checked', data[0].validated)
     // $("#ck_out").prop('checked', data[0].out)
-    // $("#ck_active").prop('checked', data[0].active)
+    $("#ck_active").prop('checked', data[0].active)
 
     let user_login = data[0].rm_upd_by;
     get_date_default(data[0].rm_created_by,data[0].rm_created_date, user_login, null)
 }
 //get details
 function get_details(id){
-    console.log(id);
+    // console.log(id);
     //ajax - get details
     spinner_popup();
     //ajax

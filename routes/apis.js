@@ -5,14 +5,13 @@ const router = express.Router();
 //fs = require('fs');
 const axios = require('axios');
 const {stablishedConnection,closeDbConnection}  =require('../config/conn');
-var cors = require('cors')
-var corsOptions = {
-  origin: 'http://localhost:8001',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
-
+// var cors = require('cors')
+// var corsOptions = {
+//   origin: 'http://localhost:8001',
+//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+// }
 router.use(function (req, res, next) {
-	res.set('Cache-Control', 'max-age=0');// 60s x 60m x24 x ? day
+  res.set('Cache-Control', 'max-age=0');// 60s x 60m x24 x ? day
 	next()
 })
 //API - DB
@@ -28,11 +27,12 @@ router.use(function (req, res, next) {
 // 	}
 // });
 
-router.get('/pull/:tblname/:id?', cors(corsOptions), function(req,res){
+router.get('/pull/:tblname/:id?', function(req,res){
 	// res.status(200).json({sucess:false});
   let _tbl = req.params.tblname;
   let _id = req.params.id;
-  console.log(_id);
+  // console.log(_id);
+  res.status(200).json({success:false,_tbl});
   if (_tbl == 'rm'){
     _tbl = 'tbl_rm'
   }
