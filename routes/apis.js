@@ -4,6 +4,7 @@ const router = express.Router();
 // const tsqlPull = require('../tsql/pull');
 //fs = require('fs');
 const axios = require('axios');
+router.use(express.json());
 const {stablishedConnection,closeDbConnection}  =require('../config/conn');
 // var cors = require('cors')
 // var corsOptions = {
@@ -55,7 +56,10 @@ router.get('/pull/:tblname/:id?', function(req,res){
 });
 
 router.post('/upd',(req,res)=>{
-  const _data = req.body.data
+  const _data = req.body;
+  // console.log(_data);
+  // res.status(200).json({success:true, _data})
+  
   let query='';
   if (_data.tblname == 'rm'){
     query='call spsave_rm ? ? ? ? ? ? ? ? ? ? ? ?'
