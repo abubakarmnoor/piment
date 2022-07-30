@@ -74,7 +74,7 @@ router.post('/upd',(req,res)=>{
         if (!data_){
           res.status(200).json({success:false, err})
         }else{
-          let data = data_[0]
+          let data = data_;
           res.status(200).json({success:true, data})
           closeDbConnection(db)
         }
