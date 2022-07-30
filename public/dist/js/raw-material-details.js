@@ -63,6 +63,7 @@ $(document).ready(function() {
             dataType: "json",
             data: _data,
             success: function(data) {
+                alert(data)
                 // setTimeout(function () {
                     $('.modal').modal('hide');
                     Swal.fire({

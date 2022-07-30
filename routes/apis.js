@@ -62,8 +62,8 @@ router.post('/upd',(req,res)=>{
   
   let query='';
   if (_data.tblname == 'rm'){
-    query='call spsave_rm ? ? ? ? ? ? ? ? ? ? ? ?'
-    query.concat(" ")
+    query='call spsave_rm (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+    // query.concat(" ")
 
   }
   // res.status(200).json({success:true, query})
@@ -73,6 +73,10 @@ router.post('/upd',(req,res)=>{
     stablishedConnection()
     .then((db)=>{
       db.query(` `+query+` `,[_data.rm_code, _data.rm_desc, _data.product_family, _data.cost, _data.unit, _data.box_size_l, _data.box_size_w, _data.box_size_h, _data.kayu, _data.active, _data.created_by, _data.updated_by], (err, data_)=>{
+      // db.query("insert into tbl_rm " +
+			// "(`rm_code`, `rm_desc`,`rm_prod_family`, `rm_cost`, `rm_unit`, `rm_box_size_l`, `rm_box_size_w`, `rm_box_size_h`, `rm_kayu`, `rm_active`, `rm_created_by`, `rm_upd_by`)values " +
+			// "(; "
+      // , null, (err, data_)=>{
         if (!data_){
           res.status(200).json({success:false, err})
         }else{
