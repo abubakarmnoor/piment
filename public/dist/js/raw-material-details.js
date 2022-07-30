@@ -187,7 +187,7 @@ $(document).ready(function() {
     $("#cost").on('keyup', function(){
         
         let _amt = $(this).val().replace(/,/g,"");
-        $(this).val(isnumber(numberWithCommas(_amt)));
+        $(this).val(numberWithCommas(_amt));
         
     })
 
@@ -398,3 +398,11 @@ function load_data_dt(_url){
         ]
     });
 }
+$(".numeric").on('keypress', function(e){
+        
+    isNumber(e)
+    let _amt = $(this).val().replace(/,/g,"");
+    // console.log(_amt);
+    $(this).val(numberWithCommas(_amt));
+    
+})
