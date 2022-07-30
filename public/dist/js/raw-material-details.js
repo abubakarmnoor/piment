@@ -52,6 +52,7 @@ $(document).ready(function() {
         _data.txt_updated_date = new Date(_data.txt_updated_date);
         _data.txt_updated_date = formatDate(_data.txt_updated_date)
         _data.active = $("#ck_active").prop('checked')
+        _data.tblname = 'rm'
         //console.log(json);
 
         // ajax - save/post data
