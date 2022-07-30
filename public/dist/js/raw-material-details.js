@@ -57,48 +57,48 @@ $(document).ready(function() {
         console.log(_data);
         // ajax - save/post data
         spinner_popup();
-        $.ajax({
-            type: "POST",
-            url: "/apis/upd/",
-            // The key needs to match your method's input parameter (case-sensitive).
-            data: JSON.stringify(_data),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function(data){alert(data);},
-            error: function(errMsg) {
-                alert(errMsg);
-            }
-        });
         // $.ajax({
-        //     type:"POST",
-        //     url: "/apis/upd/", 
+        //     type: "POST",
+        //     url: "/apis/upd/",
+        //     // The key needs to match your method's input parameter (case-sensitive).
+        //     data: JSON.stringify(_data),
+        //     contentType: "application/json; charset=utf-8",
         //     dataType: "json",
-        //     data: _data,
-        //     success: function(data) {
-        //         // alert(data)
-        //         // setTimeout(function () {
-        //             $('.modal').modal('hide');
-        //             Swal.fire({
-        //                 icon: 'success',
-        //                 title: 'RM',
-        //                 text: "Data Saved"
-        //             }).then(function(){
-        //                 location.href='/raw-materials'
-        //             });
-                    
-        //         // }, 3000) ;
-                
-        //     }, 
-        //     error: function(jqXHR, textStatus, errorThrown) {
-        //         //alert(jqXHR.status);
-        //         $('.modal').modal('hide');
-        //         Swal.fire({
-        //             title: "Error!",
-        //             text: textStatus,
-        //             icon: "error"
-        //         });
+        //     success: function(data){alert(data);},
+        //     error: function(errMsg) {
+        //         alert(errMsg);
         //     }
         // });
+        $.ajax({
+            type:"POST",
+            url: "/apis/upd/", 
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(_data),
+            success: function(data) {
+                // setTimeout(function () {
+                    $('.modal').modal('hide');
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'RM',
+                        text: "Data Saved"
+                    }).then(function(){
+                        location.href='/raw-materials'
+                    });
+                    
+                // }, 3000) ;
+                
+            }, 
+            error: function(jqXHR, textStatus, errorThrown) {
+                //alert(jqXHR.status);
+                $('.modal').modal('hide');
+                Swal.fire({
+                    title: "Error!",
+                    text: textStatus,
+                    icon: "error"
+                });
+            }
+        });
 
     });
 
