@@ -94,6 +94,8 @@ $(document).ready(function() {
     // Delete a record
     $('#dtTbl').on('click', 'td.editor-delete', function (e) {
         e.preventDefault();
+        let _data = table.row( this ).data().id;
+        console.log(_data);
         //console.log( table.row( this ).data().id );
 
         Swal.fire({
@@ -106,11 +108,42 @@ $(document).ready(function() {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-                )
+                // Swal.fire(
+                // 'Deleted!',
+                // 'Your file has been deleted.',
+                // 'success'
+                // )
+                spinner_popup();
+                $.ajax({
+                    type:"POST",
+                    url: "/apis/del/", 
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify(_data),
+                    success: function(data) {
+                        // setTimeout(function () {
+                            $('.modal').modal('hide');
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'RM',
+                                text: "Data Deleted"
+                            }).then(function(){
+                                location.href='/raw-materials'
+                            });
+                            
+                        // }, 3000) ;
+                        
+                    }, 
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        //alert(jqXHR.status);
+                        $('.modal').modal('hide');
+                        Swal.fire({
+                            title: "Error!",
+                            text: textStatus,
+                            icon: "error"
+                        });
+                    }
+                });
             }
         })
     } );
