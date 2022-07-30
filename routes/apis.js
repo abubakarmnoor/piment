@@ -57,20 +57,22 @@ router.get('/pull/:tblname/:id?', function(req,res){
 
 router.post('/upd',(req,res)=>{
   const _data = req.body;
-  // console.log(_data);
-  // res.status(200).json({success:true, _data})
+  console.log(_data);
+  
   
   let query='';
   if (_data.tblname == 'rm'){
     query='call spsave_rm ? ? ? ? ? ? ? ? ? ? ? ?'
+    query.concat(" ")
 
   }
+  // res.status(200).json({success:true, query})
 
   stablishedConnection()
   .then((db)=>{
     stablishedConnection()
     .then((db)=>{
-      db.query(` `+query+` `,[_data.rm_codex, _data.rm_desc, _data.rm_prod_family, _data.rm_cost, _data.rm_unit, _data.rm_box_size_l, _data.rm_box_size_w, _data.rm_box_size_h, _data.rm_kayu, _data.rm_active, _data.rm_created_by, _data.rm_upd_by], (err, data_)=>{
+      db.query(` `+query+` `,[_data.rm_code, _data.rm_desc, _data.product_family, _data.cost, _data.unit, _data.box_size_l, _data.box_size_w, _data.box_size_h, _data.kayu, _data.active, _data.created_by, _data.updated_by], (err, data_)=>{
         if (!data_){
           res.status(200).json({success:false, err})
         }else{
