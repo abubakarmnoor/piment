@@ -32,7 +32,7 @@ router.get('/pull/:tblname/:id?', function(req,res){
   let _tbl = req.params.tblname;
   let _id = req.params.id;
   // console.log(_id);
-  res.status(200).json({success:false,_tbl});
+  // res.status(200).json({success:false,_tbl});
   if (_tbl == 'rm'){
     _tbl = 'tbl_rm'
   }
