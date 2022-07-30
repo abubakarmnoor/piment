@@ -46,7 +46,7 @@ $(document).ready(function() {
         e.preventDefault();
         const form = $(e.target);
         const _data = convertFormToJSON(form);
-        console.log(_data);
+        
         _data.txt_created_date = new Date(_data.txt_created_date);
         _data.txt_created_date = formatDate(_data.txt_created_date)
         _data.txt_updated_date = new Date(_data.txt_updated_date);
@@ -54,7 +54,7 @@ $(document).ready(function() {
         _data.active = $("#ck_active").prop('checked')
         _data.tblname = 'rm'
         _data.cost = parseFloat(_data.cost).toFixed(2);
-        //console.log(json);
+        console.log(JSON.stringify(_data));
 
         // ajax - save/post data
         spinner_popup();
@@ -62,7 +62,7 @@ $(document).ready(function() {
             type:"POST", // must be POST 
             url: "/apis/upd/", 
             dataType: "json",
-            data: _data,
+            data: JSON.stringify(_data),
             success: function(data) {
                 alert(data)
                 // setTimeout(function () {
