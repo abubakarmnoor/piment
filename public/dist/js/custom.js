@@ -107,9 +107,6 @@ function numberWithCommas(x, dec) {
 
 }
 
-function numberWithCommas_(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
 function isNumber(event) {
     var allowed = "";
     if (event.target.value.includes(".")) {
