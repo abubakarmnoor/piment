@@ -102,16 +102,20 @@ $(function() {
 
 //number
 function numberWithCommas(x, dec) {
-    const _val = x.toLocaleString();//x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+    const _val = x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
     return (!dec, _val, _val);
 
+}
+
+function numberWithCommas_(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 function isNumber(event) {
     var allowed = "";
     if (event.target.value.includes(".")) {
       allowed = "0123456789";
     }
-    else if (event.target.value.includes(",")) {
+    else if (event.target.value.includes("")) {
         allowed = "0123456789,";  
     } else {
       allowed = "0123456789.";

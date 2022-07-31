@@ -304,7 +304,7 @@ function default_edit(data){
     $("input[name=rm_code]").val(data[0].rm_code)
     $("input[name=rm_desc]").val(data[0].rm_desc)
     $('#product_family').selectpicker('val',data[0].rm_prod_family)
-    $("input[name=cost").val(numberWithCommas(data[0].rm_cost))
+    $("input[name=cost").val(numberWithCommas_(data[0].rm_cost))
     $('#unit').selectpicker('val',data[0].rm_unit)
     $("input[name=box_size_l").val(data[0].rm_box_size_l)
     $("input[name=box_size_w").val(data[0].rm_box_size_w)
