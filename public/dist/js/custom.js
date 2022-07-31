@@ -102,7 +102,7 @@ $(function() {
 
 //number
 function numberWithCommas(x, dec) {
-    const _val = x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+    const _val = x.toString().replace(/\B(?<!\.\d)(?=(\d{3})+(?!\d))/g, ",");
     return (!dec, _val, _val);
 
 }
