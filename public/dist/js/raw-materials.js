@@ -55,7 +55,7 @@ $(document).ready(function() {
             },
             { "data": "rm_desc" },
             { "data": "rm_prod_family" },
-            { "data": "rm_cost", render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "rm_cost", render: $.fn.dataTable.render.number(',', '.', 0, '')},
             { "data": "rm_unit" },
             { "data": "rm_box_size_l" },
             { "data": "rm_box_size_w" },
