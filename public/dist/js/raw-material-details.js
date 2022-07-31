@@ -413,3 +413,11 @@ $(".numeric").on('keypress', function(e){
     $(this).val(numberWithCommas(_amt));
     
 })
+$(".numeric").on('focus', function(e){
+        
+    isNumber(e)
+    let _amt = $(this).val().replace(/,/g,"");
+    // console.log(_amt);
+    $(this).val(_amt);
+    
+})
