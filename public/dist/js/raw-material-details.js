@@ -53,7 +53,8 @@ $(document).ready(function() {
         // _data.txt_updated_date = formatDate(_data.txt_updated_date)
         _data.active = $("#ck_active").prop('checked')
         _data.tblname = 'rm'
-        _data.cost = parseFloat(_data.cost);//.toFixed(2);
+        _data.cost = (_data.cost).replace(/\,/g,'');;//.toFixed(2);
+        _data.cost = parseFloat(_data.cost).toFixed(2);
         _data.rm_code = $("input[name=rm_code]").val()
         console.log(_data);
         // ajax - save/post data
