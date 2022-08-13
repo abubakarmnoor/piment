@@ -66,22 +66,6 @@
                                 </select>
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="h">H</label>
-                                <input type="text" class="form-control" name="h" placeholder="H" value="" required>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-4 mb-3">
-                                <label for="created_date">Created Date</label>
-                                <input type="text" class="form-control" name="created_date" id="created_date" placeholder="Created Date" autocomplete="off" required>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="receipt_last_updated">Receipt Last Updated</label>
-                                <input type="text" class="form-control" id="receipt_last_updated" name="receipt_last_updated" placeholder="Receipt Last Updated" autocomplete="off" required >
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-4 mb-3">
                                 <label for="sp_origin">Origin</label>
                                 <select class="form-control selectpicker" id="sp_origin" name="origin" data-live-search="true">
                                     <option value="-">-</option>
@@ -90,7 +74,46 @@
                                     {{/each}}
                                 </select>
                             </div>
+                            {{!-- <div class="col-md-4 mb-3">
+                                <label for="h">H</label>
+                                <input type="text" class="form-control" name="h" placeholder="H" value="" required>
+                            </div> --}}
+                        </div>
+                        {{!-- <div class="form-group row">
                             <div class="col-md-4 mb-3">
+                                <label for="created_date">Created Date</label>
+                                <input type="text" class="form-control" name="created_date" id="created_date" placeholder="Created Date" autocomplete="off" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="receipt_last_updated">Receipt Last Updated</label>
+                                <input type="text" class="form-control" id="receipt_last_updated" name="receipt_last_updated" placeholder="Receipt Last Updated" autocomplete="off" required >
+                            </div>
+                        </div> --}}
+                        <div class="form-group row">
+                            <div class="col-md-4 mb-3" style="text-align: center;">
+                                <label for="box_size_w">Box Size</label>
+                                <div class="form-group row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="box_size_l" class="col-sm-1 col-form-label col-form-label-sm" style="padding-left: 0px;">L</label>
+                                        <div class="col-md-2">
+                                            <input type="text" class="form-control" name="box_size_l" placeholder="L" style="width: 71px;" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="box_size_w" class="col-sm-1 col-form-label col-form-label-sm" style="padding-left: 0px;">W</label>
+                                        <div class="col-md-2">
+                                            <input type="text" class="form-control" name="box_size_w" placeholder="W" style="width: 71px;" required>
+                                        </div>    
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="box_size_h" class="col-sm-1 col-form-label col-form-label-sm" style="padding-left: 0px;">H</label>
+                                        <div class="col-md-2">
+                                            <input type="text" class="form-control" name="box_size_h" placeholder="H" style="width: 71px;" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             {{!-- <div class="col-md-4 mb-3">
                                 <label for="sp_creator">Creator</label>
                                 <select class="form-control selectpicker" id="sp_creator" name="creator" data-live-search="true">
                                     <option value="-">-</option>
@@ -98,7 +121,7 @@
                                         <option value="{{id}}">{{pop_desc}}</option>
                                     {{/each}}
                                 </select>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="form-group row">
                             <div class="col-md-4 mb-3 form-check form-check-inline">
@@ -107,9 +130,9 @@
                                 <label class="form-check-label" for="ck_validated">
                                     Validated
                                 </label>
-                                <input class="form-check-input" type="checkbox" value="" id="ck_out" name="out">
-                                <label class="form-check-label" for="ck_out">
-                                    Out
+                                <input class="form-check-input" type="checkbox" value="" id="ck_active" name="active">
+                                <label class="form-check-label" for="ck_active">
+                                    Active
                                 </label>
                             </div>
                         </div>
@@ -151,7 +174,7 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="ws_markup">Markup</label>
-                                    <input type="text" class="form-control number-seperator" id ="ws_markup" name="ws_markup" placeholder="Markup" autocomplete="off" required>
+                                    <input type="text" class="numeric form-control number-seperator" id ="ws_markup" name="ws_markup" placeholder="Markup" autocomplete="off" required>
                                 </div>
                             </div>
                             <div class="row" style="text-align: center;">
@@ -170,7 +193,7 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="b_markup">Markup</label>
-                                    <input type="text" class="form-control number-seperator" id ="b_markup" name="b_markup" placeholder="Markup" autocomplete="off" required>
+                                    <input type="text" class="numeric form-control number-seperator" id ="b_markup" name="b_markup" placeholder="Markup" autocomplete="off" required>
                                 </div>
                             </div>
                             <div class="row" style="text-align: center;">
@@ -189,7 +212,7 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="r_markup">Markup</label>
-                                    <input type="text" class="form-control number-seperator" id ="r_markup" name="r_markup" placeholder="Markup" autocomplete="off" required>
+                                    <input type="text" class="numeric form-control number-seperator" id ="r_markup" name="r_markup" placeholder="Markup" autocomplete="off" required>
                                 </div>
                             </div>
                             

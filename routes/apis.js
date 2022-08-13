@@ -36,6 +36,8 @@ router.get('/pull/:tblname/:id?', function(req,res){
   // res.status(200).json({success:false,_tbl});
   if (_tbl == 'rm'){
     _tbl = 'tbl_rm'
+  }else if (_tbl='fp'){
+    _tbl = 'tbl_fp'
   }
   stablishedConnection()
   .then((db)=>{
@@ -63,6 +65,10 @@ router.post('/upd',(req,res)=>{
     query='call spsave_rm (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
     // query.concat(" ")
 
+  }else if (_data.tblname == 'fp'){
+    query='call spsave_fp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )'
+    // query.concat(" ")
+
   }
   // res.status(200).json({success:true, query})
 
@@ -70,15 +76,27 @@ router.post('/upd',(req,res)=>{
   .then((db)=>{
     stablishedConnection()
     .then((db)=>{
-      db.query(` `+query+` `,[_data.rm_guid, _data.rm_code, _data.rm_desc, _data.product_family, _data.cost, _data.unit, _data.box_size_l, _data.box_size_w, _data.box_size_h, _data.kayu, _data.active, _data.created_by, _data.updated_by], (err, data_)=>{
-        if (!data_){
-          res.status(200).json({success:false, err})
-        }else{
-          let data = data_;
-          res.status(200).json({success:true, data})
-          closeDbConnection(db)
-        }
-      })
+      if (_data.tblname == 'rm'){
+        db.query(` `+query+` `,[_data.rm_guid, _data.rm_code, _data.rm_desc, _data.product_family, _data.cost, _data.unit, _data.box_size_l, _data.box_size_w, _data.box_size_h, _data.kayu, _data.active, _data.created_by, _data.updated_by], (err, data_)=>{
+          if (!data_){
+            res.status(200).json({success:false, err})
+          }else{
+            let data = data_;
+            res.status(200).json({success:true, data})
+            closeDbConnection(db)
+          }
+        })
+      }else if (_data.tblname == 'fp'){
+        db.query(` `+query+` `,[_data.rm_guid, _data.rm_code, _data.rm_desc, _data.product_family, _data.cost, _data.unit, _data.box_size_l, _data.box_size_w, _data.box_size_h, _data.kayu, _data.active, _data.created_by, _data.updated_by], (err, data_)=>{
+          if (!data_){
+            res.status(200).json({success:false, err})
+          }else{
+            let data = data_;
+            res.status(200).json({success:true, data})
+            closeDbConnection(db)
+          }
+        })
+      }
     })
   }).catch((error)=>{
     console.log("Db not connected",err);
@@ -93,6 +111,8 @@ router.post('/del',(req,res)=>{
     query='call spdelete_rm (?)'
     // query.concat(" ")
 
+  }else if (_data.tblname == 'rm'){
+    query='call spdelete_fp (?)'
   }
   // res.status(200).json({success:true, query})
 
