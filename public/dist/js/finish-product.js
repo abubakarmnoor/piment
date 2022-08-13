@@ -107,7 +107,7 @@ $(document).ready(function() {
         // console.log(sdate_);
         // console.log(edate_);
         //var table = $('#registrationTable').DataTable();
-        table.ajax.url("/data/finish-product.json?sdate="+sdate_+"?edate="+edate_, null, false).load();
+        table.ajax.url("/apis/pull/fp", null, false).load();
     })
 
 //end doc ready
