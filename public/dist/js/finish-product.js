@@ -10,7 +10,7 @@ $(document).ready(function() {
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/data/finish-product.json?sdate="+sdate_+"?edate="+edate_,
+        "ajax": "/apis/pull/fp",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -32,21 +32,21 @@ $(document).ready(function() {
                 defaultContent: '<i class="fa fa-trash"/>',
                 orderable: false
             },
-            { "data": "id" },
+            { "data": "fp_guid" },
             {
                 data: "fp_desc",
                 className: "dt-center editor-details",
                 orderable: true
             },
-            { "data": "product_family" },
-            { "data": "h" },
-            { "data": "created_date" },
-            { "data": "receipt_last_updated" },
-            { "data": "origin" },
-            { "data": "creator" },
-            { "data": "validated" },
-            { "data": "out" },
-            { "data": "active" }
+            { "data": "fp_prod_family" },
+            { "data": "fp_box_size_l" },
+            { "data": "fp_box_size_w" },
+            { "data": "fp_box_size_h" },
+            { "data": "fp_origin" },
+            { "data": "fp_validated" },
+            { "data": "fp_active" },
+            { "data": "fp_upd_date" },
+            { "data": "fp_upd_by" }
         ]
     });
     
@@ -60,7 +60,7 @@ $(document).ready(function() {
     $('#dtTbl').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
-        const _id = table.row( this ).data().id;
+        const _id = table.row( this ).data().fp_guid;
         location.href = "/finish-product-details/"+_id+"/ZWlk";
     } );
     
@@ -68,7 +68,7 @@ $(document).ready(function() {
     $('#dtTbl').on('click', 'td.editor-details', function (e) {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
-        const _id = table.row( this ).data().id;
+        const _id = table.row( this ).data().fp_guid;
         location.href = "/finish-product-details/"+_id+"/ZGlk";
         
     } );
