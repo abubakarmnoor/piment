@@ -48,12 +48,32 @@ $(document).ready(function() {
         e.preventDefault();
         const form = $(e.target);
         const _data = convertFormToJSON(form);
-        _data.txt_created_date = new Date(_data.txt_created_date);
-        _data.txt_updated_date = new Date(_data.txt_updated_date);
-        _data.txt_updated_by = formatDate(_data.txt_updated_by)
+        // _data.txt_created_date = new Date(_data.txt_created_date);
+        // _data.txt_updated_date = new Date(_data.txt_updated_date);
+        // _data.txt_updated_by = formatDate(_data.txt_updated_by)
         _data.active = $("#ck_active").prop('checked')
         _data.validated = $("#ck_validated").prop('checked')
-        console.log(json);
+        _data.box_size_h = (_data.box_size_h).replace(/\,/g,'');
+        _data.box_size_l = (_data.box_size_l).replace(/\,/g,'');
+        _data.box_size_w = (_data.box_size_w).replace(/\,/g,'');
+
+        _data.extra_cost = (_data.extra_cost).replace(/\,/g,'');
+        _data.labour = (_data.labour).replace(/\,/g,'');
+        _data.cost = (_data.cost).replace(/\,/g,'');
+
+        _data.ws_sale = (_data.ws_sale).replace(/\,/g,'');
+        _data.ws_profit = (_data.ws_profit).replace(/\,/g,'');
+        _data.ws_markup = (_data.ws_markup).replace(/\,/g,'');
+
+        _data.b_sale = (_data.b_sale).replace(/\,/g,'');
+        _data.b_profit = (_data.b_profit).replace(/\,/g,'');
+        _data.b_markup = (_data.b_markup).replace(/\,/g,'');
+        
+        _data.r_sale = (_data.r_sale).replace(/\,/g,'');
+        _data.r_profit = (_data.r_profit).replace(/\,/g,'');
+        _data.r_markup = (_data.r_markup).replace(/\,/g,'');
+
+        console.log(_data);
         return;
 
         // ajax - save/post data
@@ -192,12 +212,26 @@ $(document).ready(function() {
     } );
 
     //number
+    $(".numeric").on('keyup', function(){
+        
+        let _amt = $(this).val().replace(/,/g,"");
+        $(this).val(numberWithCommas(_amt));
+        
+    })
     $(".numeric").on('keypress', function(e){
         
         isNumber(e)
         let _amt = $(this).val().replace(/,/g,"");
         // console.log(_amt);
         $(this).val(numberWithCommas(_amt));
+        
+    })
+    $(".numeric").on('focus', function(e){
+            
+        isNumber(e)
+        let _amt = $(this).val().replace(/,/g,"");
+        // console.log(_amt);
+        $(this).val(_amt);
         
     })
     
@@ -299,10 +333,10 @@ $(document).ready(function() {
     });
 
     //number
-    $("#cost, #b_sale, #b_profit, #b_markup, #r_sale, #r_profit, #r_markup").on('keyup', function(){
-        let _amt = $(this).val().replace(/,/g,"");
-        $(this).val(numberWithCommas(_amt));
-    })
+    // $("#cost, #b_sale, #b_profit, #b_markup, #r_sale, #r_profit, #r_markup").on('keyup', function(){
+    //     let _amt = $(this).val().replace(/,/g,"");
+    //     $(this).val(numberWithCommas(_amt));
+    // })
 
 //end  doc ready
 });
