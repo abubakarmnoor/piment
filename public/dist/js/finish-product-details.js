@@ -51,6 +51,7 @@ $(document).ready(function() {
         // _data.txt_created_date = new Date(_data.txt_created_date);
         // _data.txt_updated_date = new Date(_data.txt_updated_date);
         // _data.txt_updated_by = formatDate(_data.txt_updated_by)
+        _data.fp_created_by="test";
         _data.fp_active = $("#ck_active").prop('checked')
         _data.fp_validated = $("#ck_validated").prop('checked')
         _data.fp_box_size_h = (_data.fp_box_size_h).replace(/\,/g,'');
