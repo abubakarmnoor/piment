@@ -58,7 +58,7 @@
                         <div class="form-group row">
                             <div class="col-md-4 mb-3">
                                 <label for="product_family">Product Family</label>
-                                <select class="form-control selectpicker" id="sp_product_family" name="product_family" data-live-search="true">
+                                <select class="form-control selectpicker" id="sp_product_family" name="fp_prod_family" data-live-search="true">
                                     <option value="-">-</option>
                                     {{#each __data_pop_product_family}}
                                         <option value="{{id}}">{{pop_desc}}</option>
@@ -67,7 +67,7 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="sp_origin">Origin</label>
-                                <select class="form-control selectpicker" id="sp_origin" name="origin" data-live-search="true">
+                                <select class="form-control selectpicker" id="sp_origin" name="fp_origin" data-live-search="true">
                                     <option value="-">-</option>
                                     {{#each __data_pop_origin}}
                                         <option value="{{id}}">{{pop_desc}}</option>
@@ -96,19 +96,19 @@
                                     <div class="col-md-4 mb-3">
                                         <label for="box_size_l" class="col-sm-1 col-form-label col-form-label-sm" style="padding-left: 0px;">L</label>
                                         <div class="col-md-2">
-                                            <input type="text" class="form-control numeric" name="box_size_l" placeholder="L" style="width: 71px;" required autocomplete="off">
+                                            <input type="text" class="form-control numeric" name="fp_box_size_l" placeholder="L" style="width: 71px;" required autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="box_size_w" class="col-sm-1 col-form-label col-form-label-sm" style="padding-left: 0px;">W</label>
                                         <div class="col-md-2">
-                                            <input type="text" class="form-control numeric" name="box_size_w" placeholder="W" style="width: 71px;" required autocomplete="off">
+                                            <input type="text" class="form-control numeric" name="fp_box_size_w" placeholder="W" style="width: 71px;" required autocomplete="off">
                                         </div>    
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="box_size_h" class="col-sm-1 col-form-label col-form-label-sm" style="padding-left: 0px;">H</label>
                                         <div class="col-md-2">
-                                            <input type="text" class="form-control numeric" name="box_size_h" placeholder="H" style="width: 71px;" required autocomplete="off">
+                                            <input type="text" class="form-control numeric" name="fp_box_size_h" placeholder="H" style="width: 71px;" required autocomplete="off">
                                         </div>
                                     </div>
                                 </div>
@@ -126,11 +126,11 @@
                         <div class="form-group row">
                             <div class="col-md-4 mb-3 form-check form-check-inline">
                                 <div class="row">&nbsp;</div>
-                                <input class="form-check-input" type="checkbox" value="" id="ck_validated" name="validated">
+                                <input class="form-check-input" type="checkbox" value="" id="ck_validated" name="fp_validated">
                                 <label class="form-check-label" for="ck_validated">
                                     Validated
                                 </label>
-                                <input class="form-check-input" type="checkbox" value="" id="ck_active" name="active">
+                                <input class="form-check-input" type="checkbox" value="" id="ck_active" name="fp_active">
                                 <label class="form-check-label" for="ck_active">
                                     Active
                                 </label>
@@ -146,15 +146,15 @@
                             <div class="form-group row">
                                 <div class="col-md-4 mb-3">
                                     <label for="labour">Extra Cost</label>
-                                    <input type="text" class="form-control number-seperator numeric" id ="extra_cost" name="extra_cost" placeholder="Extra Cost" value="" autocomplete="off" required>
+                                    <input type="text" class="form-control number-seperator numeric" id ="extra_cost" name="fp_sc_extra_cost" placeholder="Extra Cost" value="" autocomplete="off" required>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="labour">Labour</label>
-                                    <input type="text" class="form-control number-seperator numeric" id ="labour" name="labour" placeholder="Labour" autocomplete="off" required>
+                                    <input type="text" class="form-control number-seperator numeric" id ="labour" name="fp_sc_extra_labour" placeholder="Labour" autocomplete="off" required>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="cost">Cost</label>
-                                    <input type="text" class="numeric form-control number-seperator" id ="cost" name="cost" placeholder="Cost" autocomplete="off" required>
+                                    <input type="text" class="numeric form-control number-seperator" id ="cost" name="fp_sc_cost" placeholder="Cost" autocomplete="off" required>
                                 </div>
                                 
                             </div>
@@ -166,15 +166,15 @@
                             <div class="form-group row">
                                 <div class="col-md-4 mb-3">
                                     <label for="ws_sale">Sale</label>
-                                    <input type="text" class="numeric form-control number-seperator" id ="ws_sale" name="ws_sale" placeholder="Sale" autocomplete="off" required>
+                                    <input type="text" class="numeric form-control number-seperator" id ="ws_sale" name="fp_sc_wholesale_sale" placeholder="Sale" autocomplete="off" required>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="ws_profit">Profit</label>
-                                    <input type="text" class="numeric form-control number-seperator" id ="ws_profit" name="ws_profit" placeholder="Profit" autocomplete="off" required>
+                                    <input type="text" class="numeric form-control number-seperator" id ="ws_profit" name="fp_sc_wholesale_profit" placeholder="Profit" autocomplete="off" required>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="ws_markup">Markup</label>
-                                    <input type="text" class="numeric form-control number-seperator" id ="ws_markup" name="ws_markup" placeholder="Markup" autocomplete="off" required>
+                                    <input type="text" class="numeric form-control number-seperator" id ="ws_markup" name="fp_sc_wholesale_markup" placeholder="Markup" autocomplete="off" required>
                                 </div>
                             </div>
                             <div class="row" style="text-align: center;">
@@ -185,15 +185,15 @@
                             <div class="form-group row">
                                 <div class="col-md-4 mb-3">
                                     <label for="b_sale">Sale</label>
-                                    <input type="text" class="numeric form-control number-seperator" id ="b_sale" name="b_sale" placeholder="Sale" autocomplete="off" required>
+                                    <input type="text" class="numeric form-control number-seperator" id ="b_sale" name="fp_sc_business_sale" placeholder="Sale" autocomplete="off" required>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="b_profit">Profit</label>
-                                    <input type="text" class="numeric form-control number-seperator" id ="b_profit" name="b_profit" placeholder="Profit" autocomplete="off" required>
+                                    <input type="text" class="numeric form-control number-seperator" id ="b_profit" name="fp_sc_business_profit" placeholder="Profit" autocomplete="off" required>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="b_markup">Markup</label>
-                                    <input type="text" class="numeric form-control number-seperator" id ="b_markup" name="b_markup" placeholder="Markup" autocomplete="off" required>
+                                    <input type="text" class="numeric form-control number-seperator" id ="b_markup" name="fp_sc_business_markup" placeholder="Markup" autocomplete="off" required>
                                 </div>
                             </div>
                             <div class="row" style="text-align: center;">
@@ -204,15 +204,15 @@
                             <div class="form-group row">
                                 <div class="col-md-4 mb-3">
                                     <label for="r_sale">Sale</label>
-                                    <input type="text" class="numeric form-control number-seperator" id ="r_sale" name="r_sale" placeholder="Sale" autocomplete="off" required>
+                                    <input type="text" class="numeric form-control number-seperator" id ="r_sale" name="fp_sc_retail_sale" placeholder="Sale" autocomplete="off" required>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="r_profit">Profit</label>
-                                    <input type="text" class="numeric form-control number-seperator" id ="r_profit" name="r_profit" placeholder="Profit" autocomplete="off" required>
+                                    <input type="text" class="numeric form-control number-seperator" id ="r_profit" name="fp_sc_retail_profit" placeholder="Profit" autocomplete="off" required>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="r_markup">Markup</label>
-                                    <input type="text" class="numeric form-control number-seperator" id ="r_markup" name="r_markup" placeholder="Markup" autocomplete="off" required>
+                                    <input type="text" class="numeric form-control number-seperator" id ="r_markup" name="fp_sc_retail_markup" placeholder="Markup" autocomplete="off" required>
                                 </div>
                             </div>
                             
@@ -228,9 +228,9 @@
                         <div class="form-group row invisible">
                             <div class="col-md-4 mb-3">
                                 <label>Created by</label>
-                                <input type="text" class="form-control" name="created_by" readonly>
+                                <input type="text" class="form-control" name="fp_created_by" readonly>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            {{!-- <div class="col-md-4 mb-3">
                                 <label>Created Date</label>
                                 <input type="text" class="form-control" name="created_date" readonly>
                             </div>
@@ -241,10 +241,10 @@
                             <div class="col-md-4 mb-3">
                                 <label>Updating Date</label>
                                 <input type="text" class="form-control" name="updated_date" readonly>
-                            </div>
+                            </div> --}}
                             <div class="col-md-4 mb-3 invisible">
                                 <label>Id</label>
-                                <input type="text" class="form-control" id="fpid" name="fpid" value="{{fpid}}" readonly>
+                                <input type="text" class="form-control" id="fp_guid" name="fp_guid" value="{{fp_guid}}" readonly>
                                 <input type="text" class="form-control" id="act" name="act" value="{{act}}" readonly>
                             </div>
                         </div>
