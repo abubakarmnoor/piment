@@ -59,7 +59,7 @@ router.get('/pull/:tblname/:id?', function(req,res){
 
 router.post('/upd',(req,res)=>{
   const _data = req.body;
-  return res.status(200).json({success:false, _data})
+  return res.status(200).json({success:true, _data})
 
   let query='';
   if (_data.tblname == 'rm'){
