@@ -59,7 +59,7 @@ router.get('/pull/:tblname/:id?', function(req,res){
 
 router.post('/upd',(req,res)=>{
   const _data = req.body;
-  return res.status(200).json({success:true, _data})
+  console.log(_data);
 
   let query='';
   if (_data.tblname == 'rm'){
@@ -67,11 +67,14 @@ router.post('/upd',(req,res)=>{
     // query.concat(" ")
 
   }else if (_data.tblname == 'fp'){
-    query='call spsave_fp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+    //query='call spsave_fp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+    query=`call spsave_fp ('`+_data.fp_guid+`', '`+_data.fp_desc+`', '`+_data.fp_prod_family+`', '`+_data.fp_origin+`', '`+_data.fp_box_size_l+`', '`+_data.fp_box_size_w+`', '`+_data.fp_box_size_h+`', '`+_data.fp_sc_extra_cost+`', '`+_data.fp_sc_extra_labour+`', '`+_data.fp_sc_cost+`', '`+_data.fp_sc_wholesale_sale+`', '`+_data.fp_sc_wholesale_profit+`', '`+_data.fp_sc_wholesale_markup+`', '`+_data.fp_sc_business_sale+`', '`+_data.fp_sc_business_profit+`', '`+_data.fp_sc_business_markup+`', '`+_data.fp_sc_retail_sale+`', '`+_data.fp_sc_retail_profit+`', '`+_data.fp_sc_retail_markup+`', `+_data.fp_validated+`, `+_data.fp_active+`, '`+_data.fp_created_by+`')`
     // query.concat(" ")
 
   }
-  // res.status(200).json({success:true, query})
+
+  //console.log(query);
+ //return   res.status(200).json({success:false, query})
 
   stablishedConnection()
   .then((db)=>{
@@ -88,7 +91,8 @@ router.post('/upd',(req,res)=>{
           }
         })
       }else if (_data.tblname == 'fp'){
-        db.query(` `+query+` `,[_data.fp_guid, _data.fp_desc, _data.fp_prod_family, _data.fp_origin, _data.fp_box_size_l, _data.fp_box_size_w, _data.fp_box_size_h, _data.fp_sc_extra_cost, _data.fp_sc_extra_labour, _data.fp_sc_cost, _data.fp_sc_wholesale_sale, _data.fp_sc_wholesale_profit, _data.fp_sc_wholesale_markup, _data.fp_sc_business_sale, _data.fp_sc_business_profit, _data.fp_sc_business_markup, _data.fp_sc_retail_sale, _data.fp_sc_retail_profit, _data.fp_sc_retail_markup, _data.fp_validated, _data.fp_active, _data.fp_created_by], (err, data_)=>{
+        // db.query(` `+query+` `,[_data.fp_guid, _data.fp_desc, _data.fp_prod_family, _data.fp_origin, _data.fp_box_size_l, _data.fp_box_size_w, _data.fp_box_size_h, _data.fp_sc_extra_cost, _data.fp_sc_extra_labour, _data.fp_sc_cost, _data.fp_sc_wholesale_sale, _data.fp_sc_wholesale_profit, _data.fp_sc_wholesale_markup, _data.fp_sc_business_sale, _data.fp_sc_business_profit, _data.fp_sc_business_markup, _data.fp_sc_retail_sale, _data.fp_sc_retail_profit, _data.fp_sc_retail_markup, _data.fp_validated, _data.fp_active, _data.fp_created_by], (err, data_)=>{  
+        db.query(query, (err, data_)=>{
           if (!data_){
             res.status(200).json({success:false, err})
           }else{
@@ -100,8 +104,8 @@ router.post('/upd',(req,res)=>{
       }
     })
   }).catch((error)=>{
-    console.log("Db not connected",err);
-    res.status(500).json({success:false, err})
+    console.log("Db not connected",error);
+    res.status(500).json({success:false, error})
   }); 
 
 })
@@ -132,8 +136,8 @@ router.post('/del',(req,res)=>{
       })
     })
   }).catch((error)=>{
-    console.log("Db not connected",err);
-    res.status(500).json({success:false, err})
+    console.log("Db not connected",error);
+    res.status(500).json({success:false, error})
   }); 
 
 })
