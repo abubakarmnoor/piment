@@ -74,7 +74,7 @@ router.post('/upd',(req,res)=>{
   }
 
   //console.log(query);
- //return   res.status(200).json({success:false, query})
+ return   res.status(200).json({success:false, query})
 
   stablishedConnection()
   .then((db)=>{
