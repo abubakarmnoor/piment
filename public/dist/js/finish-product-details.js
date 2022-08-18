@@ -75,7 +75,7 @@ $(document).ready(function() {
         _data.fp_sc_retail_markup = (_data.fp_sc_retail_markup).replace(/\,/g,'');
         _data.tblname = "fp";
 
-        // console.log(_data);
+        console.log(_data);
         // return;
 
         // ajax - save/post data
