@@ -83,8 +83,9 @@ $(document).ready(function() {
         $.ajax({
             type:"POST", // must be POST 
             url: "/apis/upd/", 
+            contentType: "application/json; charset=utf-8",
             dataType: "json",
-            data: _data,
+            data: JSON.stringify(_data),
             success: function(data) {
                 setTimeout(function () {
                     $('.modal').modal('hide');
