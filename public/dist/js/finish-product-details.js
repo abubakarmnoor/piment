@@ -75,14 +75,14 @@ $(document).ready(function() {
         _data.fp_sc_retail_markup = (_data.fp_sc_retail_markup).replace(/\,/g,'');
         _data.tblname = "fp";
 
-        console.log(_data);
-        return;
+        // console.log(_data);
+        // return;
 
         // ajax - save/post data
         spinner_popup();
         $.ajax({
-            type:"GET", // must be POST 
-            url: "/data/finish-product.json", 
+            type:"POST", // must be POST 
+            url: "/apis/upd/", 
             dataType: "json",
             data: _data,
             success: function(data) {
