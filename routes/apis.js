@@ -28,6 +28,10 @@ router.use(function (req, res, next) {
 // 	}
 // });
 
+router.post('/', (req,res)=>{
+  res.status(200).json({success:"test"})
+})
+
 router.get('/pull/:tblname/:id?', function(req,res){
 	// res.status(200).json({sucess:false});
   let _tbl = req.params.tblname;
