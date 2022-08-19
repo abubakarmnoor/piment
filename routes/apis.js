@@ -1,5 +1,5 @@
 const express = require('express');
-const app = express();
+// const app = express();
 const router = express.Router();
 // const bodyParser = require('body-parser');
 // const tsqlPull = require('../tsql/pull');
@@ -35,7 +35,7 @@ router.post('/', (req,res)=>{
   res.status(200).json({success:"test 123"})
 })
 
-app.post('/pull/:tblname/:id?', function(req,res){
+router.post('/pull/:tblname/:id?', function(req,res){
 	// res.status(200).json({sucess:false});
   let _tbl = req.params.tblname;
   let _id = req.params.id;
@@ -64,7 +64,7 @@ app.post('/pull/:tblname/:id?', function(req,res){
   });   
 });
 
-app.post('/upd2/:id',(req,res)=>{
+router.post('/upd2/:id',(req,res)=>{
   let data=req.params.id;
   res.status(200).json({success:data})
 })

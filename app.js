@@ -14,6 +14,9 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', web);
 app.use('/apis/', apis);
+app.post('/test/', (req, res)=>{
+  res.status(200).json({success:"test 12345"})
+});
 
 //The 404 Route (ALWAYS Keep this as the last route)
 app.use('*', function(req, res){
