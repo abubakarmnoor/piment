@@ -32,7 +32,7 @@ router.use(function (req, res, next) {
 // });
 
 router.post('/', (req,res)=>{
-  res.status(200).json({success:"test"})
+  res.status(200).json({success:"test 123"})
 })
 
 router.post('/pull/:tblname/:id?', function(req,res){
