@@ -58,8 +58,8 @@ router.get('/pull/:tblname/:id?', function(req,res){
 });
 
 router.post('/upd2/:id',(req,res)=>{
-
-  return   res.status(200).json({success:false, data:req.params.id})
+  let data=req.params.id;
+  res.status(200).json({success:data})
 })
 router.post('/upd',(req,res)=>{
   const _data = req.body;
