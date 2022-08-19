@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
+const bodyParser = require('body-parser');
 // const tsqlPull = require('../tsql/pull');
 //fs = require('fs');
 const axios = require('axios');
@@ -11,6 +12,8 @@ const {stablishedConnection,closeDbConnection}  =require('../config/conn');
 //   origin: 'http://localhost:8001',
 //   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 // }
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 router.use(function (req, res, next) {
   res.set('Cache-Control', 'max-age=0');// 60s x 60m x24 x ? day
 	next()
