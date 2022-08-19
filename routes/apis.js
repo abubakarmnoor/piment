@@ -14,7 +14,7 @@ const {stablishedConnection,closeDbConnection}  =require('../config/conn');
 // }
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-router.use(function (req, res, next) {
+app.use(function (req, res, next) {
   res.set('Cache-Control', 'max-age=0');// 60s x 60m x24 x ? day
 	next()
 })
@@ -31,11 +31,11 @@ router.use(function (req, res, next) {
 // 	}
 // });
 
-router.post('/', (req,res)=>{
+app.post('/', (req,res)=>{
   res.status(200).json({success:"test 123"})
 })
 
-router.post('/pull/:tblname/:id?', function(req,res){
+app.post('/pull/:tblname/:id?', function(req,res){
 	// res.status(200).json({sucess:false});
   let _tbl = req.params.tblname;
   let _id = req.params.id;
@@ -64,7 +64,7 @@ router.post('/pull/:tblname/:id?', function(req,res){
   });   
 });
 
-router.post('/upd2/:id',(req,res)=>{
+app.post('/upd2/:id',(req,res)=>{
   let data=req.params.id;
   res.status(200).json({success:data})
 })
