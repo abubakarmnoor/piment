@@ -35,7 +35,7 @@ router.get('/', (req,res)=>{
   res.status(200).send("hello")
 })
 
-router.post('/pull/:tblname/:id?', function(req,res){
+router.get('/pull/:tblname/:id?', function(req,res){
 	// res.status(200).json({sucess:false});
   let _tbl = req.params.tblname;
   let _id = req.params.id;
@@ -64,94 +64,91 @@ router.post('/pull/:tblname/:id?', function(req,res){
   });   
 });
 
-router.post('/upd2/:id',(req,res)=>{
-  let data=req.params.id;
-  res.status(200).json({success:data})
-})
-// router.post('/upd',(req,res)=>{
-//   const _data = req.body;
-//   // console.log(_data);
-//   return   res.status(200).json({success:false, _data})
-//   let query='';
-//   if (_data.tblname == 'rm'){
-//     query='call spsave_rm (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
-//     // query.concat(" ")
 
-//   }else if (_data.tblname == 'fp'){
-//     //query='call spsave_fp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
-//     query=`call spsave_fp ('`+_data.fp_guid+`', '`+_data.fp_desc+`', '`+_data.fp_prod_family+`', '`+_data.fp_origin+`', '`+_data.fp_box_size_l+`', '`+_data.fp_box_size_w+`', '`+_data.fp_box_size_h+`', '`+_data.fp_sc_extra_cost+`', '`+_data.fp_sc_extra_labour+`', '`+_data.fp_sc_cost+`', '`+_data.fp_sc_wholesale_sale+`', '`+_data.fp_sc_wholesale_profit+`', '`+_data.fp_sc_wholesale_markup+`', '`+_data.fp_sc_business_sale+`', '`+_data.fp_sc_business_profit+`', '`+_data.fp_sc_business_markup+`', '`+_data.fp_sc_retail_sale+`', '`+_data.fp_sc_retail_profit+`', '`+_data.fp_sc_retail_markup+`', `+_data.fp_validated+`, `+_data.fp_active+`, '`+_data.fp_created_by+`')`
-//     // query.concat(" ")
+router.post('/upd',(req,res)=>{
+  const _data = req.body;
+  // console.log(_data);
+  // return   res.status(200).json({success:false, _data})
+  let query='';
+  if (_data.tblname == 'rm'){
+    query='call spsave_rm (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+    // query.concat(" ")
 
-//   }
+  }else if (_data.tblname == 'fp'){
+    //query='call spsave_fp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+    query=`call spsave_fp ('`+_data.fp_guid+`', '`+_data.fp_desc+`', '`+_data.fp_prod_family+`', '`+_data.fp_origin+`', '`+_data.fp_box_size_l+`', '`+_data.fp_box_size_w+`', '`+_data.fp_box_size_h+`', '`+_data.fp_sc_extra_cost+`', '`+_data.fp_sc_extra_labour+`', '`+_data.fp_sc_cost+`', '`+_data.fp_sc_wholesale_sale+`', '`+_data.fp_sc_wholesale_profit+`', '`+_data.fp_sc_wholesale_markup+`', '`+_data.fp_sc_business_sale+`', '`+_data.fp_sc_business_profit+`', '`+_data.fp_sc_business_markup+`', '`+_data.fp_sc_retail_sale+`', '`+_data.fp_sc_retail_profit+`', '`+_data.fp_sc_retail_markup+`', `+_data.fp_validated+`, `+_data.fp_active+`, '`+_data.fp_created_by+`')`
+    // query.concat(" ")
 
-//   //console.log(query);
+  }
+
+  //console.log(query);
 //  return   res.status(200).json({success:false, query})
 
-//   stablishedConnection()
-//   .then((db)=>{
-//     stablishedConnection()
-//     .then((db)=>{
-//       if (_data.tblname == 'rm'){
-//         db.query(` `+query+` `,[_data.rm_guid, _data.rm_code, _data.rm_desc, _data.product_family, _data.cost, _data.unit, _data.box_size_l, _data.box_size_w, _data.box_size_h, _data.kayu, _data.active, _data.created_by, _data.updated_by], (err, data_)=>{
-//           if (!data_){
-//             res.status(200).json({success:false, err})
-//           }else{
-//             let data = data_;
-//             res.status(200).json({success:true, data})
-//             closeDbConnection(db)
-//           }
-//         })
-//       }else if (_data.tblname == 'fp'){
-//         // db.query(` `+query+` `,[_data.fp_guid, _data.fp_desc, _data.fp_prod_family, _data.fp_origin, _data.fp_box_size_l, _data.fp_box_size_w, _data.fp_box_size_h, _data.fp_sc_extra_cost, _data.fp_sc_extra_labour, _data.fp_sc_cost, _data.fp_sc_wholesale_sale, _data.fp_sc_wholesale_profit, _data.fp_sc_wholesale_markup, _data.fp_sc_business_sale, _data.fp_sc_business_profit, _data.fp_sc_business_markup, _data.fp_sc_retail_sale, _data.fp_sc_retail_profit, _data.fp_sc_retail_markup, _data.fp_validated, _data.fp_active, _data.fp_created_by], (err, data_)=>{  
-//         db.query(query, (err, data_)=>{
-//           if (!data_){
-//             res.status(200).json({success:false, err})
-//           }else{
-//             let data = data_;
-//             res.status(200).json({success:true, data})
-//             closeDbConnection(db)
-//           }
-//         })
-//       }
-//     })
-//   }).catch((error)=>{
-//     console.log("Db not connected",error);
-//     res.status(500).json({success:false, error})
-//   }); 
+  stablishedConnection()
+  .then((db)=>{
+    stablishedConnection()
+    .then((db)=>{
+      if (_data.tblname == 'rm'){
+        db.query(` `+query+` `,[_data.rm_guid, _data.rm_code, _data.rm_desc, _data.product_family, _data.cost, _data.unit, _data.box_size_l, _data.box_size_w, _data.box_size_h, _data.kayu, _data.active, _data.created_by, _data.updated_by], (err, data_)=>{
+          if (!data_){
+            res.status(200).json({success:false, err})
+          }else{
+            let data = data_;
+            res.status(200).json({success:true, data})
+            closeDbConnection(db)
+          }
+        })
+      }else if (_data.tblname == 'fp'){
+        // db.query(` `+query+` `,[_data.fp_guid, _data.fp_desc, _data.fp_prod_family, _data.fp_origin, _data.fp_box_size_l, _data.fp_box_size_w, _data.fp_box_size_h, _data.fp_sc_extra_cost, _data.fp_sc_extra_labour, _data.fp_sc_cost, _data.fp_sc_wholesale_sale, _data.fp_sc_wholesale_profit, _data.fp_sc_wholesale_markup, _data.fp_sc_business_sale, _data.fp_sc_business_profit, _data.fp_sc_business_markup, _data.fp_sc_retail_sale, _data.fp_sc_retail_profit, _data.fp_sc_retail_markup, _data.fp_validated, _data.fp_active, _data.fp_created_by], (err, data_)=>{  
+        db.query(query, (err, data_)=>{
+          if (!data_){
+            res.status(200).json({success:false, err})
+          }else{
+            let data = data_;
+            res.status(200).json({success:true, data})
+            closeDbConnection(db)
+          }
+        })
+      }
+    })
+  }).catch((error)=>{
+    console.log("Db not connected",error);
+    res.status(500).json({success:false, error})
+  }); 
 
-// })
-// router.post('/del',(req,res)=>{
-//   const _data = req.body;
-//   let query='';
-//   if (_data.tblname == 'rm'){
-//     query='call spdelete_rm (?)'
-//     // query.concat(" ")
+})
+router.post('/del',(req,res)=>{
+  const _data = req.body;
+  let query='';
+  if (_data.tblname == 'rm'){
+    query='call spdelete_rm (?)'
+    // query.concat(" ")
 
-//   }else if (_data.tblname == 'fp'){
-//     query='call spdelete_fp (?)'
-//   }
-//   // res.status(200).json({success:true, query})
+  }else if (_data.tblname == 'fp'){
+    query='call spdelete_fp (?)'
+  }
+  // res.status(200).json({success:true, query})
 
-//   stablishedConnection()
-//   .then((db)=>{
-//     stablishedConnection()
-//     .then((db)=>{
-//       db.query(` `+query+` `,[_data.id], (err, data_)=>{
-//         if (!data_){
-//           res.status(200).json({success:false, err})
-//         }else{
-//           let data = data_;
-//           res.status(200).json({success:true, data})
-//           closeDbConnection(db)
-//         }
-//       })
-//     })
-//   }).catch((error)=>{
-//     console.log("Db not connected",error);
-//     res.status(500).json({success:false, error})
-//   }); 
+  stablishedConnection()
+  .then((db)=>{
+    stablishedConnection()
+    .then((db)=>{
+      db.query(` `+query+` `,[_data.id], (err, data_)=>{
+        if (!data_){
+          res.status(200).json({success:false, err})
+        }else{
+          let data = data_;
+          res.status(200).json({success:true, data})
+          closeDbConnection(db)
+        }
+      })
+    })
+  }).catch((error)=>{
+    console.log("Db not connected",error);
+    res.status(500).json({success:false, error})
+  }); 
 
-// })
+})
 //functions
 
 module.exports = router;
