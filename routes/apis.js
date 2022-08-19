@@ -31,7 +31,7 @@ router.use(function (req, res, next) {
 // 	}
 // });
 
-router.post('/', (req,res)=>{
+router.get('/', (req,res)=>{
   res.status(200).send("hello")
 })
 
