@@ -39,7 +39,12 @@ router.use(function (req, res, next) {
 // });
 
 router.get('/', (req,res)=>{
-  res.status(200).send("hello")
+  if (request.session.loggedin) {
+    res.status(200).send("hello")
+  }else{
+    res.status(200).send("not logged in ")
+  }
+  
 })
 
 router.get('/pull/:tblname/:id?', function(req,res){
