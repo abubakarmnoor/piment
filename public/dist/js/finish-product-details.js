@@ -356,10 +356,9 @@ function default_edit(data){
     $("input[name=fp_box_size_w").val(data[0].fp_box_size_w)
     $("input[name=fp_box_size_h").val(data[0].fp_box_size_h)
     $("input[name=created_date").val(formatDate(_c_date,true))
-    $('#sp_origin').selectpicker('val',data[0].origin)
-    $("#ck_validated").prop('checked', data[0].validated)
-    $("#ck_out").prop('checked', data[0].out)
-    $("#ck_active").prop('checked', data[0].active)
+    $('#sp_origin').selectpicker('val',data[0].fp_origin)
+    $("#ck_validated").prop('checked', data[0].fp_validated)
+    $("#ck_active").prop('checked', data[0].fp_active)
 
     
     $("input[name=fp_sc_extra_cost").val(data[0].fp_sc_extra_cost)
