@@ -39,7 +39,7 @@ router.use(function (req, res, next) {
 // });
 
 router.get('/', (req,res)=>{
-  if (request.session.loggedin) {
+  if (req.session.loggedin) {
     res.status(200).send("hello")
   }else{
     res.status(200).send("not logged in ")
