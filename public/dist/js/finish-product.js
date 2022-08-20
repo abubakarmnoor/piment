@@ -76,9 +76,9 @@ $(document).ready(function() {
     $('#dtTbl').on('click', 'td.editor-delete', function (e) {
         e.preventDefault();
         let _data = {};
-        _data.id = table.row( this ).data().rm_guid;
+        _data.id = table.row( this ).data().fp_guid;
         //_data.tblname = 'rm'
-        console.log(_data);
+        // console.log(_data);
         //console.log( table.row( this ).data().id );
 
         Swal.fire({
@@ -99,7 +99,7 @@ $(document).ready(function() {
                 spinner_popup();
                 $.ajax({
                     type:"POST",
-                    url: "/apis/del/rm", 
+                    url: "/apis/del/fp", 
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     data: JSON.stringify(_data),
