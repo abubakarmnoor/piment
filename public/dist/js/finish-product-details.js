@@ -391,10 +391,10 @@ function get_details(id){
         url: "/apis/pull/fp/"+id, 
         dataType: "json",
         success: function(data) {
-            setTimeout(function () {
+            // setTimeout(function () {
                 default_edit(data.data);
                 $('.modal').modal('hide');
-            }, 3000);
+            // }, 3000);
         }, 
         error: function(jqXHR, textStatus, errorThrown) {
             //alert(jqXHR.status);
