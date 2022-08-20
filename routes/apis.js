@@ -158,7 +158,7 @@ router.post('/del/:tbl',(req,res)=>{
 
 })
 
-app.post('/auth', function(req, res) {
+router.post('/auth', function(req, res) {
 	// Capture the input fields
 	let username = request.body.username;
 	let password = request.body.password;
