@@ -2,6 +2,7 @@ $("#btn_fpc").hide();
 $(document).ready(function() {
             
     //default
+    let id=$("#id").val()
     $('.selectpicker').selectpicker();
     insert_element_pf(); insert_element_origin(); insert_element_creator();
     load_data_dt('/data/pop-product-family.json'); //init
@@ -13,7 +14,7 @@ $(document).ready(function() {
         // let url = location.href;
         // let id = getURLParameter(url, 'ZWlk');
         // $("#id").val(id);
-        get_details();
+        get_details(id);
         
     }else if (location.href.includes('ZGlk')) {
         $('.page-header').text('FINISH PRODUCT DETAILS');
@@ -29,7 +30,7 @@ $(document).ready(function() {
         // let url = location.href;
         // let id = getURLParameter(url, 'did');
         // $("#id").val(id);
-        get_details();
+        get_details(id);
         
     
     }else{
@@ -381,13 +382,13 @@ function default_edit(data){
     get_date_default(data[0].fp_created_by,data[0].fp_created_date, user_login, null)
 }
 //get details
-function get_details(){
+function get_details(id){
     //ajax - get details
     spinner_popup();
     //ajax
     $.ajax({
         type:"GET", 
-        url: "/data/finish-product.json", 
+        url: "/apis/pull/fp/"+id, 
         dataType: "json",
         success: function(data) {
             setTimeout(function () {
