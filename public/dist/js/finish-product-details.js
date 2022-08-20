@@ -1,4 +1,5 @@
 $("#btn_fpc").hide();
+spinner_popup();
 $(document).ready(function() {
             
     //default

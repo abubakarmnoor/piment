@@ -1,3 +1,4 @@
+const session = require('express-session');
 const express = require('express');
 // const app = express();
 const router = express.Router();
@@ -6,6 +7,12 @@ const router = express.Router();
 //fs = require('fs');
 const axios = require('axios');
 router.use(express.json());
+router.use(session({
+	secret: 'secret',
+	resave: true,
+	saveUninitialized: true
+}));
+router.use(express.urlencoded({ extended: true }));
 const {stablishedConnection,closeDbConnection}  =require('../config/conn');
 // var cors = require('cors')
 // var corsOptions = {
@@ -150,6 +157,42 @@ router.post('/del/:tbl',(req,res)=>{
   }); 
 
 })
+
+app.post('/auth', function(req, res) {
+	// Capture the input fields
+	let username = request.body.username;
+	let password = request.body.password;
+	// Ensure the input fields exists and are not empty
+	if (username && password) {
+		stablishedConnection()
+    .then((db)=>{
+      stablishedConnection()
+      .then((db)=>{
+        db.query(`select * from tbl_login where login_username=? and login_passwrd=? and login_active=1 and login_deleted=0`,[_data.username, _data.passwrd ], (err, data_)=>{
+          if (!data_){
+            res.status(200).json({success:false, err})
+          }else{
+            closeDbConnection(db);
+            req.session.loggedin = true;
+				    req.session.username = data_[0].login_nickname;
+            res.redirect('/');
+            // let data = data_;
+            // res.status(200).json({success:true, data})
+          }
+        })
+      })
+      }).catch((error)=>{
+        console.log("Db not connected",error);
+        res.status(500).json({success:false, error})
+      }); 
+	} else {
+    res.status(400).json({success:false, err:"Invalid username and password"})
+		// res.send('Please enter Username and Password!');
+		// res.end();
+	}
+});
+
+
 //functions
 
 module.exports = router;
