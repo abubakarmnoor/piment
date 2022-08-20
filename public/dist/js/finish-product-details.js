@@ -1,5 +1,5 @@
 $("#btn_fpc").hide();
-
+spinner_popup();
 $(document).ready(function() {
             
     //default
@@ -10,7 +10,6 @@ $(document).ready(function() {
 
     //edit or add new
     if (location.href.includes('ZWlk')) {
-        spinner_popup();
         $('.page-header').text('FINISH PRODUCT UPDATES')
         $("#btn_fpc").show();
         // let url = location.href;
@@ -19,7 +18,6 @@ $(document).ready(function() {
         get_details(id);
         
     }else if (location.href.includes('ZGlk')) {
-        spinner_popup();
         $('.page-header').text('FINISH PRODUCT DETAILS');
         $("#btn_save").hide();
         $("#btn_fpc").show();
@@ -37,6 +35,7 @@ $(document).ready(function() {
         
     
     }else{
+        $('.modal').modal('hide');
         $('.page-header').text('FINISH PRODUCT ADD NEW')
         $("#btn_fpc").hide();
         let username = 'test';
