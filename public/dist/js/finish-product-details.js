@@ -89,7 +89,7 @@ $(document).ready(function() {
             dataType: "json",
             data: JSON.stringify(_data),
             success: function(data) {
-                setTimeout(function () {
+                // setTimeout(function () {
                     $('.modal').modal('hide');
                     Swal.fire({
                         icon: 'success',
@@ -99,7 +99,7 @@ $(document).ready(function() {
                         location.href='/finish-product'
                     });
                     
-                }, 3000);
+                // }, 3000);
                 
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
@@ -137,7 +137,7 @@ $(document).ready(function() {
             dataType: "json",
             data: _data,
             success: function(data) {
-                setTimeout(function () {
+                // setTimeout(function () {
                     $('.modal').modal('hide');
                     Swal.fire({
                         icon: 'success',
@@ -147,7 +147,7 @@ $(document).ready(function() {
                         //location.href='/clients'
                     });
                     
-                }, 3000);
+                // }, 3000);
                 
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
