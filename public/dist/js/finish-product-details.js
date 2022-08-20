@@ -350,18 +350,35 @@ function default_edit(data){
     //_date.setDate(_date.getDate()+1)
     
     $("input[name=fp_desc").val(data[0].fp_desc)
-    $('#sp_product_family').selectpicker('val',data[0].product_family)
-    $("input[name=h").val(data[0].h)
+    $('#sp_product_family').selectpicker('val',data[0].fp_prod_family)
+    $("input[name=fp_box_size_l").val(data[0].fp_box_size_l)
+    $("input[name=fp_box_size_w").val(data[0].fp_box_size_w)
+    $("input[name=fp_box_size_h").val(data[0].fp_box_size_h)
     $("input[name=created_date").val(formatDate(_c_date,true))
-    $("input[name=receipt_last_updated").val(formatDate(_rlu_date,true))
     $('#sp_origin').selectpicker('val',data[0].origin)
-    $('#sp_creator').selectpicker('val',data[0].creator)
     $("#ck_validated").prop('checked', data[0].validated)
     $("#ck_out").prop('checked', data[0].out)
     $("#ck_active").prop('checked', data[0].active)
 
-    let user_login = 'test';
-    get_date_default(data[0].created_by,data[0].created_date, user_login, null)
+    
+    $("input[name=fp_sc_extra_cost").val(data[0].fp_sc_extra_cost)
+    $("input[name=fp_sc_extra_labour").val(data[0].fp_sc_extra_labour)
+    $("input[name=fp_sc_cost").val(data[0].fp_sc_cost)
+
+    $("input[name=fp_sc_wholesale_sale").val(data[0].fp_sc_wholesale_sale)
+    $("input[name=fp_sc_wholesale_profit").val(data[0].fp_sc_wholesale_profit)
+    $("input[name=fp_sc_wholesale_markup").val(data[0].fp_sc_wholesale_markup)
+
+    $("input[name=fp_sc_business_sale").val(data[0].fp_sc_business_sale)
+    $("input[name=fp_sc_business_profit").val(data[0].fp_sc_business_profit)
+    $("input[name=fp_sc_business_markup").val(data[0].fp_sc_business_markup)
+
+    $("input[name=fp_sc_retail_sale").val(data[0].fp_sc_retail_markup)
+    $("input[name=fp_sc_retail_profit").val(data[0].fp_sc_retail_profit)
+    $("input[name=fp_sc_retail_markup").val(data[0].fp_sc_retail_markup)
+
+    let user_login = 'admin';
+    get_date_default(data[0].fp_created_by,data[0].fp_created_date, user_login, null)
 }
 //get details
 function get_details(){
