@@ -1,3 +1,4 @@
+spinner_popup();
 $(document).ready(function() {
             
     //default
@@ -30,6 +31,7 @@ $(document).ready(function() {
         
     
     }else{
+        $('.modal').modal('hide');
         $('.page-header').text('RAW MATERIAL ADD NEW')
         $("input[name=rm_desc]").val($(this).find("option:selected").attr("desc"))
         let username = 'test';
