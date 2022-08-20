@@ -75,8 +75,8 @@ router.post('/upd',(req,res)=>{
     // query.concat(" ")
 
   }else if (_data.tblname == 'fp'){
-    //query='call spsave_fp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
-    query=`call spsave_fp ('`+_data.fp_guid+`', '`+_data.fp_desc+`', '`+_data.fp_prod_family+`', '`+_data.fp_origin+`', '`+_data.fp_box_size_l+`', '`+_data.fp_box_size_w+`', '`+_data.fp_box_size_h+`', '`+_data.fp_sc_extra_cost+`', '`+_data.fp_sc_extra_labour+`', '`+_data.fp_sc_cost+`', '`+_data.fp_sc_wholesale_sale+`', '`+_data.fp_sc_wholesale_profit+`', '`+_data.fp_sc_wholesale_markup+`', '`+_data.fp_sc_business_sale+`', '`+_data.fp_sc_business_profit+`', '`+_data.fp_sc_business_markup+`', '`+_data.fp_sc_retail_sale+`', '`+_data.fp_sc_retail_profit+`', '`+_data.fp_sc_retail_markup+`', `+_data.fp_validated+`, `+_data.fp_active+`, '`+_data.fp_created_by+`')`
+    query='call spsave_fp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+    // query=`call spsave_fp ('`+_data.fp_guid+`', '`+_data.fp_desc+`', '`+_data.fp_prod_family+`', '`+_data.fp_origin+`', '`+_data.fp_box_size_l+`', '`+_data.fp_box_size_w+`', '`+_data.fp_box_size_h+`', '`+_data.fp_sc_extra_cost+`', '`+_data.fp_sc_extra_labour+`', '`+_data.fp_sc_cost+`', '`+_data.fp_sc_wholesale_sale+`', '`+_data.fp_sc_wholesale_profit+`', '`+_data.fp_sc_wholesale_markup+`', '`+_data.fp_sc_business_sale+`', '`+_data.fp_sc_business_profit+`', '`+_data.fp_sc_business_markup+`', '`+_data.fp_sc_retail_sale+`', '`+_data.fp_sc_retail_profit+`', '`+_data.fp_sc_retail_markup+`', `+_data.fp_validated+`, `+_data.fp_active+`, '`+_data.fp_created_by+`')`
     // query.concat(" ")
 
   }
@@ -117,8 +117,9 @@ router.post('/upd',(req,res)=>{
   }); 
 
 })
-router.post('/del',(req,res)=>{
+router.post('/del/:tbl',(req,res)=>{
   const _data = req.body;
+  _data.tblname=req.params.tbl;
   let query='';
   if (_data.tblname == 'rm'){
     query='call spdelete_rm (?)'

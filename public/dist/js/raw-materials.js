@@ -96,7 +96,7 @@ $(document).ready(function() {
         e.preventDefault();
         let _data = {};
         _data.id = table.row( this ).data().rm_guid;
-        _data.tblname = 'rm'
+        //_data.tblname = 'rm'
         console.log(_data);
         //console.log( table.row( this ).data().id );
 
@@ -118,7 +118,7 @@ $(document).ready(function() {
                 spinner_popup();
                 $.ajax({
                     type:"POST",
-                    url: "/apis/del/", 
+                    url: "/apis/del/rm", 
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     data: JSON.stringify(_data),
@@ -130,7 +130,8 @@ $(document).ready(function() {
                                 title: 'RM',
                                 text: "Data Deleted"
                             }).then(function(){
-                                location.href='/raw-materials'
+                                // location.href='/raw-materials'
+                                $("#btn_refresh").click();
                             });
                             
                         // }, 3000) ;

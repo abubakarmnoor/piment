@@ -75,6 +75,10 @@ $(document).ready(function() {
     // Delete a record
     $('#dtTbl').on('click', 'td.editor-delete', function (e) {
         e.preventDefault();
+        let _data = {};
+        _data.id = table.row( this ).data().rm_guid;
+        //_data.tblname = 'rm'
+        console.log(_data);
         //console.log( table.row( this ).data().id );
 
         Swal.fire({
@@ -87,11 +91,42 @@ $(document).ready(function() {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-                )
+                // Swal.fire(
+                // 'Deleted!',
+                // 'Your file has been deleted.',
+                // 'success'
+                // )
+                spinner_popup();
+                $.ajax({
+                    type:"POST",
+                    url: "/apis/del/rm", 
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify(_data),
+                    success: function(data) {
+                        // setTimeout(function () {
+                            $('.modal').modal('hide');
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'FP',
+                                text: "Data Deleted"
+                            }).then(function(){
+                                $("#btn_refresh").click();
+                            });
+                            
+                        // }, 3000) ;
+                        
+                    }, 
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        //alert(jqXHR.status);
+                        $('.modal').modal('hide');
+                        Swal.fire({
+                            title: "Error!",
+                            text: textStatus,
+                            icon: "error"
+                        });
+                    }
+                });
             }
         })
     } );
