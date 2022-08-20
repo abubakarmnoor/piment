@@ -215,13 +215,7 @@ $(document).ready(function() {
     } );
 
     //number
-    $(".numeric").on('keyup', function(){
-        
-        let _amt = $(this).val().replace(/,/g,"");
-        $(this).val(numberWithCommas(_amt));
-        
-    })
-    $(".numeric").on('keypress', function(e){
+    $(".numeric").on('keyup keypress focusout', function(e){
         
         isNumber(e)
         let _amt = $(this).val().replace(/,/g,"");
@@ -237,6 +231,7 @@ $(document).ready(function() {
         $(this).val(_amt);
         
     })
+
     
     //btn add new pop
     $('#btn_pop_pf').on('click', function(){
@@ -361,7 +356,7 @@ function default_edit(data){
     $("#ck_active").prop('checked', data[0].fp_active)
 
     
-    $("input[name=fp_sc_extra_cost").val(numberWithCommas(data[0].fp_sc_extra_cost))
+    $("input[name=fp_sc_extra_cost").val(data[0].fp_sc_extra_cost)
     $("input[name=fp_sc_extra_labour").val(data[0].fp_sc_extra_labour)
     $("input[name=fp_sc_cost").val(data[0].fp_sc_cost)
 
