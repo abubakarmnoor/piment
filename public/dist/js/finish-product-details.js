@@ -84,7 +84,7 @@ $(document).ready(function() {
         spinner_popup();
         $.ajax({
             type:"POST", // must be POST 
-            url: "/apis/upd/", 
+            url: "/apis/upd/fp", 
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             data: JSON.stringify(_data),
