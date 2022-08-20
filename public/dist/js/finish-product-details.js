@@ -361,7 +361,7 @@ function default_edit(data){
     $("#ck_active").prop('checked', data[0].fp_active)
 
     
-    $("input[name=fp_sc_extra_cost").val(data[0].fp_sc_extra_cost)
+    $("input[name=fp_sc_extra_cost").val(numberWithCommas(data[0].fp_sc_extra_cost))
     $("input[name=fp_sc_extra_labour").val(data[0].fp_sc_extra_labour)
     $("input[name=fp_sc_cost").val(data[0].fp_sc_cost)
 
