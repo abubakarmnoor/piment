@@ -116,7 +116,7 @@ $(document).ready(function() {
             dataType: "json",
             data: _data,
             success: function(data) {
-                setTimeout(function () {
+                // setTimeout(function () {
                     $('.modal').modal('hide');
                     Swal.fire({
                         icon: 'success',
@@ -126,7 +126,7 @@ $(document).ready(function() {
                         //location.href='/clients'
                     });
                     
-                }, 3000);
+                // }, 3000);
                 
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
@@ -304,7 +304,7 @@ function default_edit(data){
     $("input[name=rm_code]").val(data[0].rm_code)
     $("input[name=rm_desc]").val(data[0].rm_desc)
     $('#product_family').selectpicker('val',data[0].rm_prod_family)
-    $("input[name=cost").val(numberWithCommas(data[0].rm_cost).replace('.00',''))
+    $("input[name=cost").val(numberWithCommas(data[0].rm_cost).replace('.00','')).focusout()
     $('#unit').selectpicker('val',data[0].rm_unit)
     $("input[name=box_size_l").val(data[0].rm_box_size_l)
     $("input[name=box_size_w").val(data[0].rm_box_size_w)
@@ -405,13 +405,8 @@ function load_data_dt(_url){
         ]
     });
 }
-$(".numeric").on('keyup', function(){
-        
-    let _amt = $(this).val().replace(/,/g,"");
-    $(this).val(numberWithCommas(_amt));
-    
-})
-$(".numeric").on('keypress', function(e){
+
+$(".numeric").on('keyup keypress focusout', function(e){
         
     isNumber(e)
     let _amt = $(this).val().replace(/,/g,"");

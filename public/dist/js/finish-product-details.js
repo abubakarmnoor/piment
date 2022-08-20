@@ -357,20 +357,20 @@ function default_edit(data){
 
     
     $("input[name=fp_sc_extra_cost").val(data[0].fp_sc_extra_cost).focusout()
-    $("input[name=fp_sc_extra_labour").val(data[0].fp_sc_extra_labour)
-    $("input[name=fp_sc_cost").val(data[0].fp_sc_cost)
+    $("input[name=fp_sc_extra_labour").val(data[0].fp_sc_extra_labour).focusout()
+    $("input[name=fp_sc_cost").val(data[0].fp_sc_cost).focusout()
 
-    $("input[name=fp_sc_wholesale_sale").val(data[0].fp_sc_wholesale_sale)
-    $("input[name=fp_sc_wholesale_profit").val(data[0].fp_sc_wholesale_profit)
-    $("input[name=fp_sc_wholesale_markup").val(data[0].fp_sc_wholesale_markup)
+    $("input[name=fp_sc_wholesale_sale").val(data[0].fp_sc_wholesale_sale).focusout()
+    $("input[name=fp_sc_wholesale_profit").val(data[0].fp_sc_wholesale_profit).focusout()
+    $("input[name=fp_sc_wholesale_markup").val(data[0].fp_sc_wholesale_markup).focusout()
 
-    $("input[name=fp_sc_business_sale").val(data[0].fp_sc_business_sale)
-    $("input[name=fp_sc_business_profit").val(data[0].fp_sc_business_profit)
-    $("input[name=fp_sc_business_markup").val(data[0].fp_sc_business_markup)
+    $("input[name=fp_sc_business_sale").val(data[0].fp_sc_business_sale).focusout()
+    $("input[name=fp_sc_business_profit").val(data[0].fp_sc_business_profit).focusout()
+    $("input[name=fp_sc_business_markup").val(data[0].fp_sc_business_markup).focusout()
 
-    $("input[name=fp_sc_retail_sale").val(data[0].fp_sc_retail_markup)
-    $("input[name=fp_sc_retail_profit").val(data[0].fp_sc_retail_profit)
-    $("input[name=fp_sc_retail_markup").val(data[0].fp_sc_retail_markup)
+    $("input[name=fp_sc_retail_sale").val(data[0].fp_sc_retail_markup).focusout()
+    $("input[name=fp_sc_retail_profit").val(data[0].fp_sc_retail_profit).focusout()
+    $("input[name=fp_sc_retail_markup").val(data[0].fp_sc_retail_markup).focusout()
 
     let user_login = 'admin';
     get_date_default(data[0].fp_created_by,data[0].fp_created_date, user_login, null)
