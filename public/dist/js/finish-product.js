@@ -45,8 +45,9 @@ $(document).ready(function() {
             { "data": "fp_origin" },
             { "data": "fp_validated" },
             { "data": "fp_active" },
-            { "data": "fp_upd_date" },
-            { "data": "fp_upd_by" }
+            { "data": "fp_upd_by" },
+            { "data": "fp_upd_date" }
+            
         ]
     });
     
