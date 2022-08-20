@@ -1,3 +1,4 @@
+$("#btn_fpc").hide();
 $(document).ready(function() {
             
     //default
