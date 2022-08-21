@@ -69,13 +69,13 @@ $(document).ready(function() {
     } );
 
     $("#btn_refresh").on("click", function(){
-        tableLampshade.ajax.url("/data/fpc-lampshade.json", null, false).load();
-        tableStand.ajax.url("/data/fpc-stand.json", null, false).load();
-        tableEuro.ajax.url("/data/fpc-euro.json", null, false).load();
-        tableUS.ajax.url("/data/fpc-us.json", null, false).load();
-        tableJapan.ajax.url("/data/fpc-japan.json", null, false).load();
-        tableUK.ajax.url("/data/fpc-uk.json", null, false).load();
-        tableAUS.ajax.url("/data/fpc-aus.json", null, false).load();
+        tableLampshade.ajax.url("/apis/pull/fpc-lampshade", null, false).load();
+        tableStand.ajax.url("/apis/pull/fpc-stand", null, false).load();
+        tableEuro.ajax.url("/apis/pill/fpc-euro", null, false).load();
+        tableUS.ajax.url("/apis/pull/fpc-us", null, false).load();
+        tableJapan.ajax.url("/apis/pull/fpc-japan", null, false).load();
+        tableUK.ajax.url("/apis/pull/fpc-uk", null, false).load();
+        tableAUS.ajax.url("/apis/pull/fpc-aus", null, false).load();
         // spinner_popup();
         // var sdate_ =  moment($("input[name='daterangepicker_start']").val()).format('YYYY-MM-DD');
         // var edate_ =  moment($("input[name='daterangepicker_end']").val()).format('YYYY-MM-DD');
@@ -102,7 +102,7 @@ $(document).ready(function() {
     })
     $("#btn_add_lampshade").on("click", function(e){
         e.preventDefault();
-        location.href = "/fpc-details/"+$("#fpid").val()+"/null/YWRkbmV3/";
+        //location.href = "/fpc-details/"+$("#fpid").val()+"/null/YWRkbmV3/";
 
     })
 
