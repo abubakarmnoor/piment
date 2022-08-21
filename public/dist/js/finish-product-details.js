@@ -38,7 +38,7 @@ $(document).ready(function() {
         $('.modal').modal('hide');
         $('.page-header').text('FINISH PRODUCT ADD NEW')
         $("#btn_fpc").hide();
-        let username = 'test';
+        let username = 'Admin';
         get_date_default(username,null, username, null)
     }
 
@@ -167,7 +167,7 @@ $(document).ready(function() {
     //btn
     $("#btn_fpc").on("click", function(e){
         e.preventDefault();
-        location.href = "/fpc/"+$("#fpid").val()+"/"+$("#act").val();
+        location.href = "/fpc/"+$("#fp_guid").val()+"/"+$("#act").val();
     })
 
     // Edit record

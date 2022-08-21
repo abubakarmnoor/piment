@@ -191,7 +191,7 @@ $(document).ready(function() {
     //back
     $("#btn_back").on("click", function(e){
         e.preventDefault;
-        location.href = "/finish-product-details/"+$("#fpid").val()+"/"+$("#act").val();
+        location.href = "/finish-product-details/"+$("#fp_guid").val()+"/"+$("#act").val();
     })
     
     //
@@ -249,16 +249,12 @@ function refreshLampshade(){
                 defaultContent: '<i class="fa fa-trash"/>',
                 orderable: false
             },
-            { "data": "id" },
-            {
-                data: "rm_code",
-                className: "dt-center editor-details",
-                orderable: true
-            },
+            { "data": "fp_cp_guid" },
+            { "data": "fp_cp_rm_code" },
             { "data": "rm_desc" },
-            { "data": "qty" },
-            { "data": "unit" },
-            {"data": "price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "fp_cp_qty" },
+            { "data": "fp_cp_unit" },
+            {"data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             
         ]
     });
@@ -313,16 +309,12 @@ function refreshStand(){
                 defaultContent: '<i class="fa fa-trash"/>',
                 orderable: false
             },
-            { "data": "id" },
-            {
-                data: "rm_code",
-                className: "dt-center editor-details",
-                orderable: true
-            },
+            { "data": "fp_cp_guid" },
+            { "data": "fp_cp_rm_code" },
             { "data": "rm_desc" },
-            { "data": "qty" },
-            { "data": "unit" },
-            {"data": "price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "fp_cp_qty" },
+            { "data": "fp_cp_unit" },
+            {"data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             
         ]
     });
@@ -377,16 +369,12 @@ function refreshEuro(){
                 defaultContent: '<i class="fa fa-trash"/>',
                 orderable: false
             },
-            { "data": "id" },
-            {
-                data: "rm_code",
-                className: "dt-center editor-details",
-                orderable: true
-            },
+            { "data": "fp_cp_guid" },
+            { "data": "fp_cp_rm_code" },
             { "data": "rm_desc" },
-            { "data": "qty" },
-            { "data": "unit" },
-            {"data": "price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "fp_cp_qty" },
+            { "data": "fp_cp_unit" },
+            {"data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             
         ]
     });
@@ -441,16 +429,12 @@ function refreshUS(){
                 defaultContent: '<i class="fa fa-trash"/>',
                 orderable: false
             },
-            { "data": "id" },
-            {
-                data: "rm_code",
-                className: "dt-center editor-details",
-                orderable: true
-            },
+            { "data": "fp_cp_guid" },
+            { "data": "fp_cp_rm_code" },
             { "data": "rm_desc" },
-            { "data": "qty" },
-            { "data": "unit" },
-            {"data": "price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "fp_cp_qty" },
+            { "data": "fp_cp_unit" },
+            {"data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             
         ]
     });
@@ -505,16 +489,12 @@ function refreshJapan(){
                 defaultContent: '<i class="fa fa-trash"/>',
                 orderable: false
             },
-            { "data": "id" },
-            {
-                data: "rm_code",
-                className: "dt-center editor-details",
-                orderable: true
-            },
+            { "data": "fp_cp_guid" },
+            { "data": "fp_cp_rm_code" },
             { "data": "rm_desc" },
-            { "data": "qty" },
-            { "data": "unit" },
-            {"data": "price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "fp_cp_qty" },
+            { "data": "fp_cp_unit" },
+            { "data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             
         ]
     });
@@ -569,16 +549,12 @@ function refreshUK(){
                 defaultContent: '<i class="fa fa-trash"/>',
                 orderable: false
             },
-            { "data": "id" },
-            {
-                data: "rm_code",
-                className: "dt-center editor-details",
-                orderable: true
-            },
+            { "data": "fp_cp_guid" },
+            { "data": "fp_cp_rm_code" },
             { "data": "rm_desc" },
-            { "data": "qty" },
-            { "data": "unit" },
-            {"data": "price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "fp_cp_qty" },
+            { "data": "fp_cp_unit" },
+            { "data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             
         ]
     });
@@ -633,16 +609,12 @@ function refreshAUS(){
                 defaultContent: '<i class="fa fa-trash"/>',
                 orderable: false
             },
-            { "data": "id" },
-            {
-                data: "rm_code",
-                className: "dt-center editor-details",
-                orderable: true
-            },
+            { "data": "fp_cp_guid" },
+            { "data": "fp_cp_rm_code" },
             { "data": "rm_desc" },
-            { "data": "qty" },
-            { "data": "unit" },
-            {"data": "price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "fp_cp_qty" },
+            { "data": "fp_cp_unit" },
+            { "data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             
         ]
     });
