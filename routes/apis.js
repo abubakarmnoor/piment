@@ -63,7 +63,7 @@ router.get('/pull/:tblname/:id?', function(req,res){
   stablishedConnection()
   .then((db)=>{
     // console.log("Db connection stablished");
-    db.query(`call spselect('`+ _tbl +`', '`+ _id +`');`,null, function (err, data_) { 
+    db.query(`call spselect('tbl_`+ _tbl +`', '`+ _id +`');`,null, function (err, data_) { 
       if (!data_) {
         res.status(200).json({success:false,err});
       }else{
