@@ -53,11 +53,13 @@ router.get('/pull/:tblname/:id?', function(req,res){
   let _id = req.params.id;
   // console.log(_id);
   // res.status(200).json({success:false,_tbl});
-  if (_tbl == 'rm'){
-    _tbl = 'tbl_rm'
-  }else if (_tbl='fp'){
-    _tbl = 'tbl_fp'
-  }
+  // if (_tbl == 'rm'){
+  //   _tbl = 'tbl_rm'
+  // }else if (_tbl='fp'){
+  //   _tbl = 'tbl_fp'
+  // }else if (_tbl='fp_cp'){
+  //   _tbl = 'tbl_fp_cp'
+  // }
   stablishedConnection()
   .then((db)=>{
     // console.log("Db connection stablished");
