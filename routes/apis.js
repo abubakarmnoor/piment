@@ -47,10 +47,11 @@ router.get('/', (req,res)=>{
   
 })
 
-router.get('/pull/:tblname/:id?', function(req,res){
+router.get('/pull/:tblname/:id?/:type?', function(req,res){
 	// res.status(200).json({sucess:false});
   let _tbl = req.params.tblname;
   let _id = req.params.id;
+  let _type = req.params.type;
   // console.log(_id);
   // res.status(200).json({success:false,_tbl});
   // if (_tbl == 'rm'){
@@ -63,7 +64,7 @@ router.get('/pull/:tblname/:id?', function(req,res){
   stablishedConnection()
   .then((db)=>{
     // console.log("Db connection stablished");
-    db.query(`call spselect('tbl_`+ _tbl +`', '`+ _id +`');`,null, function (err, data_) { 
+    db.query(`call spselect('tbl_`+ _tbl +`', '`+ _id +`', '`+ _type +`');`,null, function (err, data_) { 
       if (!data_) {
         res.status(200).json({success:false,err});
       }else{
