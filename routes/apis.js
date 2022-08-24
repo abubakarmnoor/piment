@@ -208,12 +208,13 @@ router.get('/pull/pop/:type', function(req,res){
   stablishedConnection()
   .then((db)=>{
     // console.log("Db connection stablished");
+    const _q = `call spselect('tbl_pop', '`+ _undefined +`', '`+ _type +`', '`+ _undefined +`');`
     db.query(`call spselect('tbl_pop', '`+ _undefined +`', '`+ _type +`', '`+ _undefined +`');`,null, function (err, data_) { 
       if (!data_) {
         res.status(200).json({success:false,err});
       }else{
         let data = data_[0]
-        res.status(200).json({success:true,data});
+        res.status(200).json({success:true,_q});
         closeDbConnection(db);
         // console.log("Db Connection close Successfully");
       }
@@ -223,37 +224,6 @@ router.get('/pull/pop/:type', function(req,res){
   });   
 });
 
-router.get('/pop/:type', function(req, res) {
-  const _type = req.params.type;
-  let _undefined = req.params.undefined;
-  req.session.loggedin = true;
-
-  if (req.session.loggedin) {
-		stablishedConnection()
-    .then((db)=>{
-      stablishedConnection()
-      .then((db)=>{
-        db.query(`call spselect('tbl_pop', '`+_undefined+`', '`+ _type +`', '`+_undefined+`');`,null, function (err, data_) { 
-          if (!data_){
-            res.status(200).json({success:false, err})
-          }else{
-            closeDbConnection(db);
-            req.session.loggedin = true;
-				    req.session.username = data_[0].login_nickname;
-            res.redirect('/');
-            // let data = data_;
-            // res.status(200).json({success:true, data})
-          }
-        })
-      })
-      }).catch((error)=>{
-        console.log("Db not connected",error);
-        res.status(500).json({success:false, error})
-      }); 
-	} else {
-    res.status(401).json({success:false, err:"not logged in"})
-	}
-})
 //functions
 
 module.exports = router;
