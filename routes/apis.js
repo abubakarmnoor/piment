@@ -210,7 +210,7 @@ router.get('/pop/:type', function(req, res) {
     .then((db)=>{
       stablishedConnection()
       .then((db)=>{
-        db.query(`call spselect('tbl_pop',?,?,?);`,['undefined',_type, 'undefined'], (err, data_)=>{
+        db.query(`call spselect('tbl_pop', 'undefined', '`+ _type +`', 'undefined');`,null, function (err, data_) { 
           if (!data_){
             res.status(200).json({success:false, err})
           }else{
