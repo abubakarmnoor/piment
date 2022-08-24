@@ -201,7 +201,36 @@ router.post('/auth', function(req, res) {
 	}
 });
 
-
+router.get('/pop/:type', function(req, res) {
+  const _type = req.params.type;
+  req.session.loggedin = true;
+  
+  if (req.session.loggedin) {
+		stablishedConnection()
+    .then((db)=>{
+      stablishedConnection()
+      .then((db)=>{
+        db.query(`call spselect('tbl_pop',?,?);`,[undefined,_type], (err, data_)=>{
+          if (!data_){
+            res.status(200).json({success:false, err})
+          }else{
+            closeDbConnection(db);
+            req.session.loggedin = true;
+				    req.session.username = data_[0].login_nickname;
+            res.redirect('/');
+            // let data = data_;
+            // res.status(200).json({success:true, data})
+          }
+        })
+      })
+      }).catch((error)=>{
+        console.log("Db not connected",error);
+        res.status(500).json({success:false, error})
+      }); 
+	} else {
+    res.status(401).json({success:false, err:"not logged in"})
+	}
+})
 //functions
 
 module.exports = router;
