@@ -129,11 +129,13 @@ router.get('/raw-materials', (req, res) => {
 		tables_bs4: true, raw_materials:true
 	});
 });
-router.get('/raw-material-details/:rmid/:act', async, (req, res) => {
+router.get('/raw-material-details/:rmid/:act', async (req, res) => {
 	const _act = req.params.act
 	const _rm_guid = req.params.rmid
 	// const __data_pop_product_family = _data_pop_product_family.data;
 	const __data_pop_product_family = await axios.get('/apis/pop/product-family');
+	const response = await axios.get('/user?ID=12345');
+    console.log(response);
 	const __data_pop_kayu = _data_pop_kayu.data;
 	const __data_pop_unit = _data_pop_unit.data;
 	const __data_pop_creator = _data_pop_creator.data;
