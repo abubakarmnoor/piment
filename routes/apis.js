@@ -200,6 +200,28 @@ router.post('/auth', function(req, res) {
 		// res.end();
 	}
 });
+router.get('/pull/pop/:type', function(req,res){
+	// res.status(200).json({sucess:false});
+  let _type = req.params.type;
+  let _undefined = req.params.undefined;
+
+  stablishedConnection()
+  .then((db)=>{
+    // console.log("Db connection stablished");
+    db.query(`call spselect('tbl_pop', '`+ _undefined +`', '`+ _type +`', '`+ _undefined +`');`,null, function (err, data_) { 
+      if (!data_) {
+        res.status(200).json({success:false,err});
+      }else{
+        let data = data_[0]
+        res.status(200).json({success:true,data});
+        closeDbConnection(db);
+        // console.log("Db Connection close Successfully");
+      }
+    })                         
+  }).catch((error)=>{
+    console.log("Db not connected",error);
+  });   
+});
 
 router.get('/pop/:type', function(req, res) {
   const _type = req.params.type;
