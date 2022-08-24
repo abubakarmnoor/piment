@@ -200,7 +200,7 @@ router.post('/auth', function(req, res) {
 		// res.end();
 	}
 });
-router.get('/pull/pop/:type', function(req,res){
+router.get('/pop/:type', function(req,res){
 	// res.status(200).json({sucess:false});
   let _type = req.params.type;
   let _undefined = req.params.undefined;
@@ -208,13 +208,12 @@ router.get('/pull/pop/:type', function(req,res){
   stablishedConnection()
   .then((db)=>{
     // console.log("Db connection stablished");
-    const _q = `call spselect('tbl_pop', '`+ _undefined +`', '`+ _type +`', '`+ _undefined +`');`
     db.query(`call spselect('tbl_pop', '`+ _undefined +`', '`+ _type +`', '`+ _undefined +`');`,null, function (err, data_) { 
       if (!data_) {
         res.status(200).json({success:false,err});
       }else{
         let data = data_[0]
-        res.status(200).json({success:true,_q});
+        res.status(200).json({success:true,data});
         closeDbConnection(db);
         // console.log("Db Connection close Successfully");
       }
