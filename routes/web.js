@@ -9,7 +9,7 @@ const axios = require('axios').default;
 // const _api_url_default = 'http://localhost:3000'
 const _data_countries = require("../public/data/countries.json");
 const _data_pop_activity = require("../public/data/pop-activity.json");
-const _data_pop_product_family = require("../public/data/pop-product-family.json");
+// const _data_pop_product_family = require("../public/data/pop-product-family.json");
 const _data_pop_kayu = require("../public/data/pop-kayu.json");
 const _data_pop_unit = require("../public/data/pop-unit.json");
 const _data_pop_creator = require("../public/data/pop-creator.json");
@@ -17,6 +17,8 @@ const _data_pop_origin = require("../public/data/pop-origin.json");
 const _data_rm = require("../public/data/raw-materials.json");
 const _data_purchase = require("../public/data/purchase.json");
 
+const _data_pop_product_family = axios.get('/apis/pop/product-family')
+  
 router.use(function (req, res, next) {
 	//console.log('app use 123');
 	res.set('Cache-Control', 'max-age=1');// 60s x 60m x24 x ? day
