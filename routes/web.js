@@ -17,8 +17,17 @@ const _data_pop_origin = require("../public/data/pop-origin.json");
 const _data_rm = require("../public/data/raw-materials.json");
 const _data_purchase = require("../public/data/purchase.json");
 
-const _data_pop_product_family = axios.get('/apis/pop/product-family')
-  
+axios.get('/apis/pop/product-family')
+  .then(function (response) {
+    // handle success
+    
+	const _data_pop_product_family = response;
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+
 router.use(function (req, res, next) {
 	//console.log('app use 123');
 	res.set('Cache-Control', 'max-age=1');// 60s x 60m x24 x ? day
