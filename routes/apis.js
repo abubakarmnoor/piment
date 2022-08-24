@@ -204,13 +204,13 @@ router.post('/auth', function(req, res) {
 router.get('/pop/:type', function(req, res) {
   const _type = req.params.type;
   req.session.loggedin = true;
-  
+
   if (req.session.loggedin) {
 		stablishedConnection()
     .then((db)=>{
       stablishedConnection()
       .then((db)=>{
-        db.query(`call spselect('tbl_pop',?,?);`,[undefined,_type], (err, data_)=>{
+        db.query(`call spselect('tbl_pop',?,?);`,[undefined,_type, undefined], (err, data_)=>{
           if (!data_){
             res.status(200).json({success:false, err})
           }else{
