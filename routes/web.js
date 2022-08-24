@@ -10,6 +10,7 @@ const axios = require('axios').default;
 const _data_countries = require("../public/data/countries.json");
 const _data_pop_activity = require("../public/data/pop-activity.json");
 // const _data_pop_product_family = require("../public/data/pop-product-family.json");
+const _data_pop_product_family = await axios.get("/apis/pop/unit");
 const _data_pop_kayu = require("../public/data/pop-kayu.json");
 const _data_pop_unit = require("../public/data/pop-unit.json");
 const _data_pop_creator = require("../public/data/pop-creator.json");
@@ -17,16 +18,6 @@ const _data_pop_origin = require("../public/data/pop-origin.json");
 const _data_rm = require("../public/data/raw-materials.json");
 const _data_purchase = require("../public/data/purchase.json");
 
-axios.get('/apis/pop/product-family')
-  .then(function (response) {
-    // handle success
-    
-	const _data_pop_product_family = response;
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-  })
 
 router.use(function (req, res, next) {
 	//console.log('app use 123');
