@@ -129,19 +129,29 @@ router.get('/raw-materials', (req, res) => {
 		tables_bs4: true, raw_materials:true
 	});
 });
-router.get('/raw-material-details/:rmid/:act', async (req, res) => {
+router.get('/raw-material-details/:rmid/:act', (req, res) => {
 	const _act = req.params.act
 	const _rm_guid = req.params.rmid
 	// const __data_pop_product_family = _data_pop_product_family.data;
-	const __data_pop_product_family = await axios.get('/apis/pop/product-family');
+	// const __data_pop_product_family = await axios.get('/apis/pop/product-family');
 	
 	const __data_pop_kayu = _data_pop_kayu.data;
 	const __data_pop_unit = _data_pop_unit.data;
 	const __data_pop_creator = _data_pop_creator.data;
 	// const __data_rm = _data_rm.data;
-	res.render('raw-material-details.hbs', {
-		tables_bs4: true, raw_material_details:true,__data_pop_product_family,__data_pop_kayu, __data_pop_unit, __data_pop_creator, _rm_guid, _act
-	});
+	axios.get('/apis/pop/product-family')
+	.then(function (response) {
+		// handle success
+		const __data_pop_product_family = response;	
+		res.render('raw-material-details.hbs', {
+			tables_bs4: true, raw_material_details:true,__data_pop_product_family,__data_pop_kayu, __data_pop_unit, __data_pop_creator, _rm_guid, _act
+		});
+	})
+	.catch(function (error) {
+		// handle error
+		console.log(error);
+	})
+	
 	// axios.get('/apis/pull/rm/')
 	// .then(function (response) {
 	// 	// handle success
