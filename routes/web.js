@@ -132,8 +132,8 @@ router.get('/raw-materials', (req, res) => {
 router.get('/raw-material-details/:rmid/:act', (req, res) => {
 	const _act = req.params.act
 	const _rm_guid = req.params.rmid
-	const __data_pop_product_family = _data_pop_product_family.data;
-	// const __data_pop_product_family = await axios.get('/apis/pop/product-family');
+	// const __data_pop_product_family = _data_pop_product_family.data;
+    const __data_pop_product_family = await axios.get('/apis/pop/product-family');
 	
 	const __data_pop_kayu = _data_pop_kayu.data;
 	const __data_pop_unit = _data_pop_unit.data;
