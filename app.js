@@ -4,6 +4,7 @@ const hbs = require('hbs');
 const web = require('./routes/web');
 const apis = require('./routes/apis');
 const app = express();
+const axios = require('axios');
 
 hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
@@ -15,7 +16,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', web);
 app.use('/apis/', apis);
 app.post('/test/', (req, res)=>{
-  res.status(200).json({success:"test 12345"})
+  let data = sendGetRequest();
+  res.status(200).json(data)
+
+  
 });
 
 //The 404 Route (ALWAYS Keep this as the last route)
@@ -34,6 +38,16 @@ app.use((err, req, res, next) => {
   });
 
 
+//function
+const sendGetRequest = async () => {
+  try {
+      const resp = await axios.get('/apis/pop/product-family');
+      console.log(resp.data);
+  } catch (err) {
+      // Handle Error Here
+      console.error(err);
+  }
+};
 // app.listen(1337, () => {
 // 	console.log('http://localhost:1337');
 // });
