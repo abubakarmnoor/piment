@@ -15,9 +15,9 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', web);
 app.use('/apis/', apis);
-app.get('/test/', async (req, res)=>{
-  let data = await sendGetRequest();
-  res.status(200).json(data)
+app.get('/test/', (req, res)=>{
+  const resp = await axios.get('/apis/pop/product-family');
+  res.status(200).json(resp)
 
   
 });
