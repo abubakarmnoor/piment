@@ -15,7 +15,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', web);
 app.use('/apis/', apis);
-app.post('/test/', (req, res)=>{
+app.get('/test/', (req, res)=>{
   let data = sendGetRequest();
   res.status(200).json(data)
 
