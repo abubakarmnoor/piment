@@ -69,13 +69,13 @@ $(document).ready(function() {
     } );
 
     $("#btn_refresh").on("click", function(){
-        tableLampshade.ajax.url("/apis/pull/fpc-lampshade", null, false).load();
-        tableStand.ajax.url("/apis/pull/fpc-stand", null, false).load();
-        tableEuro.ajax.url("/apis/pill/fpc-euro", null, false).load();
-        tableUS.ajax.url("/apis/pull/fpc-us", null, false).load();
-        tableJapan.ajax.url("/apis/pull/fpc-japan", null, false).load();
-        tableUK.ajax.url("/apis/pull/fpc-uk", null, false).load();
-        tableAUS.ajax.url("/apis/pull/fpc-aus", null, false).load();
+        tableLampshade.ajax.url("/apis/pull/fp_cp", null, false).load();
+        tableStand.ajax.url("/apis/pull/fp_cp", null, false).load();
+        tableEuro.ajax.url("/apis/pill/fp_cp", null, false).load();
+        tableUS.ajax.url("/apis/pull/fp_cp", null, false).load();
+        tableJapan.ajax.url("/apis/pull/fp_cp", null, false).load();
+        tableUK.ajax.url("/apis/pull/fp_cp", null, false).load();
+        tableAUS.ajax.url("/apis/pull/fp_cp", null, false).load();
         // spinner_popup();
         // var sdate_ =  moment($("input[name='daterangepicker_start']").val()).format('YYYY-MM-DD');
         // var edate_ =  moment($("input[name='daterangepicker_end']").val()).format('YYYY-MM-DD');
@@ -227,7 +227,7 @@ function refreshLampshade(){
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/data/fpc-lampshade.json",
+        "ajax": "/apis/pull/fp_cp",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -287,7 +287,7 @@ function refreshStand(){
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/data/fpc-stand.json",
+        "ajax": "/apis/pull/fp_cp",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -347,7 +347,7 @@ function refreshEuro(){
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/data/fpc-euro.json",
+        "ajax": "/apis/pull/fp_cp",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -407,7 +407,7 @@ function refreshUS(){
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/data/fpc-us.json",
+        "ajax": "/apis/pull/fp_cp",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -467,7 +467,7 @@ function refreshJapan(){
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/data/fpc-japan.json",
+        "ajax": "/apis/pull/fp_cp",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -527,7 +527,7 @@ function refreshUK(){
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/data/fpc-uk.json",
+        "ajax": "/apis/pull/fp_cp",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -587,7 +587,7 @@ function refreshAUS(){
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/data/fpc-aus.json",
+        "ajax": "/apis/pull/fp_cp",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
