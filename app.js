@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', web);
 app.use('/apis/', apis);
 app.get('/test/', (req, res)=>{
-  let data = sendGetRequest();
+  let data = await sendGetRequest();
   res.status(200).json(data)
 
   
@@ -41,7 +41,7 @@ app.use((err, req, res, next) => {
 //function
 const sendGetRequest = async () => {
   try {
-      const resp = await axios.get('/apis/pop/product-family');
+      const resp = await axios.get('https://piment-admin.localpro100.com/apis/pop/product-family');
       console.log(resp.data);
   } catch (err) {
       // Handle Error Here
