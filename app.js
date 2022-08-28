@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', web);
 app.use('/apis/', apis);
 app.get('/test/', async (req, res)=>{
-  const resp = await axios.get('/apis/pop/product-family');
+  const resp = await axios.get('https://piment-admin.localpro100.com/apis/pop/product-family');
   res.status(200).json(resp)
 
   
