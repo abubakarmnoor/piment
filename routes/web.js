@@ -1,15 +1,15 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
-const axios = require('axios').default;
-
+// const axios = require('axios').default;
+const {getPopupData} = require('./functions')
 // const tsqlPull = require('../tsql/pull');
 //fs = require('fs');
 // const axios = require('axios');
 // const _api_url_default = 'http://localhost:3000'
 const _data_countries = require("../public/data/countries.json");
 const _data_pop_activity = require("../public/data/pop-activity.json");
-const _data_pop_product_family = require("../public/data/pop-product-family.json");
+// const _data_pop_product_family = require("../public/data/pop-product-family.json");
 
 const _data_pop_kayu = require("../public/data/pop-kayu.json");
 const _data_pop_unit = require("../public/data/pop-unit.json");
@@ -170,10 +170,12 @@ router.get('/finish-product', (req, res) => {
 		tables_bs4: true, finish_product: true
 	});
 });
-router.get('/finish-product-details/:fpid/:act', (req, res) => {
+router.get('/finish-product-details/:fpid/:act', async (req, res) => {
 	const _act = req.params.act
 	const _fpid = req.params.fpid
-	const __data_pop_product_family = _data_pop_product_family.data;
+	// const __data_pop_product_family = _data_pop_product_family.data;
+	let __data_pop_product_family = await getPopupData();
+	
 	const __data_pop_creator = _data_pop_creator.data;
 	const __data_pop_origin = _data_pop_origin.data;
 	res.render('finish-product-details.hbs', {

@@ -4,8 +4,9 @@ const hbs = require('hbs');
 const web = require('./routes/web');
 const apis = require('./routes/apis');
 const app = express();
-const axios = require('axios');
-
+// const axios = require('axios');
+const { log } = require('console');
+const {getPopupData} = require('./routes/functions')
 hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
 app.set('view engine', 'hbs');
@@ -16,9 +17,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', web);
 app.use('/apis/', apis);
 app.get('/test/', async (req, res)=>{
-  const resp = await axios.get('https://piment-admin.localpro100.com/apis/pop/product-family');
-  res.status(200).json(resp)
-
+  let _res = await getPopupData();
+  res.status(200).json(_res)
   
 });
 
@@ -38,16 +38,7 @@ app.use((err, req, res, next) => {
   });
 
 
-//function
-const sendGetRequest = async () => {
-  try {
-      const resp = await axios.get('/apis/pop/product-family');
-      console.log(resp.data);
-  } catch (err) {
-      // Handle Error Here
-      console.error(err);
-  }
-};
+
 // app.listen(1337, () => {
 // 	console.log('http://localhost:1337');
 // });
