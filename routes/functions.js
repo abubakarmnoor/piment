@@ -5,7 +5,7 @@ const getPopupData = async () => {
 try {
 
     const resp = await axios.get(api_url+'/apis/pop/product-family');
-    return JSON.parse(JSON.stringify(resp.data));
+    return JSON.parse(JSON.stringify(resp.data.data));
         // console.log(resp.data);
     } catch (err) {
         // Handle Error Here

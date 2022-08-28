@@ -174,7 +174,7 @@ router.get('/finish-product-details/:fpid/:act', async (req, res) => {
 	const _act = req.params.act
 	const _fpid = req.params.fpid
 	// const __data_pop_product_family = _data_pop_product_family.data;
-	let __data_pop_product_family = await getPopupData();
+	const __data_pop_product_family = await getPopupData();
 	
 	const __data_pop_creator = _data_pop_creator.data;
 	const __data_pop_origin = _data_pop_origin.data;

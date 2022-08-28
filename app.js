@@ -18,7 +18,7 @@ app.use('/', web);
 app.use('/apis/', apis);
 app.get('/test/', async (req, res)=>{
   let _res = await getPopupData();
-  res.status(200).json(_res)
+  res.status(200).json(_res.data)
   
 });
 
