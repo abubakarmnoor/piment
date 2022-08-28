@@ -5,18 +5,18 @@ const router = express.Router();
 const {getPopupData} = require('./functions')
 // const tsqlPull = require('../tsql/pull');
 //fs = require('fs');
-// const axios = require('axios');
-// const _api_url_default = 'http://localhost:3000'
+
 const _data_countries = require("../public/data/countries.json");
-const _data_pop_activity = require("../public/data/pop-activity.json");
+// const _data_pop_activity = require("../public/data/pop-activity.json");
 // const _data_pop_product_family = require("../public/data/pop-product-family.json");
 
-const _data_pop_kayu = require("../public/data/pop-kayu.json");
-const _data_pop_unit = require("../public/data/pop-unit.json");
-const _data_pop_creator = require("../public/data/pop-creator.json");
-const _data_pop_origin = require("../public/data/pop-origin.json");
-const _data_rm = require("../public/data/raw-materials.json");
-const _data_purchase = require("../public/data/purchase.json");
+// const _data_pop_kayu = require("../public/data/pop-kayu.json");
+
+// const _data_pop_unit = require("../public/data/pop-unit.json");
+// const _data_pop_creator = require("../public/data/pop-creator.json");
+// const _data_pop_origin = require("../public/data/pop-origin.json");
+// const _data_rm = require("../public/data/raw-materials.json");
+// const _data_purchase = require("../public/data/purchase.json");
 
 
 router.use(function (req, res, next) {
@@ -103,8 +103,8 @@ router.get('/clients', (req, res) => {
 	});
 });
 
-router.get('/client-details', (req, res) => {
-	const __data_pop_activity = _data_pop_activity.data;
+router.get('/client-details', async (req, res) => {
+	const __data_pop_activity = await getPopupData('activity');
 	const __data_countries = _data_countries.data;
 	res.render('client-details.hbs', {
 		client_details: true, __data_pop_activity, tables_bs4: true, __data_countries
@@ -129,17 +129,15 @@ router.get('/raw-materials', (req, res) => {
 		tables_bs4: true, raw_materials:true
 	});
 });
-router.get('/raw-material-details/:rmid/:act', (req, res) => {
+router.get('/raw-material-details/:rmid/:act', async (req, res) => {
 	const _act = req.params.act
 	const _rm_guid = req.params.rmid
-	const __data_pop_product_family = _data_pop_product_family.data;
+	const __data_pop_product_family = await getPopupData('product-family');
+	const __data_pop_kayu = await getPopupData('kayu');
+	const __data_pop_unit = await getPopupData('unit');
 	
-	const __data_pop_kayu = _data_pop_kayu.data;
-	const __data_pop_unit = _data_pop_unit.data;
-	const __data_pop_creator = _data_pop_creator.data;
-	// const __data_rm = _data_rm.data;
 	res.render('raw-material-details.hbs', {
-		tables_bs4: true, raw_material_details:true,__data_pop_product_family,__data_pop_kayu, __data_pop_unit, __data_pop_creator, _rm_guid, _act
+		tables_bs4: true, raw_material_details:true,__data_pop_product_family,__data_pop_kayu, __data_pop_unit, _rm_guid, _act
 	});
 	
 	// axios.get('/apis/pull/rm/')
@@ -174,12 +172,10 @@ router.get('/finish-product-details/:fpid/:act', async (req, res) => {
 	const _act = req.params.act
 	const _fpid = req.params.fpid
 	// const __data_pop_product_family = _data_pop_product_family.data;
-	const __data_pop_product_family = await getPopupData();
-	
-	const __data_pop_creator = _data_pop_creator.data;
-	const __data_pop_origin = _data_pop_origin.data;
+	const __data_pop_product_family = await getPopupData('product-family');
+	const __data_pop_origin = await getPopupData('origin');
 	res.render('finish-product-details.hbs', {
-		tables_bs4: true, finish_product_details: true, __data_pop_product_family, __data_pop_creator, __data_pop_origin, fpid:_fpid, act:_act
+		tables_bs4: true, finish_product_details: true, __data_pop_product_family, __data_pop_origin, fpid:_fpid, act:_act
 	});
 });
 router.get('/fpc/:fpid/:act', (req, res) => {

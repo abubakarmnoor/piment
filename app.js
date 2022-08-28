@@ -17,8 +17,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', web);
 app.use('/apis/', apis);
 app.get('/test/', async (req, res)=>{
-  let _res = await getPopupData();
-  res.status(200).json(_res.data)
+  let _res = await getPopupData('unit');
+  res.status(200).json(_res)
   
 });
 
