@@ -71,7 +71,7 @@ $(document).ready(function() {
     $("#btn_refresh").on("click", function(){
         tableLampshade.ajax.url("/apis/pull/fp_cp", null, false).load();
         tableStand.ajax.url("/apis/pull/fp_cp", null, false).load();
-        tableEuro.ajax.url("/apis/pill/fp_cp", null, false).load();
+        tableEuro.ajax.url("/apis/pull/fp_cp", null, false).load();
         tableUS.ajax.url("/apis/pull/fp_cp", null, false).load();
         tableJapan.ajax.url("/apis/pull/fp_cp", null, false).load();
         tableUK.ajax.url("/apis/pull/fp_cp", null, false).load();
