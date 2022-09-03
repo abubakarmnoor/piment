@@ -197,7 +197,7 @@ $(document).ready(function() {
     //
 
     $("#btn_add_lampshade").on("click", function(e){
-        $("#title").val("LAMPSHADE");
+        $("#title").text("LAMPSHADE");
         $("#fp_cp_type").val("lampshade");
     })
 //end doc ready
