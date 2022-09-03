@@ -11,14 +11,5 @@ try {
         console.error(err);
     }
 };
-const getRM = async (type) => {
-    try {
-        const resp = await axios.get(api_url+'/apis/rm/'+type);
-        return JSON.parse(JSON.stringify(resp.data.data));
-            // console.log(resp.data);
-        } catch (err) {
-            // Handle Error Here
-            console.error(err);
-        }
-    };
+
 module.exports = {getPopupData};
