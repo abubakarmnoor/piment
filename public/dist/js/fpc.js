@@ -200,6 +200,30 @@ $(document).ready(function() {
         $("#title").text("LAMPSHADE");
         $("#fp_cp_type").val("lampshade");
     })
+    $("#btn_add_stand").on("click", function(e){
+        $("#title").text("STAND");
+        $("#fp_cp_type").val("stand");
+    })
+    $("#btn_add_euro").on("click", function(e){
+        $("#title").text("EURO");
+        $("#fp_cp_type").val("euro");
+    })
+    $("#btn_add_us").on("click", function(e){
+        $("#title").text("US");
+        $("#fp_cp_type").val("US");
+    })
+    $("#btn_add_japan").on("click", function(e){
+        $("#title").text("JAPAN");
+        $("#fp_cp_type").val("japan");
+    })
+    $("#btn_add_uk").on("click", function(e){
+        $("#title").text("UK");
+        $("#fp_cp_type").val("uk");
+    })
+    $("#btn_add_aus").on("click", function(e){
+        $("#title").text("AUS");
+        $("#fp_cp_type").val("aus");
+    })
 //end doc ready
 });
 
