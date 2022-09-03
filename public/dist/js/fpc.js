@@ -9,8 +9,9 @@ var tableUS;
 var tableJapan;
 var tableUK;
 var tableAUS;
+spinner_popup();
 $(document).ready(function() {
-
+    $('.modal').modal('hide');
     // var sdate_ = moment().subtract(29, 'days').format('YYYY-MM-DD');
     // var edate_ = moment().format('YYYY-MM-DD');;
     refreshLampshade();
@@ -194,8 +195,7 @@ $(document).ready(function() {
         location.href = "/finish-product-details/"+$("#fp_guid").val()+"/"+$("#act").val();
     })
     
-    //
-
+    //init
     $("#btn_add_lampshade").on("click", function(e){
         $("#title").text("LAMPSHADE");
         $("#fp_cp_type").val("lampshade");
@@ -224,9 +224,12 @@ $(document).ready(function() {
         $("#title").text("AUS");
         $("#fp_cp_type").val("aus");
     })
+   
 //end doc ready
 });
 
+//init
+//functions
 function refreshLampshade(){
     tableLampshade = $('#dtTblLampshade').DataTable({
         // "scrollY": "370px",

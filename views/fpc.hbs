@@ -342,7 +342,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h3 class="modal-title">ADD COMPONENTS <span id="title"></span></h3>
+            <h3 class="modal-title">ADD COMPONENT - <span id="title"></span></h3>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -353,7 +353,12 @@
                     <input type="text" class="form-control invisible" id="fpc_guid" value="{{fpc_guid}}" style="position:absolute;" required readonly>
                     <div class="col-md-5 mb-3">
                         <label>RM</label>
-                        <input type="text" class="form-control" name="fp_cp_rm_code" placeholder="RM" value="" required>
+                        <label for="unit">RM Code</label>
+                        <select class="form-control selectpicker" name="fp_cp_rm_code" data-live-search="true">
+                            {{#each __data_pop_unit}}
+                                <option value="{{pop_guid}}">{{pop_desc}}</option>
+                            {{/each}}
+                        </select>
                     </div>
                     <div class="col-md-7 mb-3">
                         <label>RM Desc</label>
