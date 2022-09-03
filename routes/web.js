@@ -116,7 +116,7 @@ router.get('/suppliers', (req, res) => {
 		tables_bs4: true, suppliers: true
 	});
 });
-router.get('/supplier-details', (req, res) => {
+router.get('/supplier-details', async (req, res) => {
 	const __data_countries = _data_countries.data;
 	const __data_pop_product_family = await getPopupData('product-family');
 	res.render('supplier-details.hbs', {
