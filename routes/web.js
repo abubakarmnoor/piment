@@ -178,7 +178,7 @@ router.get('/finish-product-details/:fpid/:act', async (req, res) => {
 		tables_bs4: true, finish_product_details: true, __data_pop_product_family, __data_pop_origin, fpid:_fpid, act:_act
 	});
 });
-router.get('/fpc/:fpid/:act', (req, res) => {
+router.get('/fpc/:fpid/:act', async (req, res) => {
 	const _act = req.params.act
 	const _fpid = req.params.fpid
 	const __data_pop_unit = await getPopupData('unit');
@@ -186,7 +186,7 @@ router.get('/fpc/:fpid/:act', (req, res) => {
 		tables_bs4: true, fpc:true, fpid:_fpid, act:_act, __data_pop_unit
 	});
 })
-router.get('/fpc-details/:fpid/:fcpid/:act', (req, res) => {
+router.get('/fpc-details/:fpid/:fcpid/:act', async (req, res) => {
 	// console.log('eid : '+req.params.eid);
 	// YWRkbmV3 => addnew
 	const __data_pop_unit = await getPopupData('unit');
