@@ -118,7 +118,7 @@ router.get('/suppliers', (req, res) => {
 });
 router.get('/supplier-details', (req, res) => {
 	const __data_countries = _data_countries.data;
-	const __data_pop_product_family = _data_pop_product_family.data;
+	const __data_pop_product_family = await getPopupData('product-family');
 	res.render('supplier-details.hbs', {
 		tables_bs4: true, supplier_details:true, __data_countries, __data_pop_product_family
 	});
@@ -181,14 +181,15 @@ router.get('/finish-product-details/:fpid/:act', async (req, res) => {
 router.get('/fpc/:fpid/:act', (req, res) => {
 	const _act = req.params.act
 	const _fpid = req.params.fpid
+	const __data_pop_unit = await getPopupData('unit');
 	res.render('fpc.hbs', {
-		tables_bs4: true, fpc:true, fpid:_fpid, act:_act
+		tables_bs4: true, fpc:true, fpid:_fpid, act:_act, __data_pop_unit
 	});
 })
 router.get('/fpc-details/:fpid/:fcpid/:act', (req, res) => {
 	// console.log('eid : '+req.params.eid);
 	// YWRkbmV3 => addnew
-	const __data_pop_unit = _data_pop_unit.data;
+	const __data_pop_unit = await getPopupData('unit');
 	const _fpcid = req.params.fcpid
 	const _fpid = req.params.fpid
 	const _act = req.params.act

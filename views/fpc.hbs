@@ -316,11 +316,6 @@
                 </div>
                 <div class="row">&nbsp;</div>
                 <div class="row">
-                    <div class="col-md-4 mb-3 invisible">
-                        <label>FP Id</label>
-                        <input type="text" class="form-control" id="fp_guid" name="fp_guid" value="{{fp_guid}}"readonly>
-                        <input type="text" class="form-control" id="act" name="act" value="{{act}}"readonly>
-                    </div>
                     <div class="row">&nbsp;</div>
                     <div class="row">&nbsp;</div>
                     <div class="row">&nbsp;</div>
@@ -342,8 +337,6 @@
 
     </div>
     <!-- /#wrapper -->
-{{> scripts}}
-{{!-- <script src="https://cdn.datatables.net/plug-ins/1.11.3/api/sum().js"></script> --}}
 
 {{!-- popup form --}}
  <div class="modal fade" id="rm-modal-form" tabindex="-1" role="dialog" aria-labelledby="rm-modal-form" aria-hidden="true" data-backdrop="false">
@@ -371,11 +364,16 @@
                 <div class="form-group row">
                     <div class="col-md-4 mb-3">
                         <label>Qty</label>
-                        <input type="text" class="form-control" name="fp_cp_qty" placeholder="RM" value="" required>
+                        <input type="text" class="form-control" name="fp_cp_qty" placeholder="Qty" value="" required>
                     </div>
                     <div class="col-md-7 mb-3">
-                        <label>Unit</label>
-                        <input type="text" class="form-control" name="fp_cp_unit" required>
+                        <label for="unit">Unit</label>
+                        <select class="form-control selectpicker" id="sp_unit" name="fp_cp_unit" data-live-search="true">
+                            <option value="-">-</option>
+                            {{#each __data_pop_unit}}
+                                <option value="{{pop_guid}}">{{pop_desc}}</option>
+                            {{/each}}
+                        </select>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -401,7 +399,9 @@
                     </div>
                     <div class="col-md-4 mb-3">
                         <label>Id</label>
-                        <input type="text" class="form-control" id="pop_id" name="pop_id" readonly>
+                        <input type="text" class="form-control" id="fp_fpc_guid" name="{{fp_fpc_guid}}" readonly>
+                        <input type="text" class="form-control" id="fp_guid" name="fp_guid" value="{{fp_guid}}"readonly>
+                        <input type="text" class="form-control" id="act" name="act" value="{{act}}"readonly>
                     </div>
                 </div>
                 <hr/>
@@ -411,6 +411,8 @@
         </div>
     </div>
 </div>
+{{> scripts}}
+{{!-- <script src="https://cdn.datatables.net/plug-ins/1.11.3/api/sum().js"></script> --}}
 
 </body>
 
