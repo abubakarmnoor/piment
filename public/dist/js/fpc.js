@@ -548,7 +548,7 @@ $(document).ready(function() {
         console.log(_fp_cp_guid);
         $("#title").text("LAMPSHADE");
         $("#fp_guid").val(tableLampshade.row( this ).data().fp_guid);
-        $("input[name=fp_cp_guidx]").val(tableLampshade.row( this ).data().fp_cp_guid);
+        $("input[name=fp_cp_guid]").val(tableLampshade.row( this ).data().fp_cp_guid);
         
         $("#fp_cp_rm_guid").selectpicker('val',tableLampshade.row( this ).data().fp_cp_rm_guid);
         $("input[name=fp_cp_qty]").val(tableLampshade.row( this ).data().fp_cp_qty);
