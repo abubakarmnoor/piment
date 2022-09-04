@@ -210,7 +210,7 @@ $(document).ready(function() {
     })
     $("#btn_add_us").on("click", function(e){
         $("#title").text("US");
-        $("#fp_cp_type").val("US");
+        $("#fp_cp_type").val("us");
     })
     $("#btn_add_japan").on("click", function(e){
         $("#title").text("JAPAN");
@@ -262,37 +262,36 @@ $(document).ready(function() {
         // return;
 
         // ajax - save/post data
-        // spinner_popup();
-        // $.ajax({
-        //     type:"POST", // must be POST 
-        //     url: "/apis/fpc/upd", 
-        //     contentType: "application/json; charset=utf-8",
-        //     dataType: "json",
-        //     data: JSON.stringify(_data),
-        //     success: function(data) {
-        //         // setTimeout(function () {
-        //             $('.modal').modal('hide');
-        //             Swal.fire({
-        //                 icon: 'success',
-        //                 title: '',
-        //                 text: "Data Saved"
-        //             }).then(function(){
-        //                 // location.href='/finish-product'
-        //             });
-                    
-        //         // }, 3000);
+        spinner_popup();
+        $.ajax({
+            type:"POST", // must be POST 
+            url: "/apis/upd", 
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(_data),
+            success: function(data) {
                 
-        //     }, 
-        //     error: function(jqXHR, textStatus, errorThrown) {
-        //         //alert(jqXHR.status);
-        //         $('.modal').modal('hide');
-        //         Swal.fire({
-        //             title: "Error!",
-        //             text: textStatus,
-        //             icon: "error"
-        //         });
-        //     }
-        // });
+                $('.modal').modal('hide');
+                Swal.fire({
+                    icon: 'success',
+                    title: '',
+                    text: "Data Saved"
+                }).then(function(){
+                    // location.href='/finish-product'
+                });
+                    
+            }, 
+            error: function(jqXHR, textStatus, errorThrown) {
+                //alert(jqXHR.status);
+                Swal.fire({
+                    title: "Error!",
+                    text: textStatus,
+                    icon: "error"
+                }).then(function(){
+                    $('.modal').modal('hide');    
+                });
+            }
+        });
 
     });
 
