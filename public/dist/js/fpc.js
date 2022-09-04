@@ -299,9 +299,13 @@ $(document).ready(function() {
     //btn popup
     $(".btn-popup").on("click", function(e){
         
-        $("input[name=fp_cp_rm_code]").selectpicker('val',"-").refresh();
+        $("input[name=fp_cp_rm_code]")
+        .selectpicker('val',"-")
+        .selectpicker('refresh')
         $("input[name=fp_cp_qty]").val(0);
-        $("input[name=fp_cp_unit]").selectpicker('val',"-").refresh();
+        $("input[name=fp_cp_unit]")
+        .selectpicker('val',"-")
+        .selectpicker('refresh')
         $("input[name=fp_cp_price]").val(0);
         
     })
