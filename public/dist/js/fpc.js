@@ -280,15 +280,8 @@ $(document).ready(function() {
                         text: "Add more component ?",
                         icon: 'question',
                         showDenyButton: true,
-                        // showCancelButton: true,
                         confirmButtonText: 'Yes',
                         denyButtonText: 'No'
-                        // customClass: {
-                        //   actions: 'my-actions',
-                        //   cancelButton: 'order-1 right-gap',
-                        //   confirmButton: 'order-2',
-                        //   denyButton: 'order-3',
-                        // }
                       }).then((result) => {
     
                         if (result.isConfirmed) {
@@ -323,6 +316,56 @@ $(document).ready(function() {
         resetForm();
     })
 
+    // Delete a record
+    $('#dtTblLampshade').on('click', 'td.editor-delete', function (e) {
+        e.preventDefault();
+        let _data = {};
+        _data.id = table.row( this ).data().fp_cp_guid;
+        
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                spinner_popup();
+                $.ajax({
+                    type:"POST",
+                    url: "/apis/del/fp_cp", 
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify(_data),
+                    success: function(data) {
+                        // setTimeout(function () {
+                            $('.modal').modal('hide');
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'FP',
+                                text: "Data Deleted"
+                            }).then(function(){
+                                $("#btn_refresh").click();
+                            });
+                            
+                        // }, 3000) ;
+                        
+                    }, 
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        //alert(jqXHR.status);
+                        $('.modal').modal('hide');
+                        Swal.fire({
+                            title: "Error!",
+                            text: textStatus,
+                            icon: "error"
+                        });
+                    }
+                });
+            }
+        })
+    } );
 //end doc ready
 });
 

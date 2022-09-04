@@ -144,9 +144,10 @@ router.post('/del/:tbl',(req,res)=>{
   if (_data.tblname == 'rm'){
     query='call spdelete_rm (?)'
     // query.concat(" ")
-
   }else if (_data.tblname == 'fp'){
     query='call spdelete_fp (?)'
+  }else if (_data.tblname == 'fp_cp'){
+    query='call spdelete_fp_cp (?)'
   }
   // res.status(200).json({success:true, query})
 
