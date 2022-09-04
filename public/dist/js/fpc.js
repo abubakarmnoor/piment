@@ -548,7 +548,7 @@ $(document).ready(function() {
         $("#fp_cp_rm_guid").selectpicker('val',tableLampshade.row( this ).data().fp_cp_rm_guid);
         $("input[name=fp_cp_qty]").val(tableLampshade.row( this ).data().fp_cp_qty);
         $("#fp_cp_unit").selectpicker('val',tableLampshade.row( this ).data().fp_cp_unit);
-        $("#fp_cp_price").val(tableLampshade.row( this ).data().fp_cp_price);
+        $("input[name=fp_cp_price]").val(tableLampshade.row( this ).data().fp_cp_price);
         $("#fp_guid").val(tableLampshade.row( this ).data().fp_guid);
         $("#fp_cp_guid").val(tableLampshade.row( this ).data().fp_cp_guid);
         $("#fp_cp_type").val(tableLampshade.row( this ).data().fp_cp_type);
