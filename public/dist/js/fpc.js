@@ -549,7 +549,6 @@ $(document).ready(function() {
         $("#title").text("LAMPSHADE");
         $("#fp_guid").val(tableLampshade.row( this ).data().fp_guid);
         $("input[name=fp_cp_guid]").val(tableLampshade.row( this ).data().fp_cp_guid);
-        
         $("#fp_cp_rm_guid").selectpicker('val',tableLampshade.row( this ).data().fp_cp_rm_guid);
         $("input[name=fp_cp_qty]").val(tableLampshade.row( this ).data().fp_cp_qty);
         $("#fp_cp_unit").selectpicker('val',tableLampshade.row( this ).data().fp_cp_unit);
