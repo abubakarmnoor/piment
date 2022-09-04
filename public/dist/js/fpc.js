@@ -278,7 +278,7 @@ $(document).ready(function() {
                     Swal.fire({
                         title: 'Add more component ?',
                         showDenyButton: true,
-                        showCancelButton: true,
+                        // showCancelButton: true,
                         confirmButtonText: 'Yes',
                         denyButtonText: 'No',
                         customClass: {
