@@ -544,7 +544,7 @@ $(document).ready(function() {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
         const _fp_cp_guid = tableLampshade.row( this ).data().fp_cp_guid;
-        $('#rm-modal-form .modal').modal('show');
+        $('#rm-modal-form').modal('show');
     } );
 //end doc ready
 });
