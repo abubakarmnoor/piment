@@ -305,6 +305,7 @@ $(document).ready(function() {
 });
 
 //init
+var fp_guid = $("#fp_guid").val();
 //functions
 function refreshLampshade(){
     tableLampshade = $('#dtTblLampshade').DataTable({
@@ -334,7 +335,7 @@ function refreshLampshade(){
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/apis/pull/fp_cp/lampshade",
+        "ajax": "/apis/pull/fp_cp/"+fp_guid+"/lampshade",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -394,7 +395,7 @@ function refreshStand(){
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/apis/pull/fp_cp/stand",
+        "ajax": "/apis/pull/fp_cp/"+fp_guid+"/stand",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -454,7 +455,7 @@ function refreshEuro(){
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/apis/pull/fp_cp/euro",
+        "ajax": "/apis/pull/fp_cp/"+fp_guid+"/euro",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -514,7 +515,7 @@ function refreshUS(){
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/apis/pull/fp_cp/us",
+        "ajax": "/apis/pull/fp_cp/"+fp_guid+"/us",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -574,7 +575,7 @@ function refreshJapan(){
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/apis/pull/fp_cp/japan",
+        "ajax": "/apis/pull/fp_cp/"+fp_guid+"/japan",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -634,7 +635,7 @@ function refreshUK(){
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/apis/pull/fp_cp/uk",
+        "ajax": "/apis/pull/fp_cp/"+fp_guid+"/uk",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -694,7 +695,7 @@ function refreshAUS(){
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/apis/pull/fp_cp/aus",
+        "ajax": "/apis/pull/fp_cp/"+fp_guid+"/aus",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
