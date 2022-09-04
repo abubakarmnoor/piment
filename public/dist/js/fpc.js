@@ -121,7 +121,7 @@ $(document).ready(function() {
         _data.fp_cp_qty = (_data.fp_cp_qty).replace(/\,/g,'');
         _data.fp_cp_price = (_data.fp_cp_price).replace(/\,/g,'');
         _data.tblname = "fp_cp";
-        console.log(_data);//
+        // console.log(_data);//
 
         //validation
         const rm_guid_ = $("#fp_cp_rm_guid").val()
@@ -547,6 +547,7 @@ $(document).ready(function() {
         // const _fp_cp_guid = tableLampshade.row( this ).data().fp_cp_guid;
         // console.log(_fp_cp_guid);
         $("#title").text("LAMPSHADE");
+        $("#fp_cp_type").val("lampshade");
         $("#fp_guid").val(tableLampshade.row( this ).data().fp_guid);
         $("input[name=fp_cp_guid]").val(tableLampshade.row( this ).data().fp_cp_guid);
         $("#fp_cp_rm_guid").selectpicker('val',tableLampshade.row( this ).data().fp_cp_rm_guid);
@@ -563,7 +564,8 @@ $(document).ready(function() {
         // console.log( tableLampshade.row( this ).data());
         // const _fp_cp_guid = tableLampshade.row( this ).data().fp_cp_guid;
         // console.log(_fp_cp_guid);
-        $("#title").text("LAMPSHADE");
+        $("#title").text("STAND");
+        $("#fp_cp_type").val("stand");
         $("#fp_guid").val(tableStand.row( this ).data().fp_guid);
         $("input[name=fp_cp_guid]").val(tableStand.row( this ).data().fp_cp_guid);
         $("#fp_cp_rm_guid").selectpicker('val',tableStand.row( this ).data().fp_cp_rm_guid);
@@ -580,7 +582,8 @@ $(document).ready(function() {
         // console.log( tableLampshade.row( this ).data());
         // const _fp_cp_guid = tableLampshade.row( this ).data().fp_cp_guid;
         // console.log(_fp_cp_guid);
-        $("#title").text("LAMPSHADE");
+        $("#title").text("EURO");
+        $("#fp_cp_type").val("euro");
         $("#fp_guid").val(tableEuro.row( this ).data().fp_guid);
         $("input[name=fp_cp_guid]").val(tableEuro.row( this ).data().fp_cp_guid);
         $("#fp_cp_rm_guid").selectpicker('val',tableEuro.row( this ).data().fp_cp_rm_guid);
@@ -597,7 +600,8 @@ $(document).ready(function() {
         // console.log( tableLampshade.row( this ).data());
         // const _fp_cp_guid = tableLampshade.row( this ).data().fp_cp_guid;
         // console.log(_fp_cp_guid);
-        $("#title").text("LAMPSHADE");
+        $("#title").text("US");
+        $("#fp_cp_type").val("us");
         $("#fp_guid").val(tableUS.row( this ).data().fp_guid);
         $("input[name=fp_cp_guid]").val(tableUS.row( this ).data().fp_cp_guid);
         $("#fp_cp_rm_guid").selectpicker('val',tableUS.row( this ).data().fp_cp_rm_guid);
@@ -614,7 +618,8 @@ $(document).ready(function() {
         // console.log( tableLampshade.row( this ).data());
         // const _fp_cp_guid = tableLampshade.row( this ).data().fp_cp_guid;
         // console.log(_fp_cp_guid);
-        $("#title").text("LAMPSHADE");
+        $("#title").text("JAPAN");
+        $("#fp_cp_type").val("japan");
         $("#fp_guid").val(tableJapan.row( this ).data().fp_guid);
         $("input[name=fp_cp_guid]").val(tableJapan.row( this ).data().fp_cp_guid);
         $("#fp_cp_rm_guid").selectpicker('val',tableJapan.row( this ).data().fp_cp_rm_guid);
@@ -631,7 +636,8 @@ $(document).ready(function() {
         // console.log( tableLampshade.row( this ).data());
         // const _fp_cp_guid = tableLampshade.row( this ).data().fp_cp_guid;
         // console.log(_fp_cp_guid);
-        $("#title").text("LAMPSHADE");
+        $("#title").text("UK");
+        $("#fp_cp_type").val("uk");
         $("#fp_guid").val(tableUK.row( this ).data().fp_guid);
         $("input[name=fp_cp_guid]").val(tableUK.row( this ).data().fp_cp_guid);
         $("#fp_cp_rm_guid").selectpicker('val',tableUK.row( this ).data().fp_cp_rm_guid);
@@ -648,7 +654,8 @@ $(document).ready(function() {
         // console.log( tableLampshade.row( this ).data());
         // const _fp_cp_guid = tableLampshade.row( this ).data().fp_cp_guid;
         // console.log(_fp_cp_guid);
-        $("#title").text("LAMPSHADE");
+        $("#title").text("AUS");
+        $("#fp_cp_type").val("aus");
         $("#fp_guid").val(tableAUS.row( this ).data().fp_guid);
         $("input[name=fp_cp_guid]").val(tableAUS.row( this ).data().fp_cp_guid);
         $("#fp_cp_rm_guid").selectpicker('val',tableAUS.row( this ).data().fp_cp_rm_guid);
