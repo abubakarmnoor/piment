@@ -96,13 +96,15 @@ $(document).ready(function() {
         e.preventDefault();
         let _data = {};
         _data.id = table.row( this ).data().rm_guid;
+        _data.rm_desc = table.row( this ).data().rm_desc;
+        _data.upd_by = "Admin";
         //_data.tblname = 'rm'
         console.log(_data);
         //console.log( table.row( this ).data().id );
 
         Swal.fire({
             title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            text: "You won't be able to revert this! ("+_data.rm_desc+")",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -110,11 +112,6 @@ $(document).ready(function() {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                // Swal.fire(
-                // 'Deleted!',
-                // 'Your file has been deleted.',
-                // 'success'
-                // )
                 spinner_popup();
                 $.ajax({
                     type:"POST",
@@ -126,9 +123,9 @@ $(document).ready(function() {
                         // setTimeout(function () {
                             $('.modal').modal('hide');
                             Swal.fire({
-                                icon: 'success',
-                                title: 'RM',
-                                text: "Data Deleted"
+                                icon: "success",
+                                title: "Data Deleted",
+                                text: _data.rm_desc
                             }).then(function(){
                                 // location.href='/raw-materials'
                                 $("#btn_refresh").click();

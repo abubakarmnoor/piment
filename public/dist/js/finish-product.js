@@ -78,11 +78,12 @@ $(document).ready(function() {
         e.preventDefault();
         let _data = {};
         _data.id = table.row( this ).data().fp_guid;
-        _data.user_id = "Admin";
+        _data.fp_desc = table.row( this ).data().fp_desc;
+        _data.upd_by = "Admin";
         
         Swal.fire({
             title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            text: "You won't be able to revert this! ("+_data.fp_desc+")",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -90,11 +91,6 @@ $(document).ready(function() {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                // Swal.fire(
-                // 'Deleted!',
-                // 'Your file has been deleted.',
-                // 'success'
-                // )
                 spinner_popup();
                 $.ajax({
                     type:"POST",
@@ -107,8 +103,8 @@ $(document).ready(function() {
                             $('.modal').modal('hide');
                             Swal.fire({
                                 icon: 'success',
-                                title: 'FP',
-                                text: "Data Deleted"
+                                title: "Data Deleted",
+                                text: _data.fp_desc
                             }).then(function(){
                                 $("#btn_refresh").click();
                             });

@@ -204,7 +204,7 @@ $(document).ready(function() {
         let _data = {};
         _data.id = tableLampshade.row( this ).data().fp_cp_guid;
         _data.rm_desc = tableLampshade.row( this ).data().rm_desc;
-        _data.user_id = "Admin";
+        _data.upd_by = "Admin";
 
         Swal.fire({
             title: 'Are you sure?',
@@ -228,8 +228,8 @@ $(document).ready(function() {
                             $('.modal').modal('hide');
                             Swal.fire({
                                 icon: 'success',
-                                title: _data.rm_desc,
-                                text: "Data Deleted"
+                                title: "Data Deleted",
+                                text: _data.rm_desc
                             }).then(function(){
                                 tableLampshade.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/lampshade", null, false).load();
                             });
