@@ -254,7 +254,8 @@ $(document).ready(function() {
         const form = $(e.target);
         const _data = convertFormToJSON(form);
         _data.fp_created_by="Admin";
-        _data.fp_sc_extra_cost = (_data.fp_sc_extra_cost).replace(/\,/g,'');
+        _data.fp_cp_qty = (_data.fp_cp_qty).replace(/\,/g,'');
+        _data.fp_cp_price = (_data.fp_cp_price).replace(/\,/g,'');
         _data.tblname = "fp_cp";
 
         console.log(_data);
