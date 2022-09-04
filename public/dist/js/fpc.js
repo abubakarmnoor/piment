@@ -543,8 +543,9 @@ $(document).ready(function() {
     // Edit record
     $('#dtTblLampshade').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
-        // console.log( tableLampshade.row( this ).data());
-        // const _fp_cp_guid = tableLampshade.row( this ).data().fp_cp_guid;
+        console.log( tableLampshade.row( this ).data());
+        const _fp_cp_guid = tableLampshade.row( this ).data().fp_cp_guid;
+        console.log(_fp_cp_guid);
         $("#title").text("LAMPSHADE");
         $("#fp_guid").val(tableLampshade.row( this ).data().fp_guid);
         $("input[name=fp_cp_guid]").val(tableLampshade.row( this ).data().fp_cp_guid);
