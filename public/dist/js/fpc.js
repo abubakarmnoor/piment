@@ -556,9 +556,112 @@ $(document).ready(function() {
         $("#fp_cp_type").val(tableLampshade.row( this ).data().fp_cp_type);
         $("#act").val("ZWlk");
         
-
         $('#rm-modal-form').modal('show');
     } );
+    $('#dtTblStand').on('click', 'td.editor-edit', function (e) {
+        e.preventDefault();
+        // console.log( tableLampshade.row( this ).data());
+        // const _fp_cp_guid = tableLampshade.row( this ).data().fp_cp_guid;
+        // console.log(_fp_cp_guid);
+        $("#title").text("LAMPSHADE");
+        $("#fp_guid").val(tableStand.row( this ).data().fp_guid);
+        $("input[name=fp_cp_guid]").val(tableStand.row( this ).data().fp_cp_guid);
+        $("#fp_cp_rm_guid").selectpicker('val',tableStand.row( this ).data().fp_cp_rm_guid);
+        $("input[name=fp_cp_qty]").val(tableStand.row( this ).data().fp_cp_qty);
+        $("#fp_cp_unit").selectpicker('val',tableStand.row( this ).data().fp_cp_unit);
+        $("input[name=fp_cp_price]").val(tableStand.row( this ).data().fp_cp_price);
+        $("#fp_cp_type").val(tableStand.row( this ).data().fp_cp_type);
+        $("#act").val("ZWlk");
+        
+        $('#rm-modal-form').modal('show');
+    } );
+    $('#dtTblEuro').on('click', 'td.editor-edit', function (e) {
+        e.preventDefault();
+        // console.log( tableLampshade.row( this ).data());
+        // const _fp_cp_guid = tableLampshade.row( this ).data().fp_cp_guid;
+        // console.log(_fp_cp_guid);
+        $("#title").text("LAMPSHADE");
+        $("#fp_guid").val(tableEuro.row( this ).data().fp_guid);
+        $("input[name=fp_cp_guid]").val(tableEuro.row( this ).data().fp_cp_guid);
+        $("#fp_cp_rm_guid").selectpicker('val',tableEuro.row( this ).data().fp_cp_rm_guid);
+        $("input[name=fp_cp_qty]").val(tableEuro.row( this ).data().fp_cp_qty);
+        $("#fp_cp_unit").selectpicker('val',tableEuro.row( this ).data().fp_cp_unit);
+        $("input[name=fp_cp_price]").val(tableEuro.row( this ).data().fp_cp_price);
+        $("#fp_cp_type").val(tableEuro.row( this ).data().fp_cp_type);
+        $("#act").val("ZWlk");
+        
+        $('#rm-modal-form').modal('show');
+    } );
+    $('#dtTblUS').on('click', 'td.editor-edit', function (e) {
+        e.preventDefault();
+        // console.log( tableLampshade.row( this ).data());
+        // const _fp_cp_guid = tableLampshade.row( this ).data().fp_cp_guid;
+        // console.log(_fp_cp_guid);
+        $("#title").text("LAMPSHADE");
+        $("#fp_guid").val(tableUS.row( this ).data().fp_guid);
+        $("input[name=fp_cp_guid]").val(tableUS.row( this ).data().fp_cp_guid);
+        $("#fp_cp_rm_guid").selectpicker('val',tableUS.row( this ).data().fp_cp_rm_guid);
+        $("input[name=fp_cp_qty]").val(tableUS.row( this ).data().fp_cp_qty);
+        $("#fp_cp_unit").selectpicker('val',tableUS.row( this ).data().fp_cp_unit);
+        $("input[name=fp_cp_price]").val(tableUS.row( this ).data().fp_cp_price);
+        $("#fp_cp_type").val(tableUS.row( this ).data().fp_cp_type);
+        $("#act").val("ZWlk");
+        
+        $('#rm-modal-form').modal('show');
+    } );
+    $('#dtTblJapan').on('click', 'td.editor-edit', function (e) {
+        e.preventDefault();
+        // console.log( tableLampshade.row( this ).data());
+        // const _fp_cp_guid = tableLampshade.row( this ).data().fp_cp_guid;
+        // console.log(_fp_cp_guid);
+        $("#title").text("LAMPSHADE");
+        $("#fp_guid").val(tableJapan.row( this ).data().fp_guid);
+        $("input[name=fp_cp_guid]").val(tableJapan.row( this ).data().fp_cp_guid);
+        $("#fp_cp_rm_guid").selectpicker('val',tableJapan.row( this ).data().fp_cp_rm_guid);
+        $("input[name=fp_cp_qty]").val(tableJapan.row( this ).data().fp_cp_qty);
+        $("#fp_cp_unit").selectpicker('val',tableJapan.row( this ).data().fp_cp_unit);
+        $("input[name=fp_cp_price]").val(tableJapan.row( this ).data().fp_cp_price);
+        $("#fp_cp_type").val(tableJapan.row( this ).data().fp_cp_type);
+        $("#act").val("ZWlk");
+        
+        $('#rm-modal-form').modal('show');
+    } );
+    $('#dtTblUK').on('click', 'td.editor-edit', function (e) {
+        e.preventDefault();
+        // console.log( tableLampshade.row( this ).data());
+        // const _fp_cp_guid = tableLampshade.row( this ).data().fp_cp_guid;
+        // console.log(_fp_cp_guid);
+        $("#title").text("LAMPSHADE");
+        $("#fp_guid").val(tableUK.row( this ).data().fp_guid);
+        $("input[name=fp_cp_guid]").val(tableUK.row( this ).data().fp_cp_guid);
+        $("#fp_cp_rm_guid").selectpicker('val',tableUK.row( this ).data().fp_cp_rm_guid);
+        $("input[name=fp_cp_qty]").val(tableUK.row( this ).data().fp_cp_qty);
+        $("#fp_cp_unit").selectpicker('val',tableUK.row( this ).data().fp_cp_unit);
+        $("input[name=fp_cp_price]").val(tableUK.row( this ).data().fp_cp_price);
+        $("#fp_cp_type").val(tableUK.row( this ).data().fp_cp_type);
+        $("#act").val("ZWlk");
+        
+        $('#rm-modal-form').modal('show');
+    } );
+    $('#dtTblAUS').on('click', 'td.editor-edit', function (e) {
+        e.preventDefault();
+        // console.log( tableLampshade.row( this ).data());
+        // const _fp_cp_guid = tableLampshade.row( this ).data().fp_cp_guid;
+        // console.log(_fp_cp_guid);
+        $("#title").text("LAMPSHADE");
+        $("#fp_guid").val(tableAUS.row( this ).data().fp_guid);
+        $("input[name=fp_cp_guid]").val(tableAUS.row( this ).data().fp_cp_guid);
+        $("#fp_cp_rm_guid").selectpicker('val',tableAUS.row( this ).data().fp_cp_rm_guid);
+        $("input[name=fp_cp_qty]").val(tableAUS.row( this ).data().fp_cp_qty);
+        $("#fp_cp_unit").selectpicker('val',tableAUS.row( this ).data().fp_cp_unit);
+        $("input[name=fp_cp_price]").val(tableAUS.row( this ).data().fp_cp_price);
+        $("#fp_cp_type").val(tableAUS.row( this ).data().fp_cp_type);
+        $("#act").val("ZWlk");
+        
+        $('#rm-modal-form').modal('show');
+    } );
+    
+    
 //end doc ready
 });
 
