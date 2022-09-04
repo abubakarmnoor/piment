@@ -347,34 +347,34 @@ function default_edit(data){
     let _rlu_date = new Date(data[0].receipt_last_updated)
     //_date.setDate(_date.getDate()+1)
     
-    $("input[name=fp_desc").val(data[0].fp_desc)
+    $("input[name=fp_desc]").val(data[0].fp_desc)
     $('#sp_product_family').selectpicker('val',data[0].fp_prod_family)
-    $("input[name=fp_box_size_l").val(data[0].fp_box_size_l)
-    $("input[name=fp_box_size_w").val(data[0].fp_box_size_w)
-    $("input[name=fp_box_size_h").val(data[0].fp_box_size_h)
-    $("input[name=created_date").val(formatDate(_c_date,true))
+    $("input[name=fp_box_size_l]").val(data[0].fp_box_size_l)
+    $("input[name=fp_box_size_w]").val(data[0].fp_box_size_w)
+    $("input[name=fp_box_size_h]").val(data[0].fp_box_size_h)
+    $("input[name=created_date]").val(formatDate(_c_date,true))
     $('#sp_origin').selectpicker('val',data[0].fp_origin)
     $("#ck_validated").prop('checked', data[0].fp_validated)
     $("#ck_active").prop('checked', data[0].fp_active)
 
     
-    $("input[name=fp_sc_extra_cost").val(data[0].fp_sc_extra_cost).focusout()
-    $("input[name=fp_sc_extra_labour").val(data[0].fp_sc_extra_labour).focusout()
-    $("input[name=fp_sc_cost").val(data[0].fp_sc_cost).focusout()
+    $("input[name=fp_sc_extra_cost]").val(data[0].fp_sc_extra_cost).focusout()
+    $("input[name=fp_sc_extra_labour]").val(data[0].fp_sc_extra_labour).focusout()
+    $("input[name=fp_sc_cost]").val(data[0].fp_sc_cost).focusout()
 
-    $("input[name=fp_sc_wholesale_sale").val(data[0].fp_sc_wholesale_sale).focusout()
-    $("input[name=fp_sc_wholesale_profit").val(data[0].fp_sc_wholesale_profit).focusout()
-    $("input[name=fp_sc_wholesale_markup").val(data[0].fp_sc_wholesale_markup).focusout()
+    $("input[name=fp_sc_wholesale_sale]").val(data[0].fp_sc_wholesale_sale).focusout()
+    $("input[name=fp_sc_wholesale_profit]").val(data[0].fp_sc_wholesale_profit).focusout()
+    $("input[name=fp_sc_wholesale_markup]").val(data[0].fp_sc_wholesale_markup).focusout()
 
-    $("input[name=fp_sc_business_sale").val(data[0].fp_sc_business_sale).focusout()
-    $("input[name=fp_sc_business_profit").val(data[0].fp_sc_business_profit).focusout()
-    $("input[name=fp_sc_business_markup").val(data[0].fp_sc_business_markup).focusout()
+    $("input[name=fp_sc_business_sale]").val(data[0].fp_sc_business_sale).focusout()
+    $("input[name=fp_sc_business_profit]").val(data[0].fp_sc_business_profit).focusout()
+    $("input[name=fp_sc_business_markup]").val(data[0].fp_sc_business_markup).focusout()
 
-    $("input[name=fp_sc_retail_sale").val(data[0].fp_sc_retail_markup).focusout()
-    $("input[name=fp_sc_retail_profit").val(data[0].fp_sc_retail_profit).focusout()
-    $("input[name=fp_sc_retail_markup").val(data[0].fp_sc_retail_markup).focusout()
+    $("input[name=fp_sc_retail_sale]").val(data[0].fp_sc_retail_markup).focusout()
+    $("input[name=fp_sc_retail_profit]").val(data[0].fp_sc_retail_profit).focusout()
+    $("input[name=fp_sc_retail_markup]").val(data[0].fp_sc_retail_markup).focusout()
 
-    let user_login = 'admin';
+    let user_login = 'Admin';
     get_date_default(data[0].fp_created_by,data[0].fp_created_date, user_login, null)
 }
 //get details
