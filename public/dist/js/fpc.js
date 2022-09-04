@@ -121,6 +121,7 @@ $(document).ready(function() {
         _data.fp_cp_qty = (_data.fp_cp_qty).replace(/\,/g,'');
         _data.fp_cp_price = (_data.fp_cp_price).replace(/\,/g,'');
         _data.tblname = "fp_cp";
+        console.log(_data);
 
         //validation
         const rm_guid_ = $("#fp_cp_rm_guid").val()
@@ -545,15 +546,16 @@ $(document).ready(function() {
         //console.log( table.row( this ).data().id );
         // const _fp_cp_guid = tableLampshade.row( this ).data().fp_cp_guid;
         $("#title").text("LAMPSHADE");
+        $("#fp_guid").val(tableLampshade.row( this ).data().fp_guid);
+        $("#fp_cp_guid").val(tableLampshade.row( this ).data().id);
         $("#fp_cp_rm_guid").selectpicker('val',tableLampshade.row( this ).data().fp_cp_rm_guid);
         $("input[name=fp_cp_qty]").val(tableLampshade.row( this ).data().fp_cp_qty);
         $("#fp_cp_unit").selectpicker('val',tableLampshade.row( this ).data().fp_cp_unit);
         $("input[name=fp_cp_price]").val(tableLampshade.row( this ).data().fp_cp_price);
-        $("#fp_guid").val(tableLampshade.row( this ).data().fp_guid);
-        $("#fp_cp_guid").val(tableLampshade.row( this ).data().fp_cp_guid);
         $("#fp_cp_type").val(tableLampshade.row( this ).data().fp_cp_type);
         $("#act").val("ZWlk");
         
+
         $('#rm-modal-form').modal('show');
     } );
 //end doc ready
