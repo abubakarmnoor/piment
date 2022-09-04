@@ -567,6 +567,7 @@ var fp_guid = $("#fp_guid").val();
 
 //functions
 function resetForm(){
+    $("input[name=fp_cp_guid]").val("");
     $("#fp_cp_rm_guid").selectpicker('val',"-");
     $("input[name=fp_cp_qty]").val(0);
     $("#fp_cp_unit").selectpicker('val',"-");
