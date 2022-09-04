@@ -70,13 +70,13 @@ $(document).ready(function() {
     } );
 
     $("#btn_refresh").on("click", function(){
-        tableLampshade.ajax.url("/apis/pull/fp_cp", null, false).load();
-        tableStand.ajax.url("/apis/pull/fp_cp", null, false).load();
-        tableEuro.ajax.url("/apis/pull/fp_cp", null, false).load();
-        tableUS.ajax.url("/apis/pull/fp_cp", null, false).load();
-        tableJapan.ajax.url("/apis/pull/fp_cp", null, false).load();
-        tableUK.ajax.url("/apis/pull/fp_cp", null, false).load();
-        tableAUS.ajax.url("/apis/pull/fp_cp", null, false).load();
+        tableLampshade.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/lampshade", null, false).load();
+        tableStand.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/stand", null, false).load();
+        tableEuro.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/euro", null, false).load();
+        tableUS.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/us", null, false).load();
+        tableJapan.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/japan", null, false).load();
+        tableUK.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/uk", null, false).load();
+        tableAUS.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/aus", null, false).load();
         // spinner_popup();
         // var sdate_ =  moment($("input[name='daterangepicker_start']").val()).format('YYYY-MM-DD');
         // var edate_ =  moment($("input[name='daterangepicker_end']").val()).format('YYYY-MM-DD');
@@ -254,7 +254,7 @@ $(document).ready(function() {
         _data.fp_cp_price = (_data.fp_cp_price).replace(/\,/g,'');
         _data.tblname = "fp_cp";
 
-        console.log(_data);
+        // console.log(_data);
         // return;
 
         // ajax - save/post data
@@ -274,6 +274,22 @@ $(document).ready(function() {
                     text: "Data Saved"
                 }).then(function(){
                     // location.href='/finish-product'
+                    if(_data.fp_cp_type == "lampshade"){
+                        tableLampshade.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/lampshade", null, false).load();
+                    }else if(_data.fp_cp_type == "stand"){
+                        tableStand.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/stand", null, false).load();
+                    }else if(_data.fp_cp_type == "euro"){
+                        tableEuro.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/euro", null, false).load();
+                    }else if(_data.fp_cp_type == "us"){
+                        tableUS.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/us", null, false).load();
+                    }else if(_data.fp_cp_type == "japan"){
+                        tableJapan.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/japan", null, false).load();
+                    }else if(_data.fp_cp_type == "uk"){
+                        tableUK.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/uk", null, false).load();
+                    }else if(_data.fp_cp_type == "aus"){
+                        tableAUS.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/aus", null, false).load();
+                    }
+                    
                 });
                     
             }, 
