@@ -246,14 +246,10 @@ $(document).ready(function() {
 
     //form submit
     $('#form_').submit(function(e) {
-        //$('#messages').removeClass('hide').addClass('alert alert-success alert-dismissible').slideDown().show();
-        //$('#messages_content').html('<h4>MESSAGE HERE</h4>');
-        //$('#modal').modal('show');
-        
         e.preventDefault();
         const form = $(e.target);
         const _data = convertFormToJSON(form);
-        _data.fp_created_by="Admin";
+        _data.fp_cp_upd_by="Admin";
         _data.fp_cp_qty = (_data.fp_cp_qty).replace(/\,/g,'');
         _data.fp_cp_price = (_data.fp_cp_price).replace(/\,/g,'');
         _data.tblname = "fp_cp";
@@ -298,7 +294,7 @@ $(document).ready(function() {
     //btn popup
     $(".btn-popup").on("click", function(e){
         
-        $("#fp_cp_rm_code").selectpicker('val',"-");
+        $("#fp_cp_rm_guid").selectpicker('val',"-");
         $("input[name=fp_cp_qty]").val(0);
         $("#fp_cp_unit").selectpicker('val',"-");
         $("input[name=fp_cp_rm_code]").val(0);
@@ -338,7 +334,7 @@ function refreshLampshade(){
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/apis/pull/fp_cp",
+        "ajax": "/apis/pull/fp_cp/lampshade",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -398,7 +394,7 @@ function refreshStand(){
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/apis/pull/fp_cp",
+        "ajax": "/apis/pull/fp_cp/stand",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -458,7 +454,7 @@ function refreshEuro(){
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/apis/pull/fp_cp",
+        "ajax": "/apis/pull/fp_cp/euro",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -518,7 +514,7 @@ function refreshUS(){
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/apis/pull/fp_cp",
+        "ajax": "/apis/pull/fp_cp/us",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -578,7 +574,7 @@ function refreshJapan(){
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/apis/pull/fp_cp",
+        "ajax": "/apis/pull/fp_cp/japan",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -638,7 +634,7 @@ function refreshUK(){
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/apis/pull/fp_cp",
+        "ajax": "/apis/pull/fp_cp/uk",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -698,7 +694,7 @@ function refreshAUS(){
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/apis/pull/fp_cp",
+        "ajax": "/apis/pull/fp_cp/aus",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
