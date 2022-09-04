@@ -543,8 +543,8 @@ $(document).ready(function() {
     $('#dtTblLampshade').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
-        const _id = tableLampshade.row( this ).data().fp_guid;
-        $('.modal').modal('show');
+        const _fp_cp_guid = tableLampshade.row( this ).data().fp_cp_guid;
+        $('#rm-modal-form .modal').modal('show');
     } );
 //end doc ready
 });
