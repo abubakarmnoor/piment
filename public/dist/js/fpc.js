@@ -276,7 +276,8 @@ $(document).ready(function() {
                     text: "Data Saved"
                 }).then(function(){
                     Swal.fire({
-                        title: 'Add more component ?',
+                        // title: 'Add more component ?',
+                        text: "Add more component ?",
                         icon: 'question',
                         showDenyButton: true,
                         // showCancelButton: true,
