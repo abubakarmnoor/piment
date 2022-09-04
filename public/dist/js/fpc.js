@@ -267,28 +267,37 @@ $(document).ready(function() {
             data: JSON.stringify(_data),
             success: function(data) {
                 
-                $('.modal').modal('hide');
+                //refresh
+                refreshTable(_data.fp_cp_type);
+                        
                 Swal.fire({
                     icon: 'success',
                     title: '',
                     text: "Data Saved"
                 }).then(function(){
-                    // location.href='/finish-product'
-                    if(_data.fp_cp_type == "lampshade"){
-                        tableLampshade.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/lampshade", null, false).load();
-                    }else if(_data.fp_cp_type == "stand"){
-                        tableStand.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/stand", null, false).load();
-                    }else if(_data.fp_cp_type == "euro"){
-                        tableEuro.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/euro", null, false).load();
-                    }else if(_data.fp_cp_type == "us"){
-                        tableUS.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/us", null, false).load();
-                    }else if(_data.fp_cp_type == "japan"){
-                        tableJapan.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/japan", null, false).load();
-                    }else if(_data.fp_cp_type == "uk"){
-                        tableUK.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/uk", null, false).load();
-                    }else if(_data.fp_cp_type == "aus"){
-                        tableAUS.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/aus", null, false).load();
-                    }
+                    Swal.fire({
+                        title: 'Add more component ?',
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes',
+                        denyButtonText: 'No',
+                        customClass: {
+                          actions: 'my-actions',
+                          cancelButton: 'order-1 right-gap',
+                          confirmButton: 'order-2',
+                          denyButton: 'order-3',
+                        }
+                      }).then((result) => {
+    
+                        if (result.isConfirmed) {
+                            //reset form
+                            resetForm();
+                            
+                        } else if (result.isDenied) {
+                            $('.modal').modal('hide');
+    
+                        }
+                      })
                     
                 });
                     
@@ -309,12 +318,7 @@ $(document).ready(function() {
 
     //btn popup
     $(".btn-popup").on("click", function(e){
-        
-        $("#fp_cp_rm_guid").selectpicker('val',"-");
-        $("input[name=fp_cp_qty]").val(0);
-        $("#fp_cp_unit").selectpicker('val',"-");
-        $("input[name=fp_cp_rm_code]").val(0);
-        
+        resetForm()
     })
 
 //end doc ready
@@ -323,6 +327,32 @@ $(document).ready(function() {
 //init
 var fp_guid = $("#fp_guid").val();
 //functions
+
+function resetForm(){
+    $("#fp_cp_rm_guid").selectpicker('val',"-");
+    $("input[name=fp_cp_qty]").val(0);
+    $("#fp_cp_unit").selectpicker('val',"-");
+    $("input[name=fp_cp_rm_code]").val(0);
+
+}
+function refreshTable(type){
+    if(type == "lampshade"){
+        tableLampshade.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/lampshade", null, false).load();
+    }else if(type == "stand"){
+        tableStand.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/stand", null, false).load();
+    }else if(type == "euro"){
+        tableEuro.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/euro", null, false).load();
+    }else if(type == "us"){
+        tableUS.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/us", null, false).load();
+    }else if(type == "japan"){
+        tableJapan.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/japan", null, false).load();
+    }else if(type == "uk"){
+        tableUK.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/uk", null, false).load();
+    }else if(type == "aus"){
+        tableAUS.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/aus", null, false).load();
+    }
+}
+
 function refreshLampshade(){
     tableLampshade = $('#dtTblLampshade').DataTable({
         // "scrollY": "370px",
