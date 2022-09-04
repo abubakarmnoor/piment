@@ -543,7 +543,17 @@ $(document).ready(function() {
     $('#dtTblLampshade').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
-        const _fp_cp_guid = tableLampshade.row( this ).data().fp_cp_guid;
+        // const _fp_cp_guid = tableLampshade.row( this ).data().fp_cp_guid;
+        $("#title").text("LAMPSHADE");
+        $("#fp_cp_rm_guid").selectpicker('val',tableLampshade.row( this ).data().fp_cp_rm_guid);
+        $("input[name=fp_cp_qty]").val(tableLampshade.row( this ).data().fp_cp_qty);
+        $("#fp_cp_unit").selectpicker('val',tableLampshade.row( this ).data().fp_cp_unit);
+        $("#fp_cp_price").val(tableLampshade.row( this ).data().fp_cp_price);
+        $("#fp_guid").val(tableLampshade.row( this ).data().fp_guid);
+        $("#fp_cp_guid").val(tableLampshade.row( this ).data().fp_cp_guid);
+        $("#fp_cp_type").val(tableLampshade.row( this ).data().fp_cp_type);
+        $("#act").val("ZWlk");
+        
         $('#rm-modal-form').modal('show');
     } );
 //end doc ready
@@ -551,8 +561,8 @@ $(document).ready(function() {
 
 //init
 var fp_guid = $("#fp_guid").val();
-//functions
 
+//functions
 function resetForm(){
     $("#fp_cp_rm_guid").selectpicker('val',"-");
     $("input[name=fp_cp_qty]").val(0);
