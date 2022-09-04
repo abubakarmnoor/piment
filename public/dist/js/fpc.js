@@ -236,7 +236,7 @@ $(document).ready(function() {
                             $('.modal').modal('hide');
                             Swal.fire({
                                 icon: 'success',
-                                title: 'Lampshade',
+                                title: _data.rm_desc,
                                 text: "Data Deleted"
                             }).then(function(){
                                 tableLampshade.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/lampshade", null, false).load();
