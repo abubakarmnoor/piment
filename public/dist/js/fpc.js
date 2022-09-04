@@ -133,7 +133,9 @@ $(document).ready(function() {
             }).then((res)=>{
                 if (!rm_guid_){$("#fp_cp_rm_guid").focus()}
                 else if (!unit_){$("#fp_cp_unit").focus()}
+                
             })
+            return;
         }
         // console.log(_data);
         // return;
