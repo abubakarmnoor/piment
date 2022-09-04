@@ -78,10 +78,8 @@ $(document).ready(function() {
         e.preventDefault();
         let _data = {};
         _data.id = table.row( this ).data().fp_guid;
-        //_data.tblname = 'rm'
-        // console.log(_data);
-        //console.log( table.row( this ).data().id );
-
+        _data.user_id = "Admin";
+        
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",

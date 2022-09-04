@@ -44,31 +44,8 @@ $(document).ready(function() {
         location.href = "/fpc-details/"+$("#fpid").val()+"/"+_id+"/ZGlk/";
         
     } );
-    // Delete a record
-    $('#dtTbl').on('click', 'td.editor-delete', function (e) {
-        e.preventDefault();
-        const _id = table.row( this ).data().id;
-        //console.log( table.row( this ).data().id );
-
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-                )
-            }
-        })
-    } );
-
+    
+    // refresh table
     $("#btn_refresh").on("click", function(){
         tableLampshade.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/lampshade", null, false).load();
         tableStand.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/stand", null, false).load();
@@ -144,7 +121,20 @@ $(document).ready(function() {
         _data.fp_cp_qty = (_data.fp_cp_qty).replace(/\,/g,'');
         _data.fp_cp_price = (_data.fp_cp_price).replace(/\,/g,'');
         _data.tblname = "fp_cp";
-        
+
+        //validation
+        const rm_guid_ = $("#fp_cp_rm_guid").val()
+        const unit_ = $("#fp_cp_unit").val()
+        if (!rm_guid_ || !unit_){
+            Swal.fire({
+                icon: 'warning',
+                title: _data.fp_cp_type.toUpperCase(),
+                text: "Please select one options"
+            }).then((res)=>{
+                if (!rm_guid_){$("#fp_cp_rm_guid").focus()}
+                else if (!unit_){$("#fp_cp_unit").focus()}
+            })
+        }
         // console.log(_data);
         // return;
 
@@ -157,7 +147,6 @@ $(document).ready(function() {
             dataType: "json",
             data: JSON.stringify(_data),
             success: function(data) {
-                
                 //refresh
                 refreshTable(_data.fp_cp_type);
                         
@@ -213,7 +202,8 @@ $(document).ready(function() {
         let _data = {};
         _data.id = tableLampshade.row( this ).data().fp_cp_guid;
         _data.rm_desc = tableLampshade.row( this ).data().rm_desc;
-        
+        _data.user_id = "Admin";
+
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this! ("+_data.rm_desc+")",
