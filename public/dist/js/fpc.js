@@ -242,6 +242,58 @@ $(document).ready(function() {
         $(this).val(_amt);
         
     })
+
+
+    //form submit
+    $('#form_').submit(function(e) {
+        //$('#messages').removeClass('hide').addClass('alert alert-success alert-dismissible').slideDown().show();
+        //$('#messages_content').html('<h4>MESSAGE HERE</h4>');
+        //$('#modal').modal('show');
+        
+        e.preventDefault();
+        const form = $(e.target);
+        const _data = convertFormToJSON(form);
+        _data.fp_created_by="Admin";
+        _data.fp_sc_extra_cost = (_data.fp_sc_extra_cost).replace(/\,/g,'');
+        _data.tblname = "fp_cp";
+
+        console.log(_data);
+        // return;
+
+        // ajax - save/post data
+        // spinner_popup();
+        // $.ajax({
+        //     type:"POST", // must be POST 
+        //     url: "/apis/fpc/upd", 
+        //     contentType: "application/json; charset=utf-8",
+        //     dataType: "json",
+        //     data: JSON.stringify(_data),
+        //     success: function(data) {
+        //         // setTimeout(function () {
+        //             $('.modal').modal('hide');
+        //             Swal.fire({
+        //                 icon: 'success',
+        //                 title: '',
+        //                 text: "Data Saved"
+        //             }).then(function(){
+        //                 // location.href='/finish-product'
+        //             });
+                    
+        //         // }, 3000);
+                
+        //     }, 
+        //     error: function(jqXHR, textStatus, errorThrown) {
+        //         //alert(jqXHR.status);
+        //         $('.modal').modal('hide');
+        //         Swal.fire({
+        //             title: "Error!",
+        //             text: textStatus,
+        //             icon: "error"
+        //         });
+        //     }
+        // });
+
+    });
 //end doc ready
 });
 
