@@ -144,7 +144,16 @@ $(document).ready(function() {
         _data.fp_cp_qty = (_data.fp_cp_qty).replace(/\,/g,'');
         _data.fp_cp_price = (_data.fp_cp_price).replace(/\,/g,'');
         _data.tblname = "fp_cp";
-
+        if (_data.fp_cp_price == "0" && fp_cp_qty == "0" && fp_cp_rm_guid == "-" && fp_cp_type == "" && fp_cp_unit == "-" 
+            && fp_guid == ""){
+                Swal.fire({
+                    title: "Warning!",
+                    text: "Please select ",
+                    icon: "warning"
+                }).then(function(){
+                    
+                });
+        }
         // console.log(_data);
         // return;
 

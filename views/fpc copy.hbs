@@ -24,8 +24,15 @@
                     <div class="col-md-10">
                         <h3 class="page-header">FINISH PRODUCT COMPONENTS (FPC)</h3>
                     </div>
+                    <!-- /.col-lg-12 -->
                 </div>
                 <div class="row">
+                    {{!-- <div class="col" style="padding-top: 45px;">
+                        <div id="reportrange" class="pull-left form-control" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 29%;margin-right: 10px;">
+                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+                            <span></span> <b class="caret"></b>
+                        </div>
+                    </div> --}}
                     <br>
                     <div class="col">
                         <a href="#"  type="button" class="btn btn-outline btn-primary pull-left" id="btn_refresh">
@@ -42,8 +49,46 @@
                 <div class="row">
                     <div class="tabbable-panel">
                         <div class="tabbable-line">
+                            {{!-- <ul class="nav nav-tabs ">
+                                <li class="active">
+                                    <a href="#tab_lampshade" data-toggle="tab" id="btn_tab_lampshade">
+                                    LAMPSHADE </a>
+                                </li>
+                                <li>
+                                    <a href="#tab_stand" data-toggle="tab" id="btn_tab_stand">
+                                    STAND </a>
+                                </li>
+                                <li>
+                                    <a href="#tab_euro" data-toggle="tab" id="btn_tab_euro">
+                                    EURO </a>
+                                </li>
+                                <li>
+                                    <a href="#tab_us" data-toggle="tab" id="btn_tab_us">
+                                    US </a>
+                                </li>
+                                <li>
+                                    <a href="#tab_japan" data-toggle="tab" id="btn_tab_japan">
+                                    JAPAN </a>
+                                </li>
+                                <li>
+                                    <a href="#tab_uk" data-toggle="tab" id="btn_tab_uk">
+                                    UK </a>
+                                </li>
+                                <li>
+                                    <a href="#tab_aus" data-toggle="tab" id="btn_tab_aus">
+                                    AUS </a>
+                                </li>
+                            </ul> --}}
                             <div class="tab-content">
                                  <div class="tab-pane active" id="tab_lampshade"><h4>LAMPSHADE</h4></div>
+                                 {{!-- <div class="tab-pane" id="tab_stand"><h4>STAND</h4></div>
+                                 <div class="tab-pane" id="tab_euro"><h4>EURO</h4></div>
+                                 <div class="tab-pane" id="tab_us"><h4>US</h4></div>
+                                 <div class="tab-pane" id="tab_japan"><h4>JAPAN</h4></div>
+                                 <div class="tab-pane" id="tab_uk"><h4>UK</h4></div>
+                                 <div class="tab-pane" id="tab_aus"><h4>AUS</h4></div> --}}
+
+
                                 <a href="#" id="btn_add_lampshade" type="button" class="btn-popup btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#rm-modal-form">
                                     <i class="glyphicon-plus"></i> Add New
                                 </a>
@@ -309,7 +354,7 @@
                     <div class="col-md-12 mb-3">
                         <label for="unit">RM</label>
                         <select class="form-control selectpicker" id="fp_cp_rm_guid" name="fp_cp_rm_guid" data-live-search="true">
-                            {{!-- <option value="-">-</option> --}}
+                            <option value="-">-</option>
                             {{#each __data_rm}}
                                 <option value="{{rm_guid}}">{{rm_code}} - {{rm_desc}}</option>
                             {{/each}}
@@ -324,7 +369,7 @@
                     <div class="col-md-7 mb-3">
                         <label for="unit">Unit</label>
                         <select class="form-control selectpicker" id="fp_cp_unit" name="fp_cp_unit" data-live-search="true">
-                            {{!-- <option value="-">-</option> --}}
+                            <option value="-">-</option>
                             {{#each __data_pop_unit}}
                                 <option value="{{pop_guid}}">{{pop_desc}}</option>
                             {{/each}}
