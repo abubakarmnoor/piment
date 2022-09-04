@@ -355,8 +355,8 @@
                         <label>RM</label>
                         <label for="unit">RM Code</label>
                         <select class="form-control selectpicker" name="fp_cp_rm_code" data-live-search="true">
-                            {{#each __data_pop_unit}}
-                                <option value="{{pop_guid}}">{{pop_desc}}</option>
+                            {{#each __data_rm}}
+                                <option value="{{rm_code}}">{{rm_desc}}</option>
                             {{/each}}
                         </select>
                     </div>

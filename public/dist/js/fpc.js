@@ -9,7 +9,7 @@ var tableUS;
 var tableJapan;
 var tableUK;
 var tableAUS;
-spinner_popup();
+// spinner_popup();
 $(document).ready(function() {
     $('.modal').modal('hide');
     // var sdate_ = moment().subtract(29, 'days').format('YYYY-MM-DD');
