@@ -354,6 +354,7 @@
                     <div class="col-md-12 mb-3">
                         <label for="unit">RM</label>
                         <select class="form-control selectpicker" name="fp_cp_rm_code" data-live-search="true">
+                            <option value="-">-</option>
                             {{#each __data_rm}}
                                 <option value="{{rm_guid}}">{{rm_code}} - {{rm_desc}}</option>
                             {{/each}}
@@ -363,7 +364,7 @@
                 <div class="form-group row">
                     <div class="col-md-4 mb-3">
                         <label>Qty</label>
-                        <input type="text" class="form-control" name="fp_cp_qty" placeholder="Qty" value="" required>
+                        <input type="text" class="form-control numeric" name="fp_cp_qty" placeholder="Qty" value="0" required>
                     </div>
                     <div class="col-md-7 mb-3">
                         <label for="unit">Unit</label>
@@ -378,7 +379,7 @@
                 <div class="form-group row">
                     <div class="col-md-7 mb-3">
                         <label>Price</label>
-                        <input type="text" class="form-control" name="fp_cp_price" placeholder="Price" value="0" required>
+                        <input type="text" class="form-control numeric" name="fp_cp_price" placeholder="Price" value="0" required>
                     </div>
                 </div>
                 <div class="form-group">
