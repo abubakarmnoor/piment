@@ -250,6 +250,294 @@ $(document).ready(function() {
             }
         })
     } );
+    $('#dtTblStand').on('click', 'td.editor-delete', function (e) {
+        e.preventDefault();
+        let _data = {};
+        _data.id = tableStand.row( this ).data().fp_cp_guid;
+        _data.rm_desc = tableStand.row( this ).data().rm_desc;
+        _data.upd_by = "Admin";
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this! ("+_data.rm_desc+")",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                spinner_popup();
+                $.ajax({
+                    type:"POST",
+                    url: "/apis/del/fp_cp", 
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify(_data),
+                    success: function(data) {
+                        $('.modal').modal('hide');
+                        Swal.fire({
+                            icon: 'success',
+                            title: "Data Deleted",
+                            text: _data.rm_desc
+                        }).then(function(){
+                            tableLampshade.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/stand", null, false).load();
+                        });
+                        
+                    }, 
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        //alert(jqXHR.status);
+                        $('.modal').modal('hide');
+                        Swal.fire({
+                            title: "Error!",
+                            text: textStatus,
+                            icon: "error"
+                        });
+                    }
+                });
+            }
+        })
+    } );
+    $('#dtTblEuro').on('click', 'td.editor-delete', function (e) {
+        e.preventDefault();
+        let _data = {};
+        _data.id = tableEuro.row( this ).data().fp_cp_guid;
+        _data.rm_desc = tableEuro.row( this ).data().rm_desc;
+        _data.upd_by = "Admin";
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this! ("+_data.rm_desc+")",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                spinner_popup();
+                $.ajax({
+                    type:"POST",
+                    url: "/apis/del/fp_cp", 
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify(_data),
+                    success: function(data) {
+                        $('.modal').modal('hide');
+                        Swal.fire({
+                            icon: 'success',
+                            title: "Data Deleted",
+                            text: _data.rm_desc
+                        }).then(function(){
+                            tableLampshade.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/euro", null, false).load();
+                        });
+                        
+                    }, 
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        //alert(jqXHR.status);
+                        $('.modal').modal('hide');
+                        Swal.fire({
+                            title: "Error!",
+                            text: textStatus,
+                            icon: "error"
+                        });
+                    }
+                });
+            }
+        })
+    } );
+    $('#dtTblUS').on('click', 'td.editor-delete', function (e) {
+        e.preventDefault();
+        let _data = {};
+        _data.id = tableUS.row( this ).data().fp_cp_guid;
+        _data.rm_desc = tableUS.row( this ).data().rm_desc;
+        _data.upd_by = "Admin";
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this! ("+_data.rm_desc+")",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                spinner_popup();
+                $.ajax({
+                    type:"POST",
+                    url: "/apis/del/fp_cp", 
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify(_data),
+                    success: function(data) {
+                        $('.modal').modal('hide');
+                        Swal.fire({
+                            icon: 'success',
+                            title: "Data Deleted",
+                            text: _data.rm_desc
+                        }).then(function(){
+                            tableLampshade.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/us", null, false).load();
+                        });
+                        
+                    }, 
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        //alert(jqXHR.status);
+                        $('.modal').modal('hide');
+                        Swal.fire({
+                            title: "Error!",
+                            text: textStatus,
+                            icon: "error"
+                        });
+                    }
+                });
+            }
+        })
+    } );
+    $('#dtTblJapan').on('click', 'td.editor-delete', function (e) {
+        e.preventDefault();
+        let _data = {};
+        _data.id = tableJapan.row( this ).data().fp_cp_guid;
+        _data.rm_desc = tableJapan.row( this ).data().rm_desc;
+        _data.upd_by = "Admin";
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this! ("+_data.rm_desc+")",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                spinner_popup();
+                $.ajax({
+                    type:"POST",
+                    url: "/apis/del/fp_cp", 
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify(_data),
+                    success: function(data) {
+                        $('.modal').modal('hide');
+                        Swal.fire({
+                            icon: 'success',
+                            title: "Data Deleted",
+                            text: _data.rm_desc
+                        }).then(function(){
+                            tableLampshade.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/japan", null, false).load();
+                        });
+                        
+                    }, 
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        //alert(jqXHR.status);
+                        $('.modal').modal('hide');
+                        Swal.fire({
+                            title: "Error!",
+                            text: textStatus,
+                            icon: "error"
+                        });
+                    }
+                });
+            }
+        })
+    } );
+    $('#dtTblUK').on('click', 'td.editor-delete', function (e) {
+        e.preventDefault();
+        let _data = {};
+        _data.id = tableUK.row( this ).data().fp_cp_guid;
+        _data.rm_desc = tableUK.row( this ).data().rm_desc;
+        _data.upd_by = "Admin";
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this! ("+_data.rm_desc+")",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                spinner_popup();
+                $.ajax({
+                    type:"POST",
+                    url: "/apis/del/fp_cp", 
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify(_data),
+                    success: function(data) {
+                        $('.modal').modal('hide');
+                        Swal.fire({
+                            icon: 'success',
+                            title: "Data Deleted",
+                            text: _data.rm_desc
+                        }).then(function(){
+                            tableLampshade.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/uk", null, false).load();
+                        });
+                        
+                    }, 
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        //alert(jqXHR.status);
+                        $('.modal').modal('hide');
+                        Swal.fire({
+                            title: "Error!",
+                            text: textStatus,
+                            icon: "error"
+                        });
+                    }
+                });
+            }
+        })
+    } );
+    $('#dtTblAUS').on('click', 'td.editor-delete', function (e) {
+        e.preventDefault();
+        let _data = {};
+        _data.id = tableAUS.row( this ).data().fp_cp_guid;
+        _data.rm_desc = tableAUS.row( this ).data().rm_desc;
+        _data.upd_by = "Admin";
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this! ("+_data.rm_desc+")",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                spinner_popup();
+                $.ajax({
+                    type:"POST",
+                    url: "/apis/del/fp_cp", 
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify(_data),
+                    success: function(data) {
+                        $('.modal').modal('hide');
+                        Swal.fire({
+                            icon: 'success',
+                            title: "Data Deleted",
+                            text: _data.rm_desc
+                        }).then(function(){
+                            tableLampshade.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/aus", null, false).load();
+                        });
+                        
+                    }, 
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        //alert(jqXHR.status);
+                        $('.modal').modal('hide');
+                        Swal.fire({
+                            title: "Error!",
+                            text: textStatus,
+                            icon: "error"
+                        });
+                    }
+                });
+            }
+        })
+    } );
 //end doc ready
 });
 
