@@ -211,8 +211,8 @@ $(document).ready(function() {
     $('#dtTblLampshade').on('click', 'td.editor-delete', function (e) {
         e.preventDefault();
         let _data = {};
-        _data.id = table.row( this ).data().fp_cp_guid;
-        _data.rm_desc = table.row( this ).data().rm_desc;
+        _data.id = tableLampshade.row( this ).data().fp_cp_guid;
+        _data.rm_desc = tableLampshade.row( this ).data().rm_desc;
         
         Swal.fire({
             title: 'Are you sure?',
@@ -239,7 +239,7 @@ $(document).ready(function() {
                                 title: 'Lampshade',
                                 text: "Data Deleted"
                             }).then(function(){
-                                $("#btn_refresh").click();
+                                tableLampshade.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/lampshade", null, false).load();
                             });
                             
                         // }, 3000) ;
