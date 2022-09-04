@@ -538,6 +538,14 @@ $(document).ready(function() {
             }
         })
     } );
+
+    // Edit record
+    $('#dtTblLampshade').on('click', 'td.editor-edit', function (e) {
+        e.preventDefault();
+        //console.log( table.row( this ).data().id );
+        const _id = table.row( this ).data().fp_guid;
+        $('.modal').modal('show');
+    } );
 //end doc ready
 });
 
