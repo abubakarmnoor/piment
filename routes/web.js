@@ -184,7 +184,7 @@ router.get('/fpc/:fpid/:act', async (req, res) => {
 	const __data_pop_unit = await getPopupData('unit');
 	const __data_rm = await getRM();
 	res.render('fpc.hbs', {
-		tables_bs4: true, fpc:true, fpid:_fpid, act:_act, __data_pop_unit, __data_rm
+		tables_bs4: true, fpc:true, fp_guid:_fpid, act:_act, __data_pop_unit, __data_rm
 	});
 })
 router.get('/fpc-details/:fpid/:fcpid/:act', async (req, res) => {

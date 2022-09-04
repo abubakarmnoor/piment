@@ -89,7 +89,7 @@
                                  <div class="tab-pane" id="tab_aus"><h4>AUS</h4></div> --}}
 
 
-                                <a href="#" id="btn_add_lampshade" type="button" class="btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#rm-modal-form">
+                                <a href="#" id="btn_add_lampshade" type="button" class="btn-popup btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#rm-modal-form">
                                     <i class="glyphicon-plus"></i> Add New
                                 </a>
                                 <table id="dtTblLampshade" class="table table-striped display nowrap" style="width:100%">
@@ -121,7 +121,7 @@
                         <div class="tabbable-line">
                             <div class="tab-content">
                                  <div class="tab-pane active" id="tab_stand"><h4>STAND</h4></div>
-                                <a href="#" id="btn_add_stand" type="button" class="btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#rm-modal-form">
+                                <a href="#" id="btn_add_stand" type="button" class="btn-popup btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#rm-modal-form">
                                     <i class="glyphicon-plus"></i> Add New
                                 </a>
                                 <table id="dtTblStand" class="table table-striped display nowrap" style="width:100%">
@@ -154,7 +154,7 @@
                             <div class="tab-content">
                                  <div class="tab-pane active" id="tab_stand"><h4>EURO</h4></div>
                                  
-                                <a href="#" id="btn_add_euro" type="button" class="btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#rm-modal-form">
+                                <a href="#" id="btn_add_euro" type="button" class="btn-popup btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#rm-modal-form">
                                     <i class="glyphicon-plus"></i> Add New
                                 </a>
                                 <table id="dtTblEuro" class="table table-striped display nowrap" style="width:100%">
@@ -187,7 +187,7 @@
                             <div class="tab-content">
                                  <div class="tab-pane active" id="tab_stand"><h4>US</h4></div>
                                  
-                                <a href="#" id="btn_add_us" type="button" class="btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#rm-modal-form">
+                                <a href="#" id="btn_add_us" type="button" class="btn-popup btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#rm-modal-form">
                                     <i class="glyphicon-plus"></i> Add New
                                 </a>
                                 <table id="dtTblUS" class="table table-striped display nowrap" style="width:100%">
@@ -220,7 +220,7 @@
                             <div class="tab-content">
                                  <div class="tab-pane active" id="tab_stand"><h4>JAPAN</h4></div>
                                  
-                                <a href="#" id="btn_add_japan" type="button" class="btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#rm-modal-form">
+                                <a href="#" id="btn_add_japan" type="button" class="btn-popup btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#rm-modal-form">
                                     <i class="glyphicon-plus"></i> Add New
                                 </a>
                                 <table id="dtTblJapan" class="table table-striped display nowrap" style="width:100%">
@@ -253,7 +253,7 @@
                             <div class="tab-content">
                                  <div class="tab-pane active" id="tab_stand"><h4>UK</h4></div>
                                  
-                                <a href="#" id="btn_add_uk" type="button" class="btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#rm-modal-form">
+                                <a href="#" id="btn_add_uk" type="button" class="btn-popup btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#rm-modal-form">
                                     <i class="glyphicon-plus"></i> Add New
                                 </a>
                                 <table id="dtTblUK" class="table table-striped display nowrap" style="width:100%">
@@ -286,7 +286,7 @@
                             <div class="tab-content">
                                  <div class="tab-pane active" id="tab_stand"><h4>AUS</h4></div>
                                  
-                                <a href="#" id="btn_add_aus" type="button" class="btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#rm-modal-form">
+                                <a href="#" id="btn_add_aus" type="button" class="btn-popup btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#rm-modal-form">
                                     <i class="glyphicon-plus"></i> Add New
                                 </a>
                                 <table id="dtTblAUS" class="table table-striped display nowrap" style="width:100%">
@@ -350,7 +350,7 @@
         <div class="modal-body">
             <form id="form_">
                 <div class="form-group row">
-                    <input type="text" class="form-control invisible" name="fpc_guid" value="{{fpc_guid}}" style="position:absolute;" required readonly>
+                    <input type="text" class="form-control invisible" name="fp_cp_guid" value="" style="position:absolute;" required readonly>
                     <div class="col-md-12 mb-3">
                         <label for="unit">RM</label>
                         <select class="form-control selectpicker" name="fp_cp_rm_code" data-live-search="true">
@@ -394,12 +394,7 @@
                 </div>
                 <div class="form-group row invisible" style="position: absolute;">
                     <div class="col-md-4 mb-3">
-                        <label>Updating by</label>
-                        <input type="text" class="form-control" name="updated_by" readonly>
-                    </div>
-                    <div class="col-md-4 mb-3">
                         <label>Id</label>
-                        <input type="text" class="form-control" id="fp_fpc_guid" name="{{fp_fpc_guid}}" readonly>
                         <input type="text" class="form-control" id="fp_guid" name="fp_guid" value="{{fp_guid}}" readonly>
                         <input type="text" class="form-control" id="act" name="act" value="{{act}}" readonly>
                         <input type="text" class="form-control" id="fp_cp_type" name="fp_cp_type" readonly>

@@ -295,6 +295,17 @@ $(document).ready(function() {
         // });
 
     });
+
+    //btn popup
+    $(".btn-popup").on("click", function(e){
+        
+        $("input[name=fp_cp_rm_code]").selectpicker('val',"-")
+        $("input[name=fp_cp_qty]").val(0)
+        $("input[name=fp_cp_unit]").selectpicker('val',"-")
+        $("input[name=fp_cp_price]").val(0)
+        
+    })
+
 //end doc ready
 });
 
