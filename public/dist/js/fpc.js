@@ -281,7 +281,7 @@ $(document).ready(function() {
                             title: "Data Deleted",
                             text: _data.rm_desc
                         }).then(function(){
-                            tableLampshade.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/stand", null, false).load();
+                            tableStand.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/stand", null, false).load();
                         });
                         
                     }, 
@@ -329,7 +329,7 @@ $(document).ready(function() {
                             title: "Data Deleted",
                             text: _data.rm_desc
                         }).then(function(){
-                            tableLampshade.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/euro", null, false).load();
+                            tableEuro.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/euro", null, false).load();
                         });
                         
                     }, 
@@ -377,7 +377,7 @@ $(document).ready(function() {
                             title: "Data Deleted",
                             text: _data.rm_desc
                         }).then(function(){
-                            tableLampshade.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/us", null, false).load();
+                            tableUS.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/us", null, false).load();
                         });
                         
                     }, 
@@ -425,7 +425,7 @@ $(document).ready(function() {
                             title: "Data Deleted",
                             text: _data.rm_desc
                         }).then(function(){
-                            tableLampshade.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/japan", null, false).load();
+                            tableJapan.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/japan", null, false).load();
                         });
                         
                     }, 
@@ -473,7 +473,7 @@ $(document).ready(function() {
                             title: "Data Deleted",
                             text: _data.rm_desc
                         }).then(function(){
-                            tableLampshade.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/uk", null, false).load();
+                            tableUK.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/uk", null, false).load();
                         });
                         
                     }, 
@@ -521,7 +521,7 @@ $(document).ready(function() {
                             title: "Data Deleted",
                             text: _data.rm_desc
                         }).then(function(){
-                            tableLampshade.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/aus", null, false).load();
+                            tableAUS.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/aus", null, false).load();
                         });
                         
                     }, 
