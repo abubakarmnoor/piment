@@ -358,11 +358,11 @@ function refreshLampshade(){
                 orderable: false
             },
             { "data": "fp_cp_guid" },
-            { "data": "fp_cp_rm_code" },
+            { "data": "rm_code" },
             { "data": "rm_desc" },
             { "data": "fp_cp_qty" },
-            { "data": "fp_cp_unit" },
-            {"data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "unit_desc" },
+            { "data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             
         ]
     });
@@ -418,11 +418,11 @@ function refreshStand(){
                 orderable: false
             },
             { "data": "fp_cp_guid" },
-            { "data": "fp_cp_rm_code" },
+            { "data": "rm_code" },
             { "data": "rm_desc" },
             { "data": "fp_cp_qty" },
-            { "data": "fp_cp_unit" },
-            {"data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "unit_desc" },
+            { "data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             
         ]
     });
@@ -478,11 +478,11 @@ function refreshEuro(){
                 orderable: false
             },
             { "data": "fp_cp_guid" },
-            { "data": "fp_cp_rm_code" },
+            { "data": "rm_code" },
             { "data": "rm_desc" },
             { "data": "fp_cp_qty" },
-            { "data": "fp_cp_unit" },
-            {"data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "unit_desc" },
+            { "data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             
         ]
     });
@@ -538,11 +538,11 @@ function refreshUS(){
                 orderable: false
             },
             { "data": "fp_cp_guid" },
-            { "data": "fp_cp_rm_code" },
+            { "data": "rm_code" },
             { "data": "rm_desc" },
             { "data": "fp_cp_qty" },
-            { "data": "fp_cp_unit" },
-            {"data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "unit_desc" },
+            { "data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             
         ]
     });
@@ -598,10 +598,10 @@ function refreshJapan(){
                 orderable: false
             },
             { "data": "fp_cp_guid" },
-            { "data": "fp_cp_rm_code" },
+            { "data": "rm_code" },
             { "data": "rm_desc" },
             { "data": "fp_cp_qty" },
-            { "data": "fp_cp_unit" },
+            { "data": "unit_desc" },
             { "data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             
         ]
@@ -658,10 +658,10 @@ function refreshUK(){
                 orderable: false
             },
             { "data": "fp_cp_guid" },
-            { "data": "fp_cp_rm_code" },
+            { "data": "rm_code" },
             { "data": "rm_desc" },
             { "data": "fp_cp_qty" },
-            { "data": "fp_cp_unit" },
+            { "data": "unit_desc" },
             { "data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             
         ]
@@ -718,10 +718,10 @@ function refreshAUS(){
                 orderable: false
             },
             { "data": "fp_cp_guid" },
-            { "data": "fp_cp_rm_code" },
+            { "data": "rm_code" },
             { "data": "rm_desc" },
             { "data": "fp_cp_qty" },
-            { "data": "fp_cp_unit" },
+            { "data": "unit_desc" },
             { "data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             
         ]
