@@ -318,7 +318,7 @@ $(document).ready(function() {
 
     //btn popup
     $(".btn-popup").on("click", function(e){
-        resetForm()
+        resetForm();
     })
 
 //end doc ready
@@ -332,7 +332,7 @@ function resetForm(){
     $("#fp_cp_rm_guid").selectpicker('val',"-");
     $("input[name=fp_cp_qty]").val(0);
     $("#fp_cp_unit").selectpicker('val',"-");
-    $("input[name=fp_cp_rm_code]").val(0);
+    $("input[name=fp_cp_price]").val(0);
 
 }
 function refreshTable(type){
