@@ -56,15 +56,15 @@ $(document).ready(function() {
             { "data": "rm_desc" },
             { "data": "prod_family_desc" },
             { "data": "rm_cost", render: $.fn.dataTable.render.number(',', '.', 0, '')},
-            { "data": "rm_unit" },
+            { "data": "unit_desc" },
             { "data": "rm_box_size_l" },
             { "data": "rm_box_size_w" },
             { "data": "rm_box_size_h" },
-            { "data": "rm_kayu" },
+            { "data": "kayu_desc" },
             // { "data": "cost_last_updated" },
             // { "data": "rm_creator" },
             // { "data": "rm_validated" },
-            // { "data": "rm_active" },
+            { "data": "rm_active" },
         ]
     });
     
