@@ -100,7 +100,7 @@ $(document).ready(function() {
         _data.upd_by = "Admin";
         //_data.tblname = 'rm'
         console.log(_data);
-        //console.log( table.row( this ).data().id );
+        console.log( table.row( this ).data().id );
 
         Swal.fire({
             title: 'Are you sure?',
