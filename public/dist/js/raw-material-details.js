@@ -399,12 +399,12 @@ function load_data_dt(_url){
                 orderable: false
             },
             {
-                data: "id",
+                data: "pop_guid",
                 className: "dt-center editor-details",
                 orderable: true
             },
             { "data": "pop_desc" },
-            { "data": "active" },
+            { "data": "pop_active" },
         ]
     });
 }
