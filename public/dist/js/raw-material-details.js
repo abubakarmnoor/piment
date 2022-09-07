@@ -259,7 +259,7 @@ $(document).ready(function() {
     $('#dtTbl_pop').on('click', 'td.editor-delete', function (e) {
         e.preventDefault();
         let _data = table.row( this ).data().id;
-        console.log(_data);
+        // console.log(_data);
 
         Swal.fire({
             title: 'Are you sure?',
@@ -302,7 +302,7 @@ function default_edit(data){
     
     // $('#sp_rm_code').selectpicker('val',data[0].rm_code)
     // $("input[name=rm_desc]").val($(this).find("option:selected").attr("desc"))
-    console.log(data);
+    // console.log(data);
     $("input[name=rm_code]").attr('disabled','disabled')
     $("input[name=rm_code]").val(data[0].rm_code)
     $("input[name=rm_desc]").val(data[0].rm_desc)
@@ -327,6 +327,7 @@ function get_details(id){
     // console.log(id);
     //ajax - get details
     spinner_popup();
+    console.log(id);
     //ajax
     $.ajax({
         type:"GET", 
@@ -335,7 +336,7 @@ function get_details(id){
         dataType: "json",
         success: function(data) {
             // setTimeout(function () {
-                console.log(data);
+                // console.log(data);
                 default_edit(data.data);
                 $('.modal').modal('hide');
             // }, 3000);
