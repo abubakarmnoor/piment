@@ -38,7 +38,7 @@ $(document).ready(function() {
                 className: "dt-center editor-details",
                 orderable: true
             },
-            { "data": "prod_familiy_desc" },
+            { "data": "prod_family_desc" },
             { "data": "fp_box_size_l" },
             { "data": "fp_box_size_w" },
             { "data": "fp_box_size_h" },
