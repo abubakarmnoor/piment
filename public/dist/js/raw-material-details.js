@@ -2,7 +2,7 @@ spinner_popup();
 $(document).ready(function() {
             
     //default
-    let id=$("#id").val()
+    let id=$("#rm_guid").val()
     $('.selectpicker').selectpicker();
     insert_element_pf();insert_element_kayu();insert_element_unit();insert_element_creator();
     load_data_dt('/apis/pull/pop/undefined/product-family'); //init
