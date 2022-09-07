@@ -99,8 +99,8 @@ $(document).ready(function() {
         _data.rm_desc = table.row( this ).data().rm_desc;
         _data.upd_by = "Admin";
         //_data.tblname = 'rm'
-        console.log(_data);
-        console.log( table.row( this ).data().id );
+        // console.log(_data);
+        // console.log( table.row( this ).data().id );
 
         Swal.fire({
             title: 'Are you sure?',
