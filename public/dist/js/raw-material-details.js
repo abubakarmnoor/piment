@@ -302,6 +302,7 @@ function default_edit(data){
     
     // $('#sp_rm_code').selectpicker('val',data[0].rm_code)
     // $("input[name=rm_desc]").val($(this).find("option:selected").attr("desc"))
+    console.log(data);
     $("input[name=rm_code]").attr('disabled','disabled')
     $("input[name=rm_code]").val(data[0].rm_code)
     $("input[name=rm_desc]").val(data[0].rm_desc)
