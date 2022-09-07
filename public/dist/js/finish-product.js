@@ -38,11 +38,11 @@ $(document).ready(function() {
                 className: "dt-center editor-details",
                 orderable: true
             },
-            { "data": "fp_prod_family" },
+            { "data": "prod_familiy_desc" },
             { "data": "fp_box_size_l" },
             { "data": "fp_box_size_w" },
             { "data": "fp_box_size_h" },
-            { "data": "fp_origin" },
+            { "data": "origin_desc" },
             { "data": "fp_validated" },
             { "data": "fp_active" },
             { "data": "fp_upd_by" },
