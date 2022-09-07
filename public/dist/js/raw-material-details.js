@@ -335,6 +335,7 @@ function get_details(id){
         dataType: "json",
         success: function(data) {
             // setTimeout(function () {
+                console.log(data);
                 default_edit(data.data);
                 $('.modal').modal('hide');
             // }, 3000);
