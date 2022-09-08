@@ -54,7 +54,7 @@ $(document).ready(function() {
         spinner_popup();
         $.ajax({
             type:"GET", // must be POST 
-            url: "/data/suppliers.json", 
+            url: "/apis/pull/supplier", 
             dataType: "json",
             data: _data,
             success: function(data) {

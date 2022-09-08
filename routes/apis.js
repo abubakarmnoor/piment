@@ -129,7 +129,19 @@ router.post('/upd',(req,res)=>{
             closeDbConnection(db)
           }
         })
-      }
+    }else if (_data.tblname == 'supplier'){
+      query='call spsave_supplier (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+      db.query(` `+query+` `,[_data.supplier_guid, _data.supplier_address, _data.supplier_state, _data.supplier_country, _data.supplier_zipcode, _data.supplier_pic, _data.supplier_email, _data.supplier_phone, _data.supplier_fax, _data.supplier_whatsapp , _data.supplier_prod_family , _data.supplier_active , _data.supplier_upd_by], (err, data_)=>{  
+      // db.query(query, (err, data_)=>{
+        if (!data_){
+          res.status(200).json({success:false, err})
+        }else{
+          let data = data_;
+          res.status(200).json({success:true, data})
+          closeDbConnection(db)
+        }
+      })
+    }
     })
   }).catch((error)=>{
     console.log("Db not connected",error);
@@ -148,6 +160,8 @@ router.post('/del/:tbl',(req,res)=>{
     query='call spdelete_fp (?, ?)'
   }else if (_data.tblname == 'fp_cp'){
     query='call spdelete_fp_cp (?, ?)'
+  }else if (_data.tblname == 'supplier'){
+    query='call spdelete_supplier (?, ?)'
   }
   // res.status(200).json({success:true, query})
 
