@@ -104,11 +104,10 @@ $(document).ready(function() {
         spinner_popup();
         $.ajax({
             type:"GET", // must be POST 
-            url: "/data/pop-product-family.json", 
+            url: "apis/pop/upd", 
             dataType: "json",
             data: _data,
             success: function(data) {
-                setTimeout(function () {
                     $('.modal').modal('hide');
                     Swal.fire({
                         icon: 'success',
@@ -117,8 +116,6 @@ $(document).ready(function() {
                     }).then(function(){
                         //location.href='/clients'
                     });
-                    
-                }, 3000);
                 
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
@@ -206,13 +203,11 @@ function get_details(){
     //ajax
     $.ajax({
         type:"GET", 
-        url: "/data/suppliers.json", 
+        url: "/apis/pull/supplier", 
         dataType: "json",
         success: function(data) {
-            setTimeout(function () {
-                default_edit(data.data);
-                $('.modal').modal('hide');
-            }, 3000);
+            default_edit(data.data);
+            $('.modal').modal('hide');
         }, 
         error: function(jqXHR, textStatus, errorThrown) {
             //alert(jqXHR.status);
@@ -238,7 +233,7 @@ function load_data_dt(){
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/data/pop-product-family.json",
+        "ajax": "/apis/pull/pop/undefined/product-family",
         "processing": true,
         "pageLength": 5,
         "language": {
