@@ -74,12 +74,14 @@ function load_data_dt(_url){
     // Delete a record
     $('#dtTbl_pop').on('click', 'td.editor-delete', function (e) {
         e.preventDefault();
-        //console.log( table.row( this ).data().id );
-        const _id = table.row( this ).data().pop_guid;
-
+        let _data = {};
+        _data.id = table.row( this ).data().pop_guid;
+        _data.fp_desc = table.row( this ).data().pop_desc;
+        _data.upd_by = "Admin";
+        
         Swal.fire({
             title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            text: "You won't be able to revert this! ("+_data.pop_desc+")",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -87,14 +89,41 @@ function load_data_dt(_url){
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-                )
+                spinner_popup();
+                $.ajax({
+                    type:"POST",
+                    url: "/apis/del/pop", 
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify(_data),
+                    success: function(data) {
+                        // setTimeout(function () {
+                            // $('.modal').modal('hide');
+                            $("#spinner-modal").modal('hide')
+                            Swal.fire({
+                                icon: 'success',
+                                title: "Data Deleted",
+                                text: _data.pop_desc
+                            }).then(function(){
+                                $("#btn_refresh").click();
+                            });
+                            
+                        // }, 3000) ;
+                        
+                    }, 
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        //alert(jqXHR.status);
+                        $('.modal').modal('hide');
+                        Swal.fire({
+                            title: "Error!",
+                            text: textStatus,
+                            icon: "error"
+                        });
+                    }
+                });
             }
         })
-    });
+    } );
 
     //popup pop
     $('#btn_pop_pf').on('click', function(){
