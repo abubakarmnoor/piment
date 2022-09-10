@@ -1,5 +1,6 @@
 //load data dt
 function load_data_dt(_url){
+    $('input[type=search]').val('');
     $("#btn_pop_clear").on("click", function(){
         $('#form__')[0].reset();
     })
@@ -55,10 +56,7 @@ function load_data_dt(_url){
             }}
         ]
     });
-    table.on('page.dt',function () {
-        $('input[type=search]').val('');// Clear Search input.
-        //table.search('').draw(); // Rebind all data.
-    });
+    
     // Edit record
     $('#dtTbl_pop').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
