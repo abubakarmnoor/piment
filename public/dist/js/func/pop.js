@@ -140,14 +140,15 @@ function load_data_dt(_url){
             data: _data,
             success: function(data) {
                 // $('.modal').modal('hide');
-                Swal.fire({
-                    icon: 'success',
-                    title: '',
-                    text: "Data Saved"
-                }).then(function(){
-                    //location.href='/clients'
-                    table.ajax.url("/apis/pop/"+_data.pop_type, null, false).load(); // refresh pop
-                });
+                table.ajax.url("/apis/pop/"+_data.pop_type, null, false).load(); // refresh pop
+                // Swal.fire({
+                //     icon: 'success',
+                //     title: '',
+                //     text: "Data Saved"
+                // }).then(function(){
+                //     //location.href='/clients'
+                //     table.ajax.url("/apis/pop/"+_data.pop_type, null, false).load(); // refresh pop
+                // });
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
                 //alert(jqXHR.status);
