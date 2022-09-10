@@ -44,7 +44,7 @@ function load_data_dt(_url){
             { "data": "pop_active" },
         ]
     });
-    
+
     // Edit record
     $('#dtTbl_pop').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
@@ -53,7 +53,7 @@ function load_data_dt(_url){
         const _pop_desc = table.row( this ).data().pop_desc;
         const _active = table.row( this ).data().active;
         
-        $("#pop_id").val(_id);
+        $("#pop_guid").val(_id);
         $("input[name=pop_desc]").val(_pop_desc);
         $("#ck_active_pop").prop('checked', _active);
 
