@@ -164,26 +164,6 @@ $(document).ready(function() {
         location.href = "/fpc/"+$("#fp_guid").val()+"/"+$("#act").val();
     })
 
-   
-    // //number
-    // $(".numeric").on('keyup keypress focusout', function(e){
-        
-    //     isNumber(e)
-    //     let _amt = $(this).val().replace(/,/g,"");
-    //     // console.log(_amt);
-    //     $(this).val(numberWithCommas(_amt));
-        
-    // })
-    // $(".numeric").on('focus', function(e){
-            
-    //     isNumber(e)
-    //     let _amt = $(this).val().replace(/,/g,"");
-    //     // console.log(_amt);
-    //     $(this).val(_amt);
-        
-    // })
-
-    
     // //btn add new pop
     // $('#btn_pop_pf').on('click', function(){
     //     // e.preventDefault();
@@ -336,10 +316,8 @@ function get_details(id){
         url: "/apis/pull/fp/"+id, 
         dataType: "json",
         success: function(data) {
-            // setTimeout(function () {
-                default_edit(data.data);
-                $('.modal').modal('hide');
-            // }, 3000);
+            default_edit(data.data);
+            $('.modal').modal('hide');
         }, 
         error: function(jqXHR, textStatus, errorThrown) {
             //alert(jqXHR.status);
