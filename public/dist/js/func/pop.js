@@ -44,14 +44,14 @@ function load_data_dt(_url){
             { "data": "pop_active",
             "render": function ( data, type, row ) {
                 switch (data) {
-                    case '1':
+                    case 1:
                         return 'True';
                         break;
-                    case '0':
+                    case 0:
                         return 'False';
                         break;
                     default:
-                        return data;
+                        return "other";
                 }
             }}
         ]
