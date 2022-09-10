@@ -77,6 +77,7 @@ function load_data_dt(_url){
         let _data = {};
         _data.id = table.row( this ).data().pop_guid;
         _data.fp_desc = table.row( this ).data().pop_desc;
+        _data.pop_type = $("label[name=pop_type").text();
         _data.upd_by = "Admin";
         
         Swal.fire({
@@ -105,7 +106,9 @@ function load_data_dt(_url){
                                 title: "Data Deleted",
                                 text: _data.pop_desc
                             }).then(function(){
-                                $("#btn_refresh").click();
+                                //location.href='/clients'
+                                $("#btn_pop_clear").click();
+                                table.ajax.url("/apis/pop/"+_data.pop_type, null, false).load(); // refresh pop
                             });
                             
                         // }, 3000) ;
