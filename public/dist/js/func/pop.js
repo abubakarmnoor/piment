@@ -103,9 +103,10 @@ function load_data_dt(_url){
         $('#lbl_pf_desc').text('Product Family Desc')
         $("label[name=pop_type").text("product-family")
         $("input[name=pop_desc").val("")
-        $('input[type=search]').focus().val("");
-        
+        $('input[type=search]').val("");
         table.ajax.url("/apis/pop/product-family", null, false).load(); // pop pf
+        table.search('');
+
     });
     $('#btn_pop_origin').on('click', function(){
         // e.preventDefault();
@@ -113,8 +114,9 @@ function load_data_dt(_url){
         $('#lbl_pf_desc').text('Origin Desc')
         $("label[name=pop_type").text("origin")
         $("input[name=pop_desc").val("")
-        $('input[type=search]').focus().val("");
+        $('input[type=search]').val("");
         table.ajax.url("/apis/pop/origin", null, false).load(); // pop origin
+        table.search('');
     });
 
     //save
