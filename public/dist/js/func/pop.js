@@ -131,7 +131,7 @@ function load_data_dt(_url){
         _data.pop_active = $("#ck_active_pop").prop('checked')
         _data.tblname = "pop";
         
-        console.log(_data);
+        // console.log(_data);
 
         // ajax - save/post data
         spinner_popup();
