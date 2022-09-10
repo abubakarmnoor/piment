@@ -76,7 +76,7 @@ function load_data_dt(_url){
         e.preventDefault();
         let _data = {};
         _data.id = table.row( this ).data().pop_guid;
-        _data.fp_desc = table.row( this ).data().pop_desc;
+        _data.pop_desc = table.row( this ).data().pop_desc;
         _data.pop_type = $("label[name=pop_type").text();
         _data.upd_by = "Admin";
         
