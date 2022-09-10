@@ -80,6 +80,8 @@ function load_data_dt(_url){
         _data.pop_type = $("label[name=pop_type").text();
         _data.upd_by = "Admin";
         
+        console.log(_data);
+
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this! ("+_data.pop_desc+")",
@@ -98,20 +100,17 @@ function load_data_dt(_url){
                     dataType: "json",
                     data: JSON.stringify(_data),
                     success: function(data) {
-                        // setTimeout(function () {
-                            // $('.modal').modal('hide');
-                            $("#spinner-modal").modal('hide')
-                            Swal.fire({
-                                icon: 'success',
-                                title: "Data Deleted",
-                                text: _data.pop_desc
-                            }).then(function(){
-                                //location.href='/clients'
-                                $("#btn_pop_clear").click();
-                                table.ajax.url("/apis/pop/"+_data.pop_type, null, false).load(); // refresh pop
-                            });
-                            
-                        // }, 3000) ;
+                        // $('.modal').modal('hide');
+                        $("#spinner-modal").modal('hide')
+                        Swal.fire({
+                            icon: 'success',
+                            title: "Data Deleted",
+                            text: _data.pop_desc
+                        }).then(function(){
+                            //location.href='/clients'
+                            $("#btn_pop_clear").click();
+                            table.ajax.url("/apis/pop/"+_data.pop_type, null, false).load(); // refresh pop
+                        });
                         
                     }, 
                     error: function(jqXHR, textStatus, errorThrown) {

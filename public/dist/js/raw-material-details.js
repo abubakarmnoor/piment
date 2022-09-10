@@ -135,7 +135,7 @@ function get_details(id){
     // console.log(id);
     //ajax - get details
     spinner_popup();
-    console.log(id);
+    // console.log(id);
     //ajax
     $.ajax({
         type:"GET", 
