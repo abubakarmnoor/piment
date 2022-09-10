@@ -141,6 +141,8 @@ router.post('/upd',(req,res)=>{
           closeDbConnection(db)
         }
       })
+    }else if (_data.tblname == 'pop'){
+      res.status(200).json({success:false})
     }
     })
   }).catch((error)=>{

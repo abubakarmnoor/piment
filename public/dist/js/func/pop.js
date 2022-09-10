@@ -1,7 +1,3 @@
-$(document).ready(function(){
-     
-
-})
 //load data dt
 function load_data_dt(_url){
     // ajax
@@ -49,9 +45,9 @@ function load_data_dt(_url){
     $('#dtTbl_pop').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
-        const _id = table.row( this ).data().id;
+        const _id = table.row( this ).data().pop_guid;
         const _pop_desc = table.row( this ).data().pop_desc;
-        const _active = table.row( this ).data().active;
+        const _active = table.row( this ).data().pop_active;
         
         $("#pop_guid").val(_id);
         $("input[name=pop_desc]").val(_pop_desc);
@@ -89,5 +85,51 @@ function load_data_dt(_url){
                 )
             }
         })
-    } );
+
+        //save
+        $('#form__').submit(function(e) {
+            //$('#messages').removeClass('hide').addClass('alert alert-success alert-dismissible').slideDown().show();
+            //$('#messages_content').html('<h4>MESSAGE HERE</h4>');
+            //$('#modal').modal('show');
+            
+            e.preventDefault();
+            const form = $(e.target);
+            const _data = convertFormToJSON(form);
+            _data.pop_updated_by = "Admin";
+            _data.pop_active = $("#ck_active").prop('checked')
+            _data.tblname = "pop";
+            
+            console.log(_data);
+
+            // ajax - save/post data
+            spinner_popup();
+            $.ajax({
+                type:"POST", // must be POST 
+                url: "/apis/upd", 
+                dataType: "json",
+                data: _data,
+                success: function(data) {
+                    $('.modal').modal('hide');
+                    Swal.fire({
+                        icon: 'success',
+                        title: '',
+                        text: "Data Saved"
+                    }).then(function(){
+                        //location.href='/clients'
+                    });
+                }, 
+                error: function(jqXHR, textStatus, errorThrown) {
+                    //alert(jqXHR.status);
+                    $('.modal').modal('hide');
+                    Swal.fire({
+                        title: "Error!",
+                        text: textStatus,
+                        icon: "error"
+                    });
+                }
+            });
+
+        });
+
+    });
 }

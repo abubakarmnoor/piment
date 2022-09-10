@@ -114,50 +114,50 @@ $(document).ready(function() {
 
     });
 
-    //save
-    $('#form__').submit(function(e) {
-        //$('#messages').removeClass('hide').addClass('alert alert-success alert-dismissible').slideDown().show();
-        //$('#messages_content').html('<h4>MESSAGE HERE</h4>');
-        //$('#modal').modal('show');
+    // //save
+    // $('#form__').submit(function(e) {
+    //     //$('#messages').removeClass('hide').addClass('alert alert-success alert-dismissible').slideDown().show();
+    //     //$('#messages_content').html('<h4>MESSAGE HERE</h4>');
+    //     //$('#modal').modal('show');
         
-        e.preventDefault();
-        const form = $(e.target);
-        const _data = convertFormToJSON(form);
-        _data.txt_updated_by = "Admin";
-        _data.active = $("#ck_active").prop('checked')
-        _data.tblname = "pop";
+    //     e.preventDefault();
+    //     const form = $(e.target);
+    //     const _data = convertFormToJSON(form);
+    //     _data.txt_updated_by = "Admin";
+    //     _data.active = $("#ck_active").prop('checked')
+    //     _data.tblname = "pop";
         
-        console.log(_data);
+    //     console.log(_data);
 
-        // ajax - save/post data
-        spinner_popup();
-        $.ajax({
-            type:"POST", // must be POST 
-            url: "/apis/upd", 
-            dataType: "json",
-            data: _data,
-            success: function(data) {
-                $('.modal').modal('hide');
-                Swal.fire({
-                    icon: 'success',
-                    title: '',
-                    text: "Data Saved"
-                }).then(function(){
-                    //location.href='/clients'
-                });
-            }, 
-            error: function(jqXHR, textStatus, errorThrown) {
-                //alert(jqXHR.status);
-                $('.modal').modal('hide');
-                Swal.fire({
-                    title: "Error!",
-                    text: textStatus,
-                    icon: "error"
-                });
-            }
-        });
+    //     // ajax - save/post data
+    //     spinner_popup();
+    //     $.ajax({
+    //         type:"POST", // must be POST 
+    //         url: "/apis/upd", 
+    //         dataType: "json",
+    //         data: _data,
+    //         success: function(data) {
+    //             $('.modal').modal('hide');
+    //             Swal.fire({
+    //                 icon: 'success',
+    //                 title: '',
+    //                 text: "Data Saved"
+    //             }).then(function(){
+    //                 //location.href='/clients'
+    //             });
+    //         }, 
+    //         error: function(jqXHR, textStatus, errorThrown) {
+    //             //alert(jqXHR.status);
+    //             $('.modal').modal('hide');
+    //             Swal.fire({
+    //                 title: "Error!",
+    //                 text: textStatus,
+    //                 icon: "error"
+    //             });
+    //         }
+    //     });
 
-    });
+    // });
     //btn
     $("#btn_fpc").on("click", function(e){
         e.preventDefault();
@@ -261,12 +261,6 @@ $(document).ready(function() {
         format: "dd-M-yyyy",
     });
 
-    //number
-    // $("#cost, #b_sale, #b_profit, #b_markup, #r_sale, #r_profit, #r_markup").on('keyup', function(){
-    //     let _amt = $(this).val().replace(/,/g,"");
-    //     $(this).val(numberWithCommas(_amt));
-    // })
-
 //end  doc ready
 });
 //default-edit
@@ -342,46 +336,3 @@ function insert_element_origin(){
     $('<a href="#" type="button" class="pull-right" id="btn_pop_origin" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(11) > div:nth-child(1) > div > div > div');
     
 }
-// //load data dt
-// function load_data_dt(_url){
-//     // ajax
-//     table = $('#dtTbl_pop').DataTable({
-//         // "scrollY": "370px",
-//         "scrollCollapse": true,
-//         "paging": true, 
-//         "lengthChange": false,
-//         "ajax": _url,
-//         "processing": true,
-//         "pageLength": 5,
-//         "language": {
-//             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
-//         //"serverSide": true,
-//         "columnDefs": [
-//             {
-//                 "targets": [ 2 ],
-//                 "visible": false
-//             }
-//         ],  
-//         "columns": [
-//             {
-//                 data: null,
-//                 className: "dt-center editor-edit",
-//                 defaultContent: '<i class="fa fa-pencil"/>',
-//                 orderable: false
-//             },
-//             {
-//                 data: null,
-//                 className: "dt-center editor-delete",
-//                 defaultContent: '<i class="fa fa-trash"/>',
-//                 orderable: false
-//             },
-//             {
-//                 data: "id",
-//                 className: "dt-center editor-details",
-//                 orderable: true
-//             },
-//             { "data": "pop_desc" },
-//             { "data": "active" },
-//         ]
-//     });
-// }
