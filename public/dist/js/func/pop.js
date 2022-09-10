@@ -41,7 +41,19 @@ function load_data_dt(_url){
                 orderable: true
             },
             { "data": "pop_desc" },
-            { "data": "pop_active" },
+            { "data": "pop_active",
+            "render": function ( data, type, row ) {
+                switch (data) {
+                    case '1':
+                        return 'True';
+                        break;
+                    case '0':
+                        return 'False';
+                        break;
+                    default:
+                        return data;
+                }
+            }}
         ]
     });
 
