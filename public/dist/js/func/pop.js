@@ -101,7 +101,7 @@ function load_data_dt(_url){
         // e.preventDefault();
         $('#th_pop_desc').text('Product Family')
         $('#lbl_pf_desc').text('Product Family Desc')
-        $("input[name=pop_type").val("product-family")
+        $("label[name=pop_type").text("product-family")
         $("input[name=pop_desc").val("")
         
         table.ajax.url("/apis/pop/product-family", null, false).load(); // pop pf
@@ -110,7 +110,7 @@ function load_data_dt(_url){
         // e.preventDefault();
         $('#th_pop_desc').text('Origin')
         $('#lbl_pf_desc').text('Origin Desc')
-        $("input[name=pop_type").val("origin")
+        $("label[name=pop_type").text("origin")
         $("input[name=pop_desc").val("")
         table.ajax.url("/apis/pop/origin", null, false).load(); // pop origin
     });
@@ -125,7 +125,7 @@ function load_data_dt(_url){
         const form = $(e.target);
         const _data = convertFormToJSON(form);
         _data.pop_updated_by = "Admin";
-        _data.pop_type = $("input[name=pop_type").val();
+        _data.pop_type = $("label[name=pop_type").text();
         _data.pop_active = $("#ck_active").prop('checked')
         _data.tblname = "pop";
         
