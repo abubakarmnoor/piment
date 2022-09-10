@@ -196,6 +196,6 @@ function insert_element_pf(){
     $('<a href="#" type="button" class="pull-right" id="btn_pop_pf" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(9) > div:nth-child(1) > div > div > div');
 }
 function insert_element_origin(){
-    $('<a href="#" type="button" class="pull-right" id="btn_pop_origin" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(11) > div:nth-child(1) > div > div > div');
+    $('<a href="#" type="button" class="pull-right" id="btn_pop_origin" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(9) > div:nth-child(2) > div > div > div');
     
 }

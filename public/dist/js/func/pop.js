@@ -96,6 +96,25 @@ function load_data_dt(_url){
         })
     });
 
+    //popup pop
+    $('#btn_pop_pf').on('click', function(){
+        // e.preventDefault();
+        $('#th_pop_desc').text('Product Family')
+        $('#lbl_pf_desc').text('Product Family Desc')
+        $("input[name=pop_type").val("product-family")
+        $("input[name=pop_desc").val("")
+        
+        table.ajax.url("/apis/pop/product-family", null, false).load(); // pop pf
+    });
+    $('#btn_pop_origin').on('click', function(){
+        // e.preventDefault();
+        $('#th_pop_desc').text('Origin')
+        $('#lbl_pf_desc').text('Origin Desc')
+        $("input[name=pop_type").val("origin")
+        $("input[name=pop_desc").val("")
+        table.ajax.url("/apis/pop/origin", null, false).load(); // pop origin
+    });
+
     //save
     $('#form__').submit(function(e) {
         //$('#messages').removeClass('hide').addClass('alert alert-success alert-dismissible').slideDown().show();
