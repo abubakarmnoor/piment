@@ -126,7 +126,7 @@ function load_data_dt(_url){
         const _data = convertFormToJSON(form);
         _data.pop_updated_by = "Admin";
         _data.pop_type = $("label[name=pop_type").text();
-        _data.pop_active = $("#ck_active").prop('checked')
+        _data.pop_active = $("#ck_active_pop").prop('checked')
         _data.tblname = "pop";
         
         console.log(_data);
