@@ -136,17 +136,18 @@ function load_data_dt(_url){
         $.ajax({
             type:"POST", // must be POST 
             url: "/apis/upd", 
+            contentType: "application/json; charset=utf-8",
             dataType: "json",
-            data: _data,
+            data: JSON.stringify(_data),
             success: function(data) {
-                // $('.modal').modal('hide');
+                $('.modal').modal('hide');
                 Swal.fire({
                     icon: 'success',
                     title: '',
                     text: "Data Saved"
                 }).then(function(){
                     //location.href='/clients'
-                    // table.ajax.url("https://piment-admin.localpro100.com/apis/pop/"+_data.pop_type, null, false).load(); // refresh pop
+                    table.ajax.url("https://piment-admin.localpro100.com/apis/pop/"+_data.pop_type, null, false).load(); // refresh pop
                 });
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
