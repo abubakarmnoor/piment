@@ -143,7 +143,7 @@ router.post('/upd',(req,res)=>{
       })
     }else if (_data.tblname == 'pop'){
       query='call spsave_pop (?, ?, ?, ?, ?)'
-      db.query(` `+query+` `,[_data.pop_guid, _data.pop_type, _data.pop_desc, _data.pop_active, _data.pop_upd_by], (  err, data_)=>{  
+      db.query(` `+query+` `,[_data.pop_guid, _data.pop_type, _data.pop_desc, _data.pop_active, _data.pop_updated_by], (  err, data_)=>{  
       // db.query(query, (err, data_)=>{
         if (!data_){
           res.status(200).json({success:false, err})
