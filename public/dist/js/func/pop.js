@@ -140,7 +140,8 @@ function load_data_dt(_url){
             dataType: "json",
             data: JSON.stringify(_data),
             success: function(data) {
-                $('.modal').modal('hide');
+                // $('.modal').modal('hide');
+                $("#spinner-modal").modal('hide')
                 Swal.fire({
                     icon: 'success',
                     title: '',
