@@ -1,5 +1,9 @@
 //load data dt
 function load_data_dt(_url){
+
+    $("#btn_pop_clear").on("click", function(){
+        $('#form__')[0].reset();
+    })
     // ajax
     table = $('#dtTbl_pop').DataTable({
         // "scrollY": "370px",
