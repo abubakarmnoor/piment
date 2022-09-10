@@ -1,4 +1,4 @@
-// $(document).ready(function(){
+$(document).ready(function(){
      // Edit record
      $('#dtTbl_pop').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
@@ -45,7 +45,7 @@
         })
     } );
 
-// })
+})
 //load data dt
 function load_data_dt(_url){
     // ajax
