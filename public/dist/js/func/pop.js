@@ -147,7 +147,7 @@ function load_data_dt(_url){
                     text: "Data Saved"
                 }).then(function(){
                     //location.href='/clients'
-                    table.ajax.url("/apis/pop/"+_data.pop_type, null, false).load(); // refresh pop
+                    table.ajax.url("https://piment-admin.localpro100.com/apis/pop/"+_data.pop_type, null, false).load(); // refresh pop
                 });
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
