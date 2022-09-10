@@ -214,19 +214,19 @@ $(document).ready(function() {
     //     table.ajax.url("/data/pop-origin.json", null, false).load(); // pop creator
         
     // })
-    // Edit record
-    $('#dtTbl_pop').on('click', 'td.editor-edit', function (e) {
-        e.preventDefault();
-        //console.log( table.row( this ).data().id );
-        const _id = table.row( this ).data().id;
-        const _pop_desc = table.row( this ).data().pop_desc;
-        const _active = table.row( this ).data().active;
+    // // Edit record
+    // $('#dtTbl_pop').on('click', 'td.editor-edit', function (e) {
+    //     e.preventDefault();
+    //     //console.log( table.row( this ).data().id );
+    //     const _id = table.row( this ).data().id;
+    //     const _pop_desc = table.row( this ).data().pop_desc;
+    //     const _active = table.row( this ).data().active;
         
-        $("#pop_id").val(_id);
-        $("input[name=pop_desc]").val(_pop_desc);
-        $("#ck_active_pop").prop('checked', _active);
+    //     $("#pop_id").val(_id);
+    //     $("input[name=pop_desc]").val(_pop_desc);
+    //     $("#ck_active_pop").prop('checked', _active);
 
-    } );
+    // } );
     
     
     // // Delete a record
