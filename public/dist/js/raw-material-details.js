@@ -4,8 +4,8 @@ $(document).ready(function() {
     //default
     let id=$("#rm_guid").val()
     $('.selectpicker').selectpicker();
-    insert_element_pf();insert_element_kayu();insert_element_unit();insert_element_creator();
-    load_data_dt('/apis/pull/pop/undefined/product-family'); //init
+    insert_element_pf();insert_element_kayu();insert_element_unit();
+    load_data_dt('/apis/pop/product-family'); //init
 
     //edit or add new
     if (location.href.includes('ZWlk')) {
@@ -48,11 +48,6 @@ $(document).ready(function() {
         e.preventDefault();
         const form = $(e.target);
         const _data = convertFormToJSON(form);
-        
-        // _data.txt_created_date = new Date(_data.txt_created_date);
-        // _data.txt_created_date = formatDate(_data.txt_created_date)
-        // _data.txt_updated_date = new Date(_data.txt_updated_date);
-        // _data.txt_updated_date = formatDate(_data.txt_updated_date)
         _data.active = $("#ck_active").prop('checked')
         _data.cost = (_data.cost).replace(/\,/g,'');//.toFixed(2);
         // _data.cost = parseFloat(_data.cost).toFixed();
@@ -93,152 +88,6 @@ $(document).ready(function() {
         });
 
     });
-
-    //save
-    $('#form__').submit(function(e) {
-        //$('#messages').removeClass('hide').addClass('alert alert-success alert-dismissible').slideDown().show();
-        //$('#messages_content').html('<h4>MESSAGE HERE</h4>');
-        //$('#modal').modal('show');
-        
-        e.preventDefault();
-        const form = $(e.target);
-        const _data = convertFormToJSON(form);
-        _data.txt_created_date = new Date(_data.txt_created_date);
-        _data.txt_created_date = formatDate(_data.txt_created_date)
-        _data.txt_updated_date = new Date(_data.txt_updated_date);
-        _data.txt_updated_date = formatDate(_data.txt_updated_date)
-        _data.active = $("#ck_active").prop('checked')
-        // console.log(_data);
-
-        // ajax - save/post data
-        spinner_popup();
-        $.ajax({
-            type:"GET", // must be POST 
-            url: "/data/pop-product-family.json", 
-            dataType: "json",
-            data: _data,
-            success: function(data) {
-                // setTimeout(function () {
-                    $('.modal').modal('hide');
-                    Swal.fire({
-                        icon: 'success',
-                        title: '',
-                        text: "Data Saved"
-                    }).then(function(){
-                        //location.href='/clients'
-                    });
-                    
-                // }, 3000);
-                
-            }, 
-            error: function(jqXHR, textStatus, errorThrown) {
-                //alert(jqXHR.status);
-                $('.modal').modal('hide');
-                Swal.fire({
-                    title: "Error!",
-                    text: textStatus,
-                    icon: "error"
-                });
-            }
-        });
-
-    });
-
-    // Edit record
-    $('#dtTbl_pop').on('click', 'td.editor-edit', function (e) {
-        e.preventDefault();
-        //console.log( table.row( this ).data().id );
-        const _id = table.row( this ).data().id;
-        const _pop_desc = table.row( this ).data().pop_desc;
-        const _active = table.row( this ).data().active;
-        
-        $("#pop_id").val(_id);
-        $("input[name=activity_desc]").val(_pop_desc);
-        $("#ck_active_pop").prop('checked', _active);
-
-    } );
-    
-    // Details record
-    $('#dtTbl_pop').on('click', 'td.editor-details', function (e) {
-        e.preventDefault();
-        //console.log( table.row( this ).data().id );
-        const _id = table.row( this ).data().id;
-
-        
-    } );
-    // Delete a record
-    $('#dtTbl_pop').on('click', 'td.editor-delete', function (e) {
-        e.preventDefault();
-        //console.log( table.row( this ).data().id );
-
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-                )
-            }
-        })
-    } );
-
-    //number
-    // $("#cost").on('keyup', function(){
-        
-    //     let _amt = $(this).val().replace(/,/g,"");
-    //     $(this).val(numberWithCommas(_amt));
-        
-    // })
-
-    
-    //btn add new pop
-    $('#btn_pop_pf').on('click', function(){
-        // e.preventDefault();
-        
-        $('#txt_pop_type').val('Product Family')
-        $('#th_pop_desc').text('Product Family Desc')
-        $('#lbl_pf_desc').text('Product Family Desc')
-        $("input[name=pop_desc").val("")
-        table.ajax.url("/data/pop-product-family.json", null, false).load(); // pop pf
-    });
-    $('#btn_pop_kayu').on('click', function(){
-        // e.preventDefault();
-        
-        $('#txt_pop_type').val('Kayu')
-        $('#th_pop_desc').text('Kayu Desc')
-        $('#lbl_pf_desc').text('Kayu Desc')
-        $("input[name=pop_desc").val("")
-        table.ajax.url("/data/pop-kayu.json", null, false).load(); // pop kayu
-        
-    })
-    $('#btn_pop_unit').on('click', function(){
-        // e.preventDefault();
-        
-        $('#txt_pop_type').val('Unit')
-        $('#th_pop_desc').text('Unit Desc')
-        $('#lbl_pf_desc').text('Unit Desc')
-        $("input[name=pop_desc").val("")
-        table.ajax.url("/data/pop-unit.json", null, false).load(); // pop unit
-        
-    })
-    $('#btn_pop_creator').on('click', function(){
-        // e.preventDefault();
-        
-        $('#txt_pop_type').val('Creator')
-        $('#th_pop_desc').text('Creator Desc')
-        $('#lbl_pf_desc').text('Creator Desc')
-        $("input[name=pop_desc").val("")
-        table.ajax.url("/data/pop-creator.json", null, false).load(); // pop creator
-        
-    })
 
     // Edit record
     $('#dtTbl_pop').on('click', 'td.editor-edit', function (e) {

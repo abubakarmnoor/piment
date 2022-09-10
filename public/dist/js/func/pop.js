@@ -151,6 +151,30 @@ function load_data_dt(_url){
         table.search('');
     });
 
+
+    $('#btn_pop_kayu').on('click', function(){
+        // e.preventDefault();
+        
+        $('#th_pop_desc').text('Kayu')
+        $('#lbl_pf_desc').text('Kayu Desc')
+        $("label[name=pop_type").text("origin")
+        $("input[name=pop_desc").val("")
+        $('input[type=search]').val("");
+        table.ajax.url("/apis/pop/kayu", null, false).load(); // pop kayu
+        table.search('');
+    })
+    $('#btn_pop_unit').on('click', function(){
+        // e.preventDefault();
+        
+        $('#th_pop_desc').text('Unit')
+        $('#lbl_pf_desc').text('Unit Desc')
+        $("label[name=pop_type").text("origin")
+        $("input[name=pop_desc").val("")
+        $('input[type=search]').val("");
+        table.ajax.url("/apis/pop/unit", null, false).load(); // pop unit
+        table.search('');
+    })
+
     //save
     $('#form__').submit(function(e) {
         //$('#messages').removeClass('hide').addClass('alert alert-success alert-dismissible').slideDown().show();
