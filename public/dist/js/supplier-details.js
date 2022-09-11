@@ -81,15 +81,15 @@ $(document).ready(function() {
 //default-edit
 function default_edit(data){
     $("input[name=supplier_name").val(data[0].supplier_name)
-    $("textarea[name=address").val(data[0].supplier_address)
-    $("input[name=state").val(data[0].supplier_state)
+    $("textarea[name=supplier_address").val(data[0].supplier_address)
+    $("input[name=supplier_state").val(data[0].supplier_state)
     $('#sp_country').selectpicker('val',data[0].supplier_country.toUpperCase())
-    $("input[name=zipcode").val(data[0].supplier_zipcode)
-    $("input[name=pic").val(data[0].supplier_pic)
-    $("input[name=email").val(data[0].supplier_email)
-    $("input[name=phone").val(data[0].supplier_phone)
-    $("input[name=fax").val(data[0].supplier_fax)
-    $("input[name=whatsapp").val(data[0].supplier_whatsapp)
+    $("input[name=supplier_zipcode").val(data[0].supplier_zipcode)
+    $("input[name=supplier_pic").val(data[0].supplier_pic)
+    $("input[name=supplier_email").val(data[0].supplier_email)
+    $("input[name=supplier_phone").val(data[0].supplier_phone)
+    $("input[name=supplier_fax").val(data[0].supplier_fax)
+    $("input[name=supplier_whatsapp").val(data[0].supplier_whatsapp)
     $('#sp_product_family').selectpicker('val',data[0].supplier_prod_family)
     $("#ck_active").prop('checked', data[0].supplier_active)
 
