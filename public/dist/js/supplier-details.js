@@ -43,32 +43,28 @@ $(document).ready(function() {
         e.preventDefault();
         const form = $(e.target);
         const _data = convertFormToJSON(form);
-        _data.txt_created_date = new Date(_data.txt_created_date);
-        _data.txt_created_date = formatDate(_data.txt_created_date)
-        _data.txt_updated_date = new Date(_data.txt_updated_date);
-        _data.txt_updated_date = formatDate(_data.txt_updated_date)
         _data.active = $("#ck_active").prop('checked')
-        //console.log(json);
+        _data.fp_created_by="Admin";
+        _data.tblname = "supplier";
+        return console.log(json);
 
         // ajax - save/post data
         spinner_popup();
         $.ajax({
-            type:"GET", // must be POST 
-            url: "/apis/pull/supplier", 
+            type:"POST", // must be POST 
+            url: "/apis/upd", 
+            contentType: "application/json; charset=utf-8",
             dataType: "json",
-            data: _data,
+            data: JSON.stringify(_data),
             success: function(data) {
-                setTimeout(function () {
-                    $('.modal').modal('hide');
-                    Swal.fire({
-                        icon: 'success',
-                        title: '',
-                        text: "Data Saved"
-                    }).then(function(){
-                        location.href='/suppliers'
-                    });
-                    
-                }, 3000);
+                $('.modal').modal('hide');
+                Swal.fire({
+                    icon: 'success',
+                    title: '',
+                    text: "Data Saved"
+                }).then(function(){
+                    location.href='/suppliers'
+                });
                 
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
