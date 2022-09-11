@@ -193,6 +193,8 @@ router.post('/del/:tbl',(req,res)=>{
     query='call spdelete_supplier (?, ?)'
   }else if (_data.tblname == 'pop'){
     query='call spdelete_pop (?, ?)'
+  }else if (_data.tblname == 'client'){
+    query='call spdelete_client (?, ?)'
   }
   // res.status(200).json({success:true, query})
 
