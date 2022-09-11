@@ -160,7 +160,7 @@ router.post('/upd',(req,res)=>{
       })
     }else if (_data.tblname == 'client'){
       query='call spsave_client (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
-      db.query(` `+query+` `,[_data.client_guid, _data.client_name, _data.client_address, _data.client_state, _data.client_country, _data.client_zipcode, _data.client_pic, _data.client_email, _data.client_phone, _data.client_fax, _data.client_whatsapp , _data.client_prod_family , _data.client_active , _data.client_upd_by], (err, data_)=>{  
+      db.query(` `+query+` `,[_data.client_guid, _data.client_name, _data.client_address, _data.client_state, _data.client_country, _data.client_zipcode, _data.client_pic, _data.client_email, _data.client_phone, _data.client_fax, _data.client_whatsapp , _data.client_activity , _data.client_active , _data.client_upd_by], (err, data_)=>{  
       // db.query(query, (err, data_)=>{
         if (!data_){
           res.status(200).json({success:false, err})
