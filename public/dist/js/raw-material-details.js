@@ -34,7 +34,7 @@ $(document).ready(function() {
         $('.modal').modal('hide');
         $('.page-header').text('RAW MATERIAL ADD NEW')
         $("input[name=rm_desc]").val($(this).find("option:selected").attr("desc"))
-        let username = 'test';
+        let username = 'Admin';
         get_date_default(username,null, username, null)
     }
 

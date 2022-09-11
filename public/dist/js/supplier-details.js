@@ -83,6 +83,18 @@ $(document).ready(function() {
         });
 
     });
+
+    $('#btn_pop_pf').on('click', function(){
+        // e.preventDefault();
+        $('#th_pop_desc').text('Product Family')
+        $('#lbl_pf_desc').text('Product Family Desc')
+        $("label[name=pop_type").text("product-family")
+        $("input[name=pop_desc").val("")
+        $('input[type=search]').val("");
+        table.ajax.url("/apis/pop/product-family", null, false).load(); // pop pf
+        table.search('');
+
+    });
 //end  doc ready
 });
 //default-edit
