@@ -93,6 +93,7 @@ $(document).ready(function() {
         }).then((result) => {
             if (result.isConfirmed) {
                 spinner_popup();
+                console.log(_data);
                 $.ajax({
                     type:"POST",
                     url: "/apis/del/supplier", 
