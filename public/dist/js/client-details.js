@@ -50,7 +50,7 @@ $(document).ready(function() {
             url: "/apis/upd", 
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            data: _data,
+            data: JSON.stringify(_data),
             success: function(data) {
                 $('.modal').modal('hide');
                 if (data.data.success == true){
