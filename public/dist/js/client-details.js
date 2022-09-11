@@ -1,7 +1,7 @@
 $(document).ready(function() {
             
     //default
-    let id=$("#id").val()
+    let id=$("input[name=client_guid]").val()
     $('.selectpicker').selectpicker();
     insert_element_act();
     load_data_dt('/apis/pop/activity'); //init
@@ -21,7 +21,7 @@ $(document).ready(function() {
 
         $("#ck_active").attr("disabled", true);
         $(".cancel").html("<a href='/clients'  type='button' class='btn btn-outline btn-primary'><i class='fa fa-long-arrow-left'></i> Back</a>");
-        get_details();
+        get_details(id);
         
     
     }else{
@@ -39,24 +39,35 @@ $(document).ready(function() {
         const form = $(e.target);
         const _data = convertFormToJSON(form);
         _data.client_active = $("#ck_active").prop('checked')
-        //console.log(json);
+        _data.client_upd_by="Admin";
+        _data.tblname = "client";
+        return console.log(json);
 
         // ajax - save/post data
         spinner_popup();
         $.ajax({
-            type:"GET", // must be POST 
-            url: "/apis/pull/client", 
+            type:"POST", // must be POST 
+            url: "/apis/upd", 
+            contentType: "application/json; charset=utf-8",
             dataType: "json",
             data: _data,
             success: function(data) {
                 $('.modal').modal('hide');
-                Swal.fire({
-                    icon: 'success',
-                    title: '',
-                    text: "Data Saved"
-                }).then(function(){
-                    location.href='/clients'
-                });
+                if (data.data.success == true){
+                    Swal.fire({
+                        icon: 'success',
+                        title: '',
+                        text: "Data Saved"
+                    }).then(function(){
+                        location.href='/clients'
+                    });
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: '',
+                        text: data.err.sqlMessage
+                    })
+                }
                 
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
@@ -90,13 +101,13 @@ function default_edit(data){
 
 }
 //get details
-function get_details(){
+function get_details(id){
     //ajax - get details
     spinner_popup();
     //ajax
     $.ajax({
         type:"GET", 
-        url: "/apis/pull/client", 
+        url: "/apis/pull/client/"+id, 
         dataType: "json",
         success: function(data) {
             default_edit(data.data);

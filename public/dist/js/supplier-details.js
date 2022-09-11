@@ -1,7 +1,7 @@
 $(document).ready(function() {
             
     //default
-    let id=$("#id").val()
+    let id=$("input[name=supplier_guid]").val()
     $('.selectpicker').selectpicker();
     insert_element_pf();
     load_data_dt('/apis/pop/product-family'); //init
@@ -21,7 +21,7 @@ $(document).ready(function() {
 
         $("#ck_active").attr("disabled", true);
         $(".cancel").html("<a href='/suppliers'  type='button' class='btn btn-outline btn-primary'><i class='fa fa-long-arrow-left'></i> Back</a>");
-        get_details();
+        get_details(id);
         
     
     }else{
@@ -70,7 +70,6 @@ $(document).ready(function() {
                     })
                 }
                 
-                
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
                 //alert(jqXHR.status);
@@ -104,13 +103,13 @@ function default_edit(data){
 
 }
 //get details
-function get_details(){
+function get_details(id){
     //ajax - get details
     spinner_popup();
     //ajax
     $.ajax({
         type:"GET", 
-        url: "/apis/pull/supplier", 
+        url: "/apis/pull/supplier/"+id, 
         dataType: "json",
         success: function(data) {
             default_edit(data.data);
