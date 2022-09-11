@@ -27,7 +27,7 @@ router.use(function (req, res, next) {
 	next()
 })
 
-app.use(cors({
+router.use(cors({
     origin: 'https://piment-admin.localpro100.com'
 }));
 //API - DB
