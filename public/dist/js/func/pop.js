@@ -229,7 +229,7 @@ function selectpicker_reload(id_){
     let id__;
     if (id_ == 'origin'){
         id__ = 'sp_origin';
-    }else if (id_ == 'origin'){
+    }else if (id_ == 'product-family'){
         id__ = 'sp_product_family';
     }
     console.log(id__);
