@@ -79,8 +79,7 @@ function load_data_dt(_url){
         _data.pop_desc = table.row( this ).data().pop_desc;
         _data.pop_type = $("label[name=pop_type").text();
         _data.upd_by = "Admin";
-        
-        console.log(_data);
+        // console.log(_data);
 
         Swal.fire({
             title: 'Are you sure?',
@@ -110,6 +109,7 @@ function load_data_dt(_url){
                             //location.href='/clients'
                             $("#btn_pop_clear").click();
                             table.ajax.url("/apis/pop/"+_data.pop_type, null, false).load(); // refresh pop
+                            selectpicker_reload(_data.pop_type);
                         });
                         
                     }, 
@@ -187,8 +187,7 @@ function load_data_dt(_url){
         _data.pop_type = $("label[name=pop_type").text();
         _data.pop_active = $("#ck_active_pop").prop('checked')
         _data.tblname = "pop";
-        
-        console.log(_data);
+        // console.log(_data);
 
         // ajax - save/post data
         spinner_popup();
@@ -209,6 +208,7 @@ function load_data_dt(_url){
                     //location.href='/clients'
                     $("#btn_pop_clear").click();
                     table.ajax.url("/apis/pop/"+_data.pop_type, null, false).load(); // refresh pop
+                    selectpicker_reload(_data.pop_type);
                 });
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
@@ -223,4 +223,18 @@ function load_data_dt(_url){
         });
 
     });
+}
+function selectpicker_reload(id_){
+    let id__;
+    id__ = (id_ == 'origin', 'sp_origin')
+    id__ = (id_ == 'product-family', 'sp_product_family')
+    
+    $('#'+id__).selectpicker();
+    for (var i = 0; i < 4; i++) {
+        var o = new Option("option text"+i, "value"+i);
+        /// jquerify the DOM object 'o' so we can use the html method
+        $(o).html("option text"+i);
+        $(".selectpicker").append(o);
+    }
+    $('#'+id__).selectpicker();
 }
