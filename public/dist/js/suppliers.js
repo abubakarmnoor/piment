@@ -40,21 +40,21 @@ $(document).ready(function() {
                 defaultContent: '<i class="fa fa-trash"/>',
                 orderable: false
             },
-            { "data": "id" },
+            { "data": "supplier_guid" },
             {
                 data: "supplier_name",
                 className: "dt-center editor-details",
                 orderable: true
             },
-            { "data": "country" },
-            { "data": "product_family" },
+            { "data": "supplier_country" },
+            { "data": "supplier_product_family" },
         ]
     });
     
     // New record
     $('a.editor-create').on('click', function (e) {
-        //e.preventDefault();
-        //alert('create')
+        e.preventDefault();
+        location.href = "/supplier-details/null/YWRkbmV3";
         
     } );
 
@@ -62,29 +62,29 @@ $(document).ready(function() {
     $('#dtTbl').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
-        const _id = table.row( this ).data().id;
-        location.href = "/supplier-details?eid="+_id;
+        const _id = table.row( this ).data().supplier_guid;
+        location.href = "/supplier-details/"+_id+"/ZWlk";
     } );
     
     // Details record
     $('#dtTbl').on('click', 'td.editor-details', function (e) {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
-        const _id = table.row( this ).data().id;
-        location.href = "/supplier-details?did="+_id;
+        const _id = table.row( this ).data().supplier_guid;
+        location.href = "/supplier-details/"+_id+"/ZGlk";
         
     } );
     // Delete a record
     $('#dtTbl').on('click', 'td.editor-delete', function (e) {
         e.preventDefault();
         let _data = {};
-        _data.id = table.row( this ).data().rm_guid;
-        _data.rm_desc = table.row( this ).data().rm_desc;
+        _data.id = table.row( this ).data().supplier_guid;
+        _data.supplier_desc = table.row( this ).data().supplier_name
         _data.upd_by = "Admin";
         
         Swal.fire({
             title: 'Are you sure?',
-            text: "You won't be able to revert this! ("+_data.rm_desc+")",
+            text: "You won't be able to revert this! ("+_data.supplier_name+")",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -104,7 +104,7 @@ $(document).ready(function() {
                         Swal.fire({
                             icon: "success",
                             title: "Data Deleted",
-                            text: _data.rm_desc
+                            text: _data.supplier_name
                         }).then(function(){
                             // location.href='/raw-materials'
                             $("#btn_refresh").click();
@@ -136,7 +136,7 @@ $(document).ready(function() {
         // console.log(sdate_);
         // console.log(edate_);
         //var table = $('#registrationTable').DataTable();
-        table.ajax.url("/data/suppliers.json?sdate="+sdate_+"?edate="+edate_, null, false).load();
+        table.ajax.url("/apis/pull/supplier", null, false).load();
     })
 
 //end doc ready
