@@ -90,7 +90,7 @@ $(document).ready(function() {
         e.preventDefault();
         let _data = {};
         _data.id = table.row( this ).data().supplier_guid;
-        _data.supplier_desc = table.row( this ).data().supplier_name
+        _data.supplier_name = table.row( this ).data().supplier_name
         _data.upd_by = "Admin";
         
         Swal.fire({
