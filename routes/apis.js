@@ -6,6 +6,7 @@ const router = express.Router();
 // const tsqlPull = require('../tsql/pull');
 //fs = require('fs');
 const axios = require('axios');
+const cors = require('cors');
 router.use(express.json());
 router.use(session({
 	secret: 'secret',
@@ -25,6 +26,10 @@ router.use(function (req, res, next) {
   res.set('Cache-Control', 'max-age=0');// 60s x 60m x24 x ? day
 	next()
 })
+
+app.use(cors({
+    origin: 'https://piment-admin.localpro100.com'
+}));
 //API - DB
 // /* GET programming languages. */
 // router.get('/getdata', async function(req, res, next) {
@@ -236,7 +241,7 @@ router.post('/auth', function(req, res) {
 router.get('/pop/:type', function(req,res){
 	// res.status(200).json({sucess:false});
   
-  console.log(req.headers);
+  console.log(req.headers['access-control-allow-origin']);
   let _type = req.params.type;
   let _undefined = req.params.undefined;
   
