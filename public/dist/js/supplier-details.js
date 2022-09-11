@@ -54,7 +54,7 @@ $(document).ready(function() {
             data: JSON.stringify(_data),
             success: function(data) {
                 $('.modal').modal('hide');
-                if (data.data.success == true){
+                if (data.success == true){
                     Swal.fire({
                         icon: 'success',
                         title: '',
