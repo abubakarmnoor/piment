@@ -93,7 +93,7 @@ $(document).ready(function() {
         }).then((result) => {
             if (result.isConfirmed) {
                 spinner_popup();
-                console.log(_data);
+                // console.log(_data);
                 $.ajax({
                     type:"POST",
                     url: "/apis/del/supplier", 
@@ -102,14 +102,23 @@ $(document).ready(function() {
                     data: JSON.stringify(_data),
                     success: function(data) {
                         $('.modal').modal('hide');
-                        Swal.fire({
-                            icon: "success",
-                            title: "Data Deleted",
-                            text: _data.supplier_name
-                        }).then(function(){
-                            // location.href='/raw-materials'
-                            $("#btn_refresh").click();
-                        });
+                        if(data.success == true){
+                            Swal.fire({
+                                icon: "success",
+                                title: "Data Deleted",
+                                text: _data.supplier_name
+                            }).then(function(){
+                                // location.href='/raw-materials'
+                                $("#btn_refresh").click();
+                            });
+                        }else{
+                            Swal.fire({
+                                icon: "error",
+                                title: "",
+                                text: data.sqlMessage
+                            })
+                        }
+                        
                         
                     }, 
                     error: function(jqXHR, textStatus, errorThrown) {
