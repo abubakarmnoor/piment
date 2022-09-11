@@ -116,11 +116,12 @@ router.get('/suppliers', (req, res) => {
 		tables_bs4: true, suppliers: true
 	});
 });
-router.get('/supplier-details', async (req, res) => {
+router.get('/supplier-details/:suppid/:act', async (req, res) => {
 	const __data_countries = _data_countries.data;
+	const _supp_guid = req.params.suppid;
 	const __data_pop_product_family = await getPopupData('product-family');
 	res.render('supplier-details.hbs', {
-		tables_bs4: true, supplier_details:true, __data_countries, __data_pop_product_family
+		tables_bs4: true, _supp_guid, supplier_details:true, __data_countries, __data_pop_product_family
 	});
 	
 });
