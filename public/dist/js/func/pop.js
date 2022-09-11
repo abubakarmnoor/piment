@@ -229,12 +229,15 @@ function selectpicker_reload(id_){
     id__ = (id_ == 'origin', 'sp_origin')
     id__ = (id_ == 'product-family', 'sp_product_family')
     
-    $('#'+id__).selectpicker();
+    console.log(id__);
+    // $('#sp_product_family').selectpicker();
     for (var i = 0; i < 4; i++) {
         var o = new Option("option text"+i, "value"+i);
+        // <li data-original-index="5"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Box</span>" data-tokens="null"><span class="text">Box</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+        
         /// jquerify the DOM object 'o' so we can use the html method
         $(o).html("option text"+i);
         $(".selectpicker").append(o);
     }
-    $('#'+id__).selectpicker();
+    $('#sp_product_family').selectpicker('refresh');
 }
