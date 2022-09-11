@@ -47,7 +47,7 @@ $(document).ready(function() {
                 orderable: true
             },
             { "data": "supplier_country" },
-            { "data": "supplier_product_family" },
+            { "data": "supplier_prod_family" },
         ]
     });
     
