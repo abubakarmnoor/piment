@@ -150,7 +150,6 @@ function load_data_dt(_url){
         table.search('');
     });
 
-
     $('#btn_pop_kayu').on('click', function(){
         // e.preventDefault();
         
@@ -228,14 +227,12 @@ function load_data_dt(_url){
 //reload select picker after add/upd/del
 function selectpicker_reload(id_){
     let id__;
-    id__ = (id_ == 'origin', 'sp_origin')
-    id__ = (id_ == 'product-family', 'sp_product_family')
-    
-    // console.log(id__);
-    // $('#sp_product_family').selectpicker();
-    // var o = new Option(desc_, desc_);
-    // $(o).html("option text"+i);
-    // $('#'+id__).append(o);
+    if (id_ == 'origin'){
+        id__ = 'sp_origin';
+    }else if (id_ == 'origin'){
+        id__ = 'sp_product_family';
+    }
+    console.log(id__);
     spinner_popup();
     $.ajax({
         type:"GET", // must be POST 
@@ -244,7 +241,6 @@ function selectpicker_reload(id_){
             // $('.modal').modal('hide');
             $("#spinner-modal").modal('hide')
 
-            // $('#'+id__).selectpicker('destroy');
             let option_ = new Option("-", "-")
             $('#'+id__)
             .empty()
