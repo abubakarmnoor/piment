@@ -130,7 +130,7 @@ function load_data_dt(_url){
     //popup pop
     $('#btn_pop_pf').on('click', function(){
         // e.preventDefault();
-        console.log('test');
+        alert('test');
         $('#th_pop_desc').text('Product Family')
         $('#lbl_pf_desc').text('Product Family Desc')
         $("label[name=pop_type").text("product-family")
