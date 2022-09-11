@@ -108,6 +108,7 @@ function load_data_dt(_url){
                         }).then(function(){
                             //location.href='/clients'
                             $("#btn_pop_clear").click();
+                            console.log(_data.pop_type);
                             table.ajax.url("/apis/pop/"+_data.pop_type, null, false).load(); // refresh pop
                             // selectpicker_reload(_data.pop_type);
                         });
@@ -206,9 +207,8 @@ function load_data_dt(_url){
                 }).then(function(){
                     //location.href='/clients'
                     $("#btn_pop_clear").click();
-                    console.log(_data.pop_type);
+                    // console.log(_data.pop_type);
                     table.ajax.url("/apis/pop/"+_data.pop_type, null, false).load(); // refresh pop
-                    
                     selectpicker_reload(_data.pop_type);
                 });
             }, 
@@ -238,8 +238,8 @@ function selectpicker_reload(id_){
     }else if (id_ == 'unit'){
         id__ = 'unit';//
     }
+    // console.log(id__);
     
-    console.log(id__);
     spinner_popup();
     $.ajax({
         type:"GET", // must be POST 
