@@ -238,11 +238,8 @@ function selectpicker_reload(id_){
     // $('#'+id__).append(o);
     spinner_popup();
     $.ajax({
-        type:"POST", // must be POST 
+        type:"GET", // must be POST 
         url: "/apis/pop/"+id_, 
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        data: JSON.stringify(_data),
         success: function(data) {
             // $('.modal').modal('hide');
             $("#spinner-modal").modal('hide')
