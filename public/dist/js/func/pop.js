@@ -224,20 +224,48 @@ function load_data_dt(_url){
 
     });
 }
+
+//reload select picker after add/upd/del
 function selectpicker_reload(id_){
     let id__;
     id__ = (id_ == 'origin', 'sp_origin')
     id__ = (id_ == 'product-family', 'sp_product_family')
     
-    console.log(id__);
+    // console.log(id__);
     // $('#sp_product_family').selectpicker();
-    for (var i = 0; i < 4; i++) {
-        var o = new Option("option text"+i, "value"+i);
-        // <li data-original-index="5"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Box</span>" data-tokens="null"><span class="text">Box</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
-        
-        /// jquerify the DOM object 'o' so we can use the html method
-        $(o).html("option text"+i);
-        $("#sp_product_family").append(o);
-    }
-    $('#sp_product_family').selectpicker('refresh');
+    // var o = new Option(desc_, desc_);
+    // $(o).html("option text"+i);
+    // $('#'+id__).append(o);
+    spinner_popup();
+    $.ajax({
+        type:"POST", // must be POST 
+        url: "/apis/pop/"+id_, 
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify(_data),
+        success: function(data) {
+            // $('.modal').modal('hide');
+            $("#spinner-modal").modal('hide')
+
+            $('#'+id__).selectpicker('destroy');
+            for (let index = 0; index < data.data.length; index++) {
+                const element = array[index];
+                const option_ = new Option(data.data[index].pop_guid,data.data[index].pop_desc)
+                $('#'+id__).append(option_);
+            }
+            $('#'+id__).selectpicker('refresh');
+        }, 
+        error: function(jqXHR, textStatus, errorThrown) {
+            //alert(jqXHR.status);
+            $('.modal').modal('hide');
+            Swal.fire({
+                title: "Error!",
+                text: textStatus,
+                icon: "error"
+            });
+        }
+    });
+
+
+    
 }
