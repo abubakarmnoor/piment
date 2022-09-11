@@ -246,7 +246,6 @@ function selectpicker_reload(id_){
 
             $('#'+id__).selectpicker('destroy');
             for (let index = 0; index < data.data.length; index++) {
-                const element = array[index];
                 const option_ = new Option(data.data[index].pop_guid,data.data[index].pop_desc)
                 $('#'+id__).append(option_);
             }
