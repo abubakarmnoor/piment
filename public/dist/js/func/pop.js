@@ -149,13 +149,12 @@ function load_data_dt(_url){
         table.ajax.url("/apis/pop/origin", null, false).load(); // pop origin
         table.search('');
     });
-
     $('#btn_pop_kayu').on('click', function(){
         // e.preventDefault();
         
         $('#th_pop_desc').text('Kayu')
         $('#lbl_pf_desc').text('Kayu Desc')
-        $("label[name=pop_type").text("origin")
+        $("label[name=pop_type").text("kayu")
         $("input[name=pop_desc").val("")
         $('input[type=search]').val("");
         table.ajax.url("/apis/pop/kayu", null, false).load(); // pop kayu
@@ -166,7 +165,7 @@ function load_data_dt(_url){
         
         $('#th_pop_desc').text('Unit')
         $('#lbl_pf_desc').text('Unit Desc')
-        $("label[name=pop_type").text("origin")
+        $("label[name=pop_type").text("unit")
         $("input[name=pop_desc").val("")
         $('input[type=search]').val("");
         table.ajax.url("/apis/pop/unit", null, false).load(); // pop unit
