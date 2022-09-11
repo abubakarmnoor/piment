@@ -42,7 +42,7 @@ $(document).ready(function() {
         _data.supplier_active = $("#ck_active").prop('checked')
         _data.supplier_upd_by="Admin";
         _data.tblname = "supplier";
-        console.log(_data);
+        //  console.log(_data);
 
         // ajax - save/post data
         spinner_popup();
@@ -54,13 +54,22 @@ $(document).ready(function() {
             data: JSON.stringify(_data),
             success: function(data) {
                 $('.modal').modal('hide');
-                Swal.fire({
-                    icon: 'success',
-                    title: '',
-                    text: "Data Saved"
-                }).then(function(){
-                    location.href='/suppliers'
-                });
+                if (data.data.success == true){
+                    Swal.fire({
+                        icon: 'success',
+                        title: '',
+                        text: "Data Saved"
+                    }).then(function(){
+                        location.href='/suppliers'
+                    });
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: '',
+                        text: data.err.sqlMessage
+                    })
+                }
+                
                 
             }, 
             error: function(jqXHR, textStatus, errorThrown) {

@@ -18,7 +18,7 @@ $(document).ready(function() {
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/data/clients.json?sdate="+sdate_+"?edate="+edate_,
+        "ajax": "/apis/pull/client",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -40,21 +40,25 @@ $(document).ready(function() {
                 defaultContent: '<i class="fa fa-trash"/>',
                 orderable: false
             },
-            { "data": "id" },
+            { "data": "client_guid" },
             {
                 data: "client_name",
                 className: "dt-center editor-details",
                 orderable: true
             },
-            // { "data": "address" },
-            { "data": "country" },
-            // { "data": "zipcode" },
-            // { "data": "email" },
-            // { "data": "phone" },
-            // { "data": "fax" },
-            // { "data": "whatsapp" },
-            { "data": "activity" },
-            // { "data": "active" },
+            { "data": "client_country" },
+            { "data": "client_active",  "render": function ( data, type, row ) {
+                switch (data) {
+                    case 1:
+                        return 'True';
+                        break;
+                    case 0:
+                        return 'False';
+                        break;
+                    default:
+                        return "other";
+                }
+            } },
         ]
     });
     

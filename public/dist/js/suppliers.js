@@ -126,7 +126,7 @@ $(document).ready(function() {
                             Swal.fire({
                                 icon: "error",
                                 title: "",
-                                text: data.err.columnDefssqlMessage
+                                text: data.err.sqlMessage
                             })
                         }
                         

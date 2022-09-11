@@ -129,6 +129,17 @@ function load_data_dt(_url){
     } );
 
     //popup pop
+    $('#btn_pop_act').on('click', function(){
+        // e.preventDefault();
+        $('#th_pop_desc').text('Activity')
+        $('#lbl_pf_desc').text('Activity Desc')
+        $("label[name=pop_type").text("activity")
+        $("input[name=pop_desc").val("")
+        $('input[type=search]').val("");
+        table.ajax.url("/apis/pop/activity", null, false).load(); // pop pf
+        table.search('');
+
+    });
     $('#btn_pop_pf').on('click', function(){
         // e.preventDefault();
         $('#th_pop_desc').text('Product Family')
