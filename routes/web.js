@@ -103,11 +103,12 @@ router.get('/clients', (req, res) => {
 	});
 });
 
-router.get('/client-details', async (req, res) => {
+router.get('/client-details/:clientid/:act', async (req, res) => {
 	const __data_pop_activity = await getPopupData('activity');
+	const _client_guid = req.params.clientid;
 	const __data_countries = _data_countries.data;
 	res.render('client-details.hbs', {
-		client_details: true, __data_pop_activity, tables_bs4: true, __data_countries
+		client_details: true, _client_guid, __data_pop_activity, tables_bs4: true, __data_countries
 	});
 	
 });
