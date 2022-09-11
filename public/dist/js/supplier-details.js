@@ -3,7 +3,7 @@ $(document).ready(function() {
     //default
     $('.selectpicker').selectpicker();
     insert_element();
-    load_data_dt();
+    load_data_dt('/apis/pop/product-family'); //init
 
     //edit or add new
     if (location.href.includes('eid')) {
