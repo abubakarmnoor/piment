@@ -1,20 +1,17 @@
 $(document).ready(function() {
             
     //default
+    let id=$("#id").val()
     $('.selectpicker').selectpicker();
     insert_element_pf();
     load_data_dt('/apis/pop/product-family'); //init
 
     //edit or add new
-    if (location.href.includes('eid')) {
+    if (location.href.includes('ZWlk')) {
         $('.page-header').text('SUPPLIER UPDATES')
+        get_details(id);
         
-        let url = location.href;
-        let id = getURLParameter(url, 'eid');
-        $("#id").val(id);
-        get_details();
-        
-    }else if (location.href.includes('did')) {
+    }else if (location.href.includes('ZGlk')) {
         $('.page-header').text('SUPPLIER DETAILS');
         $("#btn_save").hide();
         $("#form_ :input").prop('readonly', true);
@@ -30,7 +27,6 @@ $(document).ready(function() {
     }else{
         $('.page-header').text('SUPPLIER ADD NEW')
         let username = 'Admin';
-        get_date_default(username,null, username, null)
     }
 
      //btn
@@ -85,20 +81,18 @@ $(document).ready(function() {
 //default-edit
 function default_edit(data){
     $("input[name=supplier_name").val(data[0].supplier_name)
-    $("textarea[name=address").val(data[0].address)
-    $("input[name=state").val(data[0].state)
-    $('#sp_country').selectpicker('val',data[0].country.toUpperCase())
-    $("input[name=zipcode").val(data[0].zipcode)
-    $("input[name=pic").val(data[0].pic)
-    $("input[name=email").val(data[0].email)
-    $("input[name=phone").val(data[0].phone)
-    $("input[name=fax").val(data[0].fax)
-    $("input[name=whatsapp").val(data[0].whatsapp)
-    $('#sp_product_family').selectpicker('val',data[0].product_family)
-    $("#ck_active").prop('checked', data[0].active)
+    $("textarea[name=address").val(data[0].supplier_address)
+    $("input[name=state").val(data[0].supplier_state)
+    $('#sp_country').selectpicker('val',data[0].supplier_country.toUpperCase())
+    $("input[name=zipcode").val(data[0].supplier_zipcode)
+    $("input[name=pic").val(data[0].supplier_pic)
+    $("input[name=email").val(data[0].supplier_email)
+    $("input[name=phone").val(data[0].supplier_phone)
+    $("input[name=fax").val(data[0].supplier_fax)
+    $("input[name=whatsapp").val(data[0].supplier_whatsapp)
+    $('#sp_product_family').selectpicker('val',data[0].supplier_prod_family)
+    $("#ck_active").prop('checked', data[0].supplier_active)
 
-    let user_login = 'test';
-    get_date_default(data[0].created_by,data[0].created_date, user_login, null)
 }
 //get details
 function get_details(){
