@@ -206,8 +206,9 @@ function load_data_dt(_url){
                 }).then(function(){
                     //location.href='/clients'
                     $("#btn_pop_clear").click();
-                    table.ajax.url("/apis/pop/"+_data.pop_type, null, false).load(); // refresh pop
                     console.log(_data.pop_type);
+                    table.ajax.url("/apis/pop/"+_data.pop_type, null, false).load(); // refresh pop
+                    
                     selectpicker_reload(_data.pop_type);
                 });
             }, 
