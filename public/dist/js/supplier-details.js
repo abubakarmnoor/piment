@@ -129,5 +129,5 @@ function get_details(){
 
 //insert element
 function insert_element(){
-    $('<a href="#"  type="button" class="pull-right" id="btn_pop_pf" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('.bs-searchbox');
+    $('<a href="#"  type="button" class="pull-right" id="btn_pop_pf" class="btn_pop_pf" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('.bs-searchbox');
 }
