@@ -46,7 +46,7 @@ $(document).ready(function() {
         _data.active = $("#ck_active").prop('checked')
         _data.fp_created_by="Admin";
         _data.tblname = "supplier";
-        return console.log(json);
+        return console.log(_data);
 
         // ajax - save/post data
         spinner_popup();
