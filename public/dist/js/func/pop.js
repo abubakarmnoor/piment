@@ -230,8 +230,13 @@ function selectpicker_reload(id_){
     if (id_ == 'origin'){
         id__ = 'sp_origin';
     }else if (id_ == 'product-family'){
-        id__ = 'sp_product_family';
+        id__ = 'sp_product_family';//
+    }else if (id_ == 'kayu'){
+        id__ = 'kayu';//
+    }else if (id_ == 'unit'){
+        id__ = 'unit';//
     }
+    
     console.log(id__);
     spinner_popup();
     $.ajax({
