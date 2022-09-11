@@ -29,7 +29,7 @@ $(document).ready(function() {
     
     }else{
         $('.page-header').text('SUPPLIER ADD NEW')
-        let username = 'test';
+        let username = 'Admin';
         get_date_default(username,null, username, null)
     }
 
