@@ -43,8 +43,8 @@ $(document).ready(function() {
         e.preventDefault();
         const form = $(e.target);
         const _data = convertFormToJSON(form);
-        _data.active = $("#ck_active").prop('checked')
-        _data.fp_created_by="Admin";
+        _data.supplier_active = $("#ck_active").prop('checked')
+        _data.supplier_upd_by="Admin";
         _data.tblname = "supplier";
         return console.log(_data);
 
