@@ -245,8 +245,13 @@ function selectpicker_reload(id_){
             $("#spinner-modal").modal('hide')
 
             // $('#'+id__).selectpicker('destroy');
+            let option_ = new Option("-", "-")
+            $('#'+id__)
+            .empty()
+            .append(option_)
+            // .selectpicker('refresh');
             for (let index = 0; index < data.data.length; index++) {
-                const option_ = new Option(data.data[index].pop_guid,data.data[index].pop_desc)
+                option_ = new Option(data.data[index].pop_desc, data.data[index].pop_guid)
                 $('#'+id__).append(option_);
             }
             $('#'+id__).selectpicker('refresh');
