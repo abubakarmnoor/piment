@@ -237,7 +237,7 @@ function selectpicker_reload(id_){
         
         /// jquerify the DOM object 'o' so we can use the html method
         $(o).html("option text"+i);
-        $(".selectpicker").append(o);
+        $("#sp_product_family").append(o);
     }
     $('#sp_product_family').selectpicker('refresh');
 }
