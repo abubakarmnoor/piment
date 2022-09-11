@@ -47,7 +47,18 @@ $(document).ready(function() {
                 orderable: true
             },
             { "data": "supplier_country" },
-            { "data": "supplier_prod_family" },
+            { "data": "supplier_active",  "render": function ( data, type, row ) {
+                switch (data) {
+                    case 1:
+                        return 'True';
+                        break;
+                    case 0:
+                        return 'False';
+                        break;
+                    default:
+                        return "other";
+                }
+            } },
         ]
     });
     
@@ -115,7 +126,7 @@ $(document).ready(function() {
                             Swal.fire({
                                 icon: "error",
                                 title: "",
-                                text: data.err.sqlMessage
+                                text: data.err.columnDefssqlMessage
                             })
                         }
                         
