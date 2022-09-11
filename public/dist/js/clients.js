@@ -64,8 +64,8 @@ $(document).ready(function() {
     
     // New record
     $('a.editor-create').on('click', function (e) {
-        //e.preventDefault();
-        //alert('create')
+        e.preventDefault();
+        location.href = "/client-details/null/YWRkbmV3";
         
     } );
 
@@ -73,26 +73,29 @@ $(document).ready(function() {
     $('#dtTbl').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
-        const _id = table.row( this ).data().id;
-        location.href = "/client-details?eid="+_id;
+        const _id = table.row( this ).data().client_guid;
+        location.href = "/client-details/"+_id+"/ZWlk";
     } );
     
     // Details record
     $('#dtTbl').on('click', 'td.editor-details', function (e) {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
-        const _id = table.row( this ).data().id;
-        location.href = "/client-details?did="+_id;
+        const _id = table.row( this ).data().client_guid;
+        location.href = "/client-details/"+_id+"/ZGlk";
         
     } );
     // Delete a record
     $('#dtTbl').on('click', 'td.editor-delete', function (e) {
         e.preventDefault();
-        //console.log( table.row( this ).data().id );
-
+        let _data = {};
+        _data.id = table.row( this ).data().client_guid;
+        _data.client_name = table.row( this ).data().client_name
+        _data.upd_by = "Admin";
+        
         Swal.fire({
             title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            text: "You won't be able to revert this! ("+_data.client_name+")",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -100,11 +103,44 @@ $(document).ready(function() {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-                )
+                spinner_popup();
+                // console.log(_data);
+                $.ajax({
+                    type:"POST",
+                    url: "/apis/del/client", 
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify(_data),
+                    success: function(data) {
+                        $('.modal').modal('hide');
+                        if(data.success == true){
+                            Swal.fire({
+                                icon: "success",
+                                title: "Data Deleted",
+                                text: _data.client_name
+                            }).then(function(){
+                                // location.href='/raw-materials'
+                                $("#btn_refresh").click();
+                            });
+                        }else{
+                            Swal.fire({
+                                icon: "error",
+                                title: "",
+                                text: data.err.sqlMessage
+                            })
+                        }
+                        
+                    }, 
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        //alert(jqXHR.status);
+                        $('.modal').modal('hide');
+                        Swal.fire({
+                            title: "Error!",
+                            text: textStatus,
+                            icon: "error"
+                        });
+                    }
+                });
             }
         })
     } );
@@ -120,7 +156,7 @@ $(document).ready(function() {
         // console.log(sdate_);
         // console.log(edate_);
         //var table = $('#registrationTable').DataTable();
-        table.ajax.url("/data/clients.json?sdate="+sdate_+"?edate="+edate_, null, false).load();
+        table.ajax.url("/apis/pull/client", null, false).load();
     })
 
 //end doc ready
