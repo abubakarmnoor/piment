@@ -58,19 +58,13 @@
                                 <input type="text" class="form-control" id="txt_last_name" name="last_name" placeholder="Last name" value="" required>
                             </div>
                             <div class="col-md-4 mb-3">
-                                {{!-- <el for="txt_position">Position</label>
-                                <input type="text" class="form-control" id="txt_position" name="position" placeholder="Position" value="" required> --}}
-                                <div class="form-group row">
-                                    <div class="col-md-4 mb-3">
-                                        <label for="product_family">Position</label>
-                                        <select class="form-control selectpicker" id="sp_position" name="userpass_position" data-live-search="true">
-                                            <option value="-">-</option>
-                                            {{#each __data_pop_position}}
-                                                <option value="{{pop_guid}}">{{pop_desc}}</option>
-                                            {{/each}}
-                                        </select>
-                                    </div>
-                                </div>
+                                <label for="product_family">Position</label>
+                                <select class="form-control selectpicker" id="sp_position" name="userpass_position" data-live-search="true">
+                                    <option value="-">-</option>
+                                    {{#each __data_pop_position}}
+                                        <option value="{{pop_guid}}">{{pop_desc}}</option>
+                                    {{/each}}
+                                </select>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="txt_email">Email</label>
