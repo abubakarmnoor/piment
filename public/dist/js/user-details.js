@@ -2,6 +2,7 @@ $(document).ready(function() {
             
     //default
     let id=$("input[name=supplier_guid]").val()
+    $('.selectpicker').selectpicker();
     insert_element_pos();
     load_data_dt('/apis/pop/product-family'); //init
     //edit or add new
