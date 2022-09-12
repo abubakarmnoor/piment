@@ -250,6 +250,8 @@ function selectpicker_reload(id_){
         id__ = 'sp_unit';//
     }else if (id_ == 'activity'){
         id__ = 'sp_activity';//
+    }else if (id_ == 'position'){
+        id__ = 'sp_position';//
     }
     // console.log(id__);
 

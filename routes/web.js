@@ -91,9 +91,11 @@ router.get('/users', (req, res) => {
 		tables_bs4: true, users: true
 	});
 });
-router.get('/user-details', (req, res) => {
+router.get('/user-details/:userid/:act', async (req, res) => {
+	const __data_pop_position = await getPopupData('position');
+	const _userpass_guid = req.params.userid;
 	res.render('users-details.hbs', {
-		add_new: true
+		add_new: true, __data_pop_position, _userpass_guid
 	});
 	
 });
@@ -141,18 +143,6 @@ router.get('/raw-material-details/:rmid/:act', async (req, res) => {
 	res.render('raw-material-details.hbs', {
 		tables_bs4: true, raw_material_details:true,__data_pop_product_family,__data_pop_kayu, __data_pop_unit, _rm_guid, _act
 	});
-	
-	// axios.get('/apis/pull/rm/')
-	// .then(function (response) {
-	// 	// handle success
-	// 	console.log(response);	
-	// })
-	// .catch(function (error) {
-	// 	// handle error
-	// 	console.log(error);
-	// })
-	// // console.log(_rmid);
-	
 	
 });
 router.get('/stock', (req, res) => {

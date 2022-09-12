@@ -1,8 +1,9 @@
 $(document).ready(function() {
             
     //default
-    get_date_default()
-
+    let id=$("input[name=supplier_guid]").val()
+    insert_element_pos();
+    load_data_dt('/apis/pop/product-family'); //init
     //edit or add new
     if (location.href.includes('eid')) {
         $('.page-header').text('USER UPDATES')
@@ -23,8 +24,8 @@ $(document).ready(function() {
     
     }else{
         $('.page-header').text('USER ADD NEW')
-        let username = 'test';
-        get_date_default(username,null, username, null)
+        let username = 'Admin';
+        
     }
 
     //pasword
@@ -51,18 +52,14 @@ $(document).ready(function() {
         e.preventDefault();
         const form = $(e.target);
         const json = convertFormToJSON(form);
-        json.txt_created_date = new Date(json.txt_created_date);
-        json.txt_created_date = formatDate(json.txt_created_date)
-        json.txt_updated_date = new Date(json.txt_updated_date);
-        json.txt_updated_date = formatDate(json.txt_updated_date)
-        json.active = $("#ck_active").prop('checked')
+        // json.userpass_active = $("#ck_active").prop('checked')
         //console.log(json);
 
         // ajax
         spinner_popup();
         $.ajax({
-            type:"GET", 
-            url: "/data/users.json", 
+            type:"POST", 
+            url: "/apis/upd", 
             dataType: "json",
             success: function(data) {
                 setTimeout(function () {
@@ -94,16 +91,15 @@ $(document).ready(function() {
 });
 //default-edit
 function default_edit(data){
-    $("#txt_username").val(data[0].username)
-    $("#txt_password").val(data[0].password)
-    $("#txt_first_name").val(data[0].first_name)
-    $("#txt_last_name").val(data[0].last_name)
-    $("#txt_position").val(data[0].position)
-    $("#txt_email").val(data[0].email)
-    $("#txt_phone").val(data[0].phone)
-    $("#ck_active").prop('checked', data[0].active)
-    let user_login = 'test';
-    get_date_default(data[0].created_by,data[0].created_date, user_login, null)
+    $("input[name=passuser_username]").val(data[0].userpass_username)
+    $("input[name=passuser_password]").val(data[0].userpass_password)
+    $("input[name=passuser_fname]").val(data[0].userpass_fname)
+    $("input[name=passuser_lname]").val(data[0].userpass_lname)
+    $("input[name=passuser_position]").val(data[0].userpass_position)
+    $("input[name=passuser_email]").val(data[0].userpass_email)
+    $("input[name=passuser_phone]").val(data[0].userpass_phone)
+    $("#ck_active").prop('checked', data[0].userpass_active)    
+    
 }
 //get details
 function get_details(){
@@ -112,13 +108,11 @@ function get_details(){
     //ajax
     $.ajax({
         type:"GET", 
-        url: "/data/users.json", 
+        url: "/apis/pull/userpass", 
         dataType: "json",
         success: function(data) {
-            setTimeout(function () {
-                default_edit(data.data);
-                $('.modal').modal('hide');
-            }, 3000);
+            default_edit(data.data);
+            $('.modal').modal('hide');
         }, 
         error: function(jqXHR, textStatus, errorThrown) {
             //alert(jqXHR.status);
@@ -129,4 +123,8 @@ function get_details(){
             });
         }
     });
+}
+//insert element
+function insert_element_pos(){
+    $('<a href="#" type="button" class="pull-right" id="btn_pop_pos" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(8) > div > div > div > div');
 }
