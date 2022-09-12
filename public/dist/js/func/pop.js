@@ -129,6 +129,17 @@ function load_data_dt(_url){
     } );
 
     //popup pop
+    $('#btn_pop_pos').on('click', function(){
+        // e.preventDefault();
+        $('#th_pop_desc').text('Position')
+        $('#lbl_pf_desc').text('Position Desc')
+        $("label[name=pop_type").text("position")
+        $("input[name=pop_desc").val("")
+        $('input[type=search]').val("");
+        table.ajax.url("/apis/pop/position", null, false).load(); // refresh
+        table.search('');
+
+    });
     $('#btn_pop_act').on('click', function(){
         // e.preventDefault();
         $('#th_pop_desc').text('Activity')
