@@ -4,7 +4,7 @@ $(document).ready(function() {
     let id=$("input[name=supplier_guid]").val()
     $('.selectpicker').selectpicker();
     insert_element_pos();
-    load_data_dt('/apis/pop/position'); //init
+    // load_data_dt('/apis/pop/position'); //init
     //edit or add new
     if (location.href.includes('eid')) {
         $('.page-header').text('USER UPDATES')
