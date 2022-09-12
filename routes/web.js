@@ -95,7 +95,7 @@ router.get('/user-details/:userid/:act', async (req, res) => {
 	const __data_pop_position = await getPopupData('position');
 	const _userpass_guid = req.params.userid;
 	res.render('users-details.hbs', {
-		add_new: true, __data_pop_position, _userpass_guid
+		user_details: true, tables_bs4: true, __data_pop_position, _userpass_guid
 	});
 	
 });
