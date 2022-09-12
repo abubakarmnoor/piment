@@ -127,5 +127,5 @@ function get_details(){
 }
 //insert element
 function insert_element_pos(){
-    $('<a href="#" type="button" class="pull-right" id="btn_pop_pos" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('');
+    $('<a href="#" type="button" class="pull-right" id="btn_pop_pos" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#sp_position > option');
 }
