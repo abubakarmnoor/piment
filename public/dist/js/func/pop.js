@@ -245,9 +245,11 @@ function selectpicker_reload(id_){
     }else if (id_ == 'product-family'){
         id__ = 'sp_product_family';//
     }else if (id_ == 'kayu'){
-        id__ = 'kayu';//
+        id__ = 'sp_kayu';//
     }else if (id_ == 'unit'){
-        id__ = 'unit';//
+        id__ = 'sp_unit';//
+    }else if (id_ == 'activity'){
+        id__ = 'sp_activity';//
     }
     // console.log(id__);
 

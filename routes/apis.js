@@ -1,5 +1,6 @@
 const session = require('express-session');
 const express = require('express');
+const bcrypt = require("bcrypt")
 // const app = express();
 const router = express.Router();
 // const bodyParser = require('body-parser');
@@ -277,6 +278,23 @@ router.get('/pop/:type', function(req,res){
   });   
 });
 
+router.get('/pass', async function(req,res){
+  
+  const hash_ = await hashPass('abubakar');
+  const pass_ = await comparePass('abubakar',hash_);
+  res.status(200).json({hash: hash_, pass: pass_ })
+  
+})
 //functions
+async function hashPass(plaintextPassword) {
+  const hash = await bcrypt.hash(plaintextPassword, 11);
+  return hash;
+}
+
+// compare password
+async function comparePass(plaintextPassword, hash) {
+  const result = await bcrypt.compare(plaintextPassword, hash);
+  return result;
+}
 
 module.exports = router;
