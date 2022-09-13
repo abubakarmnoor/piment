@@ -62,6 +62,7 @@ $(document).ready(function() {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
         const _id = table.row( this ).data().fp_guid;
+        console.log(_id);
         location.href = "/finish-product-details/"+_id+"/ZWlk";
     } );
     

@@ -3,7 +3,7 @@ spinner_popup();
 $(document).ready(function() {
             
     //default
-    let id=$("#id").val()
+    let id=$("#fp_guid").val()
     $('.selectpicker').selectpicker();
     insert_element_pf(); insert_element_origin();
     load_data_dt('/apis/pop/product-family'); //init
@@ -160,9 +160,7 @@ function default_edit(data){
     $("input[name=fp_sc_retail_sale]").val(data[0].fp_sc_retail_markup).focusout()
     $("input[name=fp_sc_retail_profit]").val(data[0].fp_sc_retail_profit).focusout()
     $("input[name=fp_sc_retail_markup]").val(data[0].fp_sc_retail_markup).focusout()
-
-    let user_login = 'Admin';
-    get_date_default(data[0].fp_created_by,data[0].fp_created_date, user_login, null)
+    
 }
 //get details
 function get_details(id){

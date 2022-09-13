@@ -1,7 +1,7 @@
 $(document).ready(function() {
             
     //default
-    let id=$("input[name=supplier_guid]").val()
+    let id=$("input[name=userpass_guid]").val()
     $('.selectpicker').selectpicker();
     insert_element_pos();
     // load_data_dt('/apis/pop/position'); //init
@@ -12,7 +12,7 @@ $(document).ready(function() {
         let url = location.href;
         let id = getURLParameter(url, 'eid');
         $("#id").val(id);
-        get_details();
+        get_details(id);
         
         
     }else if (location.href.includes('did')) {
