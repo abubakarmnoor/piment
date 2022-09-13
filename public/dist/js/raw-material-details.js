@@ -53,7 +53,7 @@ $(document).ready(function() {
         // _data.cost = parseFloat(_data.cost).toFixed();
         _data.rm_code = $("input[name=rm_code]").val()
         _data.tblname = 'rm';
-        // console.log(_data);
+        console.log(_data);
         // ajax - save/post data
         spinner_popup();
         $.ajax({
