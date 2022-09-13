@@ -102,7 +102,7 @@ router.post('/upd',(req,res)=>{
     .then((db)=>{
       if (_data.tblname == 'rm'){
         query='call spsave_rm (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
-        db.query(` `+query+` `,[_data.rm_guid, _data.rm_code, _data.rm_desc, _data.product_family, _data.cost, _data.unit, _data.box_size_l, _data.box_size_w, _data.box_size_h, _data.kayu, _data.active, _data.created_by, _data.updated_by], (err, data_)=>{
+        db.query(` `+query+` `,[_data.rm_guid, _data.rm_code, _data.rm_desc, _data.rm_prod_family, _data.rm_cost, _data.rm_unit, _data.rm_box_size_l, _data.rm_box_size_w, _data.rm_box_size_h, _data.rm_kayu, _data.rm_active, _data.updated_by], (err, data_)=>{
           if (!data_){
             res.status(200).json({success:false, err})
           }else{

@@ -89,13 +89,21 @@ $(document).ready(function() {
             data: JSON.stringify(_data),
             success: function(data) {
                 $('.modal').modal('hide');
-                Swal.fire({
-                    icon: 'success',
-                    title: '',
-                    text: "Data Saved"
-                }).then(function(){
-                    location.href='/finish-product'
-                });
+                if (data.success == true){
+                    Swal.fire({
+                        icon: 'success',
+                        title: '',
+                        text: "Data Saved"
+                    }).then(function(){
+                        location.href='/finish-product'
+                    });
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: '',
+                        text: data.err.sqlMessage
+                    })
+                }
                 
             }, 
             error: function(jqXHR, textStatus, errorThrown) {

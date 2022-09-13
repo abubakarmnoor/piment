@@ -99,10 +99,6 @@ $(document).ready(function() {
      $('#sp_rm_code').on('change', function(e) {
          e.preventDefault();
          $("input[name=rm_desc]").val($(this).find("option:selected").attr("desc"))
-         //console.log($(this).find("option:selected").attr("desc"))
-        // console.log(this.value,
-        //    this.options[this.selectedIndex].value,
-        //    $(this).find("option:selected").val(), );
      });
    
     
@@ -111,21 +107,15 @@ $(document).ready(function() {
 //default-edit
 function default_edit(data){
 
-    // let _date = new Date(data[0].cost_last_updated)
-    //_date.setDate(_date.getDate()+1)
-    
-    // $('#sp_rm_code').selectpicker('val',data[0].rm_code)
-    // $("input[name=rm_desc]").val($(this).find("option:selected").attr("desc"))
-    // console.log(data);
     $("input[name=rm_code]").attr('disabled','disabled')
     $("input[name=rm_code]").val(data[0].rm_code)
     $("input[name=rm_desc]").val(data[0].rm_desc)
     $('#sp_product_family').selectpicker('val',data[0].rm_prod_family)
-    $("input[name=cost").val(numberWithCommas(data[0].rm_cost).replace('.00','')).focusout()
+    $("input[name=rm_cost").val(numberWithCommas(data[0].rm_cost).replace('.00','')).focusout()
     $('#sp_unit').selectpicker('val',data[0].rm_unit)
-    $("input[name=box_size_l").val(data[0].rm_box_size_l)
-    $("input[name=box_size_w").val(data[0].rm_box_size_w)
-    $("input[name=box_size_h").val(data[0].rm_box_size_h)
+    $("input[name=rm_box_size_l").val(data[0].rm_box_size_l)
+    $("input[name=rm_box_size_w").val(data[0].rm_box_size_w)
+    $("input[name=rm_box_size_h").val(data[0].rm_box_size_h)
     $('#sp_kayu').selectpicker('val',data[0].rm_kayu)
     // $("input[name=cost_last_updated").val(formatDate(_date,true))
     // $('#sp_creator').selectpicker('val',data[0].creator)
@@ -141,20 +131,16 @@ function get_details(id){
     // console.log(id);
     //ajax - get details
     spinner_popup();
-    // console.log(id);
     //ajax
     $.ajax({
         type:"GET", 
-        // url: "/data/raw-materials.json", 
         url: "/apis/pull/rm/"+id, 
         dataType: "json",
         success: function(data) {
-            // setTimeout(function () {
-                // console.log(data);
-                default_edit(data.data);
-                $('.modal').modal('hide');
-            // }, 3000);
-        }, 
+            // console.log(data);
+            default_edit(data.data);
+            $('.modal').modal('hide');
+    }, 
         error: function(jqXHR, textStatus, errorThrown) {
             //alert(jqXHR.status);
             $('.modal').modal('hide');
