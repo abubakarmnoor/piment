@@ -63,8 +63,8 @@ $(document).ready(function() {
             dataType: "json",
             data: JSON.stringify(_data),
             success: function(data) {
-                // setTimeout(function () {
-                    $('.modal').modal('hide');
+                $('.modal').modal('hide');
+                if (data.success == true){
                     Swal.fire({
                         icon: 'success',
                         title: 'RM',
@@ -72,8 +72,13 @@ $(document).ready(function() {
                     }).then(function(){
                         location.href='/raw-materials'
                     });
-                    
-                // }, 3000) ;
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: '',
+                        text: data.err.sqlMessage
+                    })
+                }
                 
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
