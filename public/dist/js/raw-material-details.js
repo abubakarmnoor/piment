@@ -48,7 +48,7 @@ $(document).ready(function() {
         e.preventDefault();
         const form = $(e.target);
         const _data = convertFormToJSON(form);
-        // _data.rm_active = $("#ck_active").prop('checked')
+        _data.rm_active = $("#ck_active").prop('checked')
         _data.rm_cost = (_data.rm_cost).replace(/\,/g,'');//.toFixed(2);
         // _data.cost = parseFloat(_data.cost).toFixed();
         _data.rm_code = $("input[name=rm_code]").val()
