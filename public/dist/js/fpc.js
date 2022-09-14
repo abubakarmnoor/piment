@@ -669,8 +669,9 @@ $(document).ready(function() {
     } );
     
     //dropdown
-    $("#fp_cp_rm_guid").on("click", function(e){
+    $("#fp_cp_rm_guid").on("change", function(e){
         // alert($("#fp_cp_rm_guid").attr('price'))
+        e.preventDefault()
         alert($(this).attr("price"))
     })
 //end doc ready
