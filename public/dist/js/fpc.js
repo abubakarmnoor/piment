@@ -120,6 +120,7 @@ $(document).ready(function() {
         _data.fp_cp_upd_by="Admin";
         _data.fp_cp_qty = (_data.fp_cp_qty).replace(/\,/g,'');
         _data.fp_cp_price = (_data.fp_cp_price).replace(/\,/g,'');
+        _data.fp_cp_unit = $("#fp_cp_unit").val()
         _data.tblname = "fp_cp";
         console.log(_data);//
 
