@@ -673,7 +673,10 @@ $(document).ready(function() {
         // alert($("#fp_cp_rm_guid").attr('price'))
         e.preventDefault()
         var price_ = $('option:selected', this).attr("price");
-        alert(price_)
+        $("input[name=fp_cp_price]").val(price_);
+        var unit_ = $('option:selected', this).attr("unit");
+        $("#fp_cp_unit").selectpicker('val',unit_);
+        
     })
 //end doc ready
 });

@@ -323,7 +323,7 @@
                     </div>
                     <div class="col-md-7 mb-3">
                         <label for="unit">Unit</label>
-                        <select class="form-control selectpicker" id="fp_cp_unit" name="fp_cp_unit" data-live-search="true">
+                        <select class="form-control selectpicker" id="fp_cp_unit" name="fp_cp_unit" data-live-search="true" readonly >
                             {{!-- <option value="-">-</option> --}}
                             {{#each __data_pop_unit}}
                                 <option value="{{pop_guid}}">{{pop_desc}}</option>
@@ -334,7 +334,7 @@
                 <div class="form-group row">
                     <div class="col-md-7 mb-3">
                         <label>Price</label>
-                        <input type="text" class="form-control numeric" name="fp_cp_price" placeholder="Price" value="0" required>
+                        <input type="text" class="form-control numeric" name="fp_cp_price" placeholder="Price" value="0" readonly required>
                     </div>
                 </div>
                 <div class="form-group">
