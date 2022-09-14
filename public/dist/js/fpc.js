@@ -669,7 +669,7 @@ $(document).ready(function() {
     } );
     
     //dropdown
-    $("#fp_cp_rm_guid").on("changed.bs.select", function(e){
+    $("#fp_cp_rm_guid").on("change", function(e){
         // alert($("#fp_cp_rm_guid").attr('price'))
         e.preventDefault()
         var price_ = $('option:selected', this).attr("price");
