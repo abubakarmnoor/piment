@@ -669,10 +669,11 @@ $(document).ready(function() {
     } );
     
     //dropdown
-    $("#fp_cp_rm_guid").on("change", function(e){
+    $("#fp_cp_rm_guid").on("changed.bs.select", function(e){
         // alert($("#fp_cp_rm_guid").attr('price'))
         e.preventDefault()
-        alert($(this).attr("price"))
+        var price_ = $('option:selected', this).attr("price");
+        alert(price_)
     })
 //end doc ready
 });
