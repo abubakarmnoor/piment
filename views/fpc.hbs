@@ -311,7 +311,7 @@
                         <select class="form-control selectpicker" id="fp_cp_rm_guid" name="fp_cp_rm_guid" data-live-search="true">
                             {{!-- <option value="-">-</option> --}}
                             {{#each __data_rm}}
-                                <option value="{{rm_guid}}">{{rm_code}} - {{rm_desc}}</option>
+                                <option unit="{{rm_unit}}" price="{{rm_cost}}" value="{{rm_guid}}">{{rm_code}} - {{rm_desc}}</option>
                             {{/each}}
                         </select>
                     </div>

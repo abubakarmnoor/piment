@@ -668,7 +668,11 @@ $(document).ready(function() {
         $('#rm-modal-form').modal('show');
     } );
     
-    
+    //dropdown
+    $("#fp_cp_rm_guid").on("click", function(e){
+        // alert($("#fp_cp_rm_guid").attr('price'))
+        alert($(this).attr("price"))
+    })
 //end doc ready
 });
 

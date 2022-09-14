@@ -4,24 +4,20 @@ $(document).ready(function() {
     let id=$("input[name=userpass_guid]").val()
     $('.selectpicker').selectpicker();
     insert_element_pos();
-    // load_data_dt('/apis/pop/position'); //init
+    load_data_dt('/apis/pop/position'); //init
     //edit or add new
-    if (location.href.includes('eid')) {
+    if (location.href.includes('ZWlk')) {
         $('.page-header').text('USER UPDATES')
-        
-        let url = location.href;
-        let id = getURLParameter(url, 'eid');
-        $("#id").val(id);
         get_details(id);
         
         
-    }else if (location.href.includes('did')) {
+    }else if (location.href.includes('ZGlk')) {
         $('.page-header').text('USER DETAILS');
         $("#btn_save").hide();
         $("#form_ :input").prop('readonly', true);
         $("#ck_active").attr("disabled", true);
         $(".cancel").html("<a href='/Users'  type='button' class='btn btn-outline btn-primary'><i class='fa fa-long-arrow-left'></i> Back</a>");
-        get_details();
+        get_details(id);
     
     }else{
         $('.page-header').text('USER ADD NEW')
@@ -53,8 +49,9 @@ $(document).ready(function() {
         e.preventDefault();
         const form = $(e.target);
         const json = convertFormToJSON(form);
-        // json.userpass_active = $("#ck_active").prop('checked')
-        //console.log(json);
+        json.userpass_active = $("#ck_active").prop('checked')
+        json.userpass_upd_by="Admin";
+        console.log(json);
 
         // ajax
         spinner_popup();
@@ -63,8 +60,8 @@ $(document).ready(function() {
             url: "/apis/upd", 
             dataType: "json",
             success: function(data) {
-                setTimeout(function () {
-                    $('.modal').modal('hide');
+                $('.modal').modal('hide');
+                if (data.success == true){
                     Swal.fire({
                         icon: 'success',
                         title: '',
@@ -72,8 +69,13 @@ $(document).ready(function() {
                     }).then(function(){
                         location.href='/users'
                     });
-                    
-                }, 3000);
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: '',
+                        text: data.err.sqlMessage
+                    })
+                }
                 
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
@@ -103,13 +105,13 @@ function default_edit(data){
     
 }
 //get details
-function get_details(){
+function get_details(id){
     //ajax - get details
     spinner_popup();
     //ajax
     $.ajax({
         type:"GET", 
-        url: "/apis/pull/userpass", 
+        url: "/apis/pull/userpass/"+id, 
         dataType: "json",
         success: function(data) {
             default_edit(data.data);
