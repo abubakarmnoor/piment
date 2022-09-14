@@ -676,6 +676,7 @@ $(document).ready(function() {
         $("input[name=fp_cp_price]").val(price_).focusout();
         var unit_ = $('option:selected', this).attr("unit");
         $("#fp_cp_unit").selectpicker('val',unit_);
+        $("#fp_cp_unit").prop("disabled", true);
         
     })
 //end doc ready
