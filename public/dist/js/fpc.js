@@ -121,7 +121,7 @@ $(document).ready(function() {
         _data.fp_cp_qty = (_data.fp_cp_qty).replace(/\,/g,'');
         _data.fp_cp_price = (_data.fp_cp_price).replace(/\,/g,'');
         _data.tblname = "fp_cp";
-        // console.log(_data);//
+        console.log(_data);//
 
         //validation
         const rm_guid_ = $("#fp_cp_rm_guid").val()
