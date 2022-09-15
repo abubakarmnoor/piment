@@ -129,5 +129,5 @@ function get_details(id){
 }
 //insert element
 function insert_element_pos(){
-    $('<a href="#" type="button" class="pull-right" id="btn_pop_pos" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(5) > div:nth-child(4) > div > div > div > input');
+    $('<a href="#" type="button" class="pull-right" id="btn_pop_pos" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(5) > div:nth-child(3) > div > div > div');
 }
