@@ -11,6 +11,7 @@ var tableUK;
 var tableAUS;
 // spinner_popup();
 $(document).ready(function() {
+    $("#fp_cp_unit").prop("disabled", true);
     $('.modal').modal('hide');
     // var sdate_ = moment().subtract(29, 'days').format('YYYY-MM-DD');
     // var edate_ = moment().format('YYYY-MM-DD');;
@@ -677,7 +678,7 @@ $(document).ready(function() {
         $("input[name=fp_cp_price]").val(price_).focusout();
         var unit_ = $('option:selected', this).attr("unit");
         $("#fp_cp_unit").selectpicker('val',unit_);
-        $("#fp_cp_unit").prop("disabled", true);
+        // $("#fp_cp_unit").prop("disabled", true);
         
     })
 //end doc ready
