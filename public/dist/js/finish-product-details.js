@@ -165,7 +165,7 @@ function default_edit(data){
     $("input[name=fp_sc_business_profit]").val(data[0].fp_sc_business_profit).focusout()
     $("input[name=fp_sc_business_markup]").val(data[0].fp_sc_business_markup).focusout()
 
-    $("input[name=fp_sc_retail_sale]").val(data[0].fp_sc_retail_markup).focusout()
+    $("input[name=fp_sc_retail_sale]").val(data[0].fp_sc_retail_sale).focusout()
     $("input[name=fp_sc_retail_profit]").val(data[0].fp_sc_retail_profit).focusout()
     $("input[name=fp_sc_retail_markup]").val(data[0].fp_sc_retail_markup).focusout()
     
