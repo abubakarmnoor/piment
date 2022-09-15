@@ -58,10 +58,12 @@
                                 <input type="text" class="form-control" id="txt_last_name" name="last_name" placeholder="Last name" value="" required>
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="userpass_position">Position</label>
-                                <select class="form-control selectpicker" id="sp_position" name="userpass_position" data-live-search="true">
+                                <label for="position">Position</label>
+                                <select class="form-control selectpicker" id="position" name="position" data-live-search="true">
                                     <option value="-">-</option>
-                                    
+                                    {{#each __data_pop_position}}
+                                        <option value={{pop_guid}}>{{pop_desc}}</option>
+                                    {{/each}}
                                 </select>
                             </div>
                             <div class="col-md-4 mb-3">
