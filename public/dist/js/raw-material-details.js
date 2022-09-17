@@ -54,7 +54,7 @@ $(document).ready(function() {
         _data.rm_code = $("input[name=rm_code]").val()
         _data.rm_upd_by='Admin'
         _data.tblname = 'rm';
-        console.log(_data);
+        // console.log(_data);
         // ajax - save/post data
         spinner_popup();
         $.ajax({
@@ -107,7 +107,7 @@ $(document).ready(function() {
 //default-edit
 function default_edit(data){
 
-    $("input[name=rm_code]").attr('disabled','disabled')
+    //$("input[name=rm_code]").attr('disabled','disabled')
     $("input[name=rm_code]").val(data[0].rm_code)
     $("input[name=rm_desc]").val(data[0].rm_desc)
     $('#sp_product_family').selectpicker('val',data[0].rm_prod_family)

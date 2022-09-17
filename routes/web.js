@@ -207,7 +207,7 @@ router.get('/exchange-rate', (req, res) => {
 });
 router.get('/stock-raw-materials', (req, res) => {
 	res.render('stock-raw-materials.hbs', {
-		tables_bs4: true
+		tables_bs4: true, stock_raw_materials: true
 	});
 });
 router.get('/stock-finish-products', (req, res) => {
