@@ -48,7 +48,7 @@ $(document).ready(function() {
                 orderable: false
             },
             { "data": "stock_guid" },
-            { "data": "stock_type" },
+            // { "data": "stock_type" },
             {
                 data: "prod_desc",
                 className: "dt-center editor-details",
