@@ -21,4 +21,14 @@ const getRM = async () => {
             console.error(err);
         }
     };
+    const getRMFP = async () => {
+        try {
+            const resp = await axios.get(api_url+'/apis/pull/rmfp/');
+            return JSON.parse(JSON.stringify(resp.data.data));
+                // console.log(resp.data);
+            } catch (err) {
+                // Handle Error Here
+                console.error(err);
+            }
+        };
 module.exports = {getPopupData, getRM};

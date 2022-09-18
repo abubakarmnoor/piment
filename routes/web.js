@@ -205,9 +205,10 @@ router.get('/exchange-rate', (req, res) => {
 		// flot: true
 	});
 });
-router.get('/stock-raw-materials', (req, res) => {
+router.get('/stock-raw-materials', async (req, res) => {
+	const __data_stock_pop = await getRMFP();
 	res.render('stock-raw-materials.hbs', {
-		tables_bs4: true, stock_raw_materials: true
+		tables_bs4: true, stock_raw_materials: true, __data_stock_pop
 	});
 });
 router.get('/stock-finish-products', (req, res) => {
