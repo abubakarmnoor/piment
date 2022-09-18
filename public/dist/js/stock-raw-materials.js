@@ -3,6 +3,7 @@ var table;
 $(document).ready(function() {
     var sdate_ = moment().subtract(29, 'days').format('YYYY-MM-DD');
     var edate_ = moment().format('YYYY-MM-DD');;
+    load_data_dt('/apis/pull/origin','');
     //console.log(sdate_)
     //console.log(edate_)
 
@@ -81,17 +82,25 @@ $(document).ready(function() {
     // New record
     $('a.editor-create').on('click', function (e) {
         e.preventDefault();
-        
+        const id = table.row( this ).data().stock_guid;
+        load_data_dt('/apis/pull/origin',id);
+        $("#pop-modal-form").modal('show')
     } );
 
     // Edit record
     $('#dtTbl').on('click', 'td.editor-edit', function (e) {
-        
+        e.preventDefault();
+        const id = table.row( this ).data().stock_guid;
+        load_data_dt('/apis/pull/origin',id);
+        $("#pop-modal-form").modal('show')
     } );
     
     // Details record
     $('#dtTbl').on('click', 'td.editor-details', function (e) {
-        
+        e.preventDefault();
+        const id = table.row( this ).data().stock_guid;
+        load_data_dt('/apis/pull/origin',id);
+        $("#pop-modal-form").modal('show')
     } );
     // Delete a record
     $('#dtTbl').on('click', 'td.editor-delete', function (e) {
