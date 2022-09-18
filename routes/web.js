@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const router = express.Router();
 // const axios = require('axios').default;
-const {getPopupData, getRM} = require('./functions')
+const {getPopupData, getRM, getRMFP} = require('./functions')
 // const tsqlPull = require('../tsql/pull');
 //fs = require('fs');
 
