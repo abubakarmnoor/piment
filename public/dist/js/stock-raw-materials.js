@@ -4,7 +4,7 @@ $(document).ready(function() {
     var sdate_ = moment().subtract(29, 'days').format('YYYY-MM-DD');
     var edate_ = moment().format('YYYY-MM-DD');;
     $('.selectpicker').selectpicker();
-    insert_element_rm();
+    // insert_element_rm();
     load_data_dt('/apis/pop/product-family',''); //init
     //console.log(sdate_)
     //console.log(edate_)
