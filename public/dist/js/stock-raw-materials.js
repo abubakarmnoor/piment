@@ -84,8 +84,7 @@ $(document).ready(function() {
     // New record
     $('a.editor-create').on('click', function (e) {
         e.preventDefault();
-        const id = table.row( this ).data().stock_guid;
-        load_data_dt('/apis/pull/origin',id);
+        load_data_dt('/apis/pop/product-family',''); //init
         $("#pop-modal-form").modal('show')
     } );
 
@@ -93,7 +92,7 @@ $(document).ready(function() {
     $('#dtTbl').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
         const id = table.row( this ).data().stock_guid;
-        load_data_dt('/apis/pull/origin',id);
+        load_data_dt('/apis/pop/product-family',id); //init
         $("#pop-modal-form").modal('show')
     } );
     
@@ -101,7 +100,7 @@ $(document).ready(function() {
     $('#dtTbl').on('click', 'td.editor-details', function (e) {
         e.preventDefault();
         const id = table.row( this ).data().stock_guid;
-        load_data_dt('/apis/pull/origin',id);
+        load_data_dt('/apis/pop/product-family',id); //init
         $("#pop-modal-form").modal('show')
     } );
     // Delete a record
