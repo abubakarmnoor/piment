@@ -21,7 +21,7 @@ const getRM = async () => {
             console.error(err);
         }
     };
-const getRMFP = async () => {
+const getRMFP = async (type) => {
     try {
     const resp = await axios.get(api_url+'/apis/pull/rmfp/');
     return JSON.parse(JSON.stringify(resp.data.data));
