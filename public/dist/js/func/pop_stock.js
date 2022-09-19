@@ -4,9 +4,17 @@ function load_data_dt(_url){
     //init
     type_guid_=$("name[stock_type_guid]").val();
     $(".divhide").css('display', 'none');
-    $("#btn_pop_clear").on("click", function(){
-        $('#form__')[0].reset();
+
+    //popup btn
+    $(".btnclose").on("click", function(e){
+        $(".divhide").css('display', 'none');
     })
+    $(".btncancel").on("click", function(e){
+        $("input[name=stock_qty]").val(0);
+        $("textarea[name=stock_info]").text('');
+        $(".divhide").css('display', 'none');
+    })
+    
     // ajax
     table_stock = $('#dtTbl_pop').DataTable({
         "footerCallback": function ( row, data, start, end, display ) {
