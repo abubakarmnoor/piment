@@ -29,7 +29,7 @@ $(document).ready(function() {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
         //"serverSide": true,
         "columnDefs": [{
-            "targets": [0,1,2],
+            "targets": [0,1,2,3],
             "visible": false
         }
         // ,{
@@ -53,12 +53,12 @@ $(document).ready(function() {
             },
             // { "data": "stock_guid" },
             { "data": "stock_type_guid" },
+            { "data": "prod_code"},
             {
-                data: "prod_code",
+                data: "prod_desc",
                 className: "dt-center editor-details",
                 orderable: true
             },
-            { "data": "prod_desc" },
             { "data": "stock_qty" }
             // { "data": "rm_cost", render: $.fn.dataTable.render.number(',', '.', 0, '')},
             // { "data": "stock_upd_by" },
