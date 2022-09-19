@@ -143,8 +143,8 @@ function load_data_dt(_url){
                         }).then(function(){
                             //location.href='/clients'
                             $("#btn_pop_clear").click();
-                            // console.log(_data.pop_type);
                             table_stock.ajax.url("/apis/pull/stock/rm/"+_data.type_id, null, false).load(); // refresh
+                            $("#btn_refresh").click();
                         });
                         
                     }, 
