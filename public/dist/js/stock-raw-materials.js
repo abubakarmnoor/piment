@@ -5,7 +5,7 @@ $(document).ready(function() {
     var edate_ = moment().format('YYYY-MM-DD');;
     $('.selectpicker').selectpicker();
     // insert_element_rm();
-    load_data_dt('/apis/pop/product-family',''); //init
+    load_data_dt('apis/pull/rmfp/rm/x1'); //init
     //console.log(sdate_)
     //console.log(edate_)
 
@@ -28,7 +28,7 @@ $(document).ready(function() {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
         //"serverSide": true,
         "columnDefs": [{
-            "targets": [ 2 ],
+            "targets": [0,1,2,3],
             "visible": false
         }
         // ,{
@@ -51,6 +51,7 @@ $(document).ready(function() {
                 orderable: false
             },
             { "data": "stock_guid" },
+            { "data": "stock_type_guid" },
             // { "data": "stock_type" },
             {
                 data: "prod_desc",
@@ -84,23 +85,30 @@ $(document).ready(function() {
     // New record
     $('a.editor-create').on('click', function (e) {
         e.preventDefault();
-        // load_data_dt('/apis/pop/product-family',''); //init
+        const id = table.row( this ).data().stock_type_guid;
+        const prod_desc_ = table.row( this ).data().prod_desc;
+        $("#prod_desc").text(prod_desc_)
         $("#pop-modal-form").modal('show')
+        
     } );
 
     // Edit record
     $('#dtTbl').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
-        const id = table.row( this ).data().stock_guid;
-        // load_data_dt('/apis/pop/product-family',id); //init
+        const id = table.row( this ).data().stock_type_guid;
+        const prod_desc_ = table.row( this ).data().prod_desc;
+        $("label[name=prod_desc").text(prod_desc_);
+        load_data_dt('/apis/pull/rmfp/rm/'+id); //init
         $("#pop-modal-form").modal('show')
     } );
     
     // Details record
     $('#dtTbl').on('click', 'td.editor-details', function (e) {
         e.preventDefault();
-        const id = table.row( this ).data().stock_guid;
-        //load_data_dt('/apis/pop/product-family',id); //init
+        const id = table.row( this ).data().stock_type_guid;
+        const prod_desc_ = table.row( this ).data().prod_desc;
+        $("label[name=prod_desc").text(prod_desc_);
+        load_data_dt('/apis/pull/rmfp/rm/'+id); //init
         $("#pop-modal-form").modal('show')
     } );
     // Delete a record
