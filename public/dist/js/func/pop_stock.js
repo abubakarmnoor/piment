@@ -47,6 +47,8 @@ function load_data_dt(_url){
             $( api.column( 4 ).footer() ).html(numberWithCommas(col4));
         },
         // "scrollY": "370px",
+        // "searching": false,
+        "ordering": false,
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
