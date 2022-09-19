@@ -99,7 +99,7 @@ function load_data_dt(_url){
             { "data": "stock_trans_date"},
             { "data": "stock_info"},
             { "data": "stock_qty", render: $.fn.dataTable.render.number(',', '.', 0, '')},
-            { "data": "stock_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "stock_price", render: $.fn.dataTable.render.number(',', '.', 0, '')},
             { "data": "stock_upd_by"},
             { "data": "stock_upd_date"}
         ]
@@ -121,11 +121,12 @@ function load_data_dt(_url){
         .val(_qty)
         .focusout();
         $("input[name=stock_price]")
-        .val(_price)
+        .val(numberWithCommas(_price))
         .focusout();
         $("textarea[name=stock_info]").val(_info);
         $(".divhide").css('display', '');
         $(".btnaddnew").hide();
+        $(".modal-title").html('STOCK - UPDATE')
     } );
     
     // Delete a record
