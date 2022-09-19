@@ -189,6 +189,7 @@ $(document).ready(function() {
 $(function(){
     $(".datepicker").datepicker({
         format: 'yyyy-mm-dd',
+        setDate: new Date(),
         autoclose: true,
         todayHighlight: true,
     });

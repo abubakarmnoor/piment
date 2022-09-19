@@ -174,7 +174,7 @@ function load_data_dt(_url){
         _data.stock_upd_by = "Admin";
         _data.stock_type = "rm";
         _data.tblname = "stock";
-        // console.log(_data);
+        console.log(_data);
         // return; 
 
         // ajax - save/post data
