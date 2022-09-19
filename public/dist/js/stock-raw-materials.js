@@ -109,6 +109,7 @@ $(document).ready(function() {
         const id = table.row( this ).data().stock_type_guid;
         const prod_desc_ = table.row( this ).data().prod_desc;
         $("label[name=prod_desc").text(prod_desc_);
+        console.log('/apis/pull/stock/rm/'+id);
         load_data_dt('/apis/pull/stock/rm/'+id); //init
         $("#pop-modal-form").modal('show')
     } );
