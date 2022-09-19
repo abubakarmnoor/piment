@@ -192,6 +192,7 @@ function load_data_dt(_url){
                     text: "Data Saved"
                 }).then(function(){
                     table_stock.ajax.url("/apis/pull/stock/rm/"+_data.stock_type_guid, null, false).load(); // refresh
+                    $(".btncancel").click();
                 });
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
