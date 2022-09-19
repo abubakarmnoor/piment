@@ -24,8 +24,7 @@ function load_data_dt(_url){
                 .reduce( function (a, b) {
                     return intVal(a) + intVal(b);
                 }, 0 );
-			console.log(col4);	
-            // Update footer by showing the total with the reference of the column index 
+			// Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
             $( api.column( 4 ).footer() ).html(numberWithCommas(col4));
         },
