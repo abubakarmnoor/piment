@@ -18,7 +18,7 @@ function load_data_dt(_url){
                         i : 0;
             };
  
-	        var col7 = api
+	        var col4 = api
                 .column( 4 )
                 .data()
                 .reduce( function (a, b) {
@@ -27,7 +27,7 @@ function load_data_dt(_url){
 				
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 7 ).footer() ).html(numberWithCommas(col4));
+            $( api.column( 4 ).footer() ).html(numberWithCommas(col4));
         },
         // "scrollY": "370px",
         "scrollCollapse": true,
