@@ -188,10 +188,10 @@ function load_data_dt(_url){
         // return; 
 
         //validate
-        if (_data.stock_qty == 0 ){
+        if (_data.stock_qty == 0 || _data.stock_price == 0 ){
             Swal.fire({
-                icon: 'waring',
-                title: '',
+                icon: 'warning',
+                title: 'Stock',
                 text: "Qty cannot 0"
             })
             return;
