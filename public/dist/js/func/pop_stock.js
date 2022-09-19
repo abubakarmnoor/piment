@@ -12,7 +12,7 @@ function load_data_dt(_url){
         $("input[name=stock_guid]").val('');
         $("input[name=stock_qty]").val(0);
         $("textarea[name=stock_info]").val('');
-        $("textarea[name=stock_price]").val(0);
+        $("input[name=stock_price]").val(0);
         $("input[name=stock_qty]").focus();
     })
     $(".btnclose").on("click", function(e){
@@ -24,7 +24,7 @@ function load_data_dt(_url){
         $("input[name=stock_guid]").val('');
         $("input[name=stock_qty]").val(0);
         $("textarea[name=stock_info]").val('');
-        $("textarea[name=stock_price]").val(0);
+        $("input[name=stock_price]").val(0);
         $("input[name=stock_qty]").focus();
         $(".divhide").css('display', 'none');
         $(".btnaddnew").show();
