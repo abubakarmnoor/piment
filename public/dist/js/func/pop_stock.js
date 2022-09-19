@@ -8,9 +8,11 @@ function load_data_dt(_url){
     $(".btnaddnew").on("click", function(e){
         $(this).hide()
         $(".divhide").css('display', '');
+        $('.datepicker').datepicker('setDate', new Date());
         $("input[name=stock_guid]").val('');
         $("input[name=stock_qty]").val(0);
         $("textarea[name=stock_info]").val('');
+        $("textarea[name=stock_price]").val(0);
         $("input[name=stock_qty]").focus();
     })
     $(".btnclose").on("click", function(e){
@@ -18,8 +20,12 @@ function load_data_dt(_url){
         $(".btnaddnew").show();
     })
     $(".btncancel").on("click", function(e){
+        $('.datepicker').datepicker('setDate', new Date());
+        $("input[name=stock_guid]").val('');
         $("input[name=stock_qty]").val(0);
         $("textarea[name=stock_info]").val('');
+        $("textarea[name=stock_price]").val(0);
+        $("input[name=stock_qty]").focus();
         $(".divhide").css('display', 'none');
         $(".btnaddnew").show();
     })
@@ -83,8 +89,10 @@ function load_data_dt(_url){
                 className: "dt-center editor-details",
                 orderable: true
             },
+            { "data": "stock_trans_date"},
             { "data": "stock_info"},
             { "data": "stock_qty", render: $.fn.dataTable.render.number(',', '.', 0, '')},
+            { "data": "stock_price"},
             { "data": "stock_upd_by"},
             { "data": "stock_upd_date"}
         ]
@@ -176,9 +184,18 @@ function load_data_dt(_url){
         _data.stock_upd_by = "Admin";
         _data.stock_type = "rm";
         _data.tblname = "stock";
-        console.log(_data);
+        // console.log(_data);
         // return; 
 
+        //validate
+        if (_data.stock_qty == 0 ){
+            Swal.fire({
+                icon: 'waring',
+                title: '',
+                text: "Qty cannot 0"
+            })
+            return;
+        }
         // ajax - save/post data
         spinner_popup();
         $.ajax({
