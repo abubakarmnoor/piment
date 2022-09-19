@@ -3,6 +3,22 @@
 
 {{> head}}
 {{> css}}
+<style>
+    .col-md-6{
+        width: 0%;
+    }
+    #dtTbl_pop{
+        width: 100% !important;
+    }
+    {{!-- popup --}}
+    .modal-header .close {
+        margin-top: -23px;
+    }
+    .modal-dialog {
+        width: 865px !important;
+    }
+</style>
+
 <body>
 
     <div id="wrapper">
@@ -15,25 +31,74 @@
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <h3 class="page-header">Stock Finish Product</h3><br>
-                        <p>Coming soon</p>
+                    <div class="col-md-10">
+                        <h3 class="page-header">STOCK RAW MATERIALS</h3>
                     </div>
                     <!-- /.col-lg-12 -->
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    {{!-- <div class="col">
+                        <a href="#"  type="button" class="btn btn-outline btn-primary pull-left editor-create">
+                            <i class="glyphicon-plus"></i> Add New
+                        </a>
+                    </div> --}}
+                    <div class="col" style="padding-top: 45px;">
+                        <div id="reportrange" class="pull-left form-control" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 29%;margin-right: 10px;">
+                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+                            <span></span> <b class="caret"></b>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <a href="#"  type="button" class="btn btn-outline btn-primary pull-left" id="btn_refresh">
+                            <i class="fa fa-refresh"></i> Refresh
+                        </a>
+                    </div>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <table id="dtTbl" class="table table-striped display nowrap" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                {{!-- <th>Id</th> --}}
+                                <th>Id2</th>
+                                <th>RM Code</th>
+                                <th>RM Desc</th>
+                                <th>Stock Qty</th>
+                                {{!-- <th>Updated By</th> --}}
+                                {{!-- <th>Updated Date</th> --}}
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                    <div class="row">&nbsp;</div>
+                    <div class="row">&nbsp;</div>
+                    <div class="row">&nbsp;</div>
                 </div>
                 <!-- /.row -->
             </div>
             <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->
-
+        <!-- Modal -->
+        {{> pop_stock}}
+        {{!-- //modal spinner --}}
+        <div class="modal fade spinner-bg" tabindex="-1" role="dialog" data-backdrop="false">
+            <div role="document">
+                <span class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></span>
+            </div>
+        </div>
     </div>
     <!-- /#wrapper -->
 
     </div>
-   
     <!-- /#wrapper -->
 {{> scripts}}
+
 </body>
 
 </html>
