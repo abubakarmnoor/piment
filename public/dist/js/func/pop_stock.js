@@ -171,7 +171,8 @@ function load_data_dt(_url){
         e.preventDefault();
         const form = $(e.target);
         const _data = convertFormToJSON(form);
-        _data.stock_price = (_data.stock_price).replace(/\,/g,'');//.toFixed(2);
+        _data.stock_qty = (_data.stock_qty).replace(/\,/g,'');
+        _data.stock_price = (_data.stock_price).replace(/\,/g,'');
         _data.stock_upd_by = "Admin";
         _data.stock_type = "rm";
         _data.tblname = "stock";
