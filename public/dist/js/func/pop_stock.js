@@ -58,7 +58,7 @@ function load_data_dt(_url){
 			// Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
             $( api.column( 5 ).footer() ).html(numberWithCommas(total_qty));
-            $( api.column( 6 ).footer() ).html(numberWithCommas(total_price));
+            $( api.column( 6 ).footer() ).html(numberWithCommas(total_price,2));
         },
         // "scrollY": "370px",
         // "searching": false,
