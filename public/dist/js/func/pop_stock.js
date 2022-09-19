@@ -8,6 +8,9 @@ function load_data_dt(_url){
     $(".btnaddnew").on("click", function(e){
         $(this).hide()
         $(".divhide").css('display', '');
+        $("input[name=stock_guid]").val('');
+        $("input[name=stock_qty]").val(0);
+        $("textarea[name=stock_info]").val('');
     })
     $(".btnclose").on("click", function(e){
         $(".divhide").css('display', 'none');
