@@ -87,7 +87,7 @@ $(document).ready(function() {
         e.preventDefault();
         const id = table.row( this ).data().stock_type_guid;
         const prod_desc_ = table.row( this ).data().prod_desc;
-        table_stock.ajax.url("apis/pull/rmfp/rm/"+type_guid_, null, false).load(); // refresh pop
+        table_stock.ajax.url("apis/pull/stock/rm/"+type_guid_, null, false).load(); // refresh pop
 
         $("#prod_desc").text(prod_desc_)
         $("#pop-modal-form").modal('show')
@@ -110,7 +110,7 @@ $(document).ready(function() {
         const id = table.row( this ).data().stock_type_guid;
         const prod_desc_ = table.row( this ).data().prod_desc;
         $("label[name=prod_desc").text(prod_desc_);
-        table_stock.ajax.url("apis/pull/rmfp/rm/"+type_guid_, null, false).load(); // refresh pop
+        table_stock.ajax.url("apis/pull/stock/rm/"+type_guid_, null, false).load(); // refresh pop
         $("#pop-modal-form").modal('show')
     } );
     // Delete a record
@@ -177,7 +177,7 @@ $(document).ready(function() {
         // console.log(sdate_);
         // console.log(edate_);
         //var table = $('#registrationTable').DataTable();
-        table_stock.ajax.url("apis/pull/rmfp/rm/"+type_guid_, null, false).load(); // refresh pop
+        table_stock.ajax.url("apis/pull/stock/rm/"+type_guid_, null, false).load(); // refresh pop
     })
 
 //end doc ready
