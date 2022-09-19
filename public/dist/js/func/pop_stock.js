@@ -87,7 +87,7 @@ function load_data_dt(_url){
         // const _type_id = table_stock.row( this ).data().stock_type_guid;
         $("input[name=stock_guid]").val(_id);
         $("input[name=stock_qty]").val(_qty);
-        $("input[name=stock_info]").val(_info);
+        $("textarea[name=stock_info]").val(_info);
         $(".divhide").css('display', '');
     } );
     
