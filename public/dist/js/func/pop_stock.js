@@ -112,8 +112,9 @@ function load_data_dt(_url){
         _data.type_id = table_stock.row( this ).data().stock_type_guid;
         _data.desc = $("input[name=prod_desc").text();
         _data.upd_by = "Admin";
-        // console.log(_data);
-
+        console.log(_data);
+        return 
+        
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this! ("+_data.desc+")",
