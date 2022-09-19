@@ -5,7 +5,7 @@ $(document).ready(function() {
     var edate_ = moment().format('YYYY-MM-DD');;
     // $('.selectpicker').selectpicker();
     // insert_element_rm();
-    load_data_dt('/apis/pull/stock/rm/'); //init
+    // load_data_dt('/apis/pull/stock/rm/'); //init
     //console.log(sdate_)
     //console.log(edate_)
 
@@ -94,14 +94,14 @@ $(document).ready(function() {
     } );
 
     // Edit record
-    $('#dtTbl').on('click', 'td.editor-edit', function (e) {
-        e.preventDefault();
-        const id = table.row( this ).data().stock_type_guid;
-        const prod_desc_ = table.row( this ).data().prod_desc;
-        $("label[name=prod_desc").text(prod_desc_);
-        load_data_dt('/apis/pull/stock/rm/'+id); //init
-        $("#pop-modal-form").modal('show')
-    } );
+    // $('#dtTbl').on('click', 'td.editor-edit', function (e) {
+    //     e.preventDefault();
+    //     const id = table.row( this ).data().stock_type_guid;
+    //     const prod_desc_ = table.row( this ).data().prod_desc;
+    //     $("label[name=prod_desc").text(prod_desc_);
+    //     load_data_dt('/apis/pull/stock/rm/'+id); //init
+    //     $("#pop-modal-form").modal('show')
+    // } );
     
     // Details record
     $('#dtTbl').on('click', 'td.editor-details', function (e) {
@@ -109,62 +109,61 @@ $(document).ready(function() {
         const id = table.row( this ).data().stock_type_guid;
         const prod_desc_ = table.row( this ).data().prod_desc;
         $("label[name=prod_desc").text(prod_desc_);
-        console.log('/apis/pull/stock/rm/'+id);
         load_data_dt('/apis/pull/stock/rm/'+id); //init
         $("#pop-modal-form").modal('show')
     } );
     // Delete a record
-    $('#dtTbl').on('click', 'td.editor-delete', function (e) {
-        e.preventDefault();
-        let _data = {};
-        _data.id = table.row( this ).data().stock_guid;
-        _data.prod_desc = table.row( this ).data().prod_desc;
-        _data.upd_by = "Admin";
-        // console.log(_data);
-        // console.log( table.row( this ).data().id );
+    // $('#dtTbl').on('click', 'td.editor-delete', function (e) {
+    //     e.preventDefault();
+    //     let _data = {};
+    //     _data.id = table.row( this ).data().stock_guid;
+    //     _data.prod_desc = table.row( this ).data().prod_desc;
+    //     _data.upd_by = "Admin";
+    //     // console.log(_data);
+    //     // console.log( table.row( this ).data().id );
 
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this! ("+_data.prod_desc+")",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                spinner_popup();
-                $.ajax({
-                    type:"POST",
-                    url: "/apis/del/stock", 
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    data: JSON.stringify(_data),
-                    success: function(data) {
-                        $('.modal').modal('hide');
-                        Swal.fire({
-                            icon: "success",
-                            title: "Data Deleted",
-                            text: _data.prod_desc
-                        }).then(function(){
-                            // location.href='/raw-materials'
-                            $("#btn_refresh").click();
-                        });
+    //     Swal.fire({
+    //         title: 'Are you sure?',
+    //         text: "You won't be able to revert this! ("+_data.prod_desc+")",
+    //         icon: 'warning',
+    //         showCancelButton: true,
+    //         confirmButtonColor: '#3085d6',
+    //         cancelButtonColor: '#d33',
+    //         confirmButtonText: 'Yes, delete it!'
+    //     }).then((result) => {
+    //         if (result.isConfirmed) {
+    //             spinner_popup();
+    //             $.ajax({
+    //                 type:"POST",
+    //                 url: "/apis/del/stock", 
+    //                 contentType: "application/json; charset=utf-8",
+    //                 dataType: "json",
+    //                 data: JSON.stringify(_data),
+    //                 success: function(data) {
+    //                     $('.modal').modal('hide');
+    //                     Swal.fire({
+    //                         icon: "success",
+    //                         title: "Data Deleted",
+    //                         text: _data.prod_desc
+    //                     }).then(function(){
+    //                         // location.href='/raw-materials'
+    //                         $("#btn_refresh").click();
+    //                     });
                         
-                    }, 
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        //alert(jqXHR.status);
-                        $('.modal').modal('hide');
-                        Swal.fire({
-                            title: "Error!",
-                            text: textStatus,
-                            icon: "error"
-                        });
-                    }
-                });
-            }
-        })
-    } );
+    //                 }, 
+    //                 error: function(jqXHR, textStatus, errorThrown) {
+    //                     //alert(jqXHR.status);
+    //                     $('.modal').modal('hide');
+    //                     Swal.fire({
+    //                         title: "Error!",
+    //                         text: textStatus,
+    //                         icon: "error"
+    //                     });
+    //                 }
+    //             });
+    //         }
+    //     })
+    // } );
 
     $("#btn_refresh").on("click", function(){
         // spinner_popup();
