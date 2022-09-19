@@ -87,7 +87,7 @@ $(document).ready(function() {
     $('#dtTbl').on('click', 'td.editor-details', function (e) {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
-        const _id = table.row( this ).data().id;
+        const _id = table.row( this ).data().rm_guid;
         location.href = "/raw-material-details/"+_id+"/ZGlk";
         
     } );
