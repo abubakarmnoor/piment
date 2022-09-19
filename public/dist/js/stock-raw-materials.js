@@ -5,7 +5,7 @@ $(document).ready(function() {
     var edate_ = moment().format('YYYY-MM-DD');;
     // $('.selectpicker').selectpicker();
     // insert_element_rm();
-    load_data_dt('/apis/pull/rmfp/rm/'); //init
+    load_data_dt('/apis/pull/stock/rm/x1'); //init
     //console.log(sdate_)
     //console.log(edate_)
 
@@ -87,6 +87,7 @@ $(document).ready(function() {
         e.preventDefault();
         const id = table.row( this ).data().stock_type_guid;
         const prod_desc_ = table.row( this ).data().prod_desc;
+        load_data_dt('/apis/pull/stock/rm/'+id); //init
         $("#prod_desc").text(prod_desc_)
         $("#pop-modal-form").modal('show')
         
@@ -98,7 +99,7 @@ $(document).ready(function() {
         const id = table.row( this ).data().stock_type_guid;
         const prod_desc_ = table.row( this ).data().prod_desc;
         $("label[name=prod_desc").text(prod_desc_);
-        load_data_dt('/apis/pull/rmfp/rm/'+id); //init
+        load_data_dt('/apis/pull/stock/rm/'+id); //init
         $("#pop-modal-form").modal('show')
     } );
     
@@ -108,7 +109,7 @@ $(document).ready(function() {
         const id = table.row( this ).data().stock_type_guid;
         const prod_desc_ = table.row( this ).data().prod_desc;
         $("label[name=prod_desc").text(prod_desc_);
-        load_data_dt('/apis/pull/rmfp/rm/'+id); //init
+        load_data_dt('/apis/pull/stock/rm/'+id); //init
         $("#pop-modal-form").modal('show')
     } );
     // Delete a record
