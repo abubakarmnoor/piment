@@ -124,7 +124,7 @@ function load_data_dt(_url){
                             //location.href='/clients'
                             $("#btn_pop_clear").click();
                             // console.log(_data.pop_type);
-                            table_stock.ajax.url("/apis/pull/rmfp/rm/"+_data.type_id, null, false).load(); // refresh
+                            table_stock.ajax.url("/apis/pull/stock/rm/"+_data.type_id, null, false).load(); // refresh
                         });
                         
                     }, 
@@ -172,7 +172,7 @@ function load_data_dt(_url){
                     text: "Data Saved"
                 }).then(function(){
                     $("#btn_pop_clear").click();
-                    table_stock.ajax.url("apis/pull/rmfp/rm/"+_data.type_id, null, false).load(); // refresh
+                    table_stock.ajax.url("/apis/pull/stock/rm/"+_data.type_id, null, false).load(); // refresh
                     selectpicker_reload(_data.pop_type);
                 });
             }, 
