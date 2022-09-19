@@ -5,6 +5,7 @@ $(document).ready(function() {
     var edate_ = moment().format('YYYY-MM-DD');;
     // $('.selectpicker').selectpicker();
     // insert_element_rm();
+    $("input[name=stock_type]").val('fp')
     load_data_dt('/apis/pull/stock/fp/x1'); //init
     //console.log(sdate_)
     //console.log(edate_)

@@ -155,7 +155,7 @@ function load_data_dt(_url){
                         // $('.modal').modal('hide');
                         $("#spinner-modal").modal('hide')
                         $("#btn_pop_clear").click();
-                        table_stock.ajax.url("/apis/pull/stock/rm/"+_data.type_id, null, false).load(); // refresh
+                        table_stock.ajax.url("/apis/pull/stock/"+ $("input[name=stock_type]").val()+"/"+_data.type_id, null, false).load(); // refresh
                         $("#btn_refresh").click();
                         Swal.fire({
                             icon: 'success',
@@ -191,7 +191,7 @@ function load_data_dt(_url){
         _data.stock_qty = (_data.stock_qty).replace(/\,/g,'');
         _data.stock_price = (_data.stock_price).replace(/\,/g,'');
         _data.stock_upd_by = "Admin";
-        _data.stock_type = "rm";
+        _data.stock_type =  $("input[name=stock_type]").val();
         _data.tblname = "stock";
         // console.log(_data);
         // return; 
@@ -216,7 +216,7 @@ function load_data_dt(_url){
             success: function(data) {
                 $("#spinner-modal").modal('hide')
                 if (data.success == true){
-                    table_stock.ajax.url("/apis/pull/stock/rm/"+_data.stock_type_guid, null, false).load(); // refresh
+                    table_stock.ajax.url("/apis/pull/stock/"+ $("input[name=stock_type]").val()+"/"+_data.stock_type_guid, null, false).load(); // refresh
                     $("#btn_refresh").click();
                     Swal.fire({
                         icon: 'success',
