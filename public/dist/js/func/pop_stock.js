@@ -53,7 +53,8 @@ function load_data_dt(_url){
         e.preventDefault();
         //console.log( table.row( this ).data().id );
         const _id = table_stock.row( this ).data().stock_guid;
-         
+        const _type_id = table_stock.row( this ).data().stock_type_guid;
+        
     } );
     
     // Delete a record
@@ -62,7 +63,7 @@ function load_data_dt(_url){
         let _data = {};
         _data.id = table_stock.row( this ).data().stock_guid;
         _data.type_id = table_stock.row( this ).data().stock_type_guid;
-        _data.desc = $("label[name=prod_desc").text();
+        _data.desc = $("input[name=prod_desc").text();
         _data.upd_by = "Admin";
         // console.log(_data);
 
