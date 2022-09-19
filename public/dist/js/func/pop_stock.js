@@ -43,15 +43,15 @@ function load_data_dt(_url){
                         i : 0;
             };
  
-	        var col4 = api
-                .column( 4 )
+	        var total = api
+                .column( 5 )
                 .data()
                 .reduce( function (a, b) {
                     return intVal(a) + intVal(b);
                 }, 0 );
 			// Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 4 ).footer() ).html(numberWithCommas(col4));
+            $( api.column( 5 ).footer() ).html(numberWithCommas(total));
         },
         // "scrollY": "370px",
         // "searching": false,
