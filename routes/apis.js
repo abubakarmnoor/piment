@@ -173,7 +173,7 @@ router.post('/upd',(req,res)=>{
       })
     }else if (_data.tblname == 'stock'){
       query='call spsave_stock (?, ?, ?, ?, ?, ?)'
-      db.query(` `+query+` `,[_data.stock_guid, _data.stock_type, _data.stock_type_guid, _data.stock_info, _data.stock_qty, _data.stock_upd_by], (err, data_)=>{  
+      db.query(` `+query+` `,[_data.stock_guid, _data.stock_type, _data.stock_type_guid, _data.stock_info, _data.stock_qty, _data.stock_price, _data.stock_trans_date, _data.stock_upd_by], (err, data_)=>{  
       // db.query(query, (err, data_)=>{
         if (!data_){
           res.status(200).json({success:false, err})
