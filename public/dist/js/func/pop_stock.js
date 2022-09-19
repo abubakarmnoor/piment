@@ -11,7 +11,7 @@ function load_data_dt(_url){
     })
     $(".btncancel").on("click", function(e){
         $("input[name=stock_qty]").val(0);
-        $("textarea[name=stock_info]").text('');
+        $("textarea[name=stock_info]").val('');
         $(".divhide").css('display', 'none');
     })
     
