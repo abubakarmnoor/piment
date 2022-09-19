@@ -91,7 +91,6 @@ function load_data_dt(_url){
         e.preventDefault();
         let _data = {};
         _data.id = table_stock.row( this ).data().stock_guid;
-        _data.type_id = table_stock.row( this ).data().stock_type_guid;
         _data.desc = $("input[name=prod_desc").text();
         _data.upd_by = "Admin";
         // console.log(_data);
@@ -124,7 +123,7 @@ function load_data_dt(_url){
                             //location.href='/clients'
                             $("#btn_pop_clear").click();
                             // console.log(_data.pop_type);
-                            table_stock.ajax.url("/apis/pull/stock/rm/"+_data.type_id, null, false).load(); // refresh
+                            table_stock.ajax.url("/apis/pull/stock/rm/"+_data.stock_type_guid, null, false).load(); // refresh
                         });
                         
                     }, 
@@ -151,12 +150,11 @@ function load_data_dt(_url){
         e.preventDefault();
         const form = $(e.target);
         const _data = convertFormToJSON(form);
-        _data.type_id = $("input[name=stock_type_guid]").val();
-        _data.pop_updated_by = "Admin";
+        _data.stock_upd_by = "Admin";
         _data.tblname = "stock";
         console.log(_data);
         return; 
-        
+
         // ajax - save/post data
         spinner_popup();
         $.ajax({
@@ -173,7 +171,7 @@ function load_data_dt(_url){
                     text: "Data Saved"
                 }).then(function(){
                     $("#btn_pop_clear").click();
-                    table_stock.ajax.url("/apis/pull/stock/rm/"+_data.type_id, null, false).load(); // refresh
+                    table_stock.ajax.url("/apis/pull/stock/rm/"+_data.stock_type_guid, null, false).load(); // refresh
                     selectpicker_reload(_data.pop_type);
                 });
             }, 
