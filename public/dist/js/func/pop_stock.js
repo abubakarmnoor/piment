@@ -189,15 +189,24 @@ function load_data_dt(_url){
             data: JSON.stringify(_data),
             success: function(data) {
                 $("#spinner-modal").modal('hide')
-                table_stock.ajax.url("/apis/pull/stock/rm/"+_data.stock_type_guid, null, false).load(); // refresh
-                $("#btn_refresh").click();
-                Swal.fire({
-                    icon: 'success',
-                    title: '',
-                    text: "Data Saved"
-                }).then(function(){
-                    $(".btncancel").click();
-                });
+                if (data.success == true){
+                    table_stock.ajax.url("/apis/pull/stock/rm/"+_data.stock_type_guid, null, false).load(); // refresh
+                    $("#btn_refresh").click();
+                    Swal.fire({
+                        icon: 'success',
+                        title: '',
+                        text: "Data Saved"
+                    }).then(function(){
+                        $(".btncancel").click();
+                    });
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: '',
+                        text: data.err.sqlMessage
+                    })
+                }
+                
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
                 //alert(jqXHR.status);
