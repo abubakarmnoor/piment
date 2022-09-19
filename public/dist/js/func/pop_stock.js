@@ -7,6 +7,7 @@ function load_data_dt(_url){
     })
     // ajax
     table_stock = $('#dtTbl_pop').DataTable({
+        // "scrollY": "370px",
         "footerCallback": function ( row, data, start, end, display ) {
             var api = this.api(), data;
  
@@ -24,26 +25,23 @@ function load_data_dt(_url){
                 .reduce( function (a, b) {
                     return intVal(a) + intVal(b);
                 }, 0 );
-			// Update footer by showing the total with the reference of the column index 
+				
+            // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
             $( api.column( 4 ).footer() ).html(numberWithCommas(col4));
         },
-        // "scrollY": "370px",
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
         "ajax": _url,
         "processing": true,
-        // "pageLength": 5,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
         //"serverSide": true,
-        "columnDefs": [
-            {
-                "targets": [ 2 ],
-                "visible": false
-            }
-        ],  
+        "columnDefs": [{
+            "targets": [ 2 ],
+            "visible": false
+        }],
         "columns": [
             {
                 data: null,
@@ -68,6 +66,69 @@ function load_data_dt(_url){
             { "data": "stock_upd_date"}
         ]
     });
+
+    // table_stock = $('#dtTbl_pop').DataTable({
+    //     "footerCallback": function ( row, data, start, end, display ) {
+    //         var api = this.api(), data;
+ 
+    //         // converting to interger to find total
+    //         var intVal = function ( i ) {
+    //             return typeof i === 'string' ?
+    //                 i.replace(/[\$,]/g, '')*1 :
+    //                 typeof i === 'number' ?
+    //                     i : 0;
+    //         };
+ 
+	//         var col4 = api
+    //             .column( 4 )
+    //             .data()
+    //             .reduce( function (a, b) {
+    //                 return intVal(a) + intVal(b);
+    //             }, 0 );
+	// 		// Update footer by showing the total with the reference of the column index 
+	//         $( api.column( 0 ).footer() ).html('Total');
+    //         $( api.column( 4 ).footer() ).html(numberWithCommas(col4));
+    //     },
+    //     // "scrollY": "370px",
+    //     "scrollCollapse": true,
+    //     "paging": true, 
+    //     "lengthChange": false,
+    //     "ajax": _url,
+    //     "processing": true,
+    //     // "pageLength": 5,
+    //     "language": {
+    //         processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
+    //     //"serverSide": true,
+    //     "columnDefs": [
+    //         {
+    //             "targets": [ 2 ],
+    //             "visible": false
+    //         }
+    //     ],  
+    //     "columns": [
+    //         {
+    //             data: null,
+    //             className: "dt-center editor-edit",
+    //             defaultContent: '<i class="fa fa-pencil"/>',
+    //             orderable: false
+    //         },
+    //         {
+    //             data: null,
+    //             className: "dt-center editor-delete",
+    //             defaultContent: '<i class="fa fa-trash"/>',
+    //             orderable: false
+    //         },
+    //         {
+    //             data: "stock_guid",
+    //             className: "dt-center editor-details",
+    //             orderable: true
+    //         },
+    //         { "data": "stock_info"},
+    //         { "data": "stock_qty", render: $.fn.dataTable.render.number(',', '.', 0, '')},
+    //         { "data": "stock_upd_by"},
+    //         { "data": "stock_upd_date"}
+    //     ]
+    // });
     
     // Edit record
     $('#dtTbl_pop').on('click', 'td.editor-edit', function (e) {
