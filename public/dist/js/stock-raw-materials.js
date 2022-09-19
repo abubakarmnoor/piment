@@ -82,19 +82,19 @@ $(document).ready(function() {
         }
     });
 
-    // New record
-    $('a.editor-create').on('click', function (e) {
-        e.preventDefault();
-        const id = table.row( this ).data().stock_type_guid;
-        const prod_desc_ = table.row( this ).data().prod_desc;
-        $("input[prod_desc]").val(prod_desc_)
-        table_stock.ajax.url("apis/pull/stock/rm/"+id, null, false).load(); // refresh pop
+    // // New record
+    // $('a.editor-create').on('click', function (e) {
+    //     e.preventDefault();
+    //     const id = table.row( this ).data().stock_type_guid;
+    //     const prod_desc_ = table.row( this ).data().prod_desc;
+    //     $("input[prod_desc]").val(prod_desc_)
+    //     table_stock.ajax.url("apis/pull/stock/rm/"+id, null, false).load(); // refresh pop
         
-        $("#pop-modal-form").modal('show')
+    //     $("#pop-modal-form").modal('show')
         
-    } );
+    // } );
 
-    // Edit record
+    //// Edit record
     // $('#dtTbl').on('click', 'td.editor-edit', function (e) {
     //     e.preventDefault();
     //     const id = table.row( this ).data().stock_type_guid;
@@ -109,7 +109,7 @@ $(document).ready(function() {
         e.preventDefault();
         const id = table.row( this ).data().stock_type_guid;
         const prod_desc_ = table.row( this ).data().prod_desc;
-        $("input[prod_desc]").val(prod_desc_)
+        $("input[name=prod_desc]").val(prod_desc_)
         table_stock.ajax.url("apis/pull/stock/rm/"+id, null, false).load(); // refresh pop
         $("#pop-modal-form").modal('show')
     } );
