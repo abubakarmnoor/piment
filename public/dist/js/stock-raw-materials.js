@@ -181,6 +181,11 @@ $(document).ready(function() {
         table.ajax.url("apis/pull/stock/rm/", null, false).load(); // refresh pop
     })
 
+    //popup btn
+    $(".btnclose .btncancel").on("click", function(e){
+        $(".divhide").css('display', 'none');
+    })
+
 //end doc ready
 });
 
