@@ -43,15 +43,22 @@ function load_data_dt(_url){
                         i : 0;
             };
  
-	        var total = api
+	        var total_qty = api
                 .column( 5 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+            var total_price = api
+                .column( 6 )
                 .data()
                 .reduce( function (a, b) {
                     return intVal(a) + intVal(b);
                 }, 0 );
 			// Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 5 ).footer() ).html(numberWithCommas(total));
+            $( api.column( 5 ).footer() ).html(numberWithCommas(total_qty));
+            $( api.column( 6 ).footer() ).html(numberWithCommas(total_price));
         },
         // "scrollY": "370px",
         // "searching": false,
@@ -92,7 +99,7 @@ function load_data_dt(_url){
             { "data": "stock_trans_date"},
             { "data": "stock_info"},
             { "data": "stock_qty", render: $.fn.dataTable.render.number(',', '.', 0, '')},
-            { "data": "stock_price"},
+            { "data": "stock_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             { "data": "stock_upd_by"},
             { "data": "stock_upd_date"}
         ]
