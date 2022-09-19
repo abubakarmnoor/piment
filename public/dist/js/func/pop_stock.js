@@ -4,13 +4,20 @@ function load_data_dt(_url){
     $(".divhide").css('display', 'none');
 
     //popup btn
+    
+    $(".btnaddnew").on("click", function(e){
+        $(this).hide()
+        $(".divhide").css('display', '');
+    })
     $(".btnclose").on("click", function(e){
         $(".divhide").css('display', 'none');
+        $(".btnaddnew").show();
     })
     $(".btncancel").on("click", function(e){
         $("input[name=stock_qty]").val(0);
         $("textarea[name=stock_info]").val('');
         $(".divhide").css('display', 'none');
+        $(".btnaddnew").show();
     })
     
     // ajax
@@ -89,6 +96,7 @@ function load_data_dt(_url){
         $("input[name=stock_qty]").val(_qty);
         $("textarea[name=stock_info]").val(_info);
         $(".divhide").css('display', '');
+        $(".btnaddnew").hide();
     } );
     
     // Delete a record
