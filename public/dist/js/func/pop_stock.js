@@ -82,7 +82,7 @@ function load_data_dt(_url){
         e.preventDefault();
         //console.log( table.row( this ).data().id );
         const _id = table_stock.row( this ).data().stock_guid;
-        const __qty = table_stock.row( this ).data().stock_qty;
+        const _qty = table_stock.row( this ).data().stock_qty;
         const _info = table_stock.row( this ).data().stock_info;
         // const _type_id = table_stock.row( this ).data().stock_type_guid;
         $("input[name=stock_guid]").val(_id);
