@@ -64,7 +64,7 @@ function load_data_dt(_url){
                 orderable: true
             },
             { "data": "stock_info"},
-            { "data": "stock_qty"},
+            { "data": "stock_qty", render: $.fn.dataTable.render.number(',', '.', 0, '')},
             { "data": "stock_upd_by"},
             { "data": "stock_upd_date"}
         ]
