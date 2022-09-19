@@ -34,7 +34,7 @@ function load_data_dt(_url){
         "lengthChange": false,
         "ajax": _url,
         "processing": true,
-        "pageLength": 5,
+        // "pageLength": 5,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
         //"serverSide": true,
