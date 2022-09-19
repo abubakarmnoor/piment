@@ -196,7 +196,7 @@ function load_data_dt(_url){
             Swal.fire({
                 icon: 'warning',
                 title: 'Stock',
-                text: "Qty cannot 0"
+                text: "Qty / Price cannot 0"
             })
             return;
         }
