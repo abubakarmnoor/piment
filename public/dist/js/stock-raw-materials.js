@@ -52,7 +52,7 @@ $(document).ready(function() {
             },
             { "data": "stock_guid" },
             { "data": "stock_type_guid" },
-            // { "data": "stock_type" },
+            { "data": "prod_code" },
             {
                 data: "prod_desc",
                 className: "dt-center editor-details",
