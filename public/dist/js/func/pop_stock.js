@@ -154,8 +154,9 @@ function load_data_dt(_url){
         _data.type_id = $("input[name=stock_type_guid]").val();
         _data.pop_updated_by = "Admin";
         _data.tblname = "stock";
-        // console.log(_data);
-
+        console.log(_data);
+        return; 
+        
         // ajax - save/post data
         spinner_popup();
         $.ajax({
