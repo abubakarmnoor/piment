@@ -156,13 +156,12 @@ function load_data_dt(_url){
                         $("#spinner-modal").modal('hide')
                         $("#btn_pop_clear").click();
                         table_stock.ajax.url("/apis/pull/stock/rm/"+_data.type_id, null, false).load(); // refresh
+                        $("#btn_refresh").click();
                         Swal.fire({
                             icon: 'success',
                             title: "Data Deleted",
                             text: _data.desc
                         }).then(function(){
-                            //location.href='/clients'
-                            $("#btn_refresh").click();
                         });
                         
                     }, 
