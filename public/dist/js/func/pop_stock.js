@@ -41,7 +41,6 @@ function load_data_dt(_url){
                 className: "dt-center editor-details",
                 orderable: true
             },
-            { "data": "stock_cat"},
             { "data": "stock_info"},
             { "data": "stock_qty"},
             { "data": "stock_upd_by"},
