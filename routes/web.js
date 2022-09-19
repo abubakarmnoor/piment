@@ -206,15 +206,15 @@ router.get('/exchange-rate', (req, res) => {
 	});
 });
 router.get('/stock-raw-materials', async (req, res) => {
-	const __data_stock_pop = await getRMFP('rm');
+	// const __data_stock_pop = await getRMFP('rm');
 	res.render('stock-raw-materials.hbs', {
-		tables_bs4: true, stock_raw_materials: true, __data_stock_pop
+		tables_bs4: true, stock_raw_materials: true
 	});
 });
 router.get('/stock-finish-products', async (req, res) => {
-	const __data_stock_pop = await getRMFP('fp');
+	// const __data_stock_pop = await getRMFP('fp');
 	res.render('stock-finish-products.hbs', {
-		tables_bs4: true, stock_finish_products: true, __data_stock_pop
+		tables_bs4: true, stock_finish_products: true
 	});
 });
 //API - DB

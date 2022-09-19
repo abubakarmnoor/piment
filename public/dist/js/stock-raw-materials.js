@@ -22,7 +22,7 @@ $(document).ready(function() {
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/apis/pull/stock/rm",
+        "ajax": "apis/pull/rmfp/rm",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -178,7 +178,7 @@ $(document).ready(function() {
         // console.log(sdate_);
         // console.log(edate_);
         //var table = $('#registrationTable').DataTable();
-        table.ajax.url("apis/pull/stock/rm/", null, false).load(); // refresh pop
+        table.ajax.url("apis/pull/rmfp/rm", null, false).load(); // refresh pop
     })
 
     
