@@ -187,6 +187,7 @@ $(document).ready(function() {
 
 // function
 $(function(){
+    $.fn.dataTable.moment('dd/MM/YYYY');
     $(".datepicker").datepicker({
         format: 'yyyy-mm-dd',
         setDate: new Date(),
