@@ -177,7 +177,7 @@ $(document).ready(function() {
         // console.log(sdate_);
         // console.log(edate_);
         //var table = $('#registrationTable').DataTable();
-        table_stock.ajax.url("apis/pull/stock/rm/", null, false).load(); // refresh pop
+        table.ajax.url("apis/pull/stock/rm/", null, false).load(); // refresh pop
     })
 
 //end doc ready
