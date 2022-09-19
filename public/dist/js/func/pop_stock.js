@@ -89,7 +89,7 @@ function load_data_dt(_url){
                 className: "dt-center editor-details",
                 orderable: true
             },
-            { "data": "stock_trans_date", render: $.fn.dataTable.render.datetime('dd/MM/YYYY') },
+            { "data": "stock_trans_date", render: $.fn.dataTable.render.moment('dd/MM/YYYY') },
             { "data": "stock_info"},
             { "data": "stock_qty", render: $.fn.dataTable.render.number(',', '.', 0, '')},
             { "data": "stock_price"},
