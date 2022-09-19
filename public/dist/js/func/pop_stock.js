@@ -136,14 +136,14 @@ function load_data_dt(_url){
                     success: function(data) {
                         // $('.modal').modal('hide');
                         $("#spinner-modal").modal('hide')
+                        $("#btn_pop_clear").click();
+                        table_stock.ajax.url("/apis/pull/stock/rm/"+_data.type_id, null, false).load(); // refresh
                         Swal.fire({
                             icon: 'success',
                             title: "Data Deleted",
                             text: _data.desc
                         }).then(function(){
                             //location.href='/clients'
-                            $("#btn_pop_clear").click();
-                            table_stock.ajax.url("/apis/pull/stock/rm/"+_data.type_id, null, false).load(); // refresh
                             $("#btn_refresh").click();
                         });
                         
@@ -187,14 +187,14 @@ function load_data_dt(_url){
             data: JSON.stringify(_data),
             success: function(data) {
                 $("#spinner-modal").modal('hide')
+                table_stock.ajax.url("/apis/pull/stock/rm/"+_data.stock_type_guid, null, false).load(); // refresh
+                $("#btn_refresh").click();
                 Swal.fire({
                     icon: 'success',
                     title: '',
                     text: "Data Saved"
                 }).then(function(){
                     $(".btncancel").click();
-                    table_stock.ajax.url("/apis/pull/stock/rm/"+_data.stock_type_guid, null, false).load(); // refresh
-                    $("#btn_refresh").click();
                 });
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
