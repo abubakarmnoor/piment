@@ -182,7 +182,7 @@ $(document).ready(function() {
     })
 
     //popup btn
-    $(".btnclose .btncancel").on("click", function(e){
+    $(".btnclose, .btncancel").on("click", function(e){
         $(".divhide").css('display', 'none');
     })
 
