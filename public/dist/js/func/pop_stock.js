@@ -109,6 +109,7 @@ function load_data_dt(_url){
         e.preventDefault();
         let _data = {};
         _data.id = table_stock.row( this ).data().stock_guid;
+        _data.type_id = table_stock.row( this ).data().stock_type_guid;
         _data.desc = $("input[name=prod_desc").text();
         _data.upd_by = "Admin";
         // console.log(_data);
@@ -141,7 +142,7 @@ function load_data_dt(_url){
                             //location.href='/clients'
                             $("#btn_pop_clear").click();
                             // console.log(_data.pop_type);
-                            table_stock.ajax.url("/apis/pull/stock/rm/"+_data.stock_type_guid, null, false).load(); // refresh
+                            table_stock.ajax.url("/apis/pull/stock/rm/"+_data.type_id, null, false).load(); // refresh
                         });
                         
                     }, 
