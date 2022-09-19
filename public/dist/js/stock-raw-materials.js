@@ -5,7 +5,7 @@ $(document).ready(function() {
     var edate_ = moment().format('YYYY-MM-DD');;
     $('.selectpicker').selectpicker();
     // insert_element_rm();
-    load_data_dt('apis/pull/rmfp/rm/x1'); //init
+    // load_data_dt('apis/pull/rmfp/rm/'); //init
     //console.log(sdate_)
     //console.log(edate_)
 
