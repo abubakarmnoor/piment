@@ -1,8 +1,6 @@
-var type_guid_;
 //load data dt
 function load_data_dt(_url){
     //init
-    type_guid_=$("name[stock_type_guid]").val();
     $(".divhide").css('display', 'none');
 
     //popup btn
@@ -126,7 +124,7 @@ function load_data_dt(_url){
                             //location.href='/clients'
                             $("#btn_pop_clear").click();
                             // console.log(_data.pop_type);
-                            table_stock.ajax.url("/apis/pull/rmfp/rm/"+type_guid_, null, false).load(); // refresh pop
+                            table_stock.ajax.url("/apis/pull/rmfp/rm/"+_data.type_id, null, false).load(); // refresh
                         });
                         
                     }, 
@@ -153,6 +151,7 @@ function load_data_dt(_url){
         e.preventDefault();
         const form = $(e.target);
         const _data = convertFormToJSON(form);
+        _data.type_id = $("input[name=stock_type_guid]").val();
         _data.pop_updated_by = "Admin";
         _data.tblname = "stock";
         // console.log(_data);
@@ -173,7 +172,7 @@ function load_data_dt(_url){
                     text: "Data Saved"
                 }).then(function(){
                     $("#btn_pop_clear").click();
-                    table_stock.ajax.url("apis/pull/rmfp/rm/"+type_guid_, null, false).load(); // refresh pop
+                    table_stock.ajax.url("apis/pull/rmfp/rm/"+_data.type_id, null, false).load(); // refresh
                     selectpicker_reload(_data.pop_type);
                 });
             }, 
