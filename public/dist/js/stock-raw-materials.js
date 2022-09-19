@@ -108,6 +108,7 @@ $(document).ready(function() {
     $('#dtTbl').on('click', 'td.editor-details', function (e) {
         e.preventDefault();
         const id = table.row( this ).data().stock_type_guid;
+        $("input[name=stock_type_guid]").val(id)
         const prod_desc_ = table.row( this ).data().prod_desc;
         $("input[name=prod_desc]").val(prod_desc_)
         table_stock.ajax.url("apis/pull/stock/rm/"+id, null, false).load(); // refresh pop
