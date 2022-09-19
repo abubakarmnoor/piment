@@ -11,6 +11,7 @@ function load_data_dt(_url){
         $("input[name=stock_guid]").val('');
         $("input[name=stock_qty]").val(0);
         $("textarea[name=stock_info]").val('');
+        $("input[name=stock_qty]").focus();
     })
     $(".btnclose").on("click", function(e){
         $(".divhide").css('display', 'none');
