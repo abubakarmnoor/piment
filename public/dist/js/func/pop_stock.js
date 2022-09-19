@@ -121,7 +121,7 @@ function load_data_dt(_url){
         .val(_qty)
         .focusout();
         $("input[name=stock_price]")
-        .val(numberWithCommas(_price))
+        .val(parseInt(_price))
         .focusout();
         $("textarea[name=stock_info]").val(_info);
         $(".divhide").css('display', '');
