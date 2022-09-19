@@ -192,4 +192,4 @@ $(function(){
         autoclose: true,
         todayHighlight: true,
     });
-   });
+});
