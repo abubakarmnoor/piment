@@ -6,7 +6,7 @@ function load_data_dt(_url){
         $('#form__')[0].reset();
     })
     // ajax
-    table = $('#dtTbl_pop').DataTable({
+    table_stock = $('#dtTbl_pop').DataTable({
         // "scrollY": "370px",
         "scrollCollapse": true,
         "paging": true, 
@@ -52,7 +52,7 @@ function load_data_dt(_url){
     $('#dtTbl_pop').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
-        const _id = table.row( this ).data().stock_guid;
+        const _id = table_stock.row( this ).data().stock_guid;
          
     } );
     
@@ -60,8 +60,8 @@ function load_data_dt(_url){
     $('#dtTbl_pop').on('click', 'td.editor-delete', function (e) {
         e.preventDefault();
         let _data = {};
-        _data.id = table.row( this ).data().stock_guid;
-        _data.type_id = table.row( this ).data().stock_type_guid;
+        _data.id = table_stock.row( this ).data().stock_guid;
+        _data.type_id = table_stock.row( this ).data().stock_type_guid;
         _data.desc = $("label[name=prod_desc").text();
         _data.upd_by = "Admin";
         // console.log(_data);
@@ -94,7 +94,7 @@ function load_data_dt(_url){
                             //location.href='/clients'
                             $("#btn_pop_clear").click();
                             // console.log(_data.pop_type);
-                            table.ajax.url("/apis/pull/rmfp/rm/"+type_guid_, null, false).load(); // refresh pop
+                            table_stock.ajax.url("/apis/pull/rmfp/rm/"+type_guid_, null, false).load(); // refresh pop
                         });
                         
                     }, 
@@ -141,7 +141,7 @@ function load_data_dt(_url){
                     text: "Data Saved"
                 }).then(function(){
                     $("#btn_pop_clear").click();
-                    table.ajax.url("apis/pull/rmfp/rm/"+type_guid_, null, false).load(); // refresh pop
+                    table_stock.ajax.url("apis/pull/rmfp/rm/"+type_guid_, null, false).load(); // refresh pop
                     selectpicker_reload(_data.pop_type);
                 });
             }, 

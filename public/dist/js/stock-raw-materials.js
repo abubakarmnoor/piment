@@ -5,7 +5,7 @@ $(document).ready(function() {
     var edate_ = moment().format('YYYY-MM-DD');;
     // $('.selectpicker').selectpicker();
     // insert_element_rm();
-    // load_data_dt('/apis/pull/stock/rm/'); //init
+    load_data_dt('/apis/pull/stock/rm/x1'); //init
     //console.log(sdate_)
     //console.log(edate_)
 
@@ -87,7 +87,8 @@ $(document).ready(function() {
         e.preventDefault();
         const id = table.row( this ).data().stock_type_guid;
         const prod_desc_ = table.row( this ).data().prod_desc;
-        load_data_dt('/apis/pull/stock/rm/'+id); //init
+        table_stock.ajax.url("apis/pull/rmfp/rm/"+type_guid_, null, false).load(); // refresh pop
+
         $("#prod_desc").text(prod_desc_)
         $("#pop-modal-form").modal('show')
         
