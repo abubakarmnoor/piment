@@ -3,8 +3,8 @@ var type_guid_;
 function load_data_dt(_url){
     //init
     type_guid_=$("name[stock_type_guid]").val();
-    $(".form-group row stock_qty").css('display', 'none');
-    $(".form-group row stock_info").css('display', 'none');
+    $(".stock_qty").css('display', 'none');
+    $(".stock_info").css('display', 'none');
     $("#btn_pop_clear").on("click", function(){
         $('#form__')[0].reset();
     })
@@ -78,7 +78,7 @@ function load_data_dt(_url){
         //console.log( table.row( this ).data().id );
         const _id = table_stock.row( this ).data().stock_guid;
         const _type_id = table_stock.row( this ).data().stock_type_guid;
-        $(".form-group row").css('display', '');
+        $(".form-group .row").css('display', '');
     } );
     
     // Delete a record
