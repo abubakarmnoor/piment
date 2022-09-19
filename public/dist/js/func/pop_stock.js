@@ -85,8 +85,8 @@ function load_data_dt(_url){
             },
             { "data": "stock_info"},
             { "data": "stock_qty", render: $.fn.dataTable.render.number(',', '.', 0, '')},
-            // { "data": "stock_upd_by"},
-            // { "data": "stock_upd_date"}
+            { "data": "stock_upd_by"},
+            { "data": "stock_upd_date"}
         ]
     });
     

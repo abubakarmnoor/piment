@@ -28,7 +28,7 @@ $(document).ready(function() {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
         //"serverSide": true,
         "columnDefs": [{
-            "targets": [0,1,2,3],
+            "targets": [0,1,2],
             "visible": false
         }
         // ,{
@@ -50,7 +50,7 @@ $(document).ready(function() {
                 defaultContent: '<i class="fa fa-trash"/>',
                 orderable: false
             },
-            { "data": "stock_guid" },
+            // { "data": "stock_guid" },
             { "data": "stock_type_guid" },
             {
                 data: "prod_code",
@@ -58,10 +58,10 @@ $(document).ready(function() {
                 orderable: true
             },
             { "data": "prod_desc" },
-            { "data": "stock_qty" },
+            { "data": "stock_qty" }
             // { "data": "rm_cost", render: $.fn.dataTable.render.number(',', '.', 0, '')},
-            { "data": "stock_upd_by" },
-            { "data": "stock_upd_date" }
+            // { "data": "stock_upd_by" },
+            // { "data": "stock_upd_date" }
         ],
         order: [[1, 'asc']],
     });
