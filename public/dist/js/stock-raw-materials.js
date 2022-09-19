@@ -52,12 +52,12 @@ $(document).ready(function() {
             },
             { "data": "stock_guid" },
             { "data": "stock_type_guid" },
-            { "data": "prod_code" },
             {
-                data: "prod_desc",
+                data: "prod_code",
                 className: "dt-center editor-details",
                 orderable: true
             },
+            { "data": "prod_desc" },
             { "data": "stock_qty" },
             // { "data": "rm_cost", render: $.fn.dataTable.render.number(',', '.', 0, '')},
             { "data": "stock_upd_by" },
