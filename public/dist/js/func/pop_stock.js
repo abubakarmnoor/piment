@@ -8,7 +8,7 @@ function load_data_dt(_url){
     $(".btnaddnew").on("click", function(e){
         $(this).hide()
         $(".divhide").css('display', '');
-        $('.datepicker').datepicker('setDate', new Date());
+        $("input[name=stock_trans_date]").datepicker('setDate', new Date());
         $("input[name=stock_guid]").val('');
         $("input[name=stock_qty]").val(0);
         $("textarea[name=stock_info]").val('');
@@ -20,7 +20,7 @@ function load_data_dt(_url){
         $(".btnaddnew").show();
     })
     $(".btncancel").on("click", function(e){
-        $('.datepicker').datepicker('setDate', new Date());
+        $("input[name=stock_trans_date]").datepicker('setDate', new Date());
         $("input[name=stock_guid]").val('');
         $("input[name=stock_qty]").val(0);
         $("textarea[name=stock_info]").val('');
@@ -89,7 +89,7 @@ function load_data_dt(_url){
                 className: "dt-center editor-details",
                 orderable: true
             },
-            { "data": "stock_trans_date"},
+            { "data": "stock_trans_date", render: $.fn.dataTable.render.moment( 'dd/MM/yyyy' ) },
             { "data": "stock_info"},
             { "data": "stock_qty", render: $.fn.dataTable.render.number(',', '.', 0, '')},
             { "data": "stock_price"},
@@ -105,9 +105,13 @@ function load_data_dt(_url){
         const _id = table_stock.row( this ).data().stock_guid;
         const _qty = table_stock.row( this ).data().stock_qty;
         const _info = table_stock.row( this ).data().stock_info;
+        const _trans_date = table_stock.row( this ).data().stock_trans_date;
+        const _price = table_stock.row( this ).data().stock_price;
         // const _type_id = table_stock.row( this ).data().stock_type_guid;
         $("input[name=stock_guid]").val(_id);
+        $("input[name=stock_trans_date]").datepicker('setDate', _trans_date);
         $("input[name=stock_qty]").val(_qty);
+        $("input[name=stock_price]").val(_price);
         $("textarea[name=stock_info]").val(_info);
         $(".divhide").css('display', '');
         $(".btnaddnew").hide();
