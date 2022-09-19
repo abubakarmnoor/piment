@@ -169,6 +169,7 @@ function load_data_dt(_url){
         const form = $(e.target);
         const _data = convertFormToJSON(form);
         _data.stock_upd_by = "Admin";
+        _data.stock_type = "rm";
         _data.tblname = "stock";
         console.log(_data);
         return; 
