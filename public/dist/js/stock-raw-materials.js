@@ -81,28 +81,6 @@ $(document).ready(function() {
             tr.addClass('shown');
         }
     });
-
-    // // New record
-    // $('a.editor-create').on('click', function (e) {
-    //     e.preventDefault();
-    //     const id = table.row( this ).data().stock_type_guid;
-    //     const prod_desc_ = table.row( this ).data().prod_desc;
-    //     $("input[prod_desc]").val(prod_desc_)
-    //     table_stock.ajax.url("apis/pull/stock/rm/"+id, null, false).load(); // refresh pop
-        
-    //     $("#pop-modal-form").modal('show')
-        
-    // } );
-
-    //// Edit record
-    // $('#dtTbl').on('click', 'td.editor-edit', function (e) {
-    //     e.preventDefault();
-    //     const id = table.row( this ).data().stock_type_guid;
-    //     const prod_desc_ = table.row( this ).data().prod_desc;
-    //     $("label[name=prod_desc").text(prod_desc_);
-    //     load_data_dt('/apis/pull/stock/rm/'+id); //init
-    //     $("#pop-modal-form").modal('show')
-    // } );
     
     // Details record
     $('#dtTbl').on('click', 'td.editor-details', function (e) {
@@ -114,59 +92,7 @@ $(document).ready(function() {
         table_stock.ajax.url("apis/pull/stock/rm/"+id, null, false).load(); // refresh pop
         $("#pop-modal-form").modal('show')
     } );
-    // Delete a record
-    // $('#dtTbl').on('click', 'td.editor-delete', function (e) {
-    //     e.preventDefault();
-    //     let _data = {};
-    //     _data.id = table.row( this ).data().stock_guid;
-    //     _data.prod_desc = table.row( this ).data().prod_desc;
-    //     _data.upd_by = "Admin";
-    //     // console.log(_data);
-    //     // console.log( table.row( this ).data().id );
-
-    //     Swal.fire({
-    //         title: 'Are you sure?',
-    //         text: "You won't be able to revert this! ("+_data.prod_desc+")",
-    //         icon: 'warning',
-    //         showCancelButton: true,
-    //         confirmButtonColor: '#3085d6',
-    //         cancelButtonColor: '#d33',
-    //         confirmButtonText: 'Yes, delete it!'
-    //     }).then((result) => {
-    //         if (result.isConfirmed) {
-    //             spinner_popup();
-    //             $.ajax({
-    //                 type:"POST",
-    //                 url: "/apis/del/stock", 
-    //                 contentType: "application/json; charset=utf-8",
-    //                 dataType: "json",
-    //                 data: JSON.stringify(_data),
-    //                 success: function(data) {
-    //                     $('.modal').modal('hide');
-    //                     Swal.fire({
-    //                         icon: "success",
-    //                         title: "Data Deleted",
-    //                         text: _data.prod_desc
-    //                     }).then(function(){
-    //                         // location.href='/raw-materials'
-    //                         $("#btn_refresh").click();
-    //                     });
-                        
-    //                 }, 
-    //                 error: function(jqXHR, textStatus, errorThrown) {
-    //                     //alert(jqXHR.status);
-    //                     $('.modal').modal('hide');
-    //                     Swal.fire({
-    //                         title: "Error!",
-    //                         text: textStatus,
-    //                         icon: "error"
-    //                     });
-    //                 }
-    //             });
-    //         }
-    //     })
-    // } );
-
+    
     $("#btn_refresh").on("click", function(){
         // spinner_popup();
         var sdate_ =  moment($("input[name='daterangepicker_start']").val()).format('YYYY-MM-DD');
@@ -187,7 +113,6 @@ $(document).ready(function() {
 
 // function
 $(function(){
-    $.fn.dataTable.moment('dd/MM/YYYY');
     $(".datepicker").datepicker({
         format: 'yyyy-mm-dd',
         setDate: new Date(),
