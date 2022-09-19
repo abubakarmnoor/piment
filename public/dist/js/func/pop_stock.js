@@ -4,30 +4,24 @@ function load_data_dt(_url){
     $(".divhide").css('display', 'none');
 
     //popup btn
-    
     $(".btnaddnew").on("click", function(e){
         $(this).hide()
         $(".divhide").css('display', '');
-        $("input[name=stock_trans_date]").datepicker('setDate', new Date());
-        $("input[name=stock_guid]").val('');
-        $("input[name=stock_qty]").val(0);
-        $("textarea[name=stock_info]").val('');
-        $("input[name=stock_price]").val(0);
-        $("input[name=stock_qty]").focus();
+        clear();
     })
     $(".btnclose").on("click", function(e){
         $(".divhide").css('display', 'none');
         $(".btnaddnew").show();
+        $(".modal-title").html('STOCK')
     })
     $(".btncancel").on("click", function(e){
-        $("input[name=stock_trans_date]").datepicker('setDate', new Date());
-        $("input[name=stock_guid]").val('');
-        $("input[name=stock_qty]").val(0);
-        $("textarea[name=stock_info]").val('');
-        $("input[name=stock_price]").val(0);
-        $("input[name=stock_qty]").focus();
+        clear();
         $(".divhide").css('display', 'none');
+        $(".modal-title").html('STOCK')
         $(".btnaddnew").show();
+    })
+    $(".btnclear").on("click", function(e){
+        clear();
     })
     
     // ajax
@@ -253,4 +247,15 @@ function load_data_dt(_url){
         });
 
     });
+}
+
+// functions 
+clear = function(){
+    $("input[name=stock_trans_date]").datepicker('setDate', new Date());
+    $("input[name=stock_guid]").val('');
+    $("input[name=stock_qty]").val(0);
+    $("textarea[name=stock_info]").val('');
+    $("input[name=stock_price]").val(0);
+    $("input[name=stock_qty]").focus();
+    $(".modal-title").html('STOCK - ADD NEW')
 }
