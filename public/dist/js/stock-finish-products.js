@@ -59,6 +59,7 @@ $(document).ready(function() {
                 className: "dt-center editor-details",
                 orderable: true
             },
+            { "data": "prod_family" },
             { "data": "stock_qty" }
             // { "data": "rm_cost", render: $.fn.dataTable.render.number(',', '.', 0, '')},
             // { "data": "stock_upd_by" },
