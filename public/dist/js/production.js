@@ -13,54 +13,54 @@ $(document).ready(function() {
     //         'csvHtml5',
     //         'pdfHtml5'
     //     ], --}}
-    table = $('#dtTbl').DataTable({
-        // "scrollY": "370px",
-        "scrollCollapse": true,
-        "paging": true, 
-        "lengthChange": false,
-        "ajax": "/apis/pull/production",
-        "processing": true,
-        "language": {
-            processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
-        //"serverSide": true,
-        "columnDefs": [{
-            "targets": [ 2 ],
-            "visible": false
-        }],
-        "columns": [
-            {
-                data: null,
-                className: "dt-center editor-edit",
-                defaultContent: '<i class="fa fa-pencil"/>',
-                orderable: false
-            },
-            {
-                data: null,
-                className: "dt-center editor-delete",
-                defaultContent: '<i class="fa fa-trash"/>',
-                orderable: false
-            },
-            { "data": "supplier_guid" },
-            {
-                data: "supplier_name",
-                className: "dt-center editor-details",
-                orderable: true
-            },
-            { "data": "supplier_country" },
-            { "data": "supplier_active",  "render": function ( data, type, row ) {
-                switch (data) {
-                    case 1:
-                        return 'True';
-                        break;
-                    case 0:
-                        return 'False';
-                        break;
-                    default:
-                        return "other";
-                }
-            } },
-        ]
-    });
+    // table = $('#dtTbl').DataTable({
+    //     // "scrollY": "370px",
+    //     "scrollCollapse": true,
+    //     "paging": true, 
+    //     "lengthChange": false,
+    //     "ajax": "/apis/pull/production",
+    //     "processing": true,
+    //     "language": {
+    //         processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
+    //     //"serverSide": true,
+    //     "columnDefs": [{
+    //         "targets": [ 2 ],
+    //         "visible": false
+    //     }],
+    //     "columns": [
+    //         {
+    //             data: null,
+    //             className: "dt-center editor-edit",
+    //             defaultContent: '<i class="fa fa-pencil"/>',
+    //             orderable: false
+    //         },
+    //         {
+    //             data: null,
+    //             className: "dt-center editor-delete",
+    //             defaultContent: '<i class="fa fa-trash"/>',
+    //             orderable: false
+    //         },
+    //         { "data": "prod_guid" },
+    //         {
+    //             data: "order_code",
+    //             className: "dt-center editor-details",
+    //             orderable: true
+    //         },
+    //         { "data": "supplier_country" },
+    //         { "data": "supplier_active",  "render": function ( data, type, row ) {
+    //             switch (data) {
+    //                 case 1:
+    //                     return 'True';
+    //                     break;
+    //                 case 0:
+    //                     return 'False';
+    //                     break;
+    //                 default:
+    //                     return "other";
+    //             }
+    //         } },
+    //     ]
+    // });
     
     // New record
     $('a.editor-create').on('click', function (e) {
