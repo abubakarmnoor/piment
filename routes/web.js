@@ -63,7 +63,7 @@ router.get('/purchase-details/:pid/:act', (req, res) => {
 router.get('/production', (req, res) => {
 	res.set('Cache-Control', 'max-age=1');
 	res.render('production.hbs', {
-		// flot: true
+		tables_bs4: true, production:true
 	});
 });
 // router.get('/packing-list', (req, res) => {
