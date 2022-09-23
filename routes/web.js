@@ -30,16 +30,16 @@ router.get('/', (req, res) => {
 	});
 });
 
-router.get('/order-list', (req, res) => {
-	res.render('order-list.hbs', {
-		tables_bs4: true, order_list:true
+router.get('/client-order', (req, res) => {
+	res.render('client-order.hbs', {
+		tables_bs4: true, client_order:true
 	});
 });
-router.get('/order-list-details/:olid/:act', (req, res) => {
+router.get('/client-order-details/:olid/:act', (req, res) => {
 	const _act = req.params.act
 	const _olid = req.params.olid
-	res.render('order-list-details.hbs', {
-		tables_bs4: true, order_list_details:true, olid:_olid, act:_act
+	res.render('client-order-details.hbs', {
+		tables_bs4: true, client_order_details:true, olid:_olid, act:_act
 	});
 });
 

@@ -65,7 +65,6 @@ $(document).ready(function() {
     // New record
     $('a.editor-create').on('click', function (e) {
         e.preventDefault();
-        location.href = "/supplier-details/null/YWRkbmV3";
         
     } );
 
@@ -73,29 +72,29 @@ $(document).ready(function() {
     $('#dtTbl').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
-        const _id = table.row( this ).data().supplier_guid;
-        location.href = "/supplier-details/"+_id+"/ZWlk";
+        const _id = table.row( this ).data().production_guid;
+        
     } );
     
     // Details record
     $('#dtTbl').on('click', 'td.editor-details', function (e) {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
-        const _id = table.row( this ).data().supplier_guid;
-        location.href = "/supplier-details/"+_id+"/ZGlk";
+        const _id = table.row( this ).data().production_guid;
+        
         
     } );
     // Delete a record
     $('#dtTbl').on('click', 'td.editor-delete', function (e) {
         e.preventDefault();
         let _data = {};
-        _data.id = table.row( this ).data().supplier_guid;
-        _data.supplier_name = table.row( this ).data().supplier_name
+        _data.id = table.row( this ).data().production_guid;
+        _data.client_name = table.row( this ).data().client_name
         _data.upd_by = "Admin";
         
         Swal.fire({
             title: 'Are you sure?',
-            text: "You won't be able to revert this! ("+_data.supplier_name+")",
+            text: "You won't be able to revert this! ("+_data.client_name+")",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -107,7 +106,7 @@ $(document).ready(function() {
                 // console.log(_data);
                 $.ajax({
                     type:"POST",
-                    url: "/apis/del/supplier", 
+                    url: "/apis/del/production", 
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     data: JSON.stringify(_data),
@@ -157,7 +156,7 @@ $(document).ready(function() {
         // console.log(sdate_);
         // console.log(edate_);
         //var table = $('#registrationTable').DataTable();
-        table.ajax.url("/apis/pull/supplier", null, false).load();
+        table.ajax.url("/apis/pull/production", null, false).load();
     })
 
 //end doc ready

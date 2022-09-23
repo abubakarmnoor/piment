@@ -19,7 +19,7 @@ $(document).ready(function() {
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/data/order-list.json?sdate="+sdate_+"?edate="+edate_,
+        "ajax": "/data/client-order.json?sdate="+sdate_+"?edate="+edate_,
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -63,7 +63,7 @@ $(document).ready(function() {
     // New record
     $('a.editor-create').on('click', function (e) {
         e.preventDefault();
-        location.href = "/order-list-details/null/YWRkbmV3";
+        location.href = "/client-order-details/null/YWRkbmV3";
     } );
 
     // Edit record
@@ -71,7 +71,7 @@ $(document).ready(function() {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
         const _id = table.row( this ).data().id;
-        location.href = "/order-list-details/"+_id+"/ZWlk";
+        location.href = "/client-order-details/"+_id+"/ZWlk";
     } );
     
     // Details record
@@ -79,7 +79,7 @@ $(document).ready(function() {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
         const _id = table.row( this ).data().id;
-        location.href = "/order-list-details/"+_id+"/ZGlk/";
+        location.href = "/client-order-details/"+_id+"/ZGlk/";
         
     } );
     // Delete a record
@@ -117,7 +117,7 @@ $(document).ready(function() {
         // console.log(sdate_);
         // console.log(edate_);
         //var table = $('#registrationTable').DataTable();
-        table.ajax.url("/data/order-list.json?sdate="+sdate_+"?edate="+edate_, null, false).load();
+        table.ajax.url("/data/client-order.json?sdate="+sdate_+"?edate="+edate_, null, false).load();
     })
 
 //end doc ready

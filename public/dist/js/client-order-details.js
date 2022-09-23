@@ -23,7 +23,7 @@ $(document).ready(function() {
         $('.selectpicker').selectpicker('refresh');
 
         $("#ck_active").attr("disabled", true);
-        $(".cancel").replaceWith("<a href='/order-list' type='button' class='btn btn-outline btn-primary'><i class='fa fa-long-arrow-left'></i> Back</a>");
+        $(".cancel").replaceWith("<a href='/client-order' type='button' class='btn btn-outline btn-primary'><i class='fa fa-long-arrow-left'></i> Back</a>");
         get_details();
         
     
@@ -53,7 +53,7 @@ $(document).ready(function() {
         spinner_popup();
         $.ajax({
             type:"GET", // must be POST 
-            url: "/data/order-list.json", 
+            url: "/data/client-order.json", 
             dataType: "json",
             data: _data,
             success: function(data) {
@@ -64,7 +64,7 @@ $(document).ready(function() {
                         title: '',
                         text: "Data Saved"
                     }).then(function(){
-                        location.href='/order-list'
+                        location.href='/client-order'
                     });
                     
                 }, 3000);
