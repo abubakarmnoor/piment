@@ -2,9 +2,10 @@ $(document).ready(function() {
             
     //default
     $('.selectpicker').selectpicker();
-    // insert_element_curr();insert_element_kayu();insert_element_unit();insert_element_creator();
-    // load_data_dt('/data/pop-product-family.json'); //init
-
+    insert_element_status();
+    
+    $("input[name=co_client_guid]").val("")
+    $("input[name=co_client_status]").val("")
     //edit or add new
     if (location.href.includes('ZWlk')) {
         $('.page-header').text('CLIENT ORDER UPDATES')
@@ -333,59 +334,6 @@ function get_details(){
 }
 
 //insert element
-function insert_element_pf(){
-    $('<a href="#" type="button" class="pull-right" id="btn_pop_pf" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(5) > div:nth-child(1) > div > div > div');
-}
-function insert_element_kayu(){
-    $('<a href="#" type="button" class="pull-right" id="btn_pop_kayu" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(6) > div:nth-child(2) > div > div > div');
-}
-function insert_element_unit(){
-    $('<a href="#" type="button" class="pull-right" id="btn_pop_unit" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(5) > div:nth-child(3) > div > div > div');
-}
-function insert_element_creator(){
-    $('<a href="#" type="button" class="pull-right" id="btn_pop_creator" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(6) > div:nth-child(3) > div > div > div');
-    
-}
-//load data dt
-function load_data_dt(_url){
-    // ajax
-    table = $('#dtTbl_pop').DataTable({
-        // "scrollY": "370px",
-        "scrollCollapse": true,
-        "paging": true, 
-        "lengthChange": false,
-        "ajax": _url,
-        "processing": true,
-        "pageLength": 5,
-        "language": {
-            processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
-        //"serverSide": true,
-        "columnDefs": [
-            {
-                "targets": [ 2 ],
-                "visible": false
-            }
-        ],  
-        "columns": [
-            {
-                data: null,
-                className: "dt-center editor-edit",
-                defaultContent: '<i class="fa fa-pencil"/>',
-                orderable: false
-            },
-            {
-                data: null,
-                className: "dt-center editor-delete",
-                defaultContent: '<i class="fa fa-trash"/>',
-                orderable: false
-            },
-            {
-                data: "id",
-                className: "dt-center editor-details",
-                orderable: true
-            },
-            { "data": "pop_desc" },
-            { "data": "active" },
-        ]
-    });
+function insert_element_status(){
+    $('<a href="#" type="button" class="pull-right" id="btn_pop_status" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(5) > div:nth-child(2) > div > div > div');
 }
