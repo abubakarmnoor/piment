@@ -12,15 +12,25 @@ try {
     }
 };
 const getRM = async () => {
-    try {
-        const resp = await axios.get(api_url+'/apis/pull/rm/');
-        return JSON.parse(JSON.stringify(resp.data.data));
-            // console.log(resp.data);
-        } catch (err) {
-            // Handle Error Here
-            console.error(err);
-        }
-    };
+try {
+    const resp = await axios.get(api_url+'/apis/pull/rm/');
+    return JSON.parse(JSON.stringify(resp.data.data));
+        // console.log(resp.data);
+    } catch (err) {
+        // Handle Error Here
+        console.error(err);
+    }
+};
+const getClient = async () => {
+try {
+    const resp = await axios.get(api_url+'/apis/pull/client/');
+    return JSON.parse(JSON.stringify(resp.data.data));
+        // console.log(resp.data);
+    } catch (err) {
+        // Handle Error Here
+        console.error(err);
+    }
+};
 const getRMFP = async (type) => {
     try {
     const resp = await axios.get(api_url+'/apis/pull/rmfp/');
@@ -31,4 +41,4 @@ const getRMFP = async (type) => {
         console.error(err);
     }
 };
-module.exports = {getPopupData, getRM, getRMFP};
+module.exports = {getPopupData, getRM, getRMFP, getClient};

@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const router = express.Router();
 // const axios = require('axios').default;
-const {getPopupData, getRM, getRMFP} = require('./functions')
+const {getPopupData, getRM, getRMFP, getClient} = require('./functions')
 // const tsqlPull = require('../tsql/pull');
 //fs = require('fs');
 
@@ -35,11 +35,13 @@ router.get('/client-order', (req, res) => {
 		tables_bs4: true, client_order:true
 	});
 });
-router.get('/client-order-details/:olid/:act', (req, res) => {
+router.get('/client-order-details/:olid/:act', async (req, res) => {
 	const _act = req.params.act
 	const _olid = req.params.olid
+	const __data_pop_status = await getPopupData('status');
+	const __data_client = await getClient();
 	res.render('client-order-details.hbs', {
-		tables_bs4: true, client_order_details:true, olid:_olid, act:_act
+		tables_bs4: true, client_order_details:true, olid:_olid, act:_act, __data_pop_status, __data_client
 	});
 });
 
