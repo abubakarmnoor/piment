@@ -104,16 +104,16 @@
                                                     <div class="col-md-4 mb-3">
                                                         <label for="sp_client">Status</label>
                                                         <select class="form-control selectpicker" id="sp_client" name="client" data-live-search="true">
-                                                            <option value="-">-</option>
+                                                            {{!-- <option value="-">-</option> --}}
                                                             {{#each __data_pop_status}}
                                                                 <option value={{id}}>{{pop_desc}}</option>
                                                             {{/each}}
                                                         </select>
                                                     </div>
-                                                    
                                                 </div>
                                                 <div class="form-group">
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-12 mb-3">
+                                                        <label for="sp_client">Remark</label>
                                                         <textarea type="text" class="form-control rounded-0" name="co_notes" autocomplete="off" rows="3"></textarea>
                                                     </div>
                                                 </div>
