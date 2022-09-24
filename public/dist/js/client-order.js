@@ -19,7 +19,7 @@ $(document).ready(function() {
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/data/client-order.json?sdate="+sdate_+"?edate="+edate_,
+        "ajax": "/apis/pull/co",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -48,15 +48,14 @@ $(document).ready(function() {
             },
             { "data": "id" },
             {
-                data: "order_id",
+                data: "co_guid",
                 className: "dt-center editor-details",
                 orderable: true
             },
-            { "data": "client" },
-            { "data": 'delivery_date'},
-            { "data": "order_date" },
+            { "data": "client_name" },
+            { "data": "co_order_date" },
+            { "data": 'co_delivery_date'},
             { "data": "status" },
-            { "data": "lamps" },
         ]
     });
     
