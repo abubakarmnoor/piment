@@ -45,8 +45,8 @@ $(document).ready(function() {
         const form = $(e.target);
         const _data = convertFormToJSON(form);
         console.log(_data);
-        if (!_data.co_client_guid || !_data.co_status){}
-        else{
+        if (!_data.co_client_guid || !_data.co_status)
+        {
             Swal.fire({
                 icon: 'warning',
                 title: 'Submit',
