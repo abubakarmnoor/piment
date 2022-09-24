@@ -5,7 +5,7 @@ $(document).ready(function() {
     insert_element_status();
     
     $("#co_client_guid").selectpicker('val',null)
-    $("input[name=co_status]").selectpicker('val',null)
+    $("#co_status").selectpicker('val',null)
     //edit or add new
     if (location.href.includes('ZWlk')) {
         $('.page-header').text('CLIENT ORDER UPDATES')
