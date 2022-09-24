@@ -87,7 +87,7 @@
                                                 <div class="form-group">
                                                     <div class="col-md-4 mb-3">
                                                         <label for="co_client_guid">Client</label>
-                                                        <select class="form-control selectpicker" id="co_client_guid" name="co_client_guid" data-live-search="true">
+                                                        <select class="form-control selectpicker" id="co_client_guid" name="co_client_guid" data-live-search="true" required>
                                                             {{!-- <option value="-">-</option> --}}
                                                             {{#each __data_client}}
                                                                 <option value={{client_guid}}>{{client_name}}</option>
@@ -96,7 +96,7 @@
                                                     </div>
                                                     <div class="col-md-4 mb-3">
                                                         <label for="co_status">Status</label>
-                                                        <select class="form-control selectpicker" id="co_status" name="co_status" data-live-search="true">
+                                                        <select class="form-control selectpicker" id="co_status" name="co_status" data-live-search="true" required>
                                                             {{!-- <option value="-">-</option> --}}
                                                             {{#each __data_pop_status}}
                                                                 <option value={{pop_guid}}>{{pop_desc}}</option>
