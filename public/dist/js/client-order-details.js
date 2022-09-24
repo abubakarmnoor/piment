@@ -7,7 +7,7 @@ $(document).ready(function() {
 
     //edit or add new
     if (location.href.includes('ZWlk')) {
-        $('.page-header').text('ORDER LIST UPDATES')
+        $('.page-header').text('CLIENT ORDER UPDATES')
         
         // let url = location.href;
         // let id = getURLParameter(url, 'eid');
@@ -15,7 +15,7 @@ $(document).ready(function() {
         get_details();
         
     }else if (location.href.includes('ZGlk')) {
-        $('.page-header').text('ORDER LIST DETAILS');
+        $('.page-header').text('CLIENT ORDER DETAILS');
         $("#btn_save").hide();
         $("#form_ :input").prop('readonly', true);
         
@@ -30,7 +30,7 @@ $(document).ready(function() {
     }else{
         $('.page-header').text('ORDER LIST ADD NEW')
         let username = 'test';
-        get_date_default(username,null, username, null)
+        
     }
 
      //btn

@@ -30,7 +30,6 @@ $(document).ready(function() {
     }else{
         $('.page-header').text('PURCHASE LIST ADD NEW')
         let username = 'test';
-        get_date_default(username,null, username, null)
     }
 
      //btn
