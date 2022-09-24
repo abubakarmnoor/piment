@@ -76,7 +76,6 @@
                                                     <button type="submit" class="btn btn-outline btn-primary" id="btn_save_details"><i class="fa fa-save"></i> Save</button>
                                                     <div class="col-md pull-right">&nbsp;</div>
                                                 </div>
-
                                                 <div class="form-group">
                                                     <div class="col-md-4 mb-3">
                                                         <label for="order_id">Order Id #</label>
@@ -84,64 +83,24 @@
                                                     </div>
                                                     <div class="col-md-2 mb-3">
                                                         <label for="order_date">Order Date</label>
-                                                        <input type="text" class="form-control" name="order_date" id="order_date" placeholder="Order Date" autocomplete="off" required>
+                                                        <input type="date" class="form-control" name="order_date" placeholder="Order Date" autocomplete="off" required>
                                                     </div>
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="delivery_date">Delivery Date</label>
+                                                        <input type="date" class="form-control" name="delivery_date" placeholder="Delivery Date" autocomplete="off" required>
+                                                    </div>
+                                                    
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-4 mb-3">
                                                         <label for="sp_client">Client</label>
-                                                        <select class="form-control selectpicker" id="sp_client" name="client" data-live-search="true">
-                                                            <option value="-">-</option>
+                                                        <select class="form-control selectpicker" name="client" data-live-search="true">
+                                                            {{!-- <option value="-">-</option> --}}
                                                             {{#each __data_pop_client}}
-                                                                <option value={{id}}>{{pop_desc}}</option>
+                                                                <option value={{client_guid}}>{{client_name}}</option>
                                                             {{/each}}
                                                         </select>
                                                     </div>
-                                                    <div class="col-md-4 mb-3">
-                                                        <label for="standard">Standard</label>
-                                                        <select class="form-control selectpicker" id="sp_standard" name="standard" data-live-search="true">
-                                                            <option value="-">-</option>
-                                                            {{#each __data_pop_standard}}
-                                                                <option value={{id}}>{{pop_desc}}</option>
-                                                            {{/each}}
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-4 mb-3">
-                                                        <label for="currency">Currency</label>
-                                                        <select class="form-control selectpicker" id="sp_currency" name="currency" data-live-search="true">
-                                                            <option value="-">-</option>
-                                                            {{#each __data_pop_currency}}
-                                                                <option value={{id}}>{{pop_desc}}</option>
-                                                            {{/each}}
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="col-md-4 mb-3">
-                                                        <label for="export">Export</label>
-                                                        <select class="form-control selectpicker" id="sp_export" name="export" data-live-search="true">
-                                                            <option value="-">-</option>
-                                                            {{#each __data_pop_export}}
-                                                                <option value={{id}}>{{pop_desc}}</option>
-                                                            {{/each}}
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-4 mb-3">
-                                                        <label for="rate">Rate</label>
-                                                        <input type="text" class="form-control number-seperator" id ="rate" name="rate" placeholder="Rate" autocomplete="off" required>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="col-md-4 mb-3">
-                                                        <label for="delivery_date">Delivery Date</label>
-                                                        <input type="text" class="form-control" name="delivery_date" id="delivery_date" placeholder="Delivery Date" autocomplete="off" required>
-                                                    </div>
-                                                    <div class="col-md-4 mb-3">
-                                                        <label for="delivery_time">Delivery Time</label>
-                                                        <input type="time" class="form-control" name="delivery_time" id="delivery_time" placeholder="Delivery Time" autocomplete="off" required>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
                                                     <div class="col-md-4 mb-3">
                                                         <label for="sp_client">Status</label>
                                                         <select class="form-control selectpicker" id="sp_client" name="client" data-live-search="true">
@@ -151,28 +110,18 @@
                                                             {{/each}}
                                                         </select>
                                                     </div>
+                                                    
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-12">
+                                                        <textarea type="text" class="form-control rounded-0" name="co_notes" autocomplete="off" rows="3"></textarea>
+                                                    </div>
                                                 </div>
                                                 <div class="form-group row invisible" style="position: absolute;">
-                                                    <div class="col-md-4 mb-3">
-                                                        <label>Created by</label>
-                                                        <input type="text" class="form-control" name="created_by" readonly>
-                                                    </div>
-                                                    <div class="col-md-4 mb-3">
-                                                        <label>Created Date</label>
-                                                        <input type="text" class="form-control" name="created_date" readonly>
-                                                    </div>
-                                                    <div class="col-md-4 mb-3">
-                                                        <label>Updating by</label>
-                                                        <input type="text" class="form-control" name="updated_by" readonly>
-                                                    </div>
-                                                    <div class="col-md-4 mb-3">
-                                                        <label>Updating Date</label>
-                                                        <input type="text" class="form-control" name="updated_date" readonly>
-                                                    </div>
                                                     <div class="col-md-4 mb-3 invisible">
                                                         <label>Id</label>
-                                                        <input type="text" class="form-control" id="olid" name="olid" value="{{olid}}" readonly>
-                                                        <input type="text" class="form-control" id="act" name="act" value="{{act}}" readonly>
+                                                        <input type="text" class="form-control" name="co_guid" value="{{co_guid}}" readonly>
+                                                        <input type="text" class="form-control" name="act" value="{{act}}" readonly>
                                                     </div>
                                                 </div>
                                             </form>
@@ -190,14 +139,8 @@
                                                     <th>Id</th>
                                                     <th>Desc</th>
                                                     <th>Finish</th>
-                                                    <th>LS Color</th>
-                                                    <th>Standard</th>
-                                                    <th>Origin</th>
-                                                    <th>Specifications</th>
+                                                    <th>Price</th>
                                                     <th>Qty</th>
-                                                    <th>LS</th>
-                                                    <th>Stand</th>
-                                                    <th>Sales</th>
                                                     <th>Total</th>
                                                 </tr>
                                             </thead>
@@ -229,158 +172,34 @@
                                         </table>
                                     </div>
                                     <div class="tab-pane" id="tab_invoicing">
-                                        <h4>INVOICING</h4>
-                                        <div class="form-group row">
-                                            <table>
+                                        <h4>INVOICE</h4>
+                                        <a href="#" type="button" class="btn btn-outline btn-primary pull-left">
+                                            <i class="glyphicon-plus"></i> Add New
+                                        </a>
+                                        <table id="dtTbl_Inv" class="table table-striped display nowrap" style="width:100%">
+                                            <thead>
                                                 <tr>
                                                     <th></th>
-                                                    <th>%</th>
-                                                    <th>Amount</th>
-                                                    <th>Date</th>
-                                                    <th>Paid</th>
-                                                    <th>Mode</th>
-                                                    <th>Bank</th>
+                                                    <th></th>
+                                                    <th>Id</th>
+                                                    <th>INV# Date</th>
+                                                    <th>Info</th>
+                                                    <th>Amt</th>
+                                                    <th>Paid Amt</th>
+                                                    <th>Due Date</th>
                                                 </tr>
-                                                <tr>
-                                                    <td>1st DP</td>
-                                                    <td>
-                                                        <input type="text" class="form-control" name="1st_percent" placeholder="1st Percent" value="" required>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" name="1st_amt" placeholder="1st DP Amt" value="" required>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" id ="1st_date" name="1st_date" required>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="" id="ck_1st_paid" name="1st_paid" checked="true">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <select class="form-control selectpicker" id="sp_1st_mode" name="1st_mode" data-live-search="true">
-                                                            <option value="-">-</option>
-                                                            {{#each __data_pop_mode}}
-                                                                <option value="{{id}}">{{pop_desc}}</option>
-                                                            {{/each}}
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <select class="form-control selectpicker" id="sp_1st_bank" name="1st_bank" data-live-search="true">
-                                                            <option value="-">-</option>
-                                                            {{#each __data_pop_bank}}
-                                                                <option value="{{id}}">{{pop_desc}}</option>
-                                                            {{/each}}
-                                                        </select>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2nd DP</td>
-                                                    <td>
-                                                        <input type="text" class="form-control" name="2nd_percent" placeholder="2nd Percent" value="" required>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" name="2nd_amt" placeholder="2nd DP Amt" value="" required>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" id ="2nd_date" name="2nd_date" required>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="" id="ck_2nd_paid" name="2nd_paid" checked="false">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <select class="form-control selectpicker" id="sp_2nd_mode" name="2nd_mode" data-live-search="true">
-                                                            <option value="-">-</option>
-                                                            {{#each __data_pop_mode}}
-                                                                <option value="{{id}}">{{pop_desc}}</option>
-                                                            {{/each}}
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <select class="form-control selectpicker" id="sp_2nd_bank" name="2nd_bank" data-live-search="true">
-                                                            <option value="-">-</option>
-                                                            {{#each __data_pop_bank}}
-                                                                <option value="{{id}}">{{pop_desc}}</option>
-                                                            {{/each}}
-                                                        </select>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3rd DP</td>
-                                                    <td>
-                                                        <input type="text" class="form-control" name="3rd_percent" placeholder="3rd Percent" value="" required>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" name="3rd_amt" placeholder="3rd DP Amt" value="" required>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" id ="3rd_date" name="3rd_date" required>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="" id="ck_3rd_paid" name="3rd_paid" checked="false">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <select class="form-control selectpicker" id="sp_3rd_mode" name="3rd_mode" data-live-search="true">
-                                                            <option value="-">-</option>
-                                                            {{#each __data_pop_mode}}
-                                                                <option value="{{id}}">{{pop_desc}}</option>
-                                                            {{/each}}
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <select class="form-control selectpicker" id="sp_3rd_bank" name="3rd_bank" data-live-search="true">
-                                                            <option value="-">-</option>
-                                                            {{#each __data_pop_bank}}
-                                                                <option value="{{id}}">{{pop_desc}}</option>
-                                                            {{/each}}
-                                                        </select>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4th DP</td>
-                                                    <td>
-                                                        <input type="text" class="form-control" name="4th_percent" placeholder="4th Percent" value="" required>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" name="4th_amt" placeholder="4th DP Amt" value="" required>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control" id ="4th_date" name="4th_date" required>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="" id="ck_4th_paid" name="4th_paid" checked="false">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <select class="form-control selectpicker" id="sp_4th_mode" name="4th_mode" data-live-search="true">
-                                                            <option value="-">-</option>
-                                                            {{#each __data_pop_mode}}
-                                                                <option value="{{id}}">{{pop_desc}}</option>
-                                                            {{/each}}
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <select class="form-control selectpicker" id="sp_4th_bank" name="4th_bank" data-live-search="true">
-                                                            <option value="-">-</option>
-                                                            {{#each __data_pop_bank}}
-                                                                <option value="{{id}}">{{pop_desc}}</option>
-                                                            {{/each}}
-                                                        </select>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </div>
+                                            </thead>
+                                            
+                                            <tbody>
+
+                                            </tbody>
+                                        </table>
                                     </div>
                                     <div class="tab-pane" id="tab_general_remarks">
                                         <h4>GENERAL REMARKS</h4>
                                         <div class="form-group row">
                                             <div class="col-md-12">
-                                                <textarea type="time" class="form-control rounded-0" name="gen_remarks" id="gen_remarks" autocomplete="off" rows="3"></textarea>
+                                                <textarea type="text" class="form-control rounded-0" name="gen_remarks" id="gen_remarks" autocomplete="off" rows="3"></textarea>
                                             </div>
                                             
                                         </div>
