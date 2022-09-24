@@ -44,9 +44,9 @@ $(document).ready(function() {
         e.preventDefault();
         const form = $(e.target);
         const _data = convertFormToJSON(form);
-        console.log(json);
+        console.log(_data);
         return;
-        
+
         // ajax - save/post data
         spinner_popup();
         $.ajax({
