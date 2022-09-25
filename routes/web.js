@@ -232,10 +232,21 @@ router.get('/stock-finish-products', async (req, res) => {
 
 router.get('/login', (req, res) => {
 	res.render('login.hbs', {
-		morris: true
+		login: true
 	});
+});
+router.post('/auth',auth, async (req, res) => {
+	next()
 });
 
 //functions
-
+auth = function async(req, res){
+	const _users = require("../public/data/login.json")
+	const _data = req.body;
+	_data = JSON.parse(_data);
+	console.log(_users);
+	console.log(_data);
+	// const name = _users.data[0].findIndex(email => email === emailx, pass => pass === passx);
+	return res.json(_data);
+}
 module.exports = router;
