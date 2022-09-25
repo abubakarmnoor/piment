@@ -1,6 +1,6 @@
 {
     "data":[
-        {"email":"manager@pimentrougelighting.com", "pass":"manager@piment", "name":"Ibu Ayu"},
-        {"email":"admin@pimentrougelighting.com", "pass":"admin@piment", "name":"Admin"}
+        {"user_guid":"Ibu Ayu", "email":"manager@pimentrougelighting.com", "pass":"manager@piment", "name":"Ibu Ayu"},
+        {"user_guid":"Admin", "email":"admin@pimentrougelighting.com", "pass":"admin@piment", "name":"Admin"}
     ]
 }
