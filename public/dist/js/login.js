@@ -13,8 +13,8 @@ $(document).ready(function(){
             data: JSON.stringify(_data),
             success: function(data) {
                 $('.modal').modal('hide');
-                // data = JSON.stringify(data);
-                // alert(data)
+                data = JSON.stringify(data);
+                alert(data)
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
                 //alert(jqXHR.status);
