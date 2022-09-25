@@ -292,8 +292,7 @@ function selectpicker_reload(id_){
         url: "/apis/pop/"+id_, 
         success: function(data) {
             // $('.modal').modal('hide');
-            console.log('test');
-            $("#spinner-modal").modal('hide')
+            $('.modal').modal('hide');
 
             let option_ = new Option("-", "-")
             $('#'+id__)

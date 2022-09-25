@@ -39,7 +39,6 @@ $(document).ready(function() {
         $('.page-header').text('FINISH PRODUCT ADD NEW')
         $("#btn_fpc").hide();
         let username = 'Admin';
-        get_date_default(username,null, username, null)
     }
 
      //btn
