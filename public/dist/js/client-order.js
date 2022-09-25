@@ -46,9 +46,9 @@ $(document).ready(function() {
                 defaultContent: '<i class="fa fa-trash"/>',
                 orderable: false
             },
-            { "data": "id" },
+            { "data": "co_guid" },
             {
-                data: "co_guid",
+                data: "co_order_id",
                 className: "dt-center editor-details",
                 orderable: true
             },
