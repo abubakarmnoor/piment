@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
         // res.json({"succeess":true, logged_name:_res.name})
         next();
      }else{
-        res.json({"succeess":false})
+        res.json({"success":false})
      }
     
 }
