@@ -1,12 +1,12 @@
 $(document).ready(function() {
             
     //default
-    $('.selectpicker').selectpicker();
-    insert_element_status();
-    load_data_dt('/apis/pop/co-status'); //init
-
     $("#co_client_guid").selectpicker('val',null)
     $("#co_status").selectpicker('val',null)
+    $('.selectpicker').selectpicker();
+    insert_element_status();
+    // load_data_dt('/apis/pop/co-status'); //init
+    
     //edit or add new
     if (location.href.includes('ZWlk')) {
         $('.page-header').text('CLIENT ORDER UPDATES')
@@ -14,7 +14,7 @@ $(document).ready(function() {
         // let url = location.href;
         // let id = getURLParameter(url, 'eid');
         // $("#id").val(id);
-        get_details();
+        // get_details();
         
     }else if (location.href.includes('ZGlk')) {
         $('.page-header').text('CLIENT ORDER DETAILS');
