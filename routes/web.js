@@ -29,7 +29,7 @@ router.use(function (req, res, next) {
 })
 router.get('/', isAuthenticated, (req, res) => {
 	res.render('index.hbs', {
-		// morris: true
+		_user : req.session.user
 	});
 });
 
@@ -288,6 +288,6 @@ router.post('/auth', validated, (req, res) => {
 //functions
 function isAuthenticated (req, res, next) {
 	if (req.session.user) next()
-	else next('route')
+	else res.redirect('/login');//next('route')
   }
 module.exports = router;
