@@ -151,6 +151,17 @@ function load_data_dt(_url){
         table.search('');
 
     });
+    $('#btn_pop_co_status').on('click', function(){
+        // e.preventDefault();
+        $('#th_pop_desc').text('Client Order Status')
+        $('#lbl_pf_desc').text('Client Order Status')
+        $("label[name=pop_type").text("co-status")
+        $("input[name=pop_desc").val("")
+        $('input[type=search]').val("");
+        table.ajax.url("/apis/pop/co_status", null, false).load(); // pop refresh
+        table.search('');
+
+    });
     $('#btn_pop_pf').on('click', function(){
         // e.preventDefault();
         $('#th_pop_desc').text('Product Family')
@@ -162,7 +173,6 @@ function load_data_dt(_url){
         table.search('');
 
     });
-    
     $('#btn_pop_origin').on('click', function(){
         // e.preventDefault();
         $('#th_pop_desc').text('Origin')

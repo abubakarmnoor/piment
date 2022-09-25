@@ -3,7 +3,8 @@ $(document).ready(function() {
     //default
     $('.selectpicker').selectpicker();
     insert_element_status();
-    
+    load_data_dt('/apis/pop/co-status'); //init
+
     $("#co_client_guid").selectpicker('val',null)
     $("#co_status").selectpicker('val',null)
     //edit or add new
@@ -29,8 +30,8 @@ $(document).ready(function() {
         
     
     }else{
-        $('.page-header').text('ORDER LIST ADD NEW')
-        let username = 'test';
+        $('.page-header').text('CLIENT ORDER LIST ADD NEW')
+        let username = 'Admin';
         
     }
 
@@ -90,195 +91,17 @@ $(document).ready(function() {
 
     });
 
-    //save
-    $('#form__').submit(function(e) {
-        //$('#messages').removeClass('hide').addClass('alert alert-success alert-dismissible').slideDown().show();
-        //$('#messages_content').html('<h4>MESSAGE HERE</h4>');
-        //$('#modal').modal('show');
-        
-        e.preventDefault();
-        const form = $(e.target);
-        const _data = convertFormToJSON(form);
-        _data.txt_created_date = new Date(_data.txt_created_date);
-        _data.txt_created_date = formatDate(_data.txt_created_date)
-        _data.txt_updated_date = new Date(_data.txt_updated_date);
-        _data.txt_updated_date = formatDate(_data.txt_updated_date)
-        _data.active = $("#ck_active").prop('checked')
-        console.log(_data);
-
-        // ajax - save/post data
-        spinner_popup();
-        $.ajax({
-            type:"GET", // must be POST 
-            url: "/data/pop-product-family.json", 
-            dataType: "json",
-            data: _data,
-            success: function(data) {
-                setTimeout(function () {
-                    $('.modal').modal('hide');
-                    Swal.fire({
-                        icon: 'success',
-                        title: '',
-                        text: "Data Saved"
-                    }).then(function(){
-                        //location.href='/clients'
-                    });
-                    
-                }, 3000);
-                
-            }, 
-            error: function(jqXHR, textStatus, errorThrown) {
-                //alert(jqXHR.status);
-                $('.modal').modal('hide');
-                Swal.fire({
-                    title: "Error!",
-                    text: textStatus,
-                    icon: "error"
-                });
-            }
-        });
-
-    });
-
-    // Edit record
-    $('#dtTbl_pop').on('click', 'td.editor-edit', function (e) {
-        e.preventDefault();
-        //console.log( table.row( this ).data().id );
-        const _id = table.row( this ).data().id;
-        const _pop_desc = table.row( this ).data().pop_desc;
-        const _active = table.row( this ).data().active;
-        
-        $("#pop_id").val(_id);
-        $("input[name=activity_desc]").val(_pop_desc);
-        $("#ck_active_pop").prop('checked', _active);
-
-    } );
-    
-    // Details record
-    $('#dtTbl_pop').on('click', 'td.editor-details', function (e) {
-        e.preventDefault();
-        //console.log( table.row( this ).data().id );
-        const _id = table.row( this ).data().id;
-
-        
-    } );
-    // Delete a record
-    $('#dtTbl_pop').on('click', 'td.editor-delete', function (e) {
-        e.preventDefault();
-        //console.log( table.row( this ).data().id );
-
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-                )
-            }
-        })
-    } );
-
-    //number
-    $("#cost").on('keyup', function(){
-        
-        let _amt = $(this).val().replace(/,/g,"");
-        $(this).val(numberWithCommas(_amt));
-        
-    })
-
-    
     //btn add new pop
-    $('#btn_pop_pf').on('click', function(){
+    $('#btn_pop_co_status').on('click', function(){
         // e.preventDefault();
         
-        $('#txt_pop_type').val('Product Family')
-        $('#th_pop_desc').text('Product Family Desc')
-        $('#lbl_pf_desc').text('Product Family Desc')
+        $('#txt_pop_type').val('co-status')
+        $('#th_pop_desc').text('Client Order Status')
+        $('#lbl_pf_desc').text('Client Order Status')
         $("input[name=pop_desc").val("")
-        table.ajax.url("/data/pop-product-family.json", null, false).load(); // pop pf
+        
     });
-    $('#btn_pop_kayu').on('click', function(){
-        // e.preventDefault();
-        
-        $('#txt_pop_type').val('Kayu')
-        $('#th_pop_desc').text('Kayu Desc')
-        $('#lbl_pf_desc').text('Kayu Desc')
-        $("input[name=pop_desc").val("")
-        table.ajax.url("/data/pop-kayu.json", null, false).load(); // pop kayu
-        
-    })
-    $('#btn_pop_unit').on('click', function(){
-        // e.preventDefault();
-        
-        $('#txt_pop_type').val('Unit')
-        $('#th_pop_desc').text('Unit Desc')
-        $('#lbl_pf_desc').text('Unit Desc')
-        $("input[name=pop_desc").val("")
-        table.ajax.url("/data/pop-unit.json", null, false).load(); // pop unit
-        
-    })
-    $('#btn_pop_creator').on('click', function(){
-        // e.preventDefault();
-        
-        $('#txt_pop_type').val('Creator')
-        $('#th_pop_desc').text('Creator Desc')
-        $('#lbl_pf_desc').text('Creator Desc')
-        $("input[name=pop_desc").val("")
-        table.ajax.url("/data/pop-creator.json", null, false).load(); // pop creator
-        
-    })
-
-    // Edit record
-    $('#dtTbl_pop').on('click', 'td.editor-edit', function (e) {
-        e.preventDefault();
-        //console.log( table.row( this ).data().id );
-        const _id = table.row( this ).data().id;
-        const _pop_desc = table.row( this ).data().pop_desc;
-        const _active = table.row( this ).data().active;
-        
-        $("#pop_id").val(_id);
-        $("input[name=pop_desc]").val(_pop_desc);
-        $("#ck_active_pop").prop('checked', _active);
-
-    } );
-    
-    
-    // Delete a record
-    $('#dtTbl_pop').on('click', 'td.editor-delete', function (e) {
-        e.preventDefault();
-        //console.log( table.row( this ).data().id );
-
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-                )
-            }
-        })
-    } );
-    //number
-    $("#rate").on('keyup', function(){
-        let _amt = $(this).val().replace(/,/g,"");
-        $(this).val(numberWithCommas(_amt));
-    })
+   
     //date datepicker
     $("#order_date").datepicker({
         format: "dd-M-yyyy",
@@ -313,33 +136,8 @@ function default_edit(data){
     let user_login = 'test';
     get_date_default(data[0].created_by,data[0].created_date, user_login, null)
 }
-//get details
-function get_details(){
-    //ajax - get details
-    spinner_popup();
-    //ajax
-    $.ajax({
-        type:"GET", 
-        url: "/data/raw-materials.json", 
-        dataType: "json",
-        success: function(data) {
-            setTimeout(function () {
-                default_edit(data.data);
-                $('.modal').modal('hide');
-            }, 3000);
-        }, 
-        error: function(jqXHR, textStatus, errorThrown) {
-            //alert(jqXHR.status);
-            swal({
-                title: "Error!",
-                text: jqXHR.status,
-                icon: "error"
-            });
-        }
-    });
-}
 
 //insert element
 function insert_element_status(){
-    $('<a href="#" type="button" class="pull-right" id="btn_pop_status" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(5) > div:nth-child(2) > div > div > div');
+    $('<a href="#" type="button" class="pull-right" id="btn_pop_co_status" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(5) > div:nth-child(2) > div > div > div');
 }
