@@ -91,17 +91,6 @@ $(document).ready(function() {
 
     });
 
-    //btn add new pop
-    $('#btn_pop_co_status').on('click', function(){
-        // e.preventDefault();
-        
-        $('#txt_pop_type').val('co-status')
-        $('#th_pop_desc').text('Client Order Status')
-        $('#lbl_pf_desc').text('Client Order Status')
-        $("input[name=pop_desc").val("")
-        
-    });
-   
     //date datepicker
     $("#order_date").datepicker({
         format: "dd-M-yyyy",
