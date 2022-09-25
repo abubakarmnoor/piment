@@ -5,7 +5,7 @@ $(document).ready(function() {
     $("#co_status").selectpicker('val',null)
     $('.selectpicker').selectpicker();
     insert_element_status();
-    // load_data_dt('/apis/pop/co-status'); //init
+    load_data_dt('/apis/pop/co-status'); //init
     
     //edit or add new
     if (location.href.includes('ZWlk')) {
