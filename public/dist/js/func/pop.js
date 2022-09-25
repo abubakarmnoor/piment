@@ -283,11 +283,12 @@ function selectpicker_reload(id_){
     }else if (id_ == 'co-status'){
         id__ = 'co_status';//
     }
-    // console.log(id__);
+    console.log(id_);
+    console.log(id__);
 
     spinner_popup();
     $.ajax({
-        type:"GET", // must be POST 
+        type:"GET",
         url: "/apis/pop/"+id_, 
         success: function(data) {
             // $('.modal').modal('hide');
