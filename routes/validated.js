@@ -8,12 +8,10 @@ module.exports = (req, res, next) => {
         return item.email == _login_req.email && item.pass == _login_req.pass
      })
     //  console.log(_res);
-     if (req.session.loggedin || _res){
+     if (_res){
         // res.json({"succeess":true, logged_name:_res.name})
-        req.session.loggedin = true 
         next();
      }else{
-        req.session.loggedin = false 
         res.json({"succeess":false})
      }
     
