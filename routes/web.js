@@ -241,7 +241,9 @@ router.get('/login', (req, res) => {
 });
 
 router.post('/auth', validated, (req, res) => {
-	res.redirect('/')
+	// res.redirect('/')
+	console.log(validated);
+	res.json({validated})
 });
 
 //functions
