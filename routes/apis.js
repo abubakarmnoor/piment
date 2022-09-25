@@ -282,7 +282,7 @@ router.post('/auth', function(req, res) {
 router.get('/pop/:type', function(req,res){
 	// res.status(200).json({sucess:false});
   
-  console.log(req.headers['access-control-allow-origin']);
+  // console.log(req.headers['access-control-allow-origin']);
   let _type = req.params.type;
   let _undefined = req.params.undefined;
   

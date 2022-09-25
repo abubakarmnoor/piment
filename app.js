@@ -16,11 +16,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', web);
 app.use('/apis/', apis);
-app.get('/test/', async (req, res)=>{
-  let _res = await getPopupData('unit');
-  res.status(200).json(_res)
+// app.get('/test/', async (req, res)=>{
+//   let _res = await getPopupData('unit');
+//   res.status(200).json(_res)
   
-});
+// });
 
 //The 404 Route (ALWAYS Keep this as the last route)
 app.use('*', function(req, res){

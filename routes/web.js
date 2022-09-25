@@ -3,6 +3,7 @@ const app = express();
 const router = express.Router();
 // const axios = require('axios').default;
 const {getPopupData, getRM, getRMFP, getClient} = require('./functions')
+const validated = require("../routes/validated")
 // const tsqlPull = require('../tsql/pull');
 //fs = require('fs');
 
@@ -235,18 +236,15 @@ router.get('/login', (req, res) => {
 		login: true
 	});
 });
-router.post('/auth',auth, async (req, res) => {
-	next()
+const bodyParser = require('body-parser');
+router.use(bodyParser.urlencoded({ extended: false }));
+router.use(bodyParser.json());
+router.post('/auth', (req, res) => {
+	console.log(req.body)
+	res.json({res: "ok"})
+	
 });
 
 //functions
-auth = function async(req, res){
-	const _users = require("../public/data/login.json")
-	const _data = req.body;
-	_data = JSON.parse(_data);
-	console.log(_users);
-	console.log(_data);
-	// const name = _users.data[0].findIndex(email => email === emailx, pass => pass === passx);
-	return res.json(_data);
-}
+
 module.exports = router;
