@@ -33,12 +33,12 @@ router.get('/', isAuthenticated, (req, res) => {
 	});
 });
 
-router.get('/client-order', (req, res) => {
+router.get('/client-order', isAuthenticated, (req, res) => {
 	res.render('client-order.hbs', {
 		tables_bs4: true, client_order:true
 	});
 });
-router.get('/client-order-details/:coid/:act', async (req, res) => {
+router.get('/client-order-details/:coid/:act', isAuthenticated, async (req, res) => {
 	const _act = req.params.act
 	const _olid = req.params.coid
 	const __data_pop_status = await getPopupData('co-status');
@@ -48,24 +48,24 @@ router.get('/client-order-details/:coid/:act', async (req, res) => {
 	});
 });
 
-router.get('/invoice', (req, res) => {
+router.get('/invoice', isAuthenticated, (req, res) => {
 	res.render('invoice.hbs', {
 		tables_bs4: true
 	});
 });
-router.get('/purchase', (req, res) => {
+router.get('/purchase', isAuthenticated, (req, res) => {
 	res.render('purchase.hbs', {
 		tables_bs4: true, purchase:true
 	});
 });
-router.get('/purchase-details/:pid/:act', (req, res) => {
+router.get('/purchase-details/:pid/:act', isAuthenticated, (req, res) => {
 	const _act = req.params.act
 	const _pid = req.params.pid
 	res.render('purchase-details.hbs', {
 		tables_bs4: true, purchase_details:true, _pid, _act
 	});
 });
-router.get('/production', (req, res) => {
+router.get('/production', isAuthenticated, (req, res) => {
 	res.set('Cache-Control', 'max-age=1');
 	res.render('production.hbs', {
 		tables_bs4: true, production:true
@@ -81,22 +81,22 @@ router.get('/production', (req, res) => {
 // 		// flot: true
 // 	});
 // });
-router.get('/office', (req, res) => {
+router.get('/office', isAuthenticated, (req, res) => {
 	res.render('office.hbs', {
 		tables_bs4: true
 	});
 });
-router.get('/office-details', (req, res) => {
+router.get('/office-details', isAuthenticated, (req, res) => {
 	res.render('office-details.hbs', {
 		
 	});
 });
-router.get('/users', (req, res) => {
+router.get('/users', isAuthenticated, (req, res) => {
 	res.render('users.hbs', {
 		tables_bs4: true, users: true
 	});
 });
-router.get('/user-details/:userid/:act', async (req, res) => {
+router.get('/user-details/:userid/:act', isAuthenticated, async (req, res) => {
 	const __data_pop_position = await getPopupData('position');
 	const _userpass_guid = req.params.userid;
 	res.render('users-details.hbs', {
@@ -110,7 +110,7 @@ router.get('/clients', (req, res) => {
 	});
 });
 
-router.get('/client-details/:clientid/:act', async (req, res) => {
+router.get('/client-details/:clientid/:act', isAuthenticated, async (req, res) => {
 	const __data_pop_activity = await getPopupData('activity');
 	const _client_guid = req.params.clientid;
 	const __data_countries = _data_countries.data;
@@ -119,12 +119,12 @@ router.get('/client-details/:clientid/:act', async (req, res) => {
 	});
 	
 });
-router.get('/suppliers', (req, res) => {
+router.get('/suppliers', isAuthenticated, (req, res) => {
 	res.render('suppliers.hbs', {
 		tables_bs4: true, suppliers: true
 	});
 });
-router.get('/supplier-details/:suppid/:act', async (req, res) => {
+router.get('/supplier-details/:suppid/:act', isAuthenticated, async (req, res) => {
 	const __data_countries = _data_countries.data;
 	const _supp_guid = req.params.suppid;
 	const __data_pop_product_family = await getPopupData('product-family');
@@ -133,12 +133,12 @@ router.get('/supplier-details/:suppid/:act', async (req, res) => {
 	});
 	
 });
-router.get('/raw-materials', (req, res) => {
+router.get('/raw-materials', isAuthenticated, (req, res) => {
 	res.render('raw-materials.hbs', {
 		tables_bs4: true, raw_materials:true
 	});
 });
-router.get('/raw-material-details/:rmid/:act', async (req, res) => {
+router.get('/raw-material-details/:rmid/:act', isAuthenticated, async (req, res) => {
 	const _act = req.params.act
 	const _rm_guid = req.params.rmid
 	const __data_pop_product_family = await getPopupData('product-family');
@@ -150,22 +150,22 @@ router.get('/raw-material-details/:rmid/:act', async (req, res) => {
 	});
 	
 });
-router.get('/stock', (req, res) => {
+router.get('/stock', isAuthenticated, (req, res) => {
 	res.render('stock.hbs', {
 		// flot: true
 	});
 });
-router.get('/logs', (req, res) => {
+router.get('/logs', isAuthenticated, (req, res) => {
 	res.render('logs.hbs', {
 		tables_bs4: true
 	});
 });
-router.get('/finish-product', (req, res) => {
+router.get('/finish-product', isAuthenticated, (req, res) => {
 	res.render('finish-product.hbs', {
 		tables_bs4: true, finish_product: true
 	});
 });
-router.get('/finish-product-details/:fpid/:act', async (req, res) => {
+router.get('/finish-product-details/:fpid/:act', isAuthenticated, async (req, res) => {
 	const _act = req.params.act
 	const _fpid = req.params.fpid
 	// const __data_pop_product_family = _data_pop_product_family.data;
@@ -175,7 +175,7 @@ router.get('/finish-product-details/:fpid/:act', async (req, res) => {
 		tables_bs4: true, finish_product_details: true, __data_pop_product_family, __data_pop_origin, fpid:_fpid, act:_act
 	});
 });
-router.get('/fpc/:fpid/:act', async (req, res) => {
+router.get('/fpc/:fpid/:act', isAuthenticated, async (req, res) => {
 	const _act = req.params.act
 	const _fpid = req.params.fpid
 	const __data_pop_unit = await getPopupData('unit');
@@ -184,7 +184,7 @@ router.get('/fpc/:fpid/:act', async (req, res) => {
 		tables_bs4: true, fpc:true, fp_guid:_fpid, act:_act, __data_pop_unit, __data_rm
 	});
 })
-router.get('/fpc-details/:fpid/:fcpid/:act', async (req, res) => {
+router.get('/fpc-details/:fpid/:fcpid/:act', isAuthenticated, async (req, res) => {
 	// console.log('eid : '+req.params.eid);
 	// YWRkbmV3 => addnew
 	const __data_pop_unit = await getPopupData('unit');
@@ -195,28 +195,28 @@ router.get('/fpc-details/:fpid/:fcpid/:act', async (req, res) => {
 		tables_bs4: true, fpc_details: true, fpid:_fpid, fpcid:_fpcid, __data_pop_unit, act:_act
 	});
 })
-router.get('/sales-price-calc', (req, res) => {
+router.get('/sales-price-calc', isAuthenticated, (req, res) => {
 	res.render('sales-price-calc.hbs', {
 		tables_bs4: true
 	});
 });
-router.get('/price-list', (req, res) => {
+router.get('/price-list', isAuthenticated, (req, res) => {
 	res.render('price-list.hbs', {
 		tables_bs4: true
 	});
 });
-router.get('/exchange-rate', (req, res) => {
+router.get('/exchange-rate', isAuthenticated, (req, res) => {
 	res.render('exchange-rate.hbs', {
 		// flot: true
 	});
 });
-router.get('/stock-raw-materials', async (req, res) => {
+router.get('/stock-raw-materials', isAuthenticated, async (req, res) => {
 	// const __data_stock_pop = await getRMFP('rm');
 	res.render('stock-raw-materials.hbs', {
 		tables_bs4: true, stock_raw_materials: true
 	});
 });
-router.get('/stock-finish-products', async (req, res) => {
+router.get('/stock-finish-products', isAuthenticated, async (req, res) => {
 	// const __data_stock_pop = await getRMFP('fp');
 	res.render('stock-finish-products.hbs', {
 		tables_bs4: true, stock_finish_products: true
