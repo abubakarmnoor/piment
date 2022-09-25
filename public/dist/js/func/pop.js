@@ -280,8 +280,8 @@ function selectpicker_reload(id_){
         id__ = 'sp_activity';//
     }else if (id_ == 'position'){
         id__ = 'sp_position';//
-    }else if (id_ == 'co_status'){
-        id__ = 'co-status';//
+    }else if (id_ == 'co-status'){
+        id__ = 'co_status';//
     }
     // console.log(id__);
 
