@@ -45,7 +45,8 @@ $(document).ready(function() {
         e.preventDefault();
         const form = $(e.target);
         const _data = convertFormToJSON(form);
-        console.log(_data);
+        _data.tblname = "co";
+        // console.log(_data);
         if (!_data.co_client_guid || !_data.co_status)
         {
             Swal.fire({
@@ -55,27 +56,32 @@ $(document).ready(function() {
             })
             return;
         }
-        return;
-
+        
         // ajax - save/post data
         spinner_popup();
         $.ajax({
-            type:"GET", // must be POST 
-            url: "/data/client-order.json", 
+            type:"POST", // must be POST 
+            url: "/apis/upd", 
+            contentType: "application/json; charset=utf-8",
             dataType: "json",
-            data: _data,
+            data: JSON.stringify(_data),
             success: function(data) {
-                setTimeout(function () {
-                    $('.modal').modal('hide');
+                $('.modal').modal('hide');
+                if (data.success == true){
                     Swal.fire({
                         icon: 'success',
-                        title: '',
+                        title: 'Client Order',
                         text: "Data Saved"
                     }).then(function(){
                         location.href='/client-order'
                     });
-                    
-                }, 3000);
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: '',
+                        text: data.err.sqlMessage
+                    })
+                }
                 
             }, 
             error: function(jqXHR, textStatus, errorThrown) {

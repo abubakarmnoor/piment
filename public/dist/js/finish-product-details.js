@@ -91,7 +91,7 @@ $(document).ready(function() {
                 if (data.success == true){
                     Swal.fire({
                         icon: 'success',
-                        title: '',
+                        title: 'Finish Product',
                         text: "Data Saved"
                     }).then(function(){
                         location.href='/finish-product'

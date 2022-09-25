@@ -183,6 +183,18 @@ router.post('/upd',(req,res)=>{
           closeDbConnection(db)
         }
       })
+    }else if (_data.tblname == 'co'){
+      query='call spsave_fp (?, ?, ?, ?, ?, ?, ?, ?)'
+      db.query(` `+query+` `,[_data.co_guid, _data.co_order_id, _data.co_client_guid, _data.co_order_date, _data.co_delivery_date, _data.co_status, _data.co_notes, _data.co_upd_by], (err, data_)=>{  
+      // db.query(query, (err, data_)=>{
+        if (!data_){
+          res.status(200).json({success:false, err})
+        }else{
+          let data = data_;
+          res.status(200).json({success:true, data})
+          closeDbConnection(db)
+        }
+      })
     }
     })
   }).catch((error)=>{
