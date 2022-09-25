@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
+var session = require('express-session')
 // const axios = require('axios').default;
 const {getPopupData, getRM, getRMFP, getClient} = require('./functions')
 const validated = require("../routes/validated")
@@ -8,27 +9,22 @@ const validated = require("../routes/validated")
 //fs = require('fs');
 
 const _data_countries = require("../public/data/countries.json");
-// const _data_pop_activity = require("../public/data/pop-activity.json");
-// const _data_pop_product_family = require("../public/data/pop-product-family.json");
 
-// const _data_pop_kayu = require("../public/data/pop-kayu.json");
-
-// const _data_pop_unit = require("../public/data/pop-unit.json");
-// const _data_pop_creator = require("../public/data/pop-creator.json");
-// const _data_pop_origin = require("../public/data/pop-origin.json");
-// const _data_rm = require("../public/data/raw-materials.json");
-// const _data_purchase = require("../public/data/purchase.json");
 
 const bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
-
+router.use(session({
+	secret: 'm43str0',
+	resave: false,
+	saveUninitialized: true
+  }))
 router.use(function (req, res, next) {
 	//console.log('app use 123');
 	res.set('Cache-Control', 'max-age=1');// 60s x 60m x24 x ? day
 	next()
 })
-router.get('/', validated, (req, res) => {
+router.get('/', isAuthenticated, (req, res) => {
 	res.render('index.hbs', {
 		// morris: true
 	});
@@ -239,13 +235,55 @@ router.get('/login', (req, res) => {
 		login: true
 	});
 });
-
-router.post('/auth', validated, (req, res) => {
-	console.log(JSON.stringify(validated));
-	res.redirect('/')
+// app.post('/login', express.urlencoded({ extended: false }), function (req, res) {
 	
+//   })
+app.get('/logout', function (req, res, next) {
+	// logout logic
+  	// clear the user from the session object and save.
+	// this will ensure that re-using the old session id
+	// does not have a logged in user
+	req.session.user = null
+	req.session.save(function (err) {
+	  if (err) next(err)
+  
+	  // regenerate the session, which is good practice to help
+	  // guard against forms of session fixation
+	  req.session.regenerate(function (err) {
+		if (err) next(err)
+		res.redirect('/login')
+	  })
+	})
+  })
+router.post('/auth', validated, (req, res) => {
+	// res.redirect('/')
+	// console.log(validated);
+	// res.json({validated})
+
+	// login logic to validate req.body.user and req.body.pass
+	// would be implemented here. for this example any combo works
+  
+	// regenerate the session, which is good practice to help
+	// guard against forms of session fixation
+	req.session.regenerate(function (err) {
+		if (err) next(err)
+	
+		// store user information in session, typically a user id
+		req.session.user = req.body.email
+	
+		// save the session before redirection to ensure page
+		// load does not happen before session is saved
+		req.session.save(function (err) {
+		  if (err) return next(err)
+		  res.redirect('/')
+		})
+	  })
+
 });
 
 //functions
-
+function isAuthenticated (req, res, next) {
+	if (req.session.user) next()
+	else next('route')
+  }
 module.exports = router;

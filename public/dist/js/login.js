@@ -12,8 +12,8 @@ $(document).ready(function(){
             dataType: "json",
             data: JSON.stringify(_data),
             success: function(data) {
-                data = JSON.stringify(data)
                 $('.modal').modal('hide');
+                data = JSON.parse(JSON.stringify(data));
                 alert(data.success)
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
