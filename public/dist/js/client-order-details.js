@@ -50,8 +50,8 @@ $(document).ready(function() {
         {
             Swal.fire({
                 icon: 'warning',
-                title: 'Submit',
-                text: (!_data.co_client_guid ? "Please select one client" : "Please select one status")
+                title: 'Client Order',
+                text: (!_data.co_client_guid ? "Please select one Client" : "Please select one Status")
             })
             return;
         }
