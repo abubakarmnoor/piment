@@ -14,7 +14,7 @@ $(document).ready(function(){
             success: function(data) {
                 $('.modal').modal('hide');
                 data = JSON.stringify(data);
-                alert(data)
+                alert(data.success)
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
                 //alert(jqXHR.status);
