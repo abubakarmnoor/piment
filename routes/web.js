@@ -254,7 +254,7 @@ app.get('/logout', function (req, res, next) {
 	  // guard against forms of session fixation
 	  req.session.regenerate(function (err) {
 		if (err) next(err)
-		res.redirect('/login')
+		res.redirect('https://piment-admin.localpro100.com/login')
 	  })
 	})
   })
