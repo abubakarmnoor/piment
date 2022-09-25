@@ -26,7 +26,7 @@ $(document).ready(function() {
 
         $("#ck_active").attr("disabled", true);
         $(".cancel").replaceWith("<a href='/client-order' type='button' class='btn btn-outline btn-primary'><i class='fa fa-long-arrow-left'></i> Back</a>");
-        get_details();
+        // get_details();
         
     
     }else{
