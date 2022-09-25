@@ -283,8 +283,8 @@ function selectpicker_reload(id_){
     }else if (id_ == 'co-status'){
         id__ = 'co_status';//
     }
-    console.log(id_);
-    console.log(id__);
+    // console.log(id_);
+    // console.log(id__);
 
     spinner_popup();
     $.ajax({
@@ -292,6 +292,7 @@ function selectpicker_reload(id_){
         url: "/apis/pop/"+id_, 
         success: function(data) {
             // $('.modal').modal('hide');
+            console.log('test');
             $("#spinner-modal").modal('hide')
 
             let option_ = new Option("-", "-")
