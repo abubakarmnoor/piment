@@ -241,13 +241,12 @@ router.get('/login', (req, res) => {
 // app.post('/login', express.urlencoded({ extended: false }), function (req, res) {
 	
 //   })
-app.get('/logout', function (req, res, next) {
+router.get('/logout', function (req, res, next) {
 	// logout logic
   	// clear the user from the session object and save.
 	// this will ensure that re-using the old session id
 	// does not have a logged in user
 	req.session.user = null
-	res.redirect('login')
 	req.session.save(function (err) {
 	  if (err) next(err)
   
@@ -255,7 +254,7 @@ app.get('/logout', function (req, res, next) {
 	  // guard against forms of session fixation
 	  req.session.regenerate(function (err) {
 		if (err) next(err)
-		// res.redirect('login')
+		res.redirect('login')
 	  })
 	})
   })
