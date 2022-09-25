@@ -1,6 +1,5 @@
 //load data dt
 function load_data_dt(_url){
-    
     $("#btn_pop_clear").on("click", function(){
         $('#form__')[0].reset();
     })
@@ -158,7 +157,7 @@ function load_data_dt(_url){
         $("label[name=pop_type").text("co-status")
         $("input[name=pop_desc").val("")
         $('input[type=search]').val("");
-        table.ajax.url("/apis/pop/co_status", null, false).load(); // pop refresh
+        table.ajax.url("/apis/pop/co-status", null, false).load(); // pop refresh
         table.search('');
 
     });

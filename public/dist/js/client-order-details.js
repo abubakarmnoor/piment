@@ -122,8 +122,8 @@ function default_edit(data){
     $("#ck_out").prop('checked', data[0].out)
     $("#ck_active").prop('checked', data[0].active)
 
-    let user_login = 'test';
-    get_date_default(data[0].created_by,data[0].created_date, user_login, null)
+    let user_login = 'Admin';
+    
 }
 
 //insert element
