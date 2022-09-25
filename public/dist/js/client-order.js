@@ -152,7 +152,6 @@ $(document).ready(function() {
         // console.log(sdate_);
         // console.log(edate_);
         //var table = $('#registrationTable').DataTable();
-        table.ajax.url("/data/client-order.json?sdate="+sdate_+"?edate="+edate_, null, false).load();
         table.ajax.url("/apis/pull/co", null, false).load();
     })
 
