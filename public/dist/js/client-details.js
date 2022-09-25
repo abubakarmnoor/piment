@@ -39,7 +39,7 @@ $(document).ready(function() {
         const form = $(e.target);
         const _data = convertFormToJSON(form);
         _data.client_active = $("#ck_active").prop('checked')
-        _data.client_upd_by= $("#logged_user/").text();//"Admin";
+        _data.client_upd_by= $("#logged_user").text();//"Admin";
         _data.tblname = "client";
         console.log(_data);
 
