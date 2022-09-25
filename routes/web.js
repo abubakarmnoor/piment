@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const router = express.Router();
 var session = require('express-session')
+const cookieParser = require("cookie-parser");
 // const axios = require('axios').default;
 const {getPopupData, getRM, getRMFP, getClient} = require('./functions')
 const validated = require("../routes/validated")
@@ -14,17 +15,19 @@ const _data_countries = require("../public/data/countries.json");
 const bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
+router.use(cookieParser());
 router.use(session({
 	secret: 'm43str0',
 	resave: false,
-	saveUninitialized: true
+	saveUninitialized: true,
+	cookie: { maxAge: 1000 * 60 * 60 * 24 }//1day
   }))
 router.use(function (req, res, next) {
 	//console.log('app use 123');
 	res.set('Cache-Control', 'max-age=1');// 60s x 60m x24 x ? day
 	next()
 })
-router.get('/', (req, res) => {
+router.get('/', isAuthenticated, (req, res) => {
 	res.render('index.hbs', {
 		// morris: true
 	});
@@ -275,7 +278,7 @@ router.post('/auth', validated, (req, res) => {
 		// load does not happen before session is saved
 		req.session.save(function (err) {
 		  if (err) return next(err)
-		  res.redirect('/')
+		  res.redirect('/test')
 		})
 	  })
 
