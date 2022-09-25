@@ -258,10 +258,15 @@ router.get('/logout', function (req, res, next) {
 	  })
 	})
   })
-router.post('/auth', validated, (req, res) => {
+router.post('/auth', (req, res) => {
 	// res.redirect('/')
 	// console.log(validated);
 	// res.json({validated})
+	const _users = require("../public/data/login.json")
+	const _login_req = req.body;
+    const _res =  _users.data.find(item => {
+        return item.email == _login_req.email && item.pass == _login_req.pass
+     })
 
 	// login logic to validate req.body.user and req.body.pass
 	// would be implemented here. for this example any combo works
@@ -272,7 +277,7 @@ router.post('/auth', validated, (req, res) => {
 		if (err) next(err)
 	
 		// store user information in session, typically a user id
-		req.session.user = req.body.email
+		req.session.user = _res.name//req.body.email
 	
 		// save the session before redirection to ensure page
 		// load does not happen before session is saved
