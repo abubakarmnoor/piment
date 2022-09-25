@@ -158,8 +158,8 @@ function load_data_dt(_url){
         $("label[name=pop_type").text("co-status")
         $("input[name=pop_desc").val("")
         $('input[type=search]').val("");
-        // table.ajax.url("/apis/pop/co_status", null, false).load(); // pop refresh
-        // table.search('');
+        table.ajax.url("/apis/pop/co_status", null, false).load(); // pop refresh
+        table.search('');
 
     });
     $('#btn_pop_pf').on('click', function(){
