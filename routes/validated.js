@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
      })
     //  console.log(_res);
      if (_res){
-        //res.json({"succeess":true, logged_name:_res.name})
+        res.json({"succeess":true, logged_name:_res.name})
         next();
      }else{
         res.json({"succeess":false})
