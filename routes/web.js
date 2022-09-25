@@ -19,6 +19,9 @@ const _data_countries = require("../public/data/countries.json");
 // const _data_rm = require("../public/data/raw-materials.json");
 // const _data_purchase = require("../public/data/purchase.json");
 
+const bodyParser = require('body-parser');
+router.use(bodyParser.urlencoded({ extended: false }));
+router.use(bodyParser.json());
 
 router.use(function (req, res, next) {
 	//console.log('app use 123');
@@ -236,13 +239,9 @@ router.get('/login', (req, res) => {
 		login: true
 	});
 });
-const bodyParser = require('body-parser');
-router.use(bodyParser.urlencoded({ extended: false }));
-router.use(bodyParser.json());
-router.post('/auth', (req, res) => {
-	console.log(req.body)
-	res.json({res: "ok"})
-	
+
+router.post('/auth', validated, (req, res) => {
+	res.redirect('/')
 });
 
 //functions
