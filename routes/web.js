@@ -247,6 +247,7 @@ app.get('/logout', function (req, res, next) {
 	// this will ensure that re-using the old session id
 	// does not have a logged in user
 	req.session.user = null
+	res.redirect('login')
 	req.session.save(function (err) {
 	  if (err) next(err)
   
@@ -254,7 +255,7 @@ app.get('/logout', function (req, res, next) {
 	  // guard against forms of session fixation
 	  req.session.regenerate(function (err) {
 		if (err) next(err)
-		res.redirect('https://piment-admin.localpro100.com/login')
+		// res.redirect('login')
 	  })
 	})
   })
