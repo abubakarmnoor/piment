@@ -20,7 +20,6 @@ router.use(session({
 	secret: 'm43str0',
 	resave: false,
 	saveUninitialized: true
-	// cookie: { maxAge: 1000 * 60 * 60 * 24 }//1day
   }))
 router.use(function (req, res, next) {
 	//console.log('app use 123');
