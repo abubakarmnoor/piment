@@ -15,9 +15,15 @@ $(document).ready(function(){
                 $('.modal').modal('hide');
                 // data = JSON.stringify(data);
                 // data = JSON.parse(data);
-                alert(data.success)
+                // alert(data.success)
                 if(data.success){
                     location.href='/'
+                }else{
+                    Swal.fire({
+                        icon: "warning",
+                        title: "Login",
+                        text: "email and/or password is invalid"
+                    });
                 }
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
