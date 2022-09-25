@@ -87,7 +87,7 @@ $(document).ready(function() {
         let _data = {};
         _data.id = table.row( this ).data().co_guid;
         _data.co_order_id = table.row( this ).data().co_order_id
-        _data.upd_by = "Admin";
+        _data.upd_by = $("#logged_user_id").text();
         
         Swal.fire({
             title: 'Are you sure?',

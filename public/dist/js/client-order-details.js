@@ -45,7 +45,7 @@ $(document).ready(function() {
         e.preventDefault();
         const form = $(e.target);
         const _data = convertFormToJSON(form);
-        _data.co_upd_by="Admin";
+        _data.co_upd_by = $("#logged_user_id").text();
         _data.tblname = "co";
         // console.log(_data);
         if (!_data.co_client_guid || !_data.co_status)

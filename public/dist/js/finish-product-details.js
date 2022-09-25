@@ -51,7 +51,7 @@ $(document).ready(function() {
         e.preventDefault();
         const form = $(e.target);
         const _data = convertFormToJSON(form);
-        _data.fp_created_by="Admin";
+        _data.fp_created_by = $("#logged_user_id").text();
         _data.fp_active = $("#ck_active").prop('checked')
         _data.fp_validated = $("#ck_validated").prop('checked')
         _data.fp_box_size_h = (_data.fp_box_size_h).replace(/\,/g,'');

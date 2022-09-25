@@ -41,7 +41,7 @@ $(document).ready(function() {
         _data.client_active = $("#ck_active").prop('checked')
         _data.client_upd_by= $("#logged_user_id").text();//"Admin";
         _data.tblname = "client";
-        console.log(_data);
+        // console.log(_data);
 
         // ajax - save/post data
         spinner_popup();

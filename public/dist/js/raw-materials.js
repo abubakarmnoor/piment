@@ -97,7 +97,7 @@ $(document).ready(function() {
         let _data = {};
         _data.id = table.row( this ).data().rm_guid;
         _data.rm_desc = table.row( this ).data().rm_desc;
-        _data.upd_by = "Admin";
+        _data.upd_by = $("#logged_user_id").text();
         //_data.tblname = 'rm'
         // console.log(_data);
         // console.log( table.row( this ).data().id );

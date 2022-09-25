@@ -37,10 +37,6 @@ $(document).ready(function(){
         e.preventDefault();
         const form = $(e.target);
         const json = convertFormToJSON(form);
-        json.txt_created_date = new Date(json.txt_created_date);
-        json.txt_created_date = formatDate(json.txt_created_date)
-        json.txt_updated_date = new Date(json.txt_updated_date);
-        json.txt_updated_date = formatDate(json.txt_updated_date)
         //console.log(json);
 
         // ajax

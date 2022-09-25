@@ -80,7 +80,7 @@ $(document).ready(function() {
         let _data = {};
         _data.id = table.row( this ).data().fp_guid;
         _data.fp_desc = table.row( this ).data().fp_desc;
-        _data.upd_by = "Admin";
+        _data.upd_by = $("#logged_user_id").text();
         
         Swal.fire({
             title: 'Are you sure?',

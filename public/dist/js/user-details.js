@@ -21,7 +21,6 @@ $(document).ready(function() {
     
     }else{
         $('.page-header').text('USER ADD NEW')
-        let username = 'Admin';
         
     }
 
@@ -50,7 +49,7 @@ $(document).ready(function() {
         const form = $(e.target);
         const json = convertFormToJSON(form);
         json.userpass_active = $("#ck_active").prop('checked')
-        json.userpass_upd_by="Admin";
+        json.userpass_upd_by = $("#logged_user_id").text();
         console.log(json);
 
         // ajax

@@ -26,7 +26,7 @@ $(document).ready(function() {
     
     }else{
         $('.page-header').text('SUPPLIER ADD NEW')
-        let username = 'Admin';
+        
     }
 
      //btn
@@ -40,7 +40,7 @@ $(document).ready(function() {
         const form = $(e.target);
         const _data = convertFormToJSON(form);
         _data.supplier_active = $("#ck_active").prop('checked')
-        _data.supplier_upd_by="Admin";
+        _data.supplier_upd_by = $("#logged_user_id").text();
         _data.tblname = "supplier";
         //  console.log(_data);
 

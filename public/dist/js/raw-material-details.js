@@ -34,8 +34,6 @@ $(document).ready(function() {
         $('.modal').modal('hide');
         $('.page-header').text('RAW MATERIAL ADD NEW')
         $("input[name=rm_desc]").val($(this).find("option:selected").attr("desc"))
-        let username = 'Admin';
-        get_date_default(username,null, username, null)
     }
 
      //btn
@@ -52,7 +50,7 @@ $(document).ready(function() {
         _data.rm_cost = (_data.rm_cost).replace(/\,/g,'');//.toFixed(2);
         // _data.cost = parseFloat(_data.cost).toFixed();
         _data.rm_code = $("input[name=rm_code]").val()
-        _data.rm_upd_by='Admin'
+        _data.rm_upd_by = $("#logged_user_id").text();
         _data.tblname = 'rm';
         // console.log(_data);
         // ajax - save/post data

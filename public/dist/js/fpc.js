@@ -118,7 +118,7 @@ $(document).ready(function() {
         e.preventDefault();
         const form = $(e.target);
         const _data = convertFormToJSON(form);
-        _data.fp_cp_upd_by="Admin";
+        _data.fp_cp_upd_by = $("#logged_user_id").text();
         _data.fp_cp_qty = (_data.fp_cp_qty).replace(/\,/g,'');
         _data.fp_cp_price = (_data.fp_cp_price).replace(/\,/g,'');
         _data.fp_cp_unit = $("#fp_cp_unit").val()
@@ -207,7 +207,7 @@ $(document).ready(function() {
         let _data = {};
         _data.id = tableLampshade.row( this ).data().fp_cp_guid;
         _data.rm_desc = tableLampshade.row( this ).data().rm_desc;
-        _data.upd_by = "Admin";
+        _data.upd_by = $("#logged_user_id").text();
 
         Swal.fire({
             title: 'Are you sure?',
@@ -258,7 +258,7 @@ $(document).ready(function() {
         let _data = {};
         _data.id = tableStand.row( this ).data().fp_cp_guid;
         _data.rm_desc = tableStand.row( this ).data().rm_desc;
-        _data.upd_by = "Admin";
+        _data.upd_by = $("#logged_user_id").text();
 
         Swal.fire({
             title: 'Are you sure?',
@@ -306,7 +306,7 @@ $(document).ready(function() {
         let _data = {};
         _data.id = tableEuro.row( this ).data().fp_cp_guid;
         _data.rm_desc = tableEuro.row( this ).data().rm_desc;
-        _data.upd_by = "Admin";
+        _data.upd_by = $("#logged_user_id").text();
 
         Swal.fire({
             title: 'Are you sure?',
@@ -354,7 +354,7 @@ $(document).ready(function() {
         let _data = {};
         _data.id = tableUS.row( this ).data().fp_cp_guid;
         _data.rm_desc = tableUS.row( this ).data().rm_desc;
-        _data.upd_by = "Admin";
+        _data.upd_by = $("#logged_user_id").text();
 
         Swal.fire({
             title: 'Are you sure?',
@@ -402,7 +402,7 @@ $(document).ready(function() {
         let _data = {};
         _data.id = tableJapan.row( this ).data().fp_cp_guid;
         _data.rm_desc = tableJapan.row( this ).data().rm_desc;
-        _data.upd_by = "Admin";
+        _data.upd_by = $("#logged_user_id").text();
 
         Swal.fire({
             title: 'Are you sure?',
@@ -450,7 +450,7 @@ $(document).ready(function() {
         let _data = {};
         _data.id = tableUK.row( this ).data().fp_cp_guid;
         _data.rm_desc = tableUK.row( this ).data().rm_desc;
-        _data.upd_by = "Admin";
+        _data.upd_by = $("#logged_user_id").text();
 
         Swal.fire({
             title: 'Are you sure?',
@@ -498,7 +498,7 @@ $(document).ready(function() {
         let _data = {};
         _data.id = tableAUS.row( this ).data().fp_cp_guid;
         _data.rm_desc = tableAUS.row( this ).data().rm_desc;
-        _data.upd_by = "Admin";
+        _data.upd_by = $("#logged_user_id").text();
 
         Swal.fire({
             title: 'Are you sure?',
