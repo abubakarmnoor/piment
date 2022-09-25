@@ -38,7 +38,7 @@ router.get('/client-order', (req, res) => {
 router.get('/client-order-details/:coid/:act', async (req, res) => {
 	const _act = req.params.act
 	const _olid = req.params.coid
-	const __data_pop_status = await getPopupData('status');
+	const __data_pop_status = await getPopupData('co-status');
 	const __data_client = await getClient();
 	res.render('client-order-details.hbs', {
 		tables_bs4: true, client_order_details:true, coid:_olid, act:_act, __data_pop_status, __data_client
