@@ -86,12 +86,12 @@ $(document).ready(function() {
         e.preventDefault();
         let _data = {};
         _data.id = table.row( this ).data().co_guid;
-        // _data.client_name = table.row( this ).data().client_name
+        _data.client_name = table.row( this ).data().client_name
         _data.upd_by = "Admin";
         
         Swal.fire({
             title: 'Are you sure?',
-            text: "You won't be able to revert this! ("+_data.id+")",
+            text: "You won't be able to revert this! ("+_data.client_name+")",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
