@@ -28,7 +28,7 @@ router.use(function (req, res, next) {
 	res.set('Cache-Control', 'max-age=1');// 60s x 60m x24 x ? day
 	next()
 })
-router.get('/', (req, res) => {
+router.get('/', validated, (req, res) => {
 	res.render('index.hbs', {
 		// morris: true
 	});
