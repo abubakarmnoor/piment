@@ -41,4 +41,9 @@ const getRMFP = async (type) => {
         console.error(err);
     }
 };
-module.exports = {getPopupData, getRM, getRMFP, getClient};
+function isAuthenticated (req, res, next) {
+	if (req.session.user) next()
+	else res.redirect('/login');//next('route')
+}
+
+module.exports = {getPopupData, getRM, getRMFP, getClient, isAuthenticated};

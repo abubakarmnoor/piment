@@ -6,9 +6,9 @@ const apis = require('./routes/apis');
 const app = express();
 // const axios = require('axios');
 const { log } = require('console');
-const {getPopupData} = require('./routes/functions')
-hbs.registerPartials(path.join(__dirname, 'views/partials'));
+const {isAuthenticated} = require('./routes/functions')
 
+hbs.registerPartials(path.join(__dirname, 'views/partials'));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -23,7 +23,7 @@ app.use('/apis/', apis);
 // });
 
 //The 404 Route (ALWAYS Keep this as the last route)
-app.use('*', function(req, res){
+app.use('*',isAuthenticated, function(req, res){
 	res.render('404.hbs', {
 		
 	});
@@ -36,8 +36,6 @@ app.use((err, req, res, next) => {
   
     return;
   });
-
-
 
 // app.listen(1337, () => {
 // 	console.log('http://localhost:1337');
