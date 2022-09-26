@@ -16,7 +16,7 @@ $(document).ready(function(){
                 // data = JSON.stringify(data);
                 // data = JSON.parse(data);
                 // alert(data.success)
-                if(data.success){
+                if(data && data.success){
                     location.href='/'
                 }else{
                     Swal.fire({

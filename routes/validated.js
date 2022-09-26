@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
 	const _res =  _users.data.find(item => {
         return item.email == _login_req.email && item.pass == _login_req.pass
      })
-    //  console.log(_res);
+    console.log(_res);
      if (_res){
         // res.json({"succeess":true, logged_name:_res.name})
         next();

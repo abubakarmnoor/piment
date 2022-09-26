@@ -267,14 +267,17 @@ router.post('/auth', (req, res) => {
 		if (err) next(err)
 	
 		// store user information in session, typically a user id
-		req.session.user = _res.name//req.body.email
-		req.session.user_id = _res.user_guid
+		if (_res) {
+			req.session.user = _res.name//req.body.email
+			req.session.user_id = _res.user_guid
+		}else{}
+		
 	
 		// save the session before redirection to ensure page
 		// load does not happen before session is saved
 		req.session.save(function (err) {
 		  if (err) return next(err)
-		  res.json({"success": true})
+		  res.json({"success": (_res ? true : false)})
 		})
 	  })
 
