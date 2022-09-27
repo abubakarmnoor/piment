@@ -14,7 +14,7 @@ $(document).ready(function() {
         // let url = location.href;
         // let id = getURLParameter(url, 'eid');
         // $("#id").val(id);
-        // get_details();
+        get_details();
         
     }else if (location.href.includes('ZGlk')) {
         $('.page-header').text('CLIENT ORDER DETAILS');
@@ -26,12 +26,11 @@ $(document).ready(function() {
 
         $("#ck_active").attr("disabled", true);
         $(".cancel").replaceWith("<a href='/client-order' type='button' class='btn btn-outline btn-primary'><i class='fa fa-long-arrow-left'></i> Back</a>");
-        // get_details();
+        get_details();
         
     
     }else{
         $('.page-header').text('CLIENT ORDER LIST ADD NEW')
-        let username = 'Admin';
         
     }
 
@@ -109,28 +108,39 @@ $(document).ready(function() {
 //end  doc ready
 });
 //default-edit
+
+//default-edit
 function default_edit(data){
+    $("input[name=co_guid").val(data[0].co_guid)
+    $("input[name=co_order_id").val(data[0].co_order_id)
+    $('#co_client_guid').selectpicker('val',data[0].co_client_guid)
+    $("input[name=co_order_date").val(data[0].co_order_date)
+    $("input[name=co_delivery_date").val(data[0].co_delivery_date)
+    $('#co_status').selectpicker('val',data[0].co_status)
 
-    let _date = new Date(data[0].cost_last_updated)
-    //_date.setDate(_date.getDate()+1)
-    
-    $("input[name=rm_code").val(data[0].rm_code)
-    $("input[name=rm_desc").val(data[0].rm_desc)
-    $('#sp_product_family').selectpicker('val',data[0].product_family)
-    $("input[name=cost").val(numberWithCommas(data[0].cost))
-    $('#sp_unit').selectpicker('val',data[0].unit)
-    $("input[name=box_size_w").val(data[0].box_size_w)
-    $("input[name=box_size_l").val(data[0].box_size_l)
-    $("input[name=box_size_h").val(data[0].box_size_h)
-    $('#sp_kayu').selectpicker('val',data[0].kayu)
-    $("input[name=cost_last_updated").val(formatDate(_date,true))
-    $('#sp_creator').selectpicker('val',data[0].creator)
-    $("#ck_validated").prop('checked', data[0].validated)
-    $("#ck_out").prop('checked', data[0].out)
-    $("#ck_active").prop('checked', data[0].active)
-
-    let user_login = 'Admin';
-    
+}
+//get details
+function get_details(id){
+    //ajax - get details
+    spinner_popup();
+    //ajax
+    $.ajax({
+        type:"GET", 
+        url: "/apis/pull/client/"+id, 
+        dataType: "json",
+        success: function(data) {
+            default_edit(data.data);
+            $('.modal').modal('hide');
+        }, 
+        error: function(jqXHR, textStatus, errorThrown) {
+            //alert(jqXHR.status);
+            swal({
+                title: "Error!",
+                text: jqXHR.status,
+                icon: "error"
+            });
+        }
+    });
 }
 
 //insert element
