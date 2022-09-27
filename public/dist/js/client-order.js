@@ -122,7 +122,7 @@ $(document).ready(function() {
                         }else{
                             Swal.fire({
                                 icon: "error",
-                                title: "",
+                                title: "Client Order",
                                 text: data.err.sqlMessage
                             })
                         }
