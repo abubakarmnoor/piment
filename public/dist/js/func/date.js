@@ -11,4 +11,12 @@ function formatDate(date) {
 
     return [year, month, day].join('-');
 }
+$(function(){
+    $(".datepicker").datepicker({
+        format: 'yyyy-mm-dd',
+        setDate: new Date(),
+        autoclose: true,
+        todayHighlight: true,
+    });
+});
  
