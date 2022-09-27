@@ -55,7 +55,7 @@ $(document).ready(function() {
             { "data": "client_name" },
             { "data": "co_order_date" },
             { "data": 'co_delivery_date'},
-            { "data": "s" },
+            { "data": "status" },
         ]
     });
     
