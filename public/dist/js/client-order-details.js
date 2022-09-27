@@ -126,7 +126,7 @@ function get_details(id){
     //ajax
     $.ajax({
         type:"GET", 
-        url: "/apis/pull/client/"+id, 
+        url: "/apis/pull/co/"+id, 
         dataType: "json",
         success: function(data) {
             default_edit(data.data);
