@@ -222,7 +222,7 @@ router.post('/del/:tbl',(req,res)=>{
     query='call spdelete_client (?, ?)'
   }else if (_data.tblname == 'stock'){
     query='call spdelete_stock (?, ?)'
-  }else if (_data.tblname == 'stock'){
+  }else if (_data.tblname == 'co'){
     query='call spdelete_co (?, ?)'
   }
   // res.status(200).json({success:true, query})
