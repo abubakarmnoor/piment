@@ -85,10 +85,10 @@ $(document).ready(function() {
     $('#dtTbl').on('click', 'td.editor-delete', function (e) {
         e.preventDefault();
         let _data = {};
-        _data.co_guid = table.row( this ).data().co_guid;
+        _data.id = table.row( this ).data().co_guid;
         _data.co_order_id = table.row( this ).data().co_order_id
         _data.upd_by = $("#logged_user_id").text();
-        console.log(_data);
+        // console.log(_data);
 
         Swal.fire({
             title: 'Are you sure?',
