@@ -111,7 +111,7 @@ $(document).ready(function() {
 
 //default-edit
 function default_edit(data){
-    var order_date = new Date("01-12-2022");
+    var order_date = new Date("2022-01-03");
     console.log(order_date);
     $("input[name=co_guid").val(data[0].co_guid)
     $("input[name=co_order_id").val(data[0].co_order_id)
