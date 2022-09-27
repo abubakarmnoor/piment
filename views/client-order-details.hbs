@@ -122,7 +122,7 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="tab_order"><h4>ORDER</h4>
-                                        <a href="#" id="btn_add" type="button" class="btn btn-outline btn-primary pull-left">
+                                        <a href="#" id="btn_add_order" type="button" class="btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#pop-modal-form-input">
                                             <i class="glyphicon-plus"></i> Add New
                                         </a>
                                         <table id="dtTbl_Order" class="table table-striped display nowrap" style="width:100%">
@@ -210,6 +210,7 @@
         {{!-- popup modal form --}}
         <!-- Modal -->
         {{> pop}}
+        {{> pop_input}}
         {{!-- spinner --}}
         <div id="spinner-modal" class="modal fade spinner-bg modal-popup" tabindex="-1" role="dialog" data-backdrop="false">
             <div role="document">

@@ -4,7 +4,7 @@ const router = express.Router();
 var session = require('express-session')
 const cookieParser = require("cookie-parser");
 // const axios = require('axios').default;
-const {getPopupData, getRM, getRMFP, getClient} = require('./functions')
+const {getPopupData, getRM, getRMFP, getClient, getFP} = require('./functions')
 const validated = require("../routes/validated")
 // const tsqlPull = require('../tsql/pull');
 //fs = require('fs');
@@ -43,8 +43,9 @@ router.get('/client-order-details/:coid/:act', isAuthenticated, async (req, res)
 	const _olid = req.params.coid
 	const __data_pop_status = await getPopupData('co-status');
 	const __data_client = await getClient();
+	const __data_fp = await getFP();
 	res.render('client-order-details.hbs', {
-		tables_bs4: true, client_order_details:true, coid:_olid, act:_act, __data_pop_status, __data_client, _user : req.session.user, _user_id: req.session.user_id
+		tables_bs4: true, client_order_details:true, coid:_olid, act:_act, __data_pop_status, __data_client, _user : req.session.user, _user_id: req.session.user_id, __data_fp
 	});
 });
 

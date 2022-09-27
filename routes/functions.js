@@ -21,6 +21,16 @@ try {
         console.error(err);
     }
 };
+const getFP = async () => {
+    try {
+        const resp = await axios.get(api_url+'/apis/pull/fp/');
+        return JSON.parse(JSON.stringify(resp.data.data));
+            // console.log(resp.data);
+        } catch (err) {
+            // Handle Error Here
+            console.error(err);
+        }
+    };
 const getClient = async () => {
 try {
     const resp = await axios.get(api_url+'/apis/pull/client/');
@@ -46,4 +56,4 @@ function isAuthenticated (req, res, next) {
 	else res.redirect('/login');//next('route')
 }
 
-module.exports = {getPopupData, getRM, getRMFP, getClient, isAuthenticated};
+module.exports = {getPopupData, getRM, getRMFP, getClient, isAuthenticated, getFP};
