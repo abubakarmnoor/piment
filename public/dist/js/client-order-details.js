@@ -116,7 +116,7 @@ function default_edit(data){
     $('#co_client_guid').selectpicker('val',data[0].co_client_guid)
     const _odate = formatDate(data[0].co_order_date);
     $("#co_order_date").val(_odate)
-    const _ddate = moment(data[0].co_delivery_date).format("YYYY-MM-DD");
+    const _ddate = formatDate(data[0].co_delivery_date);
     $("#co_delivery_date").val(_ddate)
     $('#co_status').selectpicker('val',data[0].co_status)
 
