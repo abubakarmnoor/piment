@@ -4,7 +4,6 @@ $(document).ready(function() {
     $("#co_client_guid").selectpicker('val',null)
     $("#co_status").selectpicker('val',null)
     $('.selectpicker').selectpicker();
-    $('.datepicker').datepicker();
     insert_element_status();
     load_data_dt('/apis/pop/co-status'); //init
     
