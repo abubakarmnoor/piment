@@ -98,11 +98,11 @@ $(document).ready(function() {
     });
 
     //date datepicker
-    $("#order_date").datepicker({
-        format: "dd-M-yyyy",
+    $("#co_order_date").datepicker({
+        format: "dd/MM/yyyy",
     });
-    $("#delivery_date").datepicker({
-        format: "dd-M-yyyy",
+    $("#co_delivery_date").datepicker({
+        format: "dd/MM/yyyy",
     });
     
 //end  doc ready
