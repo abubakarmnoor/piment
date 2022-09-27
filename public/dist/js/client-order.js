@@ -88,7 +88,8 @@ $(document).ready(function() {
         _data.id = table.row( this ).data().co_guid;
         _data.co_order_id = table.row( this ).data().co_order_id
         _data.upd_by = $("#logged_user_id").text();
-        
+        console.log(_data);
+
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this! ("+_data.co_order_id+")",
