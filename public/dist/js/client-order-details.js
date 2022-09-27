@@ -111,10 +111,11 @@ $(document).ready(function() {
 
 //default-edit
 function default_edit(data){
+    var order_date = new Date(data[0].co_order_date)
     $("input[name=co_guid").val(data[0].co_guid)
     $("input[name=co_order_id").val(data[0].co_order_id)
     $('#co_client_guid').selectpicker('val',data[0].co_client_guid)
-    $("input[name=co_order_date").datepicker("setDate", data[0].co_order_date)
+    $("input[name=co_order_date").datepicker("setDate", order_date)
     $("input[name=co_delivery_date").datepicker("setDate", data[0].co_delivery_date)
     $('#co_status').selectpicker('val',data[0].co_status)
 
