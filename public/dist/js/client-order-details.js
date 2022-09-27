@@ -97,13 +97,13 @@ $(document).ready(function() {
 
     });
 
-    //date datepicker
-    $("#co_order_date").datepicker({
-        format: "dd/MM/yyyy",
-    });
-    $("#co_delivery_date").datepicker({
-        format: "dd/MM/yyyy",
-    });
+    // //date datepicker
+    // $("#co_order_date").datepicker({
+    //     format: "dd/MM/yyyy",
+    // });
+    // $("#co_delivery_date").datepicker({
+    //     format: "dd/MM/yyyy",
+    // });
     
 //end  doc ready
 });
