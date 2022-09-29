@@ -123,7 +123,7 @@ function default_edit(data){
     const _ddate = formatDate(data[0].co_delivery_date);
     $("#co_delivery_date").val(_ddate)
     $('#co_status').selectpicker('val',data[0].co_status)
-    $("input[name=co_notes").text(data[0].co_notes)
+    $("textarea[name=co_notes").text(data[0].co_notes)
 
 }
 
