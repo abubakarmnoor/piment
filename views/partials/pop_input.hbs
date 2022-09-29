@@ -2,56 +2,57 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title">FORM INPUT</h5>
             <button type="button" class="close btnclose" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
+            <h5 class="modal-title">FORM INPUT</h5> 
         </div>
         <div class="modal-body">
             <form id="form_input">
                 <div class="form-group row">
-                    <input type="text" class="form-control invisible" name="stock_type" style="position:absolute;" required readonly>
-                    <input type="text" class="form-control invisible" name="stock_guid" style="position:absolute;" required readonly>
-                    <input type="text" class="form-control invisible" name="stock_type_guid" style="position:absolute;" required readonly>
+                    <input type="text" class="form-control invisible" name="co_guid" style="position:absolute;" required readonly>
                 </div>
                 <div class="form-group row">
                     <div class="col-md-12 mb-3">
-                        <label>Desc</label>
-                        <input type="text" class="form-control" name="prod_desc" disabled>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-md-4 mb-3">
-                        <label for="co_status">Status</label>
-                        <select class="form-control selectpicker" id="co_status" name="co_status" data-live-search="true">
-                            {{!-- <option value="-">-</option> --}}
+                        <label for="co_details_fp_guid">FP</label>
+                        <select class="form-control selectpicker" id="co_details_fp_guid" name="co_details_fp_guid" data-live-search="true">
                             {{#each __data_fp}}
                                 <option value={{fp_guid}}>{{fp_desc}}</option>
                             {{/each}}
                         </select>
                     </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 mb-3">
+                        <label>Cost</label>
+                        <input type="text" class="form-control numeric" name="co_details_cost" placeholder="Cost" value="0" autocomplete="off" required>
+                    </div>
                     <div class="col-md-4 mb-3">
                         <label>Price</label>
-                        <input type="text" class="form-control numeric" name="stock_price" placeholder="Price" value="0" autocomplete="off" required>
+                        <input type="text" class="form-control numeric" name="co_details_price" placeholder="Price" value="0" autocomplete="off" required>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label>Qty</label>
-                        <input type="number" class="form-control" name="stock_qty" placeholder="Qty" value="0" autocomplete="off" required>
+                        <input type="number" class="form-control" name="co_details_qty" placeholder="Qty" value="0" autocomplete="off" required>
                     </div>
                 </div>
                 <div class="form-group row">
+                    <hr/>
                     <div class="col-md-12 mb-3">
                         <div class="col-sm pull-right">
                             <button type="submit" class="btn btn-outline btn-primary"><i class="fa fa-save"></i> Save</button>
                         </div>
-                        <div class="col-sm pull-right">
+                        {{!-- <div class="col-sm pull-right">
                             <a href="#"  type="button" class="btn btn-outline btn-primary btncancel">
                                 <i class="fa fa-times"></i> Cancel
                             </a>
-                        </div>
+                        </div> --}}
                         <div class="col-sm pull-left">
-                            <a href="#"  type="button" class="btn btn-outline btn-primary btnclear">
+                            {{!-- <a href="#"  type="button" class="btn btn-outline btn-primary btnclear">
                                 <i class="fa fa-times"></i> Clear
+                            </a> --}}
+                            <a href="#"  type="button" class="btn btn-outline btn-primary btnclose" data-dismiss="modal">
+                                <i class="fa fa-times"></i> Cancel
                             </a>
                         </div>
                     </div>
@@ -61,16 +62,13 @@
                         <input type="text" class="form-control" id="act" name="act" value="{{act}}" readonly>
                     </div>
                 </div>
-                <hr/>
             </form>
         </div>
-        <div class="modal-footer">
-            {{!-- <button type="button" clss="btn btn-secondary" data-dismiss="modal">Close</button> --}}
-            <a href="#"  type="button" class="btn btn-outline btn-primary btnclose" data-dismiss="modal">
-                <i class="fa fa-times"></i> Close
-            </a>
-            {{!-- <button type="button" class="btn btn-primary">Save changes</button> --}}
-        </div>
+            {{!-- <div class="modal-footer">
+                <a href="#"  type="button" class="btn btn-outline btn-primary btnclose" data-dismiss="modal">
+                    <i class="fa fa-times"></i> Close
+                </a>
+            </div> --}}
         </div>
     </div>
 </div>
