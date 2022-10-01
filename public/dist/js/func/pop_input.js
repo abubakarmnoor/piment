@@ -21,10 +21,11 @@ $(document).ready(function (e){
     $("#co_order_fp_guid").on("change", function(e){
         // alert($("#fp_cp_rm_guid").attr('price'))
         e.preventDefault()
+        var cost_ = $('option:selected', this).attr("cost");
+        $("input[name=fp_sc_cost]").val(price_).focusout();
         var price_ = $('option:selected', this).attr("price");
         $("input[name=co_order_price]").val(price_).focusout();
-        
-        
+        $("input[name=co_order_qty]").focus();
     })
     //end ready
 })

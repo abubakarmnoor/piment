@@ -17,7 +17,7 @@
                         <label for="co_order_fp_guid">FP</label>
                         <select class="form-control selectpicker" id="co_order_fp_guid" name="co_order_fp_guid" data-live-search="true">
                             {{#each __data_fp}}
-                                <option price="{{fp_sc_business_sale}}" value={{fp_guid}}>{{fp_desc}}</option>
+                                <option cost="{{fp_sc_cost}}" price="{{fp_sc_business_sale}}" value={{fp_guid}}>{{fp_desc}}</option>
                             {{/each}}
                         </select>
                     </div>

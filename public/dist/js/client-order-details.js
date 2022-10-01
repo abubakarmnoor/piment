@@ -73,7 +73,7 @@ $(document).ready(function() {
                         title: 'Client Order',
                         text: "Data Saved"
                     }).then(function(){
-                        location.href='/client-order'
+                        // location.href='/client-order'
                     });
                 }else{
                     Swal.fire({
@@ -109,6 +109,19 @@ $(document).ready(function() {
         e.preventDefault();
         
     })
+    $("#tab_order,#tab_po,#tab_invoice").on("click", function(e){
+        e.preventDefault();
+        const _id = $("input[name=co_guid").val();
+        if (!id){
+            Swal.fire({
+                icon: "warning",
+                title: "Client Order",
+                text: "Please input order details first"
+                
+            });
+        }
+    })
+    
 //end  doc ready
 });
 //default-edit
