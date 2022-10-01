@@ -1,6 +1,7 @@
 $(document).ready(function() {
             
     //default
+    const id = $("input[name=co_guid]").val()
     $("#co_client_guid").selectpicker('val',null)
     $("#co_status").selectpicker('val',null)
     $('.selectpicker').selectpicker();
@@ -14,7 +15,7 @@ $(document).ready(function() {
         // let url = location.href;
         // let id = getURLParameter(url, 'eid');
         // $("#id").val(id);
-        get_details();
+        get_details(id,undefined);
         
     }else if (location.href.includes('ZGlk')) {
         $('.page-header').text('CLIENT ORDER DETAILS');
@@ -26,7 +27,7 @@ $(document).ready(function() {
 
         $("#ck_active").attr("disabled", true);
         $(".cancel").replaceWith("<a href='/client-order' type='button' class='btn btn-outline btn-primary'><i class='fa fa-long-arrow-left'></i> Back</a>");
-        get_details();
+        get_details(id,undefined);
         
     
     }else{
@@ -146,13 +147,13 @@ function default_edit(data){
 }
 
 //get details
-function get_details(){
+function get_details(id,orid){
     //ajax - get details
     spinner_popup();
     //ajax
     $.ajax({
         type:"GET", 
-        url: "/apis/pull/co/"+id, 
+        url: "/apis/pull/co/"+id+"/"+orid, 
         dataType: "json",
         success: function(data) {
             default_edit(data.data);
