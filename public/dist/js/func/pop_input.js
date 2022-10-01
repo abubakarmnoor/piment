@@ -1,6 +1,6 @@
 $(document).ready(function (e){
     //init
-    $("#co_details_fp_guid").selectpicker('val',null)
+    $("#co_order_fp_guid").selectpicker('val',null)
 
     //submit
     $("#form_input").submit(function(e){
@@ -10,7 +10,7 @@ $(document).ready(function (e){
         _data.co_upd_by = $("#logged_user_id").text();
         _data.tblname = "co_order";
 
-        console.log($("#co_details_fp_guid").val());
+        console.log($("#co_order_fp_guid").val());
         console.log(_data);
         return ;
 
@@ -18,7 +18,7 @@ $(document).ready(function (e){
 
 
     //dropdown
-    $("#co_details_fp_guid").on("change", function(e){
+    $("#co_order_fp_guid").on("change", function(e){
         // alert($("#fp_cp_rm_guid").attr('price'))
         e.preventDefault()
         var price_ = $('option:selected', this).attr("price");
