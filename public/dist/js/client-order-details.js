@@ -75,8 +75,8 @@ $(document).ready(function() {
                         text: "Data Saved"
                     }).then(function(){
                         var encodedUrl = encodeURIComponent($("input[name=co_order_id]").val());
-                        // location.href = '/client-order-details/'+encodedUrl+'/ZWlk';
                         get_details(undefined, encodedUrl)
+                        $("#btn_tab_order").click();
                     });
                 }else{
                     Swal.fire({
