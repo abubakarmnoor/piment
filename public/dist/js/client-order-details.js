@@ -109,7 +109,7 @@ $(document).ready(function() {
         e.preventDefault();
         
     })
-    $("#btn_tab_order,#btn_tab_po,#btn_tab_invoice").on("click", function(e){
+    $("#btn_tab_order").on("click", function(e){
         e.preventDefault();
         const _id = $("input[name=co_guid").val();
         if (!id){
