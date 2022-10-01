@@ -115,6 +115,7 @@ $(document).ready(function() {
     $("#btn_tab_order,#btn_tab_po,#btn_tab_invoice").on("click", function(e){
         e.preventDefault();
         const _id = $("input[name=co_guid").val();
+        console.log(_id);
         if (!_id){
             Swal.fire({
                 icon: "warning",
