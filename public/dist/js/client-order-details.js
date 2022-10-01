@@ -152,7 +152,6 @@ function get_details(id,orid){
     //ajax - get details
     spinner_popup();
     //ajax
-    console.log("/apis/pull/co/"+id+"/"+orid);
     $.ajax({
         type:"GET", 
         url: "/apis/pull/co/"+id+"/"+orid, 
