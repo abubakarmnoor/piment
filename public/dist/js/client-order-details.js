@@ -73,7 +73,8 @@ $(document).ready(function() {
                         title: 'Client Order',
                         text: "Data Saved"
                     }).then(function(){
-                        // location.href='/client-order'
+                        var encodedUrl = encodeURIComponent('/client-order-details/undefined/'+$("input[name=co_order_id]").val());
+                        location.href = encodedUrl;
                     });
                 }else{
                     Swal.fire({
@@ -145,7 +146,7 @@ function default_edit(data){
 }
 
 //get details
-function get_details(id){
+function get_details(){
     //ajax - get details
     spinner_popup();
     //ajax
