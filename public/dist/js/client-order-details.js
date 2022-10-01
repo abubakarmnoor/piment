@@ -135,9 +135,7 @@ $(document).ready(function() {
 
 //default-edit
 function default_edit(data){
-    console.log(data[0].co_guid);
     $("input[name=co_guid]").val(data[0].co_guid)
-    console.log($("input[name=co_guid]").val());
     $("input[name=co_order_id]").val(data[0].co_order_id)
     $('#co_client_guid').selectpicker('val',data[0].co_client_guid)
     const _odate = formatDate(data[0].co_order_date);
@@ -159,7 +157,7 @@ function get_details(id,orid){
         url: "/apis/pull/co/"+id+"/"+orid, 
         dataType: "json",
         success: function(data) {
-            console.log(data.data);
+            // console.log(data.data);
             default_edit(data.data);
             $('.modal').modal('hide');
         }, 

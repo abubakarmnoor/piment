@@ -8,9 +8,9 @@ $(document).ready(function (e){
         const form = $(e.target);
         const _data = convertFormToJSON(form);
         _data.co_upd_by = $("#logged_user_id").text();
+        _data.co_guid = $("input[name=co_guid]").val();
         _data.tblname = "co_order";
-
-        console.log($("#co_order_fp_guid").val());
+        // console.log($("#co_order_fp_guid").val());
         console.log(_data);
         return ;
 
