@@ -157,6 +157,7 @@ function get_details(id,orid){
         url: "/apis/pull/co/"+id+"/"+orid, 
         dataType: "json",
         success: function(data) {
+            console.log(data.data);
             default_edit(data.data);
             $('.modal').modal('hide');
         }, 
