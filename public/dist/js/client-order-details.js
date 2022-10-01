@@ -111,6 +111,7 @@ $(document).ready(function() {
     })
     $("#btn_tab_order,#btn_tab_po,#btn_tab_invoice").on("click", function(e){
         e.preventDefault();
+        $("#btn_tab_details").click();
         const _id = $("input[name=co_guid").val();
         if (!_id){
             Swal.fire({
@@ -119,6 +120,7 @@ $(document).ready(function() {
                 text: "Please input order details first"
                 
             });
+
         }
     })
     
