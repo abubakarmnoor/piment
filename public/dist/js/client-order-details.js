@@ -112,7 +112,7 @@ $(document).ready(function() {
     $("#btn_tab_order").on("click", function(e){
         e.preventDefault();
         const _id = $("input[name=co_guid").val();
-        if (!id){
+        if (!_id){
             Swal.fire({
                 icon: "warning",
                 title: "Client Order",
