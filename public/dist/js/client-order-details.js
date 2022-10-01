@@ -73,8 +73,8 @@ $(document).ready(function() {
                         title: 'Client Order',
                         text: "Data Saved"
                     }).then(function(){
-                        var encodedUrl = encodeURIComponent('/client-order-details/undefined/'+$("input[name=co_order_id]").val());
-                        location.href = encodedUrl;
+                        var encodedUrl = encodeURIComponent(+$("input[name=co_order_id]").val());
+                        location.href = '/client-order-details/undefined/'+encodedUrl;
                     });
                 }else{
                     Swal.fire({
