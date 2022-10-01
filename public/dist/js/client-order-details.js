@@ -116,7 +116,7 @@ $(document).ready(function() {
         e.preventDefault();
         const _id = $("input[name=co_guid").val();
         console.log(_id);
-        if (!_id || _id === null){
+        if (_id === null){
             Swal.fire({
                 icon: "warning",
                 title: "Client Order",
