@@ -1,3 +1,4 @@
+var tableOrder;
 $(document).ready(function() {
             
     //default
@@ -179,11 +180,11 @@ function insert_element_status(){
     $('<a href="#" type="button" class="pull-right" id="btn_pop_co_status" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(5) > div:nth-child(2) > div > div > div');
 }
 function refreshOrderTable(){
-    table.ajax.url("/apis/pull/co_order", null, false).load();
+    tableOrder.ajax.url("/apis/pull/co_order", null, false).load();
 }
 
 function initOrderTable(){
-    table = $('#dtTbl_Order').DataTable({
+    tableOrder = $('#dtTbl_Order').DataTable({
         // "scrollY": "370px",
         "footerCallback": function ( row, data, start, end, display ) {
             var api = this.api(), data;
