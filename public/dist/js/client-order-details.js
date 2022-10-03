@@ -186,28 +186,28 @@ function refreshOrderTable(){
 function initOrderTable(){
     tableOrder = $('#dtTbl_Order').DataTable({
         // "scrollY": "370px",
-        "footerCallback": function ( row, data, start, end, display ) {
-            var api = this.api(), data;
+        // "footerCallback": function ( row, data, start, end, display ) {
+        //     var api = this.api(), data;
  
-            // converting to interger to find total
-            var intVal = function ( i ) {
-                return typeof i === 'string' ?
-                    i.replace(/[\$,]/g, '')*1 :
-                    typeof i === 'number' ?
-                        i : 0;
-            };
+        //     // converting to interger to find total
+        //     var intVal = function ( i ) {
+        //         return typeof i === 'string' ?
+        //             i.replace(/[\$,]/g, '')*1 :
+        //             typeof i === 'number' ?
+        //                 i : 0;
+        //     };
  
-	        var col7 = api
-                .column( 7 )
-                .data()
-                .reduce( function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0 );
+	    //     var col7 = api
+        //         .column( 7 )
+        //         .data()
+        //         .reduce( function (a, b) {
+        //             return intVal(a) + intVal(b);
+        //         }, 0 );
 				
-            // Update footer by showing the total with the reference of the column index 
-	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 7 ).footer() ).html(numberWithCommas(col7));
-        },
+        //     // Update footer by showing the total with the reference of the column index 
+	    //     $( api.column( 0 ).footer() ).html('Total');
+        //     $( api.column( 7 ).footer() ).html(numberWithCommas(col7));
+        // },
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
