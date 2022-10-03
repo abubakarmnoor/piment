@@ -9,6 +9,9 @@ $(document).ready(function (e){
         const _data = convertFormToJSON(form);
         _data.co_upd_by = $("#logged_user_id").text();
         _data.co_order_co_guid = $("input[name=co_guid]").val();
+        _data.co_order_price = (_data.co_order_price).replace(/\,/g,'')
+        _data.co_order_cost = (_data.co_order_cost).replace(/\,/g,'')
+        _data.co_order_qty = (_data.co_order_qty).replace(/\,/g,'')
         _data.tblname = "co_order";
         // console.log($("#co_order_fp_guid").val());
         console.log(_data);
