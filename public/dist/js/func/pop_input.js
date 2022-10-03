@@ -1,3 +1,4 @@
+var table;
 $(document).ready(function (e){
     //init
     $("#co_order_fp_guid").selectpicker('val',null)
@@ -15,10 +16,59 @@ $(document).ready(function (e){
         _data.tblname = "co_order";
         // console.log($("#co_order_fp_guid").val());
         console.log(_data);
-        return ;
+        // ajax - save/post data
+        spinner_popup();
+        $.ajax({
+            type:"POST", // must be POST 
+            url: "/apis/upd", 
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(_data),
+            success: function(data) {
+                //refresh
+                if ($("input[name=input_for]").val() == "co_order"){
+                    refreshOrderTable();
+                }
+                
+                Swal.fire({
+                    icon: 'success',
+                    title: '',
+                    text: "Data Saved"
+                }).then(function(){
+                    Swal.fire({
+                        // title: 'Add more component ?',
+                        text: "Add more FP ?",
+                        icon: 'question',
+                        showDenyButton: true,
+                        confirmButtonText: 'Yes',
+                        denyButtonText: 'No'
+                      }).then((result) => {
+    
+                        if (result.isConfirmed) {
+                            //reset form
+                            resetOrderForm();
+                            
+                        } else if (result.isDenied) {
+                            $('.modal').modal('hide');
+    
+                        }
+                      })
+                    
+                });
+                
+            }, 
+            error: function(jqXHR, textStatus, errorThrown) {
+                //alert(jqXHR.status);
+                $('.modal').modal('hide');
+                Swal.fire({
+                    icon: "error",
+                    title: "Error!",
+                    text: textStatus,
+                });
+            }
+        });
 
     })
-
 
     //dropdown
     $("#co_order_fp_guid").on("change", function(e){
@@ -32,3 +82,11 @@ $(document).ready(function (e){
     })
     //end ready
 })
+
+function resetOrderForm(){
+    $("#co_order_fp_guid").selectpicker('val',"-");
+    $("input[name=co_order_cost]").val(0);
+    $("input[name=co_order_price]").val(0);
+    $("input[name=co_order_qty]").val(0);
+
+}

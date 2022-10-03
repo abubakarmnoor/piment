@@ -7,7 +7,8 @@ $(document).ready(function() {
     $('.selectpicker').selectpicker();
     insert_element_status();
     load_data_dt('/apis/pop/co-status'); //init
-    
+    initOrderTable();
+
     //edit or add new
     if (location.href.includes('ZWlk')) {
         $('.page-header').text('CLIENT ORDER UPDATES')
@@ -110,7 +111,7 @@ $(document).ready(function() {
     
     $("#btn_add_order").on("click", function(e){
         e.preventDefault();
-        
+        $("input[name=input_for]").val("co_order");
     })
     $("#btn_tab_order,#btn_tab_po,#btn_tab_invoice").on("click", function(e){
         e.preventDefault();
@@ -177,11 +178,66 @@ function get_details(id,orid){
 function insert_element_status(){
     $('<a href="#" type="button" class="pull-right" id="btn_pop_co_status" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(5) > div:nth-child(2) > div > div > div');
 }
-// $(function(){
-//     $(".datepicker").datepicker({
-//         format: 'yyyy-mm-dd',
-//         setDate: new Date(),
-//         autoclose: true,
-//         todayHighlight: true,
-//     });
-// });
+function refreshOrderTable(){
+    table.ajax.url("/apis/pull/co_order", null, false).load();
+}
+
+function initOrderTable(){
+    table = $('#dtTbl_Order').DataTable({
+        // "scrollY": "370px",
+        "footerCallback": function ( row, data, start, end, display ) {
+            var api = this.api(), data;
+ 
+            // converting to interger to find total
+            var intVal = function ( i ) {
+                return typeof i === 'string' ?
+                    i.replace(/[\$,]/g, '')*1 :
+                    typeof i === 'number' ?
+                        i : 0;
+            };
+ 
+	        var col7 = api
+                .column( 7 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+				
+            // Update footer by showing the total with the reference of the column index 
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 7 ).footer() ).html(numberWithCommas(col7));
+        },
+        "scrollCollapse": true,
+        "paging": true, 
+        "lengthChange": false,
+        "ajax": "/apis/pull/co_order",
+        "processing": true,
+        "language": {
+            processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
+        //"serverSide": true,
+        "columnDefs": [{
+            "targets": [ 2 ],
+            "visible": false
+        }],
+        "columns": [
+            {
+                data: null,
+                className: "dt-center editor-edit",
+                defaultContent: '<i class="fa fa-pencil"/>',
+                orderable: false
+            },
+            {
+                data: null,
+                className: "dt-center editor-delete",
+                defaultContent: '<i class="fa fa-trash"/>',
+                orderable: false
+            },
+            { "data": "co_order_guid" },
+            { "data": "fp_desc" },
+            { "data": "co_order_cost" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "co_order_price" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "co_order_qty" }
+            
+        ]
+    });
+}
