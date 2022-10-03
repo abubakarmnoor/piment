@@ -46,6 +46,7 @@ $(document).ready(function (e){
     
                         if (result.isConfirmed) {
                             //reset form
+                            $('#spinner-modal').modal('hide');
                             resetOrderForm();
                             
                         } else if (result.isDenied) {
