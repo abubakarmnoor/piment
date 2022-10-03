@@ -7,7 +7,7 @@ $(document).ready(function (e){
         e.preventDefault();
         const form = $(e.target);
         const _data = convertFormToJSON(form);
-        _data.co_upd_by = $("#logged_user_id").text();
+        _data.co_order_upd_by = $("#logged_user_id").text();
         _data.co_order_co_guid = $("input[name=co_guid]").val();
         _data.co_order_price = (_data.co_order_price).replace(/\,/g,'')
         _data.co_order_cost = (_data.co_order_cost).replace(/\,/g,'')
