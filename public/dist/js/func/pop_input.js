@@ -89,7 +89,7 @@ $(document).ready(function (e){
         _data.desc = table.row( this ).data().fp_desc;
         _data.upd_by = $("#logged_user_id").text();
         //_data.tblname = 'rm'
-        // console.log(_data);
+        console.log(_data);
         // console.log( table.row( this ).data().id );
 
         Swal.fire({
