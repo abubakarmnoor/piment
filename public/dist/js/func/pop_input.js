@@ -97,6 +97,6 @@ function resetOrderForm(){
     $("input[name=co_order_cost]").val(0);
     $("input[name=co_order_price]").val(0);
     $("input[name=co_order_qty]").val(0);
-    
+    $("#co_order_fp_guid").removeAttr('disbaled')
 
 }
