@@ -250,7 +250,7 @@ function initOrderTable(){
             };
  
 	        var col4 = api
-                .column( 5 )
+                .column( 4 )
                 .data()
                 .reduce( function (a, b) {
                     return intVal(a) + intVal(b);
