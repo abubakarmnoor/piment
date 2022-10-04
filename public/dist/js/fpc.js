@@ -767,9 +767,10 @@ function refreshLampshade(){
             { "data": "fp_cp_guid" },
             { "data": "rm_code" },
             { "data": "rm_desc" },
-            { "data": "fp_cp_qty" },
             { "data": "unit_desc" },
             { "data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "fp_cp_qty" },
+            { "data": "total_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             
         ]
     });
