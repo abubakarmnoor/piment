@@ -1,8 +1,7 @@
-var table;
 $(document).ready(function (e){
     //init
     resetOrderForm()
-    $("#co_order_fp_guid").selectpicker('val',null)
+    // $("#co_order_fp_guid").selectpicker('val',null)
 
     //submit
     $("#form_input").submit(function(e){
@@ -93,10 +92,9 @@ $(document).ready(function (e){
 })
 
 function resetOrderForm(){
-    $("#co_order_fp_guid").selectpicker('val',"-");
+    $("#co_order_fp_guid").selectpicker('val',null)
     $("input[name=co_order_cost]").val(0);
     $("input[name=co_order_price]").val(0);
     $("input[name=co_order_qty]").val(0);
-    $("#co_order_fp_guid").removeAttr('disbaled')
 
 }
