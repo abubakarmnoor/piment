@@ -789,7 +789,7 @@ function refreshStand(){
             };
  
 	        var total = api
-                .column( 7 )
+                .column( 8 )
                 .data()
                 .reduce( function (a, b) {
                     return intVal(a) + intVal(b);
@@ -797,7 +797,7 @@ function refreshStand(){
 				
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 7 ).footer() ).html(numberWithCommas(total));
+            $( api.column( 8 ).footer() ).html(numberWithCommas(total));
         },
         "scrollCollapse": true,
         "paging": true, 
@@ -889,9 +889,10 @@ function refreshEuro(){
             { "data": "fp_cp_guid" },
             { "data": "rm_code" },
             { "data": "rm_desc" },
-            { "data": "fp_cp_qty" },
             { "data": "unit_desc" },
             { "data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "fp_cp_qty" },
+            { "data": "total_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             
         ]
     });
@@ -949,9 +950,10 @@ function refreshUS(){
             { "data": "fp_cp_guid" },
             { "data": "rm_code" },
             { "data": "rm_desc" },
-            { "data": "fp_cp_qty" },
             { "data": "unit_desc" },
             { "data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "fp_cp_qty" },
+            { "data": "total_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             
         ]
     });
@@ -1009,9 +1011,10 @@ function refreshJapan(){
             { "data": "fp_cp_guid" },
             { "data": "rm_code" },
             { "data": "rm_desc" },
-            { "data": "fp_cp_qty" },
             { "data": "unit_desc" },
             { "data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "fp_cp_qty" },
+            { "data": "total_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             
         ]
     });
@@ -1069,9 +1072,10 @@ function refreshUK(){
             { "data": "fp_cp_guid" },
             { "data": "rm_code" },
             { "data": "rm_desc" },
-            { "data": "fp_cp_qty" },
             { "data": "unit_desc" },
             { "data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "fp_cp_qty" },
+            { "data": "total_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             
         ]
     });
@@ -1129,9 +1133,10 @@ function refreshAUS(){
             { "data": "fp_cp_guid" },
             { "data": "rm_code" },
             { "data": "rm_desc" },
-            { "data": "fp_cp_qty" },
             { "data": "unit_desc" },
             { "data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "fp_cp_qty" },
+            { "data": "total_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             
         ]
     });
