@@ -728,7 +728,18 @@ function refreshLampshade(){
                         i : 0;
             };
  
-	        var col7 = api
+	        var total_price = api
+                .column( 6 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+				
+            // Update footer by showing the total with the reference of the column index 
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 6 ).footer() ).html(numberWithCommas(total_price));
+
+            var total_qty = api
                 .column( 7 )
                 .data()
                 .reduce( function (a, b) {
@@ -737,7 +748,18 @@ function refreshLampshade(){
 				
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 7 ).footer() ).html(numberWithCommas(col7));
+            $( api.column( 7 ).footer() ).html(numberWithCommas(total_qty));
+            
+            var total_qty_price = api
+                .column( 8 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+				
+            // Update footer by showing the total with the reference of the column index 
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 8 ).footer() ).html(numberWithCommas(total_qty_price));
         },
         "scrollCollapse": true,
         "paging": true, 
