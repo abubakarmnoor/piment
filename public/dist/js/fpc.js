@@ -789,7 +789,7 @@ function refreshStand(){
             };
  
 	        var total = api
-                .column( 8 )
+                .column( 7 )
                 .data()
                 .reduce( function (a, b) {
                     return intVal(a) + intVal(b);
@@ -797,7 +797,7 @@ function refreshStand(){
 				
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 8 ).footer() ).html(numberWithCommas(total));
+            $( api.column( 7 ).footer() ).html(numberWithCommas(total));
         },
         "scrollCollapse": true,
         "paging": true, 
