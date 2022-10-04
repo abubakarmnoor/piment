@@ -84,7 +84,7 @@ $(document).ready(function (e){
    
     $("#btncancel").on("click", function(e){
         e.preventDefault();
-        
+        resetOrderForm();
     })
 
 

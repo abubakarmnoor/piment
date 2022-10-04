@@ -315,7 +315,5 @@ function selectpicker_reload(id_){
             });
         }
     });
-
-
     
 }
