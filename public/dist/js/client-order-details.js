@@ -22,12 +22,11 @@ $(document).ready(function() {
     }else if (location.href.includes('ZGlk')) {
         $('.page-header').text('CLIENT ORDER DETAILS');
         $("#btn_save").hide();
-        $("#form_ :input").prop('readonly', true);
-        
-        $('.selectpicker').prop('disabled', true);
+        // $("#form_ :input").prop('readonly', true);
+        // $('.selectpicker').prop('disabled', true);
         $('.selectpicker').selectpicker('refresh');
 
-        $("#ck_active").attr("disabled", true);
+        // $("#ck_active").attr("disabled", true);
         $(".cancel").replaceWith("<a href='/client-order' type='button' class='btn btn-outline btn-primary'><i class='fa fa-long-arrow-left'></i> Back</a>");
         get_details(id,undefined);
         
