@@ -136,8 +136,8 @@ $(document).ready(function() {
     $('#dtTbl_Order').on('click', 'td.editor-delete', function (e) {
         e.preventDefault();
         let _data = {};
-        _data.id = table.row( this ).data().co_order_guid;
-        _data.desc = table.row( this ).data().fp_desc;
+        _data.id = tableOrder.row( this ).data().co_order_guid;
+        _data.desc = tableOrder.row( this ).data().fp_desc;
         _data.upd_by = $("#logged_user_id").text();
         //_data.tblname = 'rm'
         console.log(_data);
