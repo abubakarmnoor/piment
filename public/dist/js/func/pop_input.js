@@ -1,6 +1,7 @@
 var table;
 $(document).ready(function (e){
     //init
+    resetOrderForm()
     $("#co_order_fp_guid").selectpicker('val',null)
 
     //submit
@@ -82,7 +83,10 @@ $(document).ready(function (e){
         $("input[name=co_order_qty]").focus();
     })
    
-
+    $("#btncancel").on("click", function(e){
+        e.preventDefault();
+        
+    })
 
 
     //end ready
@@ -93,5 +97,6 @@ function resetOrderForm(){
     $("input[name=co_order_cost]").val(0);
     $("input[name=co_order_price]").val(0);
     $("input[name=co_order_qty]").val(0);
+    
 
 }
