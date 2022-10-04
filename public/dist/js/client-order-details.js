@@ -139,8 +139,7 @@ $(document).ready(function() {
         _data.id = tableOrder.row( this ).data().co_order_guid;
         _data.desc = tableOrder.row( this ).data().fp_desc;
         _data.upd_by = $("#logged_user_id").text();
-        //_data.tblname = 'rm'
-        console.log(_data);
+        // console.log(_data);
         // console.log( table.row( this ).data().id );
 
         Swal.fire({
@@ -239,28 +238,63 @@ function refreshOrderTable(){
 function initOrderTable(){
     tableOrder = $('#dtTbl_Order').DataTable({
         // "scrollY": "370px",
-        // "footerCallback": function ( row, data, start, end, display ) {
-        //     var api = this.api(), data;
+        "footerCallback": function ( row, data, start, end, display ) {
+            var api = this.api(), data;
  
-        //     // converting to interger to find total
-        //     var intVal = function ( i ) {
-        //         return typeof i === 'string' ?
-        //             i.replace(/[\$,]/g, '')*1 :
-        //             typeof i === 'number' ?
-        //                 i : 0;
-        //     };
+            // converting to interger to find total
+            var intVal = function ( i ) {
+                return typeof i === 'string' ?
+                    i.replace(/[\$,]/g, '')*1 :
+                    typeof i === 'number' ?
+                        i : 0;
+            };
  
-	    //     var col7 = api
-        //         .column( 7 )
-        //         .data()
-        //         .reduce( function (a, b) {
-        //             return intVal(a) + intVal(b);
-        //         }, 0 );
-				
-        //     // Update footer by showing the total with the reference of the column index 
-	    //     $( api.column( 0 ).footer() ).html('Total');
-        //     $( api.column( 7 ).footer() ).html(numberWithCommas(col7));
-        // },
+	        var col4 = api
+                .column( 5 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+            // Update footer by showing the total with the reference of the column index 
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 4 ).footer() ).html(numberWithCommas(col4));
+            var col5 = api
+                .column( 5 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+            // Update footer by showing the total with the reference of the column index 
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 5 ).footer() ).html(numberWithCommas(col5));
+            var col6 = api
+                .column( 6 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+            // Update footer by showing the total with the reference of the column index 
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 6 ).footer() ).html(numberWithCommas(col6));
+            var col7 = api
+                .column( 7 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+            // Update footer by showing the total with the reference of the column index 
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 7 ).footer() ).html(numberWithCommas(col7));
+            var col8 = api
+                .column( 8 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+            // Update footer by showing the total with the reference of the column index 
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 8 ).footer() ).html(numberWithCommas(col8));
+        },
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
@@ -290,7 +324,10 @@ function initOrderTable(){
             { "data": "fp_desc" },
             { "data": "co_order_cost" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
             { "data": "co_order_price" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
-            { "data": "co_order_qty" }
+            { "data": "co_order_qty" },
+            { "data": "total_cost" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "total_price" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
+
             
         ]
     });
