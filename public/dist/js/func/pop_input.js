@@ -81,6 +81,61 @@ $(document).ready(function (e){
         $("input[name=co_order_price]").val(price_).focusout();
         $("input[name=co_order_qty]").focus();
     })
+    // Delete a record
+    $('#dtTbl_Order').on('click', 'td.editor-delete', function (e) {
+        e.preventDefault();
+        let _data = {};
+        _data.id = table.row( this ).data().co_order_guid;
+        _data.desc = table.row( this ).data().fp_desc;
+        _data.upd_by = $("#logged_user_id").text();
+        //_data.tblname = 'rm'
+        // console.log(_data);
+        // console.log( table.row( this ).data().id );
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this! ("+_data.desc+")",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                spinner_popup();
+                $.ajax({
+                    type:"POST",
+                    url: "/apis/del/co_order", 
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify(_data),
+                    success: function(data) {
+                        $('.modal').modal('hide');
+                        Swal.fire({
+                            icon: "success",
+                            title: "Data Deleted",
+                            text: _data.rm_desc
+                        }).then(function(){
+                            refreshOrderTable();
+                        });
+                        
+                    }, 
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        //alert(jqXHR.status);
+                        $('.modal').modal('hide');
+                        Swal.fire({
+                            title: "Error!",
+                            text: textStatus,
+                            icon: "error"
+                        });
+                    }
+                });
+            }
+        })
+    } );
+
+
+
     //end ready
 })
 

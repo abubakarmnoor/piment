@@ -788,8 +788,8 @@ function refreshStand(){
                         i : 0;
             };
  
-	        var col7 = api
-                .column( 7 )
+	        var total = api
+                .column( 8 )
                 .data()
                 .reduce( function (a, b) {
                     return intVal(a) + intVal(b);
@@ -797,7 +797,7 @@ function refreshStand(){
 				
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 7 ).footer() ).html(numberWithCommas(col7));
+            $( api.column( 8 ).footer() ).html(numberWithCommas(total));
         },
         "scrollCollapse": true,
         "paging": true, 
@@ -827,9 +827,11 @@ function refreshStand(){
             { "data": "fp_cp_guid" },
             { "data": "rm_code" },
             { "data": "rm_desc" },
-            { "data": "fp_cp_qty" },
             { "data": "unit_desc" },
             { "data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "fp_cp_qty" },
+            { "data": "total_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            
             
         ]
     });
