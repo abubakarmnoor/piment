@@ -77,7 +77,7 @@ $(document).ready(function() {
                     }).then(function(){
                         var encodedUrl = encodeURIComponent($("input[name=co_order_id]").val());
                         get_details(undefined, encodedUrl)
-                        $("#btn_tab_order").click();
+                        // $("#btn_tab_order").click();
                     });
                 }else{
                     Swal.fire({
@@ -198,7 +198,9 @@ function default_edit(data){
     $("#co_delivery_date").val(_ddate)
     $('#co_status').selectpicker('val',data[0].co_status)
     $("textarea[name=co_notes]").text(data[0].co_notes)
-
+    
+    $("#btn_tab_order").click();
+    
 }
 
 //get details
