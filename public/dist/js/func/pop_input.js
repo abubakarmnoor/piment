@@ -15,7 +15,7 @@ $(document).ready(function (e){
         _data.co_order_qty = (_data.co_order_qty).replace(/\,/g,'')
         _data.tblname = "co_order";
         // console.log($("#co_order_fp_guid").val());
-        console.log(_data);
+        // console.log(_data);
         // ajax - save/post data
         spinner_popup();
         $.ajax({
