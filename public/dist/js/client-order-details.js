@@ -201,6 +201,7 @@ $(document).ready(function() {
         const _qty = tableOrder.row( this ).data().co_order_qty;
         $("input[name=co_order_qty]").val(_qty)
         
+
         $('#pop-modal-form-input').modal('show');
 
     } );
