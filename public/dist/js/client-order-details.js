@@ -272,16 +272,7 @@ function initOrderTable(){
                         i : 0;
             };
  
-	        var col4 = api
-                .column( 4 )
-                .data()
-                .reduce( function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0 );
-            // Update footer by showing the total with the reference of the column index 
-	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 4 ).footer() ).html(numberWithCommas(col4));
-            var col5 = api
+	        var col5 = api
                 .column( 5 )
                 .data()
                 .reduce( function (a, b) {
@@ -290,8 +281,17 @@ function initOrderTable(){
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
             $( api.column( 5 ).footer() ).html(numberWithCommas(col5));
-            var col7 = api
+            var col6 = api
                 .column( 6 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+            // Update footer by showing the total with the reference of the column index 
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 6 ).footer() ).html(numberWithCommas(col6));
+            var col7 = api
+                .column( 7 )
                 .data()
                 .reduce( function (a, b) {
                     return intVal(a) + intVal(b);
@@ -300,7 +300,7 @@ function initOrderTable(){
 	        $( api.column( 0 ).footer() ).html('Total');
             $( api.column( 7 ).footer() ).html(numberWithCommas(col7));
             var col8 = api
-                .column( 7 )
+                .column( 8 )
                 .data()
                 .reduce( function (a, b) {
                     return intVal(a) + intVal(b);
@@ -309,7 +309,7 @@ function initOrderTable(){
 	        $( api.column( 0 ).footer() ).html('Total');
             $( api.column( 8 ).footer() ).html(numberWithCommas(col8));
             var col9 = api
-                .column( 8 )
+                .column( 9 )
                 .data()
                 .reduce( function (a, b) {
                     return intVal(a) + intVal(b);
