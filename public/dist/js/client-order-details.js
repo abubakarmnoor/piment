@@ -290,17 +290,8 @@ function initOrderTable(){
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
             $( api.column( 5 ).footer() ).html(numberWithCommas(col5));
-            var col6 = api
-                .column( 6 )
-                .data()
-                .reduce( function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0 );
-            // Update footer by showing the total with the reference of the column index 
-	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 6 ).footer() ).html(numberWithCommas(col6));
             var col7 = api
-                .column( 7 )
+                .column( 6 )
                 .data()
                 .reduce( function (a, b) {
                     return intVal(a) + intVal(b);
@@ -309,7 +300,7 @@ function initOrderTable(){
 	        $( api.column( 0 ).footer() ).html('Total');
             $( api.column( 7 ).footer() ).html(numberWithCommas(col7));
             var col8 = api
-                .column( 8 )
+                .column( 7 )
                 .data()
                 .reduce( function (a, b) {
                     return intVal(a) + intVal(b);
@@ -317,6 +308,15 @@ function initOrderTable(){
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
             $( api.column( 8 ).footer() ).html(numberWithCommas(col8));
+            var col9 = api
+                .column( 8 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+            // Update footer by showing the total with the reference of the column index 
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 9 ).footer() ).html(numberWithCommas(col9));
         },
         "scrollCollapse": true,
         "paging": true, 
