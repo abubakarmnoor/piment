@@ -112,6 +112,7 @@ $(document).ready(function() {
     $("#btn_add_order").on("click", function(e){
         e.preventDefault();
         $("input[name=input_for]").val("co_order");
+        resetOrderForm();
     })
     $("#btn_tab_order,#btn_tab_po,#btn_tab_invoice").on("click", function(e){
         e.preventDefault();
@@ -182,7 +183,21 @@ $(document).ready(function() {
             }
         })
     } );
+    // Edit record
+    $('#dtTbl_Order').on('click', 'td.editor-edit', function (e) {
+        e.preventDefault();
+        const _id = table.row( this ).data().co_order_guid;
+        $("input[name=co_order_guid]").val(_id);
+        const _fp_id = table.row( this ).data().co_order_fp_guid;
+        $("#co_order_fp_guid").selectpicker('val',_fp_id)
+        const _cost = table.row( this ).data().co_order_cost;
+        $("input[name=co_order_cost]").val(_cost);
+        const _price = table.row( this ).data().co_order_price;
+        $("input[name=co_order_price]").val(_price);
+        const _qty = table.row( this ).data().co_order_qty;
+        $("input[name=co_order_qty]").val(_qty);
 
+    } );
 //end  doc ready
 });
 //default-edit
@@ -305,7 +320,7 @@ function initOrderTable(){
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
         //"serverSide": true,
         "columnDefs": [{
-            "targets": [ 2 ],
+            "targets": [ 2, 3 ],
             "visible": false
         }],
         "columns": [
@@ -322,13 +337,13 @@ function initOrderTable(){
                 orderable: false
             },
             { "data": "co_order_guid" },
+            { "data": "co-order_fp_guid" },
             { "data": "fp_desc" },
             { "data": "co_order_cost" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
             { "data": "co_order_price" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
             { "data": "co_order_qty" },
             { "data": "total_cost" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
             { "data": "total_price" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
-
             
         ]
     });
