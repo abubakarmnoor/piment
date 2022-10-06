@@ -26,10 +26,7 @@ $(document).ready(function (e){
             data: JSON.stringify(_data),
             success: function(data) {
                 //refresh
-                console.log('test');
-                console.log($("input[name=input_for]").val()); 
                 if ($("input[name=input_for]").val() == "co_order"){
-                    alert('refresh')
                     refreshOrderTable();
                 }
                 
