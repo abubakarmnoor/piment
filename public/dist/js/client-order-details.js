@@ -191,17 +191,16 @@ $(document).ready(function() {
         const _fp_id = tableOrder.row( this ).data().co_order_fp_guid;
         $("#co_order_fp_guid").selectpicker('val',_fp_id)
         const _cost = tableOrder.row( this ).data().co_order_cost;
-        $("input[name=co_order_cost]").val(_cost);
+        $("input[name=co_order_cost]")
+        .val(_cost)
+        .focusout();
         const _price = tableOrder.row( this ).data().co_order_price;
-        $("input[name=co_order_price]").val(_price);
+        $("input[name=co_order_price]")
+        .val(_price)
+        .focusout();
         const _qty = tableOrder.row( this ).data().co_order_qty;
-        $("input[name=co_order_qty]").val(_qty);
-        console.log(_id);
-        console.log(_fp_id);
-        console.log(_cost);
-        console.log(_price);
-        console.log(_qty);
-        $("input[name=co_order_qty]").val()
+        $("input[name=co_order_qty]").val(_qty)
+        
         $('#pop-modal-form-input').modal('show');
 
     } );
