@@ -337,7 +337,7 @@ function initOrderTable(){
                 orderable: false
             },
             { "data": "co_order_guid" },
-            { "data": "co-order_fp_guid" },
+            { "data": "co_order_fp_guid" },
             { "data": "fp_desc" },
             { "data": "co_order_cost" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
             { "data": "co_order_price" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
