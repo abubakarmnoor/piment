@@ -27,6 +27,7 @@ $(document).ready(function (e){
             success: function(data) {
                 //refresh
                 if ($("input[name=input_for]").val() == "co_order"){
+                    alert('refresh')
                     refreshOrderTable();
                 }
                 
