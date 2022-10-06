@@ -186,15 +186,15 @@ $(document).ready(function() {
     // Edit record
     $('#dtTbl_Order').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
-        const _id = table.row( this ).data().co_order_guid;
+        const _id = tableOrder.row( this ).data().co_order_guid;
         $("input[name=co_order_guid]").val(_id);
-        const _fp_id = table.row( this ).data().co_order_fp_guid;
+        const _fp_id = tableOrder.row( this ).data().co_order_fp_guid;
         $("#co_order_fp_guid").selectpicker('val',_fp_id)
-        const _cost = table.row( this ).data().co_order_cost;
+        const _cost = tableOrder.row( this ).data().co_order_cost;
         $("input[name=co_order_cost]").val(_cost);
-        const _price = table.row( this ).data().co_order_price;
+        const _price = tableOrder.row( this ).data().co_order_price;
         $("input[name=co_order_price]").val(_price);
-        const _qty = table.row( this ).data().co_order_qty;
+        const _qty = tableOrder.row( this ).data().co_order_qty;
         $("input[name=co_order_qty]").val(_qty);
         console.log(_id);
         console.log(_fp_id);
