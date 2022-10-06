@@ -186,7 +186,7 @@ $(document).ready(function() {
     // Edit record
     $('#dtTbl_Order').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
-        $("input[name=input_for]").val() == "co_order"
+        $("input[name=input_for]").val("co_order")
         const _id = tableOrder.row( this ).data().co_order_guid;
         $("input[name=co_order_guid]").val(_id);
         const _fp_id = tableOrder.row( this ).data().co_order_fp_guid;
