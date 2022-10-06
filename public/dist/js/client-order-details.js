@@ -196,7 +196,12 @@ $(document).ready(function() {
         $("input[name=co_order_price]").val(_price);
         const _qty = table.row( this ).data().co_order_qty;
         $("input[name=co_order_qty]").val(_qty);
-
+        console.log(_id);
+        console.log(_fp_id);
+        console.log(_cost);
+        console.log(_price);
+        console.log(_qty);
+        $("input[name=co_order_qty]").val()
         $('#pop-modal-form-input').modal('show');
 
     } );

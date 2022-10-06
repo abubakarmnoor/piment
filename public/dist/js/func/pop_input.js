@@ -1,6 +1,6 @@
 $(document).ready(function (e){
     //init
-    // resetOrderForm()
+    resetOrderForm()
     // $("#co_order_fp_guid").selectpicker('val',null)
 
     //submit
