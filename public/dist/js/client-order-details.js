@@ -113,7 +113,7 @@ $(document).ready(function() {
     $("#btn_add_order").on("click", function(e){
         e.preventDefault();
         $("input[name=input_for]").val("co_order");
-        $(".modal-title").text('ORDER LIST);
+        $(".modal-title").text('ORDER LIST');
         $("#form_input").show();
         $("#form_input_inv").hide();
         resetOrderForm();
