@@ -1,8 +1,9 @@
 var tableOrder;
+var id;
 $(document).ready(function() {
             
     //default
-    const id = $("input[name=co_guid]").val()
+    id = $("input[name=co_guid]").val()
     $("#co_client_guid").selectpicker('val',null)
     $("#co_status").selectpicker('val',null)
     $('.selectpicker').selectpicker();
