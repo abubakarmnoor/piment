@@ -47,9 +47,9 @@
                                     <li class="">
                                         <a href="#tab_order" data-toggle="tab" id="btn_tab_order">ORDER</a>
                                     </li>
-                                    <li>
+                                    {{!-- <li>
                                         <a href="#tab_po" data-toggle="tab" id="btn_tab_po">PO</a>
-                                    </li>
+                                    </li> --}}
                                     <li>
                                         <a href="#tab_invoice" data-toggle="tab" id="btn_tab_invoice">INVOICE</a>
                                     </li>
@@ -148,7 +148,7 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="tab-pane" id="tab_po"><h4>PO</h4>
+                                    {{!-- <div class="tab-pane" id="tab_po"><h4>PO</h4>
                                         <a href="#" id="btn_add" type="button" class="btn btn-outline btn-primary pull-left">
                                             <i class="glyphicon-plus"></i> Add New
                                         </a>
@@ -168,7 +168,7 @@
 
                                             </tbody>
                                         </table>
-                                    </div>
+                                    </div> --}}
                                     <div class="tab-pane" id="tab_invoice">
                                         <h4>INVOICE</h4>
                                         <a href="#" type="button" class="btn btn-outline btn-primary pull-left">
@@ -181,10 +181,11 @@
                                                     <th></th>
                                                     <th>Id</th>
                                                     <th>INV# Date</th>
+                                                    <th>Due# Date</th>
                                                     <th>Info</th>
-                                                    <th>Amt</th>
+                                                    <th>Cost</th>
+                                                    <th>Price</th>
                                                     <th>Paid Amt</th>
-                                                    <th>Due Date</th>
                                                 </tr>
                                             </thead>
                                             
