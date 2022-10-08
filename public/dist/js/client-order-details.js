@@ -255,7 +255,7 @@ function insert_element_status(){
     $('<a href="#" type="button" class="pull-right" id="btn_pop_co_status" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(5) > div:nth-child(2) > div > div > div');
 }
 function refreshOrderTable(){
-    tableOrder.ajax.url("/apis/pull/co_order", null, false).load();
+    tableOrder.ajax.url("/apis/pull/co_order/"+id, null, false).load();
 }
 
 function initOrderTable(){
@@ -321,7 +321,7 @@ function initOrderTable(){
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/apis/pull/co_order/"+$("input[name=co_guid]").val(),
+        "ajax": "/apis/pull/co_order/"+id,
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
