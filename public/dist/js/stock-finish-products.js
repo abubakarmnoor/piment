@@ -114,11 +114,11 @@ $(document).ready(function() {
 });
 
 // function
-$(function(){
-    $(".datepicker").datepicker({
-        format: 'yyyy-mm-dd',
-        setDate: new Date(),
-        autoclose: true,
-        todayHighlight: true,
-    });
-});
+// $(function(){
+//     $(".datepicker").datepicker({
+//         format: 'yyyy-mm-dd',
+//         setDate: new Date(),
+//         autoclose: true,
+//         todayHighlight: true,
+//     });
+// });
