@@ -251,6 +251,7 @@ function load_data_dt(_url){
 // functions 
 clear = function(){
     // $("input[name=stock_trans_date]").datepicker('setDate', new Date());
+    $("input[name=stock_trans_date]").val(null);
     $("input[name=stock_guid]").val('');
     $("input[name=stock_qty]").val(0);
     $("textarea[name=stock_info]").val('');
