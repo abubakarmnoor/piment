@@ -113,11 +113,15 @@ $(document).ready(function() {
     $("#btn_add_order").on("click", function(e){
         e.preventDefault();
         $("input[name=input_for]").val("co_order");
+        $("#form_input").show();
+        $("#form_input_inv").hide();
         resetOrderForm();
     })
     $("#btn_add_inv").on("click", function(e){
         e.preventDefault();
         $("input[name=input_for]").val("co_inv");
+        $("#form_input").hide();
+        $("#form_input_inv").show();
         resetInvForm();
     })
     $("#btn_tab_order,#btn_tab_po,#btn_tab_invoice").on("click", function(e){

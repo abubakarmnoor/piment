@@ -1,16 +1,7 @@
 $(document).ready(function (e){
     //init
-    if ($("input[name=input_for]").val() === "co_order"){
-        alert('co order');
-        $("#form_input").show();
-        $("#form_input_inv").hide();
-        resetOrderForm();
-    }else{
-        alert('inv')
-        $("#form_input").hide();
-        $("#form_input_inv").show();
-        resetInvForm();
-    }
+    resetOrderForm();
+    resetInvForm();
     
     // $("#co_order_fp_guid").selectpicker('val',null)
 
