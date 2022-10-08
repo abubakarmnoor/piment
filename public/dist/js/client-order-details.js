@@ -321,7 +321,7 @@ function initOrderTable(){
         "scrollCollapse": true,
         "paging": true, 
         "lengthChange": false,
-        "ajax": "/apis/pull/co_order",
+        "ajax": "/apis/pull/co_order/"+$("input[name=co_guid]").val(),
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
