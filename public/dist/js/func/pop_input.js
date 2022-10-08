@@ -112,6 +112,6 @@ function resetInvForm(){
 
     $("input[name=inv_cost]").val(0);
     $("input[name=inv_price]").val(0);
-    $("textarea[name=inv_info]").text('');
+    $("textarea[name=inv_info]").val('');
 
 }

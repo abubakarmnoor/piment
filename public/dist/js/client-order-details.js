@@ -113,6 +113,7 @@ $(document).ready(function() {
     $("#btn_add_order").on("click", function(e){
         e.preventDefault();
         $("input[name=input_for]").val("co_order");
+        $(".modal-title").text('ORDER LIST);
         $("#form_input").show();
         $("#form_input_inv").hide();
         resetOrderForm();
@@ -120,6 +121,7 @@ $(document).ready(function() {
     $("#btn_add_inv").on("click", function(e){
         e.preventDefault();
         $("input[name=input_for]").val("co_inv");
+        $(".modal-title").text('INVOICE LIST');
         $("#form_input").hide();
         $("#form_input_inv").show();
         resetInvForm();
