@@ -1,5 +1,7 @@
 
 
+//init
+$("#reportrange").css("display", "none")
 //formatDate
 function formatDate(date, display=false) {
     var d = new Date(date),
@@ -121,3 +123,4 @@ function isNumber(event) {
       event.preventDefault();
     }
 }
+
