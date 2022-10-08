@@ -1,7 +1,7 @@
 $(document).ready(function (e){
     //init
     if ($("input[name=input_for]").val() === "co_order"){
-        alert('co order')//
+        alert('co order');
         $("#form_input").show();
         $("#form_input_inv").hide();
         resetOrderForm();
