@@ -1,6 +1,6 @@
 $(document).ready(function (e){
     //init
-    if ($("input[name=input_for]").val() == "co_order"){
+    if ($("input[name=input_for]").val() === "co_order"){
         $("#form_input").show();
         $("#form_input_inv").hide();
         resetOrderForm();
@@ -119,5 +119,6 @@ function resetInvForm(){
 
     $("input[name=inv_cost]").val(0);
     $("input[name=inv_price]").val(0);
+    $("textarea[name=inv_info]").html('');
 
 }
