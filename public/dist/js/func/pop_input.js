@@ -1,6 +1,15 @@
 $(document).ready(function (e){
     //init
-    resetOrderForm()
+    if ($("input[name=input_for]").val() == "co_order"){
+        $("#form_input").show();
+        $("#form_input_inv").hide();
+        resetOrderForm();
+    }else{
+        $("#form_input").hide();
+        $("#form_input_inv").show();
+        resetInvForm();
+    }
+    
     // $("#co_order_fp_guid").selectpicker('val',null)
 
     //submit
@@ -28,6 +37,8 @@ $(document).ready(function (e){
                 //refresh
                 if ($("input[name=input_for]").val() == "co_order"){
                     refreshOrderTable();
+                }else{
+                    refreshInvTable();
                 }
                 
                 Swal.fire({
@@ -47,13 +58,16 @@ $(document).ready(function (e){
                         if (result.isConfirmed) {
                             //reset form
                             $('#spinner-modal').modal('hide');
-                            resetOrderForm();
-                            
+                            if ($("input[name=input_for]").val() == "co_order"){
+                                resetOrderForm();
+                            }else{
+                                resetInvForm();
+                            }
                         } else if (result.isDenied) {
                             $('.modal').modal('hide');
-    
+
                         }
-                      })
+                    })
                     
                 });
                 
@@ -87,7 +101,6 @@ $(document).ready(function (e){
         resetOrderForm();
     })
 
-
     //end ready
 })
 
@@ -95,6 +108,17 @@ function resetOrderForm(){
     $("#co_order_fp_guid").selectpicker('val',null)
     $("input[name=co_order_cost]").val(0);
     $("input[name=co_order_price]").val(0);
+    $("input[name=co_order_qty]").val(0);
+
+}
+function resetInvForm(){
+    
+    $("input[name=inv_date]").val(null);
+    $("input[name=inv_due_date]").val(null);
+    $("#inv_code]").selectpicker('val',null)
+
+    $("input[name=inv_cost]").val(0);
+    $("input[name=inv_price]").val(0);
     $("input[name=co_order_qty]").val(0);
 
 }

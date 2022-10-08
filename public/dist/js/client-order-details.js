@@ -115,6 +115,11 @@ $(document).ready(function() {
         $("input[name=input_for]").val("co_order");
         resetOrderForm();
     })
+    $("#btn_add_order").on("click", function(e){
+        e.preventDefault();
+        $("input[name=input_for]").val("co_inv");
+        resetInvForm();
+    })
     $("#btn_tab_order,#btn_tab_po,#btn_tab_invoice").on("click", function(e){
         e.preventDefault();
         const _id = $("input[name=co_guid").val();
