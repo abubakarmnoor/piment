@@ -115,7 +115,7 @@ $(document).ready(function() {
         $("input[name=input_for]").val("co_order");
         resetOrderForm();
     })
-    $("#btn_add_order").on("click", function(e){
+    $("#btn_add_inv").on("click", function(e){
         e.preventDefault();
         $("input[name=input_for]").val("co_inv");
         resetInvForm();
