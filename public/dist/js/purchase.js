@@ -18,6 +18,7 @@ $(document).ready(function() {
         "scrollY": "auto",
         "scrollCollapse": true,
         "paging": true, 
+        "pageLength": 50,
         "lengthChange": false,
         "ajax": "/data/purchase.json?sdate="+sdate_+"?edate="+edate_,
         "processing": true,

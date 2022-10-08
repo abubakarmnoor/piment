@@ -18,6 +18,7 @@ $(document).ready(function() {
         "scrollY": "auto",
         "scrollCollapse": true,
         "paging": true, 
+        "pageLength": 50,
         "lengthChange": false,
         "ajax": "/apis/pull/co",
         "processing": true,

@@ -18,6 +18,7 @@ $(document).ready(function() {
         "scrollY": "370px",
         "scrollCollapse": true,
         "paging": true, 
+        "pageLength": 50,
         "lengthChange": false,
         "ajax": "/apis/pull/userpass",
         "processing": true,

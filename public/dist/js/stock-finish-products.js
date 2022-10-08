@@ -21,7 +21,7 @@ $(document).ready(function() {
         "scrollX": "auto",
         "scrollY": "auto",
         "scrollCollapse": true,
-        "paging": true, 
+        "paging": false, 
         "lengthChange": false,
         "ajax": "apis/pull/rmfp/fp",
         "processing": true,
