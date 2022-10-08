@@ -1,10 +1,12 @@
 $(document).ready(function (e){
     //init
     if ($("input[name=input_for]").val() === "co_order"){
+        alert('co order')
         $("#form_input").show();
         $("#form_input_inv").hide();
         resetOrderForm();
     }else{
+        alert('inv')
         $("#form_input").hide();
         $("#form_input_inv").show();
         resetInvForm();
@@ -119,6 +121,6 @@ function resetInvForm(){
 
     $("input[name=inv_cost]").val(0);
     $("input[name=inv_price]").val(0);
-    $("textarea[name=inv_info]").html('');
+    $("textarea[name=inv_info]").text('');
 
 }
