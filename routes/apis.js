@@ -207,6 +207,18 @@ router.post('/upd',(req,res)=>{
           closeDbConnection(db)
         }
       })
+    }else if (_data.tblname == 'inv'){
+      query='call spsave_inv (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+      db.query(` `+query+` `,[_data.inv_guid, _data.inv_co_guid, _data.inv_date, _data.inv_due_date, _data.inv_code, _data.inv_cost, _data.inv_price, _data.inv_price_paidx, _data.inv_infox, _data.inv_upd_byx], (err, data_)=>{  
+      // db.query(query, (err, data_)=>{
+        if (!data_){
+          res.status(200).json({success:false, err})
+        }else{
+          let data = data_;
+          res.status(200).json({success:true, data})
+          closeDbConnection(db)
+        }
+      })
     }
     })
   }).catch((error)=>{
@@ -238,6 +250,8 @@ router.post('/del/:tbl',(req,res)=>{
     query='call spdelete_co (?, ?)'
   }else if (_data.tblname == 'co_order'){
     query='call spdelete_co_order (?, ?)'
+  }else if (_data.tblname == 'inv'){
+    query='call spdelete_inv (?, ?)'
   }
   // res.status(200).json({success:true, query})
 

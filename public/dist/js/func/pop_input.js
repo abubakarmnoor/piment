@@ -86,64 +86,64 @@ $(document).ready(function (e){
         _data.inv_price = (_data.inv_price).replace(/\,/g,'')
         _data.tblname = "inv";
         console.log(_data);
-        return;
-        // // ajax - save/post data
-        // spinner_popup();
-        // $.ajax({
-        //     type:"POST", // must be POST 
-        //     url: "/apis/upd", 
-        //     contentType: "application/json; charset=utf-8",
-        //     dataType: "json",
-        //     data: JSON.stringify(_data),
-        //     success: function(data) {
-        //         //refresh
-        //         if ($("input[name=input_for]").val() == "co_order"){
-        //             refreshOrderTable();
-        //         }else{
-        //             refreshInvTable();
-        //         }
+        // return;
+        // ajax - save/post data
+        spinner_popup();
+        $.ajax({
+            type:"POST", // must be POST 
+            url: "/apis/upd", 
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(_data),
+            success: function(data) {
+                //refresh
+                if ($("input[name=input_for]").val() == "co_order"){
+                    refreshOrderTable();
+                }else{
+                    refreshInvTable();
+                }
                 
-        //         Swal.fire({
-        //             icon: 'success',
-        //             title: '',
-        //             text: "Data Saved"
-        //         }).then(function(){
-        //             Swal.fire({
-        //                 // title: 'Add more component ?',
-        //                 text: "Add more FP ?",
-        //                 icon: 'question',
-        //                 showDenyButton: true,
-        //                 confirmButtonText: 'Yes',
-        //                 denyButtonText: 'No'
-        //               }).then((result) => {
+                Swal.fire({
+                    icon: 'success',
+                    title: '',
+                    text: "Data Saved"
+                }).then(function(){
+                    Swal.fire({
+                        // title: 'Add more component ?',
+                        text: "Add more Invoice ?",
+                        icon: 'question',
+                        showDenyButton: true,
+                        confirmButtonText: 'Yes',
+                        denyButtonText: 'No'
+                      }).then((result) => {
     
-        //                 if (result.isConfirmed) {
-        //                     //reset form
-        //                     $('#spinner-modal').modal('hide');
-        //                     if ($("input[name=input_for]").val() == "co_order"){
-        //                         resetOrderForm();
-        //                     }else{
-        //                         resetInvForm();
-        //                     }
-        //                 } else if (result.isDenied) {
-        //                     $('.modal').modal('hide');
+                        if (result.isConfirmed) {
+                            //reset form
+                            $('#spinner-modal').modal('hide');
+                            if ($("input[name=input_for]").val() == "co_order"){
+                                resetOrderForm();
+                            }else{
+                                resetInvForm();
+                            }
+                        } else if (result.isDenied) {
+                            $('.modal').modal('hide');
 
-        //                 }
-        //             })
+                        }
+                    })
                     
-        //         });
+                });
                 
-        //     }, 
-        //     error: function(jqXHR, textStatus, errorThrown) {
-        //         //alert(jqXHR.status);
-        //         $('.modal').modal('hide');
-        //         Swal.fire({
-        //             icon: "error",
-        //             title: "Error!",
-        //             text: textStatus,
-        //         });
-        //     }
-        // });
+            }, 
+            error: function(jqXHR, textStatus, errorThrown) {
+                //alert(jqXHR.status);
+                $('.modal').modal('hide');
+                Swal.fire({
+                    icon: "error",
+                    title: "Error!",
+                    text: textStatus,
+                });
+            }
+        });
 
     })
 
