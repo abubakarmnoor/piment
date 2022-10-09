@@ -3,6 +3,7 @@ var id;
 $(document).ready(function() {
             
     //default
+    spinner_popup();
     id = $("input[name=co_guid]").val()
     $("#co_client_guid").selectpicker('val',null)
     $("#co_status").selectpicker('val',null)
