@@ -62,10 +62,11 @@ $(document).ready(function() {
     // });
     
     //default / init
+    insert_element_prod_status();
     $('.selectpicker').selectpicker();
     selectpicker_refresh('prod_status','/apis/pop/prod-status');
     selectpicker_refresh('prod_co_guid','/apis/pull/co');
-    insert_element_status();
+    
     // New record
     $('a.editor-create').on('click', function (e) {
         e.preventDefault();
@@ -168,7 +169,7 @@ $(document).ready(function() {
 
 
 //insert element
-function insert_element_status(){
+function insert_element_prod_status(){
     $('<a href="#" type="button" class="pull-right" id="btn_pop_prod_status" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_input > div:nth-child(3) > div.col-md-8.mb-3 > div > div > div');
 }
 

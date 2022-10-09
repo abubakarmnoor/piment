@@ -233,7 +233,7 @@ function load_data_dt(_url){
         $("label[name=pop_type").text("prod-status")
         $("input[name=pop_desc").val("")
         $('input[type=search]').val("");
-        table.ajax.url("/apis/pop/prod-status", null, false).load(); // pop unit
+        table.ajax.url("/apis/pop/prod-status", null, false).load(); // 
         table.search('');
     })
     
