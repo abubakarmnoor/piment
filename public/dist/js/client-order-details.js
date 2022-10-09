@@ -285,7 +285,9 @@ $(document).ready(function() {
         $("input[name=input_for]").val("co_inv")
         const _id = tableInv.row( this ).data().inv_guid;
         $("input[name=inv_guid]").val(_id);
-        
+        const _inv_id = tableInv.row( this ).data().inv_id;
+        $("input[name=inv_id]").val(_inv_id);
+
         const _inv_date = formatDate(tableInv.row( this ).data().inv_date);
         $("#inv_date").val(_inv_date)
         const _inv_due_date = formatDate(tableInv.row( this ).data().inv_due_date);
