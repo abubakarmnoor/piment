@@ -179,6 +179,7 @@ function load_data_dt(_url){
         $('input[type=search]').val("");
         table.ajax.url("/apis/pop/inv-code", null, false).load(); // pop refresh
         table.search('');
+        $("#pop-modal-form-input").hide();
 
     });
     $('#btn_pop_pf').on('click', function(){
