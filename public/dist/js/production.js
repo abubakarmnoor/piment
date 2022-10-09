@@ -181,8 +181,8 @@ $(document).ready(function() {
         _data.co_upd_by = $("#logged_user_id").text();
         _data.tblname = "prod";
         console.log(_data);
-        return;
         
+
         if (!_data.prod_co_guid || !_data.prod_status)
         {
             Swal.fire({
@@ -192,6 +192,7 @@ $(document).ready(function() {
             })
             return;
         }
+        return;
         
         // ajax - save/post data
         spinner_popup();
