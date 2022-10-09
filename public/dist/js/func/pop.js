@@ -109,7 +109,7 @@ function load_data_dt(_url){
                             //location.href='/clients'
                             $("#btn_pop_clear").click();
                             // console.log(_data.pop_type);
-                            table.ajax.url("/apis/pop/"+_data.pop_type, null, false).load(); // refresh pop
+                            TablePop.ajax.url("/apis/pop/"+_data.pop_type, null, false).load(); // refresh pop
                             selectpicker_reload(_data.pop_type);
                         });
                         
@@ -272,7 +272,7 @@ function load_data_dt(_url){
                         //location.href='/clients'
                         $("#btn_pop_clear").click();
                         // console.log(_data.pop_type);
-                        table.ajax.url("/apis/pop/"+_data.pop_type, null, false).load(); // refresh pop
+                        TablePop.ajax.url("/apis/pop/"+_data.pop_type, null, false).load(); // refresh pop
                         selectpicker_reload(_data.pop_type);
                     });
                 }else{
