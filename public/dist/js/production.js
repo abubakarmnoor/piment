@@ -69,8 +69,8 @@ $(document).ready(function() {
         $("label[name=pop_type").text("prod-status")
         $("input[name=pop_desc").val("")
         $('input[type=search]').val("");
-        table.ajax.url("/apis/pop/prod-status", null, false).load(); // 
-        table.search('');
+        TablePop.ajax.url("/apis/pop/prod-status", null, false).load(); // 
+        TablePop.search('');
     })
     
     // New record
