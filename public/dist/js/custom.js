@@ -42,7 +42,7 @@ function getURLParameter(url, name) {
 //spinner
 function spinner_popup (){
     // $('.modal-popup').modal('show');
-    $('#spinner-modal').modal('show');
+    $('.spinner-bg').modal('show');
     
     
 }
