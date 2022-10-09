@@ -13,7 +13,7 @@ $(document).ready(function() {
     //         'csvHtml5',
     //         'pdfHtml5'
     //     ], --}}
-    tablePO = $('#dtTbl').DataTable({
+    tablePO = $('#dtTbl_PO').DataTable({
         "scrollX": "auto",
         "scrollY": "auto",
         "scrollCollapse": true,
