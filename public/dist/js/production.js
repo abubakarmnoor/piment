@@ -25,7 +25,10 @@ $(document).ready(function() {
         "columnDefs": [{
             "targets": [ 2,3 ],
             "visible": false
-        }],
+        },{
+            targets:[10,11], render:function(data){
+            return moment(data).format('DD-MMM-YYYY');
+        }}],
         "columns": [
             {
                 data: null,
@@ -47,6 +50,8 @@ $(document).ready(function() {
             { "data": "prod_pic" },
             { "data": "prod_info" },
             { "data": "prod_status" },
+            { "data": "co_order_date" },
+            { "data": "co_delivery_date" },
         ]
     });
     
