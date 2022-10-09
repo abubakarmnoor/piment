@@ -93,7 +93,6 @@ $(document).ready(function() {
         //console.log( table.row( this ).data().id );
         const _id = table.row( this ).data().prod_guid;
         
-        
     } );
     // Delete a record
     $('#dtTbl').on('click', 'td.editor-delete', function (e) {
@@ -170,19 +169,94 @@ $(document).ready(function() {
         table.ajax.url("/apis/pull/prod", null, false).load();
     })
 
+    //save
+    $('#form_input').submit(function(e) {
+        //$('#messages').removeClass('hide').addClass('alert alert-success alert-dismissible').slideDown().show();
+        //$('#messages_content').html('<h4>MESSAGE HERE</h4>');
+        //$('#modal').modal('show');
+        
+        e.preventDefault();
+        const form = $(e.target);
+        const _data = convertFormToJSON(form);
+        _data.co_upd_by = $("#logged_user_id").text();
+        _data.tblname = "prod";
+        console.log(_data);
+        return;
+        
+        if (!_data.prod_co_guid || !_data.prod_status)
+        {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Work Order',
+                text: (!_data.prod_co_guid ? "Please select one Client Order" : "Please select one Status")
+            })
+            return;
+        }
+        
+        // ajax - save/post data
+        spinner_popup();
+        $.ajax({
+            type:"POST", // must be POST 
+            url: "/apis/upd", 
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(_data),
+            success: function(data) {
+                $('.modal').modal('hide');
+                if (data.success == true){
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Client Order',
+                        text: "Data Saved"
+                    }).then(function(){
+                        var encodedUrl = encodeURIComponent($("input[name=co_order_id]").val());
+                        get_details(undefined, encodedUrl)
+                        // $("#btn_tab_order").click();
+                    });
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: '',
+                        text: data.err.sqlMessage
+                    })
+                }
+                
+            }, 
+            error: function(jqXHR, textStatus, errorThrown) {
+                //alert(jqXHR.status);
+                $('.modal').modal('hide');
+                Swal.fire({
+                    title: "Error!",
+                    text: textStatus,
+                    icon: "error"
+                });
+            }
+        });
+
+    });
+
 //end doc ready
+
 });
 
 
+// function
 //insert element
 function insert_element_prod_status(){
     $('<a href="#" type="button" class="pull-right" id="btn_pop_prod_status" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_input > div:nth-child(3) > div.col-md-8.mb-3 > div > div > div');
 }
 resetForm = function(){
-    $("input[name=prod_id]").val('').focus();
+    $("input[name=prod_id]").val('');
     $("#prod_co_guid").selectpicker('val',null);
     $("input[name=prod_pic]").val('');
     $("#prod_status").selectpicker('val',null);
     $("textarea[name=prod_info]").val('');
     
+}
+function default_edit(data){
+    $("input[name=prod_id]").val(data[0].prod_id);
+    $("#prod_co_guid").selectpicker('val',data[0].prod_co_guid);
+    $("input[name=prod_pic]").val(data[0].prod_pic);
+    $("#prod_status").selectpicker('val',data[0].prod_status);
+    $("textarea[name=prod_info]").val(data[0].prod_info);    
 }
