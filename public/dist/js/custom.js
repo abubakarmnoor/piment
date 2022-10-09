@@ -131,7 +131,7 @@ function selectpicker_refresh(id_, url_){
     spinner_popup();
     $.ajax({
         type:"GET",
-        url: url_, 
+        url: api_host+url_, 
         success: function(data) {
             // $('.modal').modal('hide');
             $("#spinner-modal").modal('hide')
