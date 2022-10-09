@@ -184,5 +184,5 @@ resetForm = function(){
     $("input[name=prod_pic]").val('');
     $("#prod_status").selectpicker('val',null);
     $("textarea[name=prod_info]").val('');
-    $("input[name=prod_id]").focus();
+    $("#prod_id").focus();
 }
