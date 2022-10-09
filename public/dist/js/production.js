@@ -66,7 +66,6 @@ $(document).ready(function() {
     selectpicker_refresh('prod_status','/apis/pop/prod-status')
     selectpicker_refresh('prod_co_guid','/apis/pull/co')
 
-
     // New record
     $('a.editor-create').on('click', function (e) {
         e.preventDefault();
