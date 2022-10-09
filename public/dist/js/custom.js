@@ -42,8 +42,9 @@ function getURLParameter(url, name) {
 //spinner
 function spinner_popup (){
     // $('.modal-popup').modal('show');
-    $('.spinner-bg').modal('show');
-    
+    setTimeout(() => {
+        $('.spinner-bg').modal('show');    
+    }, 1500);
     
 }
 
