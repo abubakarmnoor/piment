@@ -539,7 +539,7 @@ function initInvTable(){
             "targets": [ 2,3 ],
             "visible": false
         },{
-            targets:[4,5], render:function(data){
+            targets:[5,6], render:function(data){
             return moment(data).format('DD-MMM-YYYY');
         }}],
         "columns": [
