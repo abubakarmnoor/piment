@@ -173,7 +173,7 @@ $(document).ready(function() {
         const _data = convertFormToJSON(form);
         _data.prod_upd_by = $("#logged_user_id").text();
         _data.tblname = "prod";
-        console.log(_data);
+        // console.log(_data);
         
 
         if (!_data.prod_co_guid || !_data.prod_status)
@@ -251,5 +251,5 @@ function default_edit(data){
     $("input[name=prod_pic]").val(data.prod_pic);
     $("#prod_status").selectpicker('val',data.prod_status);
     $("textarea[name=prod_info]").val(data.prod_info); 
-    $("#pop-modal-form-input").show();
+    $('#pop-modal-form-input').modal('show');
 }
