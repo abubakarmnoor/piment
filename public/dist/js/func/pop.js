@@ -161,6 +161,17 @@ function load_data_dt(_url){
         table.search('');
 
     });
+    $('#btn_pop_inv_code').on('click', function(){
+        // e.preventDefault();
+        $('#th_pop_desc').text('Invoice Code')
+        $('#lbl_pf_desc').text('Invoice Code')
+        $("label[name=pop_type").text("inv-code")
+        $("input[name=pop_desc").val("")
+        $('input[type=search]').val("");
+        table.ajax.url("/apis/pop/inv-code", null, false).load(); // pop refresh
+        table.search('');
+
+    });
     $('#btn_pop_pf').on('click', function(){
         // e.preventDefault();
         $('#th_pop_desc').text('Product Family')
