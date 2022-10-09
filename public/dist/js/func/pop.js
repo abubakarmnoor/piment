@@ -128,7 +128,7 @@ function load_data_dt(_url){
     } );
 
     // close popup
-    $(".close").on("click", function(e){
+    $(".closex").on("click", function(e){
         e.preventDefault();
         if ($("label[name=pop_type").text() == "inv-code"){
             $("#pop-modal-form-input").show();
