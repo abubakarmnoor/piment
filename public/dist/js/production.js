@@ -246,6 +246,7 @@ resetForm = function(){
     
 }
 function default_edit(data){
+    $("input[name=prod_guid]").val(data.prod_guid);
     $("input[name=prod_id]").val(data.prod_id);
     $("#prod_co_guid").selectpicker('val',data.prod_co_guid);
     $("input[name=prod_pic]").val(data.prod_pic);
