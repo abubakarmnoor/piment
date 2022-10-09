@@ -373,3 +373,101 @@ function initOrderTable(){
         ]
     });
 }
+function initInvTable(){
+    tableOrder = $('#dtTbl_Order').DataTable({
+        // "scrollY": "370px",
+        "footerCallback": function ( row, data, start, end, display ) {
+            var api = this.api(), data;
+ 
+            // converting to interger to find total
+            var intVal = function ( i ) {
+                return typeof i === 'string' ?
+                    i.replace(/[\$,]/g, '')*1 :
+                    typeof i === 'number' ?
+                        i : 0;
+            };
+ 
+	        var col5 = api
+                .column( 5 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+            // Update footer by showing the total with the reference of the column index 
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 5 ).footer() ).html(numberWithCommas(col5));
+            var col6 = api
+                .column( 6 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+            // Update footer by showing the total with the reference of the column index 
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 6 ).footer() ).html(numberWithCommas(col6));
+            var col7 = api
+                .column( 7 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+            // Update footer by showing the total with the reference of the column index 
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 7 ).footer() ).html(numberWithCommas(col7));
+            var col8 = api
+                .column( 8 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+            // Update footer by showing the total with the reference of the column index 
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 8 ).footer() ).html(numberWithCommas(col8));
+            var col9 = api
+                .column( 9 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+            // Update footer by showing the total with the reference of the column index 
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 9 ).footer() ).html(numberWithCommas(col9));
+        },
+        "scrollCollapse": true,
+        "paging": true, 
+        "lengthChange": false,
+        "ajax": "/apis/pull/inv/"+id,
+        "processing": true,
+        "language": {
+            processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
+        //"serverSide": true,
+        "columnDefs": [{
+            "targets": [ 2, 3 ],
+            "visible": false
+        }],
+        "columns": [
+            {
+                data: null,
+                className: "dt-center editor-edit",
+                defaultContent: '<i class="fa fa-pencil"/>',
+                orderable: false
+            },
+            {
+                data: null,
+                className: "dt-center editor-delete",
+                defaultContent: '<i class="fa fa-trash"/>',
+                orderable: false
+            },
+            { "data": "inv_guid" },
+            { "data": "inv_code" },
+            { "data": "inv_date" },
+            { "data": "inv_due_date" },
+            { "data": "inv_code_desc" },
+            { "data": "inv_cost" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "inv_price" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "inv_paid_amt" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "inv_unpaid" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "inv_info" },
+        ]
+    });
+}

@@ -105,7 +105,7 @@ function resetOrderForm(){
 function resetInvForm(){
     $("input[name=inv_date]").val(null);
     $("input[name=inv_due_date]").val(null);
-    $("#inv_code]").selectpicker('val',null)
+    $("#inv_code").selectpicker('val',null)
     $("input[name=inv_cost]").val(0);
     $("input[name=inv_price]").val(0);
     $("textarea[name=inv_info]").val('');
