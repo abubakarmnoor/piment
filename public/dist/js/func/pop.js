@@ -225,7 +225,18 @@ function load_data_dt(_url){
         table.ajax.url("/apis/pop/unit", null, false).load(); // pop unit
         table.search('');
     })
-
+    $('#btn_pop_prod_status').on('click', function(){
+        // e.preventDefault();
+        
+        $('#th_pop_desc').text('Prod Status')
+        $('#lbl_pf_desc').text('Prod Status')
+        $("label[name=pop_type").text("prod-status")
+        $("input[name=pop_desc").val("")
+        $('input[type=search]').val("");
+        table.ajax.url("/apis/pop/prod-status", null, false).load(); // pop unit
+        table.search('');
+    })
+    
     //save
     $('#form__').submit(function(e) {
         //$('#messages').removeClass('hide').addClass('alert alert-success alert-dismissible').slideDown().show();
@@ -305,7 +316,10 @@ function selectpicker_reload(id_){
         id__ = 'co_status';//
     }else if (id_ == 'inv-code'){
         id__ = 'inv_code';//
+    }else if (id_ == 'prod-status'){
+        id__ = 'prod_status';//
     }
+    
     // console.log(id_);
     // console.log(id__);
 
