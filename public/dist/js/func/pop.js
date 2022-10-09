@@ -226,7 +226,16 @@ function load_data_dt(_url){
         TablePop.ajax.url("/apis/pop/unit", null, false).load(); // pop unit
         TablePop.search('');
     })
-    
+    $('#btn_pop_prod_status').on('click', function(){
+        // e.preventDefault();
+        $('#th_pop_desc').text('Prod Status')
+        $('#lbl_pf_desc').text('Prod Status')
+        $("label[name=pop_type").text("prod-status")
+        $("input[name=pop_desc").val("")
+        $('input[type=search]').val("");
+        TablePop.ajax.url("/apis/pop/prod-status", null, false).load(); // 
+        TablePop.search('');
+    })
     
     //save
     $('#form__').submit(function(e) {
