@@ -220,6 +220,11 @@ $(document).ready(function() {
     } );
     $('#dtTbl_Inv').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
+
+        $(".modal-title").text('INVOICE LIST');
+        $("#form_input").hide();
+        $("#form_input_inv").show();
+        
         $("input[name=input_for]").val("co_inv")
         const _id = tableInv.row( this ).data().inv_guid;
         $("input[name=inv_guid]").val(_id);
