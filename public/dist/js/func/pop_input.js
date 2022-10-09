@@ -31,36 +31,43 @@ $(document).ready(function (e){
                 }else{
                     refreshInvTable();
                 }
-                
-                Swal.fire({
-                    icon: 'success',
-                    title: '',
-                    text: "Data Saved"
-                }).then(function(){
+                if (data.success == true){
                     Swal.fire({
-                        // title: 'Add more component ?',
-                        text: "Add more FP ?",
-                        icon: 'question',
-                        showDenyButton: true,
-                        confirmButtonText: 'Yes',
-                        denyButtonText: 'No'
-                      }).then((result) => {
+                        icon: 'success',
+                        title: '',
+                        text: "Data Saved"
+                    }).then(function(){
+                        Swal.fire({
+                            // title: 'Add more component ?',
+                            text: "Add more FP ?",
+                            icon: 'question',
+                            showDenyButton: true,
+                            confirmButtonText: 'Yes',
+                            denyButtonText: 'No'
+                          }).then((result) => {
+        
+                            if (result.isConfirmed) {
+                                //reset form
+                                $('#spinner-modal').modal('hide');
+                                if ($("input[name=input_for]").val() == "co_order"){
+                                    resetOrderForm();
+                                }else{
+                                    resetInvForm();
+                                }
+                            } else if (result.isDenied) {
+                                $('.modal').modal('hide');
     
-                        if (result.isConfirmed) {
-                            //reset form
-                            $('#spinner-modal').modal('hide');
-                            if ($("input[name=input_for]").val() == "co_order"){
-                                resetOrderForm();
-                            }else{
-                                resetInvForm();
                             }
-                        } else if (result.isDenied) {
-                            $('.modal').modal('hide');
-
-                        }
+                        })
+                        
+                    });
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: '',
+                        text: data.err.sqlMessage
                     })
-                    
-                });
+                }
                 
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
@@ -104,36 +111,44 @@ $(document).ready(function (e){
                     refreshInvTable();
                 }
                 
-                Swal.fire({
-                    icon: 'success',
-                    title: '',
-                    text: "Data Saved"
-                }).then(function(){
+                if (data.success == true){
                     Swal.fire({
-                        // title: 'Add more component ?',
-                        text: "Add more Invoice ?",
-                        icon: 'question',
-                        showDenyButton: true,
-                        confirmButtonText: 'Yes',
-                        denyButtonText: 'No'
-                      }).then((result) => {
+                        icon: 'success',
+                        title: '',
+                        text: "Data Saved"
+                    }).then(function(){
+                        Swal.fire({
+                            // title: 'Add more component ?',
+                            text: "Add more Invoice ?",
+                            icon: 'question',
+                            showDenyButton: true,
+                            confirmButtonText: 'Yes',
+                            denyButtonText: 'No'
+                          }).then((result) => {
+        
+                            if (result.isConfirmed) {
+                                //reset form
+                                $('#spinner-modal').modal('hide');
+                                if ($("input[name=input_for]").val() == "co_order"){
+                                    resetOrderForm();
+                                }else{
+                                    resetInvForm();
+                                }
+                            } else if (result.isDenied) {
+                                $('.modal').modal('hide');
     
-                        if (result.isConfirmed) {
-                            //reset form
-                            $('#spinner-modal').modal('hide');
-                            if ($("input[name=input_for]").val() == "co_order"){
-                                resetOrderForm();
-                            }else{
-                                resetInvForm();
                             }
-                        } else if (result.isDenied) {
-                            $('.modal').modal('hide');
-
-                        }
+                        })
+                        
+                    });
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: '',
+                        text: data.err.sqlMessage
                     })
-                    
-                });
-                
+                }
+
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
                 //alert(jqXHR.status);
