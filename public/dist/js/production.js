@@ -73,6 +73,9 @@ $(document).ready(function() {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
         const _id = tableProd.row( this ).data().prod_guid;
+        const _data = tableProd.row( this ).data();
+        console.log(_data);
+        // default_edit(data)
         
     } );
     
