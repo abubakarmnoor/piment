@@ -192,7 +192,6 @@ $(document).ready(function() {
             })
             return;
         }
-        return;
         
         // ajax - save/post data
         spinner_popup();
@@ -207,12 +206,10 @@ $(document).ready(function() {
                 if (data.success == true){
                     Swal.fire({
                         icon: 'success',
-                        title: 'Client Order',
+                        title: 'Work Order',
                         text: "Data Saved"
                     }).then(function(){
-                        var encodedUrl = encodeURIComponent($("input[name=co_order_id]").val());
-                        get_details(undefined, encodedUrl)
-                        // $("#btn_tab_order").click();
+                        $("#btn_refresh").click();
                     });
                 }else{
                     Swal.fire({
