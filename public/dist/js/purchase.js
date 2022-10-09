@@ -27,7 +27,7 @@ $(document).ready(function() {
         //"serverSide": true,
         "columnDefs": [
             {
-                "targets": [ 2 ],
+                "targets": [ 2,3 ],
                 "visible": false
             },{
                 targets:[4], render:function(data){
@@ -47,10 +47,11 @@ $(document).ready(function() {
                 defaultContent: '<i class="fa fa-trash"/>',
                 orderable: false
             },
-            { "data": "po_id" },
+            { "data": "po_guid" },
             { "data": "po_co_guid" },
             { "data": "po_date" },
-            { "data": "po_supplier_guid" },
+            { "data": "po_id" },
+            { "data": "supplier_name" },
             { "data": "po_order_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
             { "data": "po_dp_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
             { "data": "po_topay_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
@@ -152,18 +153,79 @@ $(document).ready(function() {
     } );
 
     $("#btn_refresh").on("click", function(){
-        // spinner_popup();
-        // var sdate_ =  moment($("input[name='daterangepicker_start']").val()).format('YYYY-MM-DD');
-        // var edate_ =  moment($("input[name='daterangepicker_end']").val()).format('YYYY-MM-DD');
-        // if (moment(sdate_)._isValid == false){
-        //     sdate_ = moment().subtract(29, 'days').format('YYYY-MM-DD');
-        //     edate_ = moment().format('YYYY-MM-DD');;
-        // }
-        // console.log(sdate_);
-        // console.log(edate_);
-        //var table = $('#registrationTable').DataTable();
         tablePO.ajax.url("/apis/pull/po", null, false).load();
     })
+
+    //save
+    $('#form_input').submit(function(e) {
+        e.preventDefault();
+        const form = $(e.target);
+        const _data = convertFormToJSON(form);
+        _data.po_order_amt = (_data.po_order_amt).replace(/\,/g,'')
+        _data.po_dp_amt = (_data.po_dp_amt).replace(/\,/g,'')
+        _data.po_topay_amt = (_data.po_topay_amt).replace(/\,/g,'')
+        _data.po_delivered_amt = (_data.po_delivered_amt).replace(/\,/g,'')
+        _data.po_tobe_delivered_amt = (_data.po_tobe_delivered_amt).replace(/\,/g,'')
+        _data.po_balance_amt = (_data.po_balance_amt).replace(/\,/g,'')
+        _data.prod_upd_by = $("#logged_user_id").text();
+        _data.tblname = "po";
+        console.log(_data);
+        
+        if (!_data.po_supplier_guid || !_data.po_status || !_data.po_co_guid)
+        {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Work Order',
+                text: (!_data.po_supplier_guid ? "Please select one Supplier" : (!_data.po_status ? "Please select one Status" : "Please select one Client Order"))
+            })
+            return;
+        }
+        Swal.fire({
+            icon: 'info',
+            title: 'Purchase Order',
+            text: "Under maintenance"
+        })
+        return;
+        // ajax - save/post data
+        spinner_popup();
+        $.ajax({
+            type:"POST", // must be POST 
+            url: "/apis/upd", 
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(_data),
+            success: function(data) {
+                $('#spinner-modal').modal('hide');
+                if (data.success == true){
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Work Order',
+                        text: "Data Saved"
+                    }).then(function(){
+                        $('.modal').modal('hide');
+                        $("#btn_refresh").click();
+                    });
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: '',
+                        text: data.err.sqlMessage
+                    })
+                }
+                
+            }, 
+            error: function(jqXHR, textStatus, errorThrown) {
+                //alert(jqXHR.status);
+                $('.modal').modal('hide');
+                Swal.fire({
+                    title: "Error!",
+                    text: textStatus,
+                    icon: "error"
+                });
+            }
+        });
+
+    });
 
 //end doc ready
 });
@@ -171,6 +233,7 @@ $(document).ready(function() {
 //functions
 resetForm = function(){
     $("#po_date").val(null);
+    $("input[name=po_id]").val('');
     $("#po_co_guid").selectpicker('val',null);
     $("#po_supplier").selectpicker('val',null);
     $("#po_status").selectpicker('val',null);
