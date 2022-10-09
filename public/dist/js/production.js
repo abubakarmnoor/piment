@@ -74,8 +74,8 @@ $(document).ready(function() {
         //console.log( table.row( this ).data().id );
         const _id = tableProd.row( this ).data().prod_guid;
         const _data = tableProd.row( this ).data();
-        console.log(_data);
-        // default_edit(data)
+        // console.log(_data);
+        default_edit(_data);
         
     } );
     
@@ -246,9 +246,10 @@ resetForm = function(){
     
 }
 function default_edit(data){
-    $("input[name=prod_id]").val(data[0].prod_id);
-    $("#prod_co_guid").selectpicker('val',data[0].prod_co_guid);
-    $("input[name=prod_pic]").val(data[0].prod_pic);
-    $("#prod_status").selectpicker('val',data[0].prod_status);
-    $("textarea[name=prod_info]").val(data[0].prod_info);    
+    $("input[name=prod_id]").val(data.prod_id);
+    $("#prod_co_guid").selectpicker('val',data.prod_co_guid);
+    $("input[name=prod_pic]").val(data.prod_pic);
+    $("#prod_status").selectpicker('val',data.prod_status);
+    $("textarea[name=prod_info]").val(data.prod_info); 
+    $("#pop-modal-form-input").show();
 }
