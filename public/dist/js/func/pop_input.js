@@ -117,5 +117,5 @@ function resetInvForm(){
 
 //insert element
 function insert_element_inv_code(){
-    $('<a href="#" type="button" class="pull-right" id="btn_pop_co_status" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_input_inv > div:nth-child(2) > div.col-md-12.mb-3 > div > div > div');
+    $('<a href="#" type="button" class="pull-right" id="btn_pop_inv_code" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_input_inv > div:nth-child(2) > div.col-md-12.mb-3 > div > div > div');
 }
