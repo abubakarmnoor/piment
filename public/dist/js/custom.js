@@ -127,8 +127,8 @@ function isNumber(event) {
 
 //reload select picker after add/upd/del
 function selectpicker_refresh(id_, url_){
-    
-    spinner_popup();
+    try {
+        spinner_popup();
     $.ajax({
         type:"GET",
         url: url_, 
@@ -158,5 +158,9 @@ function selectpicker_refresh(id_, url_){
             });
         }
     });
+    } catch (error) {
+        alert(error)   
+    }
+    
     
 }
