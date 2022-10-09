@@ -89,11 +89,12 @@ $(document).ready(function() {
         let _data = {};
         _data.id = tableProd.row( this ).data().prod_guid;
         _data.client_name = tableProd.row( this ).data().client_name
+        _data.co_order_id = tableProd.row( this ).data().co_order_id
         _data.upd_by = $("#logged_user_id").text();
         
         Swal.fire({
             title: 'Are you sure?',
-            text: "You won't be able to revert this! ("+_data.client_name+")",
+            text: "You won't be able to revert this! ("+_data.client_name+" - "+_data.co_order_id+")",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
