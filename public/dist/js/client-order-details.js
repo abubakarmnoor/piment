@@ -373,7 +373,7 @@ function initOrderTable(){
     });
 }
 function initInvTable(){
-    tableOrder = $('#dtTbl_Order').DataTable({
+    tableOrder = $('#dtTbl_Inv').DataTable({
         // "scrollY": "370px",
         "footerCallback": function ( row, data, start, end, display ) {
             var api = this.api(), data;
