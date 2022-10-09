@@ -224,7 +224,7 @@ $(document).ready(function() {
         $(".modal-title").text('INVOICE LIST');
         $("#form_input").hide();
         $("#form_input_inv").show();
-        
+
         $("input[name=input_for]").val("co_inv")
         const _id = tableInv.row( this ).data().inv_guid;
         $("input[name=inv_guid]").val(_id);
@@ -246,10 +246,10 @@ $(document).ready(function() {
         .focusout();
         const _inv_price_paid = tableInv.row( this ).data().inv_price_paid;
         $("input[name=inv_price_paid]")
-        .val(_price)
+        .val(_inv_price_paid)
         .focusout();
         const _inv_info = tableInv.row( this ).data().inv_info;
-        $("input[name=inv_info]").val(_inv_info);
+        $("textarea[name=inv_info]").val(_inv_info);
 
         $('#pop-modal-form-input').modal('show');
 
