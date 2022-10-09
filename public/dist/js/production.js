@@ -65,7 +65,7 @@ $(document).ready(function() {
     $('.selectpicker').selectpicker();
     insert_element_prod_status();
     load_data_dt('/apis/pop/prod-status'); //init
-    // selectpicker_refresh('prod_status','/apis/pop/prod-status');
+    selectpicker_refresh('prod_status','/apis/pop/prod-status');
     selectpicker_refresh('prod_co_guid','/apis/pull/co');
 
     $('#btn_pop_prod_status').on('click', function(){
