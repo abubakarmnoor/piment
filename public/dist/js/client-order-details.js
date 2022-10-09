@@ -9,7 +9,7 @@ $(document).ready(function() {
     $('.selectpicker').selectpicker();
     insert_element_status();insert_element_inv_code();
     load_data_dt('/apis/pop/co-status'); //init
-    initOrderTable();
+    initOrderTable();initInvTable();
 
     //edit or add new
     if (location.href.includes('ZWlk')) {
