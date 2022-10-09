@@ -199,6 +199,10 @@ $(document).ready(function() {
     // Edit record
     $('#dtTbl_Order').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
+        $(".modal-title").text('ORDER LIST');
+        $("#form_input").show();
+        $("#form_input_inv").hide();
+
         $("input[name=input_for]").val("co_order")
         const _id = tableOrder.row( this ).data().co_order_guid;
         $("input[name=co_order_guid]").val(_id);
