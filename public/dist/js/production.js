@@ -72,7 +72,7 @@ $(document).ready(function() {
     $('#dtTbl').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
-        const _id = table.row( this ).data().production_guid;
+        const _id = table.row( this ).data().prod_guid;
         
     } );
     
@@ -80,7 +80,7 @@ $(document).ready(function() {
     $('#dtTbl').on('click', 'td.editor-details', function (e) {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
-        const _id = table.row( this ).data().production_guid;
+        const _id = table.row( this ).data().prod_guid;
         
         
     } );
@@ -88,7 +88,7 @@ $(document).ready(function() {
     $('#dtTbl').on('click', 'td.editor-delete', function (e) {
         e.preventDefault();
         let _data = {};
-        _data.id = table.row( this ).data().production_guid;
+        _data.id = table.row( this ).data().prod_guid;
         _data.client_name = table.row( this ).data().client_name
         _data.upd_by = $("#logged_user_id").text();
         
@@ -106,7 +106,7 @@ $(document).ready(function() {
                 // console.log(_data);
                 $.ajax({
                     type:"POST",
-                    url: "/apis/del/production", 
+                    url: "/apis/del/prod", 
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     data: JSON.stringify(_data),
@@ -116,7 +116,7 @@ $(document).ready(function() {
                             Swal.fire({
                                 icon: "success",
                                 title: "Data Deleted",
-                                text: _data.supplier_name
+                                text: _data.client_name
                             }).then(function(){
                                 // location.href='/raw-materials'
                                 $("#btn_refresh").click();
@@ -156,7 +156,7 @@ $(document).ready(function() {
         // console.log(sdate_);
         // console.log(edate_);
         //var table = $('#registrationTable').DataTable();
-        table.ajax.url("/apis/pull/production", null, false).load();
+        table.ajax.url("/apis/pull/prod", null, false).load();
     })
 
 //end doc ready
