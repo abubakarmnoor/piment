@@ -536,7 +536,7 @@ function initInvTable(){
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
         //"serverSide": true,
         "columnDefs": [{
-            "targets": [ 2 ],
+            "targets": [ 2,3 ],
             "visible": false
         },{
             targets:[4,5], render:function(data){
@@ -557,6 +557,7 @@ function initInvTable(){
             },
             { "data": "inv_guid" },
             { "data": "inv_code" },
+            { "data": "inv_id" },
             { "data": "inv_date" },
             { "data": "inv_due_date" },
             { "data": "inv_code_desc" },
