@@ -62,7 +62,7 @@ $(document).ready(function (e){
                         
                     });
                 }else{
-                    $('.modal').modal('hide');
+                    $('#spinner-modal').modal('hide');
                     Swal.fire({
                         icon: 'error',
                         title: '',
@@ -153,7 +153,7 @@ $(document).ready(function (e){
                         
                     });
                 }else{
-                    $('.modal').modal('hide');
+                    $('#spinner-modal').modal('hide');
                     Swal.fire({
                         icon: 'error',
                         title: '',
