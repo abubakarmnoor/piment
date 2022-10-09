@@ -127,6 +127,15 @@ function load_data_dt(_url){
         })
     } );
 
+    // close popup
+    $(".close").on("click", function(e){
+        e.preventDefault();
+        if ($("label[name=pop_type").text() == "inv-code"){
+            $("#pop-modal-form-input").show();
+        }
+        
+    })
+
     //popup pop
     $('#btn_pop_pos').on('click', function(){
         // e.preventDefault();
@@ -293,6 +302,8 @@ function selectpicker_reload(id_){
         id__ = 'sp_position';//
     }else if (id_ == 'co-status'){
         id__ = 'co_status';//
+    }else if (id_ == 'inv-code'){
+        id__ = 'inv_code';//
     }
     // console.log(id_);
     // console.log(id__);
