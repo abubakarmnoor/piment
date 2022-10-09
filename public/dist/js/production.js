@@ -63,10 +63,20 @@ $(document).ready(function() {
     
     //default / init
     $('.selectpicker').selectpicker();
-    insert_element_prod_status();
-    load_data_dt('/apis/pop/prod-status'); //init
     selectpicker_refresh('prod_status','/apis/pop/prod-status');
     selectpicker_refresh('prod_co_guid','/apis/pull/co');
+    insert_element_prod_status();
+    
+    $('#btn_pop_prod_status').on('click', function(){
+        // e.preventDefault();
+        $('#th_pop_desc').text('Prod Status')
+        $('#lbl_pf_desc').text('Prod Status')
+        $("label[name=pop_type").text("prod-status")
+        $("input[name=pop_desc").val("")
+        $('input[type=search]').val("");
+        table.ajax.url("/apis/pop/prod-status", null, false).load(); // 
+        table.search('');
+    })
 
     // New record
     $('a.editor-create').on('click', function (e) {
