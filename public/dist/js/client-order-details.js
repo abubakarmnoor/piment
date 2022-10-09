@@ -487,16 +487,6 @@ function initInvTable(){
                     typeof i === 'number' ?
                         i : 0;
             };
-            var col7 = api
-                .column( 7 )
-                .data()
-                .reduce( function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0 );
-            // Update footer by showing the total with the reference of the column index 
-	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 7 ).footer() ).html(numberWithCommas(col7));
-
             var col8 = api
                 .column( 8 )
                 .data()
@@ -507,7 +497,7 @@ function initInvTable(){
 	        $( api.column( 0 ).footer() ).html('Total');
             $( api.column( 8 ).footer() ).html(numberWithCommas(col8));
 
-	        var col9 = api
+            var col9 = api
                 .column( 9 )
                 .data()
                 .reduce( function (a, b) {
@@ -516,7 +506,8 @@ function initInvTable(){
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
             $( api.column( 9 ).footer() ).html(numberWithCommas(col9));
-            var col10 = api
+
+	        var col10 = api
                 .column( 10 )
                 .data()
                 .reduce( function (a, b) {
@@ -525,6 +516,15 @@ function initInvTable(){
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
             $( api.column( 10 ).footer() ).html(numberWithCommas(col10));
+            var col11 = api
+                .column( 11 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+            // Update footer by showing the total with the reference of the column index 
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 11 ).footer() ).html(numberWithCommas(col11));
         },
         "scrollCollapse": true,
         "paging": true, 
