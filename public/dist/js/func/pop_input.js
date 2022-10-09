@@ -180,6 +180,7 @@ function resetInvForm(){
     $("#inv_code").selectpicker('val',null)
     $("input[name=inv_cost]").val(0);
     $("input[name=inv_price]").val(0);
+    $("input[name=inv_price_paid]").val(0);
     $("textarea[name=inv_info]").val('');
 
 }

@@ -1,4 +1,4 @@
-var tableOrder;
+var tableOrder, tableInv;
 var id;
 $(document).ready(function() {
             
@@ -275,7 +275,9 @@ function insert_element_inv_code(){
 function refreshOrderTable(){
     tableOrder.ajax.url("/apis/pull/co_order/"+id, null, false).load();
 }
-
+function refreshInvTable(){
+    tableInv.ajax.url("/apis/pull/inv/"+id, null, false).load();
+}
 function initOrderTable(){
     tableOrder = $('#dtTbl_Order').DataTable({
         // "scrollY": "370px",
@@ -375,7 +377,7 @@ function initOrderTable(){
     });
 }
 function initInvTable(){
-    tableOrder = $('#dtTbl_Inv').DataTable({
+    tableInv = $('#dtTbl_Inv').DataTable({
         // "scrollY": "370px",
         "footerCallback": function ( row, data, start, end, display ) {
             var api = this.api(), data;
