@@ -12,54 +12,43 @@ $(document).ready(function() {
     //         'csvHtml5',
     //         'pdfHtml5'
     //     ], --}}
-    // table = $('#dtTbl').DataTable({
-    //     // "scrollY": "370px",
-    //     "scrollCollapse": true,
-    //     "paging": true, 
-    //     "lengthChange": false,
-    //     "ajax": "/apis/pull/production",
-    //     "processing": true,
-    //     "language": {
-    //         processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
-    //     //"serverSide": true,
-    //     "columnDefs": [{
-    //         "targets": [ 2 ],
-    //         "visible": false
-    //     }],
-    //     "columns": [
-    //         {
-    //             data: null,
-    //             className: "dt-center editor-edit",
-    //             defaultContent: '<i class="fa fa-pencil"/>',
-    //             orderable: false
-    //         },
-    //         {
-    //             data: null,
-    //             className: "dt-center editor-delete",
-    //             defaultContent: '<i class="fa fa-trash"/>',
-    //             orderable: false
-    //         },
-    //         { "data": "prod_guid" },
-    //         {
-    //             data: "order_code",
-    //             className: "dt-center editor-details",
-    //             orderable: true
-    //         },
-    //         { "data": "supplier_country" },
-    //         { "data": "supplier_active",  "render": function ( data, type, row ) {
-    //             switch (data) {
-    //                 case 1:
-    //                     return 'True';
-    //                     break;
-    //                 case 0:
-    //                     return 'False';
-    //                     break;
-    //                 default:
-    //                     return "other";
-    //             }
-    //         } },
-    //     ]
-    // });
+    table = $('#dtTbl').DataTable({
+        // "scrollY": "370px",
+        "scrollCollapse": true,
+        "paging": true, 
+        "lengthChange": false,
+        "ajax": "/apis/pull/prod",
+        "processing": true,
+        "language": {
+            processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
+        //"serverSide": true,
+        "columnDefs": [{
+            "targets": [ 2 ],
+            "visible": false
+        }],
+        "columns": [
+            {
+                data: null,
+                className: "dt-center editor-edit",
+                defaultContent: '<i class="fa fa-pencil"/>',
+                orderable: false
+            },
+            {
+                data: null,
+                className: "dt-center editor-delete",
+                defaultContent: '<i class="fa fa-trash"/>',
+                orderable: false
+            },
+            { "data": "prod_guid" },
+            { "data": "prod_co_guid" },
+            { "data": "prod_id" },
+            { "data": "client_name" },
+            { "data": "prod_co_order_id" },
+            { "data": "prod_pic" },
+            { "data": "prod_info" },
+            { "data": "prod_status" },
+        ]
+    });
     
     //default / init
     $('.selectpicker').selectpicker();
@@ -67,8 +56,7 @@ $(document).ready(function() {
     load_data_dt('/apis/pop/prod-status'); //init
     selectpicker_refresh('prod_status','/apis/pop/prod-status');
     selectpicker_refresh('prod_co_guid','/apis/pull/co');
-    $("#btn_refresh").click();
-
+    
     $('#btn_pop_prod_status').on('click', function(){
         // e.preventDefault();
         $('#th_pop_desc').text('Prod Status')
