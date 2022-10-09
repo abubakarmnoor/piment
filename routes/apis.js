@@ -209,7 +209,7 @@ router.post('/upd',(req,res)=>{
       })
     }else if (_data.tblname == 'inv'){
       query='call spsave_inv (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
-      db.query(` `+query+` `,[_data.inv_guid, _data.inv_co_guid, _data.inv_date, _data.inv_due_date, _data.inv_code, _data.inv_cost, _data.inv_price, _data.inv_price_paidx, _data.inv_infox, _data.inv_upd_byx], (err, data_)=>{  
+      db.query(` `+query+` `,[_data.inv_guid, _data.inv_co_guid, _data.inv_date, _data.inv_due_date, _data.inv_code, _data.inv_cost, _data.inv_price, _data.inv_price_paid, _data.inv_info, _data.inv_upd_by], (err, data_)=>{  
       // db.query(query, (err, data_)=>{
         if (!data_){
           res.status(200).json({success:false, err})

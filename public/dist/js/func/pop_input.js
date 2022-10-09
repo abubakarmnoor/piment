@@ -84,6 +84,7 @@ $(document).ready(function (e){
         _data.inv_co_guid = $("input[name=co_guid]").val();
         _data.inv_cost = (_data.inv_cost).replace(/\,/g,'')
         _data.inv_price = (_data.inv_price).replace(/\,/g,'')
+        _data.inv_price_paid = (_data.inv_price_paid).replace(/\,/g,'')
         _data.tblname = "inv";
         console.log(_data);
         // return;
