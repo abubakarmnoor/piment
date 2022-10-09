@@ -49,7 +49,7 @@ $(document).ready(function() {
             { "data": "prod_info" },
             { "data": "prod_status_desc" },
             { "data": "client_name" },
-            { "data": "prod_co_order_id" },
+            { "data": "co_order_id" },
             { "data": "co_order_date" },
             { "data": "co_delivery_date" },
         ]
