@@ -236,6 +236,17 @@ function load_data_dt(_url){
         TablePop.ajax.url("/apis/pop/prod-status", null, false).load(); // 
         TablePop.search('');
     })
+    $('#btn_pop_po_status').on('click', function(){
+        // e.preventDefault();
+        $('#th_pop_desc').text('PO Status')
+        $('#lbl_pf_desc').text('PO Status')
+        $("label[name=pop_type").text("po-status")
+        $("input[name=pop_desc").val("")
+        $('input[type=search]').val("");
+        TablePop.ajax.url("/apis/pop/po-status", null, false).load(); // 
+        TablePop.search('');
+    })
+    
     
     //save
     $('#form__').submit(function(e) {
