@@ -183,6 +183,6 @@ resetForm = function(){
     $("#prod_co_guid").selectpicker('val',null);
     $("input[name=prod_pic]").val('');
     $("#prod_status").selectpicker('val',null);
-    $("input[name=prod_info]").text('');
+    $("textarea[name=prod_info]").text('');
 
 }
