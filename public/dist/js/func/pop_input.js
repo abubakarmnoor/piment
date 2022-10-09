@@ -96,6 +96,16 @@ $(document).ready(function (e){
         // console.log(_data);
         // return;
         // ajax - save/post data
+        if (!_data.inv_code)
+        {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Invoice',
+                text: "Please select one Invoice Code"
+            })
+            return;
+        }
+
         spinner_popup();
         $.ajax({
             type:"POST", // must be POST 
