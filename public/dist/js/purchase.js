@@ -64,9 +64,9 @@ $(document).ready(function() {
     $('.selectpicker').selectpicker();
     insert_element_po_status();
     load_data_dt('/apis/pop/po-status'); //init
-    selectpicker_refresh('po_status','/apis/pop/po-status');
-    selectpicker_refresh('po_supplier_guid','/apis/pull/supplier');
-    selectpicker_refresh('po_co_guid','/apis/pull/co');
+    // selectpicker_refresh('po_status','/apis/pop/po-status');
+    // selectpicker_refresh('po_supplier_guid','/apis/pull/supplier');
+    // selectpicker_refresh('po_co_guid','/apis/pull/co');
 
     // New record
     $('a.editor-create').on('click', function (e) {
