@@ -20,7 +20,7 @@ $(document).ready(function() {
         "paging": true, 
         "pageLength": 50,
         "lengthChange": false,
-        "ajax": "/apis/pull/purchase",
+        "ajax": "/apis/pull/po",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -125,3 +125,18 @@ $(document).ready(function() {
 //end doc ready
 });
 
+//functions
+resetForm = function(){
+    $("#po_date").val(null);
+    $("#po_co_guid").selectpicker('val',null);
+    $("#po_supplier").selectpicker('val',null);
+    $("#po_status").selectpicker('val',null);
+    $("textarea[name=po_info]").val('');
+    $("input[name=po_order_amt]").val(0);
+    $("input[name=po_dp_amt]").val(0);
+    $("input[name=po_topay_amt]").val(0);
+    $("input[name=po_delivered_amt]").val(0);
+    $("input[name=po_tobe_delivered_amt]").val(0);
+    $("input[name=po_balance_amt]").val(0);
+
+}
