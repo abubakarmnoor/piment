@@ -7,7 +7,7 @@ $(document).ready(function() {
     $("#co_client_guid").selectpicker('val',null)
     $("#co_status").selectpicker('val',null)
     $('.selectpicker').selectpicker();
-    insert_element_status();
+    insert_element_status();insert_element_inv_code();
     load_data_dt('/apis/pop/co-status'); //init
     initOrderTable();
 
@@ -266,6 +266,10 @@ function get_details(id,orid){
 function insert_element_status(){
     $('<a href="#" type="button" class="pull-right" id="btn_pop_co_status" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(5) > div:nth-child(2) > div > div > div');
 }
+function insert_element_inv_code(){
+    $('<a href="#" type="button" class="pull-right" id="btn_pop_inv_code" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_input_inv > div:nth-child(2) > div.col-md-12.mb-3 > div > div > div');
+}
+
 function refreshOrderTable(){
     tableOrder.ajax.url("/apis/pull/co_order/"+id, null, false).load();
 }

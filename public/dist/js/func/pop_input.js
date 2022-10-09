@@ -2,7 +2,6 @@ $(document).ready(function (e){
     //init
     resetOrderForm();
     resetInvForm();
-    insert_element_inv_code();
     
     //submit
     $("#form_input").submit(function(e){
@@ -113,9 +112,4 @@ function resetInvForm(){
     $("input[name=inv_price]").val(0);
     $("textarea[name=inv_info]").val('');
 
-}
-
-//insert element
-function insert_element_inv_code(){
-    $('<a href="#" type="button" class="pull-right" id="btn_pop_inv_code" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_input_inv > div:nth-child(2) > div.col-md-12.mb-3 > div > div > div');
 }
