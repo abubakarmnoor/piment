@@ -42,10 +42,11 @@ router.get('/client-order-details/:coid/:act', isAuthenticated, async (req, res)
 	const _act = req.params.act
 	const _olid = req.params.coid
 	const __data_pop_status = await getPopupData('co-status');
+	const __data_inv_code = await getPopupData('inv-code');
 	const __data_client = await getClient();
 	const __data_fp = await getFP();
 	res.render('client-order-details.hbs', {
-		tables_bs4: true, client_order_details:true, co_guid:_olid, act:_act, __data_pop_status, __data_client, _user : req.session.user, _user_id: req.session.user_id, __data_fp
+		tables_bs4: true, client_order_details:true, co_guid:_olid, act:_act, __data_pop_status, __data_client, _user : req.session.user, _user_id: req.session.user_id, __data_fp, __data_inv_code
 	});
 });
 
