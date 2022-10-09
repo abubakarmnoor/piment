@@ -268,7 +268,7 @@ function insert_element_status(){
 }
 function insert_element_inv_code(){
     $('<a href="#" type="button" class="pull-right" id="btn_pop_inv_code" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_input_inv > div:nth-child(3) > div > div > div > div');
-    $("pop-modal-form-input").hide();
+    $("#pop-modal-form-input").hide();
 }
 
 function refreshOrderTable(){
