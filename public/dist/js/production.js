@@ -1,5 +1,5 @@
 //doc ready
-var table;
+var tableProd;
 $(document).ready(function() {
     // var sdate_ = moment().subtract(29, 'days').format('YYYY-MM-DD');
     // var edate_ = moment().format('YYYY-MM-DD');;
@@ -12,7 +12,7 @@ $(document).ready(function() {
     //         'csvHtml5',
     //         'pdfHtml5'
     //     ], --}}
-    table = $('#dtTbl').DataTable({
+    tableProd = $('#dtTbl').DataTable({
         // "scrollY": "370px",
         "scrollCollapse": true,
         "paging": true, 
@@ -83,7 +83,7 @@ $(document).ready(function() {
     $('#dtTbl').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
-        const _id = table.row( this ).data().prod_guid;
+        const _id = tableProd.row( this ).data().prod_guid;
         
     } );
     
@@ -91,15 +91,15 @@ $(document).ready(function() {
     $('#dtTbl').on('click', 'td.editor-details', function (e) {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
-        const _id = table.row( this ).data().prod_guid;
+        const _id = tableProd.row( this ).data().prod_guid;
         
     } );
     // Delete a record
     $('#dtTbl').on('click', 'td.editor-delete', function (e) {
         e.preventDefault();
         let _data = {};
-        _data.id = table.row( this ).data().prod_guid;
-        _data.client_name = table.row( this ).data().client_name
+        _data.id = tableProd.row( this ).data().prod_guid;
+        _data.client_name = tableProd.row( this ).data().client_name
         _data.upd_by = $("#logged_user_id").text();
         
         Swal.fire({
@@ -166,7 +166,7 @@ $(document).ready(function() {
         // console.log(sdate_);
         // console.log(edate_);
         //var table = $('#registrationTable').DataTable();
-        table.ajax.url("/apis/pull/prod", null, false).load();
+        tableProd.ajax.url("/apis/pull/prod", null, false).load();
     })
 
     //save

@@ -1,10 +1,11 @@
 //load data dt
+var TablePop;
 function load_data_dt(_url){
     $("#btn_pop_clear").on("click", function(){
         $('#form__')[0].reset();
     })
     // ajax
-    table = $('#dtTbl_pop').DataTable({
+    TablePop = $('#dtTbl_pop').DataTable({
         // "scrollY": "370px",
         "scrollCollapse": true,
         "paging": true, 
@@ -60,9 +61,9 @@ function load_data_dt(_url){
     $('#dtTbl_pop').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
-        const _id = table.row( this ).data().pop_guid;
-        const _pop_desc = table.row( this ).data().pop_desc;
-        const _active = table.row( this ).data().pop_active;
+        const _id = TablePop.row( this ).data().pop_guid;
+        const _pop_desc = TablePop.row( this ).data().pop_desc;
+        const _active = TablePop.row( this ).data().pop_active;
         
         $("#pop_guid").val(_id);
         $("input[name=pop_desc]").val(_pop_desc);
@@ -74,8 +75,8 @@ function load_data_dt(_url){
     $('#dtTbl_pop').on('click', 'td.editor-delete', function (e) {
         e.preventDefault();
         let _data = {};
-        _data.id = table.row( this ).data().pop_guid;
-        _data.pop_desc = table.row( this ).data().pop_desc;
+        _data.id = TablePop.row( this ).data().pop_guid;
+        _data.pop_desc = TablePop.row( this ).data().pop_desc;
         _data.pop_type = $("label[name=pop_type").text();
         _data.upd_by = "Admin";
         // console.log(_data);
@@ -144,8 +145,8 @@ function load_data_dt(_url){
         $("label[name=pop_type").text("position")
         $("input[name=pop_desc").val("")
         $('input[type=search]').val("");
-        table.ajax.url("/apis/pop/position", null, false).load(); // refresh
-        table.search('');
+        TablePop.ajax.url("/apis/pop/position", null, false).load(); // refresh
+        TablePop.search('');
 
     });
     $('#btn_pop_act').on('click', function(){
@@ -155,8 +156,8 @@ function load_data_dt(_url){
         $("label[name=pop_type").text("activity")
         $("input[name=pop_desc").val("")
         $('input[type=search]').val("");
-        table.ajax.url("/apis/pop/activity", null, false).load(); // pop pf
-        table.search('');
+        TablePop.ajax.url("/apis/pop/activity", null, false).load(); // pop pf
+        TablePop.search('');
 
     });
     $('#btn_pop_co_status').on('click', function(){
@@ -166,8 +167,8 @@ function load_data_dt(_url){
         $("label[name=pop_type").text("co-status")
         $("input[name=pop_desc").val("")
         $('input[type=search]').val("");
-        table.ajax.url("/apis/pop/co-status", null, false).load(); // pop refresh
-        table.search('');
+        TablePop.ajax.url("/apis/pop/co-status", null, false).load(); // pop refresh
+        TablePop.search('');
 
     });
     $('#btn_pop_inv_code').on('click', function(){
@@ -177,8 +178,8 @@ function load_data_dt(_url){
         $("label[name=pop_type").text("inv-code")
         $("input[name=pop_desc").val("")
         $('input[type=search]').val("");
-        table.ajax.url("/apis/pop/inv-code", null, false).load(); // pop refresh
-        table.search('');
+        TablePop.ajax.url("/apis/pop/inv-code", null, false).load(); // pop refresh
+        TablePop.search('');
         $("#pop-modal-form-input").hide();
 
     });
@@ -189,8 +190,8 @@ function load_data_dt(_url){
         $("label[name=pop_type").text("product-family")
         $("input[name=pop_desc").val("")
         $('input[type=search]').val("");
-        table.ajax.url("/apis/pop/product-family", null, false).load(); // pop pf
-        table.search('');
+        TablePop.ajax.url("/apis/pop/product-family", null, false).load(); // pop pf
+        TablePop.search('');
 
     });
     $('#btn_pop_origin').on('click', function(){
@@ -200,8 +201,8 @@ function load_data_dt(_url){
         $("label[name=pop_type").text("origin")
         $("input[name=pop_desc").val("")
         $('input[type=search]').val("");
-        table.ajax.url("/apis/pop/origin", null, false).load(); // pop origin
-        table.search('');
+        TablePop.ajax.url("/apis/pop/origin", null, false).load(); // pop origin
+        TablePop.search('');
     });
     $('#btn_pop_kayu').on('click', function(){
         // e.preventDefault();
@@ -211,8 +212,8 @@ function load_data_dt(_url){
         $("label[name=pop_type").text("kayu")
         $("input[name=pop_desc").val("")
         $('input[type=search]').val("");
-        table.ajax.url("/apis/pop/kayu", null, false).load(); // pop kayu
-        table.search('');
+        TablePop.ajax.url("/apis/pop/kayu", null, false).load(); // pop kayu
+        TablePop.search('');
     })
     $('#btn_pop_unit').on('click', function(){
         // e.preventDefault();
@@ -222,8 +223,8 @@ function load_data_dt(_url){
         $("label[name=pop_type").text("unit")
         $("input[name=pop_desc").val("")
         $('input[type=search]').val("");
-        table.ajax.url("/apis/pop/unit", null, false).load(); // pop unit
-        table.search('');
+        TablePop.ajax.url("/apis/pop/unit", null, false).load(); // pop unit
+        TablePop.search('');
     })
     
     
