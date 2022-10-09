@@ -3,6 +3,19 @@
 
 {{> head}}
 {{> css}}
+<style>
+    .col-md-6{
+        width: 0%;
+    }
+    #dtTbl_pop{
+        width: 100% !important;
+    }
+
+    td, th {
+        text-align: center;
+        padding: 8px;
+    }
+</style>
 <body>
 
     <div id="wrapper">
@@ -24,12 +37,12 @@
                 <div class="row">
                     <div class="col">
                         {{!-- <a class="editor-create" href="/user-details">+ Add New</a> --}}
-                        <a href="#"  type="button" class="btn btn-outline btn-primary pull-left editor-create">
+                        <a href="#"  type="button" class="btn btn-outline btn-primary pull-left editor-create" data-toggle="modal" data-target="#pop-modal-purchase-">
                             <i class="glyphicon-plus"></i> Add New
                         </a><span class="">&nbsp;</span>
-                        <a href="#"  type="button" class="btn btn-outline btn-primary pull-left editor-create" style="float: right !important">
+                        {{!-- <a href="#"  type="button" class="btn btn-outline btn-primary pull-left editor-create" style="float: right !important">
                             <i class="glyphicon glyphicon-th-list"></i> Report
-                        </a>
+                        </a> --}}
                     </div>
                     <div class="col" style="padding-top: 45px;">
                         <div id="reportrange" class="pull-left form-control" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 29%;margin-right: 10px;">
@@ -76,6 +89,8 @@
             <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->
+        {{> pop_purchase}}
+        {{> pop}}
         {{!-- //modal spinner --}}
         <div class="modal fade spinner-bg" tabindex="-1" role="dialog" data-backdrop="false">
             <div role="document">

@@ -1,5 +1,5 @@
 //doc ready
-var table;
+var tablePurchase;
 $(document).ready(function() {
     var sdate_ = moment().subtract(29, 'days').format('YYYY-MM-DD');
     var edate_ = moment().format('YYYY-MM-DD');;
@@ -13,14 +13,14 @@ $(document).ready(function() {
     //         'csvHtml5',
     //         'pdfHtml5'
     //     ], --}}
-    table = $('#dtTbl').DataTable({
+    tablePurchase = $('#dtTbl').DataTable({
         "scrollX": "auto",
         "scrollY": "auto",
         "scrollCollapse": true,
         "paging": true, 
         "pageLength": 50,
         "lengthChange": false,
-        "ajax": "/data/purchase.json?sdate="+sdate_+"?edate="+edate_,
+        "ajax": "/apis/pull/purchase",
         "processing": true,
         "language": {
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
@@ -30,7 +30,7 @@ $(document).ready(function() {
                 "targets": [ 2 ],
                 "visible": false
             },{
-                targets:[3], render:function(data){
+                targets:[4], render:function(data){
                 return moment(data).format('DD-MMM-YYYY');
             }}
         ],
@@ -47,28 +47,25 @@ $(document).ready(function() {
                 defaultContent: '<i class="fa fa-trash"/>',
                 orderable: false
             },
-            { "data": "id" },
-            { "data": "purchase_date" },
-            {
-                data: "purchase_code",
-                className: "dt-center editor-details",
-                orderable: true
-            },
-            { "data": "supplier" },
-            { "data": "order_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
-            { "data": "dp_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
-            { "data": "to_pay_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
-            { "data": "delivered_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
-            { "data": "to_be_delivered_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
-            { "data": "balance_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
-            { "data": "complete" },
+            { "data": "po_id" },
+            { "data": "po_co_guid" },
+            { "data": "po_date" },
+            { "data": "po_supplier_guid" },
+            { "data": "po_order_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+            { "data": "po_dp_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+            { "data": "po_topay_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+            { "data": "po_delivered_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+            { "data": "po_tobe_delivered_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+            { "data": "po_balance_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+            { "data": "po_status_desc" },
         ]
     });
     
     // New record
     $('a.editor-create').on('click', function (e) {
         e.preventDefault();
-        location.href = "/purchase-details/null/YWRkbmV3";
+        resetForm();
+        // location.href = "/purchase-details/null/YWRkbmV3";
     } );
 
     // Edit record
@@ -113,12 +110,12 @@ $(document).ready(function() {
 
     $("#btn_refresh").on("click", function(){
         // spinner_popup();
-        var sdate_ =  moment($("input[name='daterangepicker_start']").val()).format('YYYY-MM-DD');
-        var edate_ =  moment($("input[name='daterangepicker_end']").val()).format('YYYY-MM-DD');
-        if (moment(sdate_)._isValid == false){
-            sdate_ = moment().subtract(29, 'days').format('YYYY-MM-DD');
-            edate_ = moment().format('YYYY-MM-DD');;
-        }
+        // var sdate_ =  moment($("input[name='daterangepicker_start']").val()).format('YYYY-MM-DD');
+        // var edate_ =  moment($("input[name='daterangepicker_end']").val()).format('YYYY-MM-DD');
+        // if (moment(sdate_)._isValid == false){
+        //     sdate_ = moment().subtract(29, 'days').format('YYYY-MM-DD');
+        //     edate_ = moment().format('YYYY-MM-DD');;
+        // }
         // console.log(sdate_);
         // console.log(edate_);
         //var table = $('#registrationTable').DataTable();
