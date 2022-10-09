@@ -495,7 +495,7 @@ function initInvTable(){
             { "data": "inv_code_desc" },
             { "data": "inv_cost" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
             { "data": "inv_price" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
-            { "data": "inv_paid_amt" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "inv_price_paid" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
             { "data": "inv_unpaid" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
             { "data": "inv_info" },
         ]
