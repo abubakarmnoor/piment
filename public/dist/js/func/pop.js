@@ -329,6 +329,8 @@ function selectpicker_reload(id_){
         id__ = 'inv_code';//
     }else if (id_ == 'prod-status'){
         id__ = 'prod_status';//
+    }else if (id_ == 'po-status'){
+        id__ = 'po_status';//
     }
     
     // console.log(id_);
