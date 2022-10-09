@@ -64,6 +64,7 @@ $(document).ready(function() {
     
     $('#btn_pop_prod_status').on('click', function(){
         // e.preventDefault();
+        $('#form_input')[0].reset();
         $('#th_pop_desc').text('Prod Status')
         $('#lbl_pf_desc').text('Prod Status')
         $("label[name=pop_type").text("prod-status")
