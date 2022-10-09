@@ -13,54 +13,54 @@ $(document).ready(function() {
     //         'csvHtml5',
     //         'pdfHtml5'
     //     ], --}}
-    tablePO = $('#dtTbl_PO').DataTable({
-        "scrollX": "auto",
-        "scrollY": "auto",
-        "scrollCollapse": true,
-        "paging": true, 
-        "pageLength": 50,
-        "lengthChange": false,
-        "ajax": "/apis/pull/po",
-        "processing": true,
-        "language": {
-            processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
-        //"serverSide": true,
-        "columnDefs": [
-            {
-                "targets": [ 2,3 ],
-                "visible": false
-            },{
-                targets:[4], render:function(data){
-                return moment(data).format('DD-MMM-YYYY');
-            }}
-        ],
-        "columns": [
-            {
-                data: null,
-                className: "dt-center editor-edit",
-                defaultContent: '<i class="fa fa-pencil"/>',
-                orderable: false
-            },
-            {
-                data: null,
-                className: "dt-center editor-delete",
-                defaultContent: '<i class="fa fa-trash"/>',
-                orderable: false
-            },
-            { "data": "po_guid" },
-            { "data": "po_co_guid" },
-            { "data": "po_date" },
-            { "data": "po_id" },
-            { "data": "supplier_name" },
-            { "data": "po_order_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
-            { "data": "po_dp_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
-            { "data": "po_topay_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
-            { "data": "po_delivered_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
-            { "data": "po_tobe_delivered_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
-            { "data": "po_balance_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
-            { "data": "po_status_desc" },
-        ]
-    });
+    // tablePO = $('#dtTbl_PO').DataTable({
+    //     "scrollX": "auto",
+    //     "scrollY": "auto",
+    //     "scrollCollapse": true,
+    //     "paging": true, 
+    //     "pageLength": 50,
+    //     "lengthChange": false,
+    //     "ajax": "/apis/pull/po",
+    //     "processing": true,
+    //     "language": {
+    //         processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
+    //     //"serverSide": true,
+    //     "columnDefs": [
+    //         {
+    //             "targets": [ 2,3 ],
+    //             "visible": false
+    //         },{
+    //             targets:[4], render:function(data){
+    //             return moment(data).format('DD-MMM-YYYY');
+    //         }}
+    //     ],
+    //     "columns": [
+    //         {
+    //             data: null,
+    //             className: "dt-center editor-edit",
+    //             defaultContent: '<i class="fa fa-pencil"/>',
+    //             orderable: false
+    //         },
+    //         {
+    //             data: null,
+    //             className: "dt-center editor-delete",
+    //             defaultContent: '<i class="fa fa-trash"/>',
+    //             orderable: false
+    //         },
+    //         { "data": "po_guid" },
+    //         { "data": "po_co_guid" },
+    //         { "data": "po_date" },
+    //         { "data": "po_id" },
+    //         { "data": "supplier_name" },
+    //         { "data": "po_order_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+    //         { "data": "po_dp_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+    //         { "data": "po_topay_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+    //         { "data": "po_delivered_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+    //         { "data": "po_tobe_delivered_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+    //         { "data": "po_balance_amt", render: $.fn.dataTable.render.number(',', '.', 2, '') },
+    //         { "data": "po_status_desc" },
+    //     ]
+    // });
     //default / init
     $('.selectpicker').selectpicker();
     insert_element_po_status();
@@ -77,7 +77,7 @@ $(document).ready(function() {
     } );
 
     // Edit record
-    $('#dtTbl').on('click', 'td.editor-edit', function (e) {
+    $('#dtTbl_PO').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
         const _id = tablePO.row( this ).data().po_guid;
         // location.href = "/purchase-details/"+_id+"/ZWlk";
