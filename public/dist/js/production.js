@@ -63,7 +63,8 @@ $(document).ready(function() {
     
     //default / init
     $('.selectpicker').selectpicker();
-    selectpicker_refresh('prod_status','/apis/pop/prod-status');
+    load_data_dt('/apis/pop/co-status'); //init
+    //selectpicker_refresh('prod_status','/apis/pop/prod-status');
     selectpicker_refresh('prod_co_guid','/apis/pull/co');
     insert_element_prod_status();
 
