@@ -202,13 +202,14 @@ $(document).ready(function() {
             dataType: "json",
             data: JSON.stringify(_data),
             success: function(data) {
-                $('.modal').modal('hide');
+                $('#spinner-modal').modal('hide');
                 if (data.success == true){
                     Swal.fire({
                         icon: 'success',
                         title: 'Work Order',
                         text: "Data Saved"
                     }).then(function(){
+                        $('.modal').modal('hide');
                         $("#btn_refresh").click();
                     });
                 }else{
