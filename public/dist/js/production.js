@@ -14,8 +14,11 @@ $(document).ready(function() {
     //     ], --}}
     tableProd = $('#dtTbl').DataTable({
         // "scrollY": "370px",
+        "scrollX": "auto",
+        "scrollY": "auto",
         "scrollCollapse": true,
         "paging": true, 
+        "pageLength": 50,
         "lengthChange": false,
         "ajax": "/apis/pull/prod",
         "processing": true,
