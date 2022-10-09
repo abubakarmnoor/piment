@@ -176,6 +176,7 @@ function resetOrderForm(){
 
 }
 function resetInvForm(){
+    $("input[name=inv_id]").val('');
     $("input[name=inv_date]").val(null);
     $("input[name=inv_due_date]").val(null);
     $("#inv_code").selectpicker('val',null)
