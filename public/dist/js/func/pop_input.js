@@ -62,6 +62,7 @@ $(document).ready(function (e){
                         
                     });
                 }else{
+                    $('.modal').modal('hide');
                     Swal.fire({
                         icon: 'error',
                         title: '',
@@ -152,11 +153,13 @@ $(document).ready(function (e){
                         
                     });
                 }else{
+                    $('.modal').modal('hide');
                     Swal.fire({
                         icon: 'error',
                         title: '',
                         text: data.err.sqlMessage
                     })
+                    
                 }
 
             }, 
