@@ -67,6 +67,7 @@ $(document).ready(function() {
     load_data_dt('/apis/pop/prod-status'); //init
     selectpicker_refresh('prod_status','/apis/pop/prod-status');
     selectpicker_refresh('prod_co_guid','/apis/pull/co');
+    $("#btn_refresh").click();
 
     $('#btn_pop_prod_status').on('click', function(){
         // e.preventDefault();
@@ -164,12 +165,12 @@ $(document).ready(function() {
 
     $("#btn_refresh").on("click", function(){
         // spinner_popup();
-        var sdate_ =  moment($("input[name='daterangepicker_start']").val()).format('YYYY-MM-DD');
-        var edate_ =  moment($("input[name='daterangepicker_end']").val()).format('YYYY-MM-DD');
-        if (moment(sdate_)._isValid == false){
-            sdate_ = moment().subtract(29, 'days').format('YYYY-MM-DD');
-            edate_ = moment().format('YYYY-MM-DD');;
-        }
+        // var sdate_ =  moment($("input[name='daterangepicker_start']").val()).format('YYYY-MM-DD');
+        // var edate_ =  moment($("input[name='daterangepicker_end']").val()).format('YYYY-MM-DD');
+        // if (moment(sdate_)._isValid == false){
+        //     sdate_ = moment().subtract(29, 'days').format('YYYY-MM-DD');
+        //     edate_ = moment().format('YYYY-MM-DD');;
+        // }
         // console.log(sdate_);
         // console.log(edate_);
         //var table = $('#registrationTable').DataTable();
