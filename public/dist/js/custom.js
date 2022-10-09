@@ -159,7 +159,12 @@ function selectpicker_refresh(id_, url_){
         }
     });
     } catch (error) {
-        alert(error)   
+        $('.modal').modal('hide');
+        Swal.fire({
+            title: "Error!",
+            text: error,
+            icon: "error"
+        });
     }
     
     
