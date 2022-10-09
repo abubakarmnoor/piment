@@ -86,7 +86,7 @@ $(document).ready(function (e){
         _data.inv_price = (_data.inv_price).replace(/\,/g,'')
         _data.inv_price_paid = (_data.inv_price_paid).replace(/\,/g,'')
         _data.tblname = "inv";
-        console.log(_data);
+        // console.log(_data);
         // return;
         // ajax - save/post data
         spinner_popup();

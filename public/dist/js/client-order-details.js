@@ -127,6 +127,8 @@ $(document).ready(function() {
         $("#form_input_inv").show();
         resetInvForm();
     })
+
+    //validation
     $("#btn_tab_order,#btn_tab_po,#btn_tab_invoice").on("click", function(e){
         e.preventDefault();
         const _id = $("input[name=co_guid").val();
@@ -144,8 +146,7 @@ $(document).ready(function() {
 
         }
     })
-    
-     // Delete a record
+    // Order Delete a record
     $('#dtTbl_Order').on('click', 'td.editor-delete', function (e) {
         e.preventDefault();
         let _data = {};
@@ -177,7 +178,7 @@ $(document).ready(function() {
                         Swal.fire({
                             icon: "success",
                             title: "Data Deleted",
-                            text: _data.rm_desc
+                            text: _data.desc
                         }).then(function(){
                             refreshOrderTable();
                         });
@@ -196,7 +197,7 @@ $(document).ready(function() {
             }
         })
     } );
-    // Edit record
+    // Order Edit record
     $('#dtTbl_Order').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
         $(".modal-title").text('ORDER LIST');
@@ -222,6 +223,58 @@ $(document).ready(function() {
         $('#pop-modal-form-input').modal('show');
 
     } );
+    // INV Delete a record
+    $('#dtTbl_Inv').on('click', 'td.editor-delete', function (e) {
+        e.preventDefault();
+        let _data = {};
+        _data.id = tableInv.row( this ).data().inv_guid;
+        _data.desc = tableInv.row( this ).data().inv_id;
+        _data.upd_by = $("#logged_user_id").text();
+        // console.log(_data);
+        // console.log( table.row( this ).data().id );
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this! ("+_data.desc+")",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                spinner_popup();
+                $.ajax({
+                    type:"POST",
+                    url: "/apis/del/inv", 
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify(_data),
+                    success: function(data) {
+                        $('.modal').modal('hide');
+                        Swal.fire({
+                            icon: "success",
+                            title: "Data Deleted",
+                            text: _data.desc
+                        }).then(function(){
+                            refreshInvTable();
+                        });
+                        
+                    }, 
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        //alert(jqXHR.status);
+                        $('.modal').modal('hide');
+                        Swal.fire({
+                            title: "Error!",
+                            text: textStatus,
+                            icon: "error"
+                        });
+                    }
+                });
+            }
+        })
+    } );
+    // INV edit
     $('#dtTbl_Inv').on('click', 'td.editor-edit', function (e) {
         e.preventDefault();
 
@@ -483,7 +536,10 @@ function initInvTable(){
         "columnDefs": [{
             "targets": [ 2, 3 ],
             "visible": false
-        }],
+        },{
+            targets:[4,5], render:function(data){
+            return moment(data).format('DD-MMM-YYYY');
+        }}],
         "columns": [
             {
                 data: null,
