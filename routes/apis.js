@@ -219,6 +219,18 @@ router.post('/upd',(req,res)=>{
           closeDbConnection(db)
         }
       })
+    }else if (_data.tblname == 'prod'){
+      query='call spsave_prod (?, ?, ?, ?, ?, ?, ?)'
+      db.query(` `+query+` `,[_data.prod_guid, _data.prod_co_guid, _data.prod_id, _data.prod_pic, _data.prod_status , _data.prod_info, _data.prod_upd_by], (err, data_)=>{  
+      // db.query(query, (err, data_)=>{
+        if (!data_){
+          res.status(200).json({success:false, err})
+        }else{
+          let data = data_;
+          res.status(200).json({success:true, data})
+          closeDbConnection(db)
+        }
+      })
     }
     })
   }).catch((error)=>{
@@ -252,6 +264,8 @@ router.post('/del/:tbl',(req,res)=>{
     query='call spdelete_co_order (?, ?)'
   }else if (_data.tblname == 'inv'){
     query='call spdelete_inv (?, ?)'
+  }else if (_data.tblname == 'prod'){
+    query='call spdelete_prod (?, ?)'
   }
   // res.status(200).json({success:true, query})
 
