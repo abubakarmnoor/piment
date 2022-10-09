@@ -218,6 +218,40 @@ $(document).ready(function() {
         $('#pop-modal-form-input').modal('show');
 
     } );
+    $('#dtTbl_Inv').on('click', 'td.editor-edit', function (e) {
+        e.preventDefault();
+        $("input[name=input_for]").val("co_inv")
+        const _id = tableInv.row( this ).data().inv_guid;
+        $("input[name=inv_guid]").val(_id);
+        
+        const _inv_date = formatDate(tableInv.row( this ).data().inv_date);
+        $("#inv_date").val(_inv_date)
+        const _inv_due_date = formatDate(tableInv.row( this ).data().inv_due_date);
+        $("#inv_due_date").val(_inv_due_date)
+
+        const _inv_code = tableInv.row( this ).data().inv_code;
+        $("#inv_code").selectpicker('val',_inv_code)
+        const _cost = tableInv.row( this ).data().inv_cost;
+        $("input[name=inv_cost]")
+        .val(_cost)
+        .focusout();
+        const _price = tableInv.row( this ).data().inv_price;
+        $("input[name=inv_price]")
+        .val(_price)
+        .focusout();
+        const _inv_price_paid = tableInv.row( this ).data().inv_price_paid;
+        $("input[name=inv_price_paid]")
+        .val(_price)
+        .focusout();
+        const _inv_info = tableInv.row( this ).data().inv_info;
+        $("input[name=inv_info]").val(_inv_info);
+
+        $('#pop-modal-form-input').modal('show');
+
+    } );
+
+    
+
 //end  doc ready
 });
 //default-edit
