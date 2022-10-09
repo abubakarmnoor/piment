@@ -23,7 +23,7 @@
                 <div class="row">&nbsp;</div>
                 <div class="row">
                     <div class="col">
-                        <a href="#"  type="button" class="btn btn-outline btn-primary pull-left editor-create" style="margin-right: 5px">
+                        <a href="#"  type="button" class="btn btn-outline btn-primary pull-left editor-create" style="margin-right: 5px" data-toggle="modal" data-target="#pop-modal-form-input">
                             <i class="glyphicon-plus"></i> Add New
                         </a>
                     </div>
@@ -67,6 +67,7 @@
             <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->
+        {{> pop_prod}}
         {{!-- //modal spinner --}}
         <div class="modal fade spinner-bg" tabindex="-1" role="dialog" data-backdrop="false">
             <div role="document">

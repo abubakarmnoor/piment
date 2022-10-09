@@ -125,3 +125,38 @@ function isNumber(event) {
     }
 }
 
+//reload select picker after add/upd/del
+function selectpicker_refresh(id_, url_){
+    
+    spinner_popup();
+    $.ajax({
+        type:"GET",
+        url: url_, 
+        success: function(data) {
+            // $('.modal').modal('hide');
+            $("#spinner-modal").modal('hide')
+
+            let option_ = new Option("-", "-")
+            $('#'+id_)
+            .empty()
+            .append(option_)
+            // .selectpicker('refresh');
+            for (let index = 0; index < data.data.length; index++) {
+                option_ = new Option(data.data[index].desc, data.data[index].code)
+                $('#'+id_).append(option_);
+            }
+            
+            $('#'+id_).selectpicker('refresh');
+        }, 
+        error: function(jqXHR, textStatus, errorThrown) {
+            //alert(jqXHR.status);
+            $('.modal').modal('hide');
+            Swal.fire({
+                title: "Error!",
+                text: textStatus,
+                icon: "error"
+            });
+        }
+    });
+    
+}

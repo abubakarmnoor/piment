@@ -1,11 +1,10 @@
 //doc ready
 var table;
 $(document).ready(function() {
-    var sdate_ = moment().subtract(29, 'days').format('YYYY-MM-DD');
-    var edate_ = moment().format('YYYY-MM-DD');;
+    // var sdate_ = moment().subtract(29, 'days').format('YYYY-MM-DD');
+    // var edate_ = moment().format('YYYY-MM-DD');;
     //console.log(sdate_)
     //console.log(edate_)
-
     // {{!-- dom: 'Bfrtip',
     //     buttons: [
     //         'copyHtml5',
@@ -62,6 +61,11 @@ $(document).ready(function() {
     //     ]
     // });
     
+    //default / init
+    selectpicker_refresh('prod_status','/apis/pop/prod-status')
+    selectpicker_refresh('prod_co_guid','/apis/pull/co')
+
+
     // New record
     $('a.editor-create').on('click', function (e) {
         e.preventDefault();
