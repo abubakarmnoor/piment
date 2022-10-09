@@ -536,7 +536,7 @@ function initInvTable(){
             processing: '<i class="fa fa-spinner fa-pulse fa-3x fa-fw loader-custom"></i><span class="sr-only"></span> '},
         //"serverSide": true,
         "columnDefs": [{
-            "targets": [ 2, 3 ],
+            "targets": [ 2 ],
             "visible": false
         },{
             targets:[4,5], render:function(data){
