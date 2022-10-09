@@ -64,7 +64,7 @@ $(document).ready(function() {
     
     $('#btn_pop_prod_status').on('click', function(){
         // e.preventDefault();
-        $('#form_input')[0].reset();
+        resetForm()
         $('#th_pop_desc').text('Prod Status')
         $('#lbl_pf_desc').text('Prod Status')
         $("label[name=pop_type").text("prod-status")
@@ -179,4 +179,11 @@ $(document).ready(function() {
 function insert_element_prod_status(){
     $('<a href="#" type="button" class="pull-right" id="btn_pop_prod_status" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_input > div:nth-child(3) > div.col-md-8.mb-3 > div > div > div');
 }
+resetForm = function(){
+    $("#prod_id").val('');
+    $("#prod_co_guid").selectpicker('val',null);
+    $("input[name=prod_pic]").val('');
+    $("#prod_status").selectpicker('val',null);
+    $("input[name=prod_info]").val('');
 
+}
