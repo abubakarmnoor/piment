@@ -248,5 +248,5 @@ resetForm = function(){
 }
 //insert element
 function insert_element_po_status(){
-    $('<a href="#" type="button" class="pull-right" id="btn_pop_po_status" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_input > div:nth-child(5) > div.col-md-5.mb-3 > div > div > div');
+    $('<a href="#" type="button" class="pull-right" id="btn_pop_po_status" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_input > div:nth-child(6) > div.col-md-5.mb-3 > div > div > div');
 }
