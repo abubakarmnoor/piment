@@ -168,8 +168,9 @@ $(document).ready(function() {
                         confirmButtonText: 'Yes',
                         denyButtonText: 'No'
                       }).then((result) => {
-    
+                        $("#spinner-modal").modal('hide')  
                         if (result.isConfirmed) {
+                            
                             //reset form
                             resetForm();
                             
