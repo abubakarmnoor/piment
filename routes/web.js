@@ -182,8 +182,9 @@ router.get('/fpc/:fpid/:act', isAuthenticated, async (req, res) => {
 	const _fpid = req.params.fpid
 	const __data_pop_unit = await getPopupData('unit');
 	const __data_rm = await getRM();
+	const __data_fp = await getFP();
 	res.render('fpc.hbs', {
-		tables_bs4: true, fpc:true, fp_guid:_fpid, act:_act, __data_pop_unit, __data_rm, _user : req.session.user, _user_id: req.session.user_id
+		tables_bs4: true, fpc:true, fp_guid:_fpid, act:_act, __data_pop_unit, __data_rm, _user : req.session.user, _user_id: req.session.user_id, __data_fp
 	});
 })
 router.get('/fpc-details/:fpid/:fcpid/:act', isAuthenticated, async (req, res) => {
@@ -290,4 +291,5 @@ function isAuthenticated (req, res, next) {
 	if (req.session.user) next()
 	else res.redirect('/login');//next('route')
   }
+
 module.exports = router;

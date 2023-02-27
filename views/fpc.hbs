@@ -7,6 +7,9 @@
     #dtTbl_filter {
         margin-left: 585px !important;
     }
+    .btn{
+        margin-right: 5px;
+    }
 </style>
 
 <body>
@@ -47,6 +50,9 @@
                                 <a href="#" id="btn_add_lampshade" type="button" class="btn-popup btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#rm-modal-form">
                                     <i class="glyphicon-plus"></i> Add New
                                 </a>
+                                <a href="#" id="btn_copy_lampshade" type="button" class="btn_copy_comp btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#fp-modal-form-copy">
+                                    <i class="fa fa-copy"></i> Copy
+                                </a>
                                 <table id="dtTblLampshade" class="table table-striped display nowrap" style="width:100%">
                                     <thead>
                                         <tr>
@@ -78,7 +84,10 @@
                             <div class="tab-content">
                                  <div class="tab-pane active" id="tab_stand"><h4>STAND</h4></div>
                                 <a href="#" id="btn_add_stand" type="button" class="btn-popup btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#rm-modal-form">
-                                    <i class="glyphicon-plus"></i> Add New
+                                    <i class="fa fa-copy"></i> Add New
+                                </a>
+                                <a href="#" id="btn_copy_stand" type="button" class="btn_copy_comp btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#fp-modal-form-copy">
+                                    <i class="fa fa-copy"></i> Copy
                                 </a>
                                 <table id="dtTblStand" class="table table-striped display nowrap" style="width:100%">
                                     <thead>
@@ -112,7 +121,10 @@
                                  <div class="tab-pane active" id="tab_stand"><h4>EURO</h4></div>
                                  
                                 <a href="#" id="btn_add_euro" type="button" class="btn-popup btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#rm-modal-form">
-                                    <i class="glyphicon-plus"></i> Add New
+                                    <i class="fa fa-copy"></i> Add New
+                                </a>
+                                <a href="#" id="btn_copy_euro" type="button" class="btn_copy_comp btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#fp-modal-form-copy">
+                                    <i class="fa fa-copy"></i> Copy
                                 </a>
                                 <table id="dtTblEuro" class="table table-striped display nowrap" style="width:100%">
                                     <thead>
@@ -148,6 +160,9 @@
                                 <a href="#" id="btn_add_us" type="button" class="btn-popup btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#rm-modal-form">
                                     <i class="glyphicon-plus"></i> Add New
                                 </a>
+                                <a href="#" id="btn_copy_us" type="button" class="btn_copy_comp btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#fp-modal-form-copy">
+                                    <i class="fa fa-copy"></i> Copy
+                                </a>
                                 <table id="dtTblUS" class="table table-striped display nowrap" style="width:100%">
                                     <thead>
                                         <tr>
@@ -181,6 +196,9 @@
                                  
                                 <a href="#" id="btn_add_japan" type="button" class="btn-popup btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#rm-modal-form">
                                     <i class="glyphicon-plus"></i> Add New
+                                </a>
+                                <a href="#" id="btn_copy_japan" type="button" class="btn_copy_comp btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#fp-modal-form-copy">
+                                    <i class="fa fa-copy"></i> Copy
                                 </a>
                                 <table id="dtTblJapan" class="table table-striped display nowrap" style="width:100%">
                                     <thead>
@@ -216,6 +234,9 @@
                                 <a href="#" id="btn_add_uk" type="button" class="btn-popup btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#rm-modal-form">
                                     <i class="glyphicon-plus"></i> Add New
                                 </a>
+                                <a href="#" id="btn_copy_uk" type="button" class="btn_copy_comp btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#fp-modal-form-copy">
+                                    <i class="fa fa-copy"></i> Copy
+                                </a>
                                 <table id="dtTblUK" class="table table-striped display nowrap" style="width:100%">
                                     <thead>
                                         <tr>
@@ -249,6 +270,9 @@
                                  
                                 <a href="#" id="btn_add_aus" type="button" class="btn-popup btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#rm-modal-form">
                                     <i class="glyphicon-plus"></i> Add New
+                                </a>
+                                <a href="#" id="btn_copy_aus" type="button" class="btn_copy_comp btn btn-outline btn-primary pull-left" data-toggle="modal" data-target="#fp-modal-form-copy">
+                                    <i class="fa fa-copy"></i> Copy
                                 </a>
                                 <table id="dtTblAUS" class="table table-striped display nowrap" style="width:100%">
                                     <thead>
@@ -301,6 +325,7 @@
     <!-- /#wrapper -->
 
 {{!-- popup form --}}
+
  <div class="modal fade" id="rm-modal-form" tabindex="-1" role="dialog" aria-labelledby="rm-modal-form" aria-hidden="true" data-backdrop="false">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -361,6 +386,92 @@
                         <input type="text" class="form-control" id="fp_guid" name="fp_guid" value="{{fp_guid}}" readonly>
                         <input type="text" class="form-control" id="act" name="act" value="{{act}}" readonly>
                         <input type="text" class="form-control" id="fp_cp_type" name="fp_cp_type" readonly>
+                    </div>
+                </div>
+                <hr/>
+            </form>
+            
+        </div>
+        </div>
+    </div>
+ </div>
+<div class="modal fade" id="fp-modal-form-copy" tabindex="-1" role="dialog" aria-labelledby="fp-modal-form-copy" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h5 class="modal-title">COPY COMPONENT<span id="title"></span></h5>
+        </div>
+        <div class="modal-body">
+            <form id="form_fp_cp_copy">
+                <div class="form-group row">
+                    <input type="text" class="form-control invisible" name="fp_guid" style="position:absolute;" required readonly>
+                    <div class="col-md-12 mb-3">
+                        <label for="fp_guid">SELECT FINISH PRODUCT - COPY TO </label>
+                        <select class="form-control selectpicker" id="fp_guid_copy" name="fp_guid_copy" data-live-search="true">
+                            {{!-- <option value="-">-</option> --}}
+                            {{#each __data_fp}}
+                                {{!-- {{#ifEquals fp_guid "04bbe57a-3551-11ed-bab3-0242c0ea615e" }}
+                                {{else}} --}}
+                                    <option value={{fp_guid}}>{{fp_desc}}</option>
+                                {{!--{{/ifEquals}} --}}
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="col-md-12 mb-3">&nbsp;</div>
+                    <div class="col-md-12 mb-3">
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <input type="checkbox" id="cklampshade" name="cklampshade">
+                                <label for="cklampshade"> Lampshade</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="checkbox" id="ckstand" name="ckstand">
+                                <label for="ckstand"> Stand</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="checkbox" id="ckeuro" name="ckeuro">
+                                <label for="ckeuro"> Euro</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="checkbox" id="ckus" name="ckus">
+                                <label for="ckus"> US</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="checkbox" id="ckjapan" name="ckjapan">
+                                <label for="ckjapan"> Japan</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="checkbox" id="ckuk" name="ckuk">
+                                <label for="ckuk"> UK</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="checkbox" id="ckaus" name="ckaus">
+                                <label for="ckaus"> AUS</label>
+                            </div>
+                        </div>
+                    </div>
+                     
+                    
+                </div>
+                <div class="form-group">
+                    <div class="col-sm pull-right">
+                        <button type="submit" class="btn btn-primary" id="btn_save_fp_cp"><i class="fa fa-copy"></i> Copy</button>
+                    </div>
+                    <div class="col-sm pull-left">
+                        <a href="#"  type="button" class="btn btn-outline btn-primary" id="btn_close" data-dismiss="modal">
+                            <i class="fa fa-times"></i> Cancel
+                        </a>
+                    </div>
+                </div>
+                <div class="form-group row invisible" style="position: absolute;">
+                    <div class="col-md-4 mb-3">
+                        <label>Id</label>
+                        <input type="text" class="form-control" name="fp_guid" value="{{fp_guid}}" readonly>
+                        <input type="text" class="form-control" id="act" name="act" value="{{act}}" readonly>
+                        <input type="text" class="form-control" name="fp_cp_type" readonly>
                     </div>
                 </div>
                 <hr/>

@@ -24,7 +24,7 @@ const {stablishedConnection,closeDbConnection}  =require('../config/conn');
 // app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(bodyParser.json());
 router.use(function (req, res, next) {
-  res.set('Cache-Control', 'max-age=0');// 60s x 60m x24 x ? day
+  res.set('Cache-Control', 'max-age=0');// 60s x 60m x 24h x ? day
 	next()
 })
 
@@ -135,7 +135,19 @@ router.post('/upd',(req,res)=>{
             closeDbConnection(db)
           }
         })
-    }else if (_data.tblname == 'supplier'){
+      }else if (_data.tblname == 'fp_cp_copy'){
+        query='call spsave_fp_cp_copy (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+        db.query(` `+query+` `,[_data.fp_guid, _data.fp_cp_type, _data.fp_guid_copy, _data.cklampshade, _data.ckstand, _data.ckeuro, _data.ckus, _data.ckjapan, _data.ckuk, _data.ckaus, _data.fp_cp_upd_by], (err, data_)=>{  
+        // db.query(query, (err, data_)=>{
+          if (!data_){
+            res.status(200).json({success:false, err})
+          }else{
+            let data = data_;
+            res.status(200).json({success:true, data})
+            closeDbConnection(db)
+          }
+        })
+      }else if (_data.tblname == 'supplier'){
       query='call spsave_supplier (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
       db.query(` `+query+` `,[_data.supplier_guid, _data.supplier_name, _data.supplier_address, _data.supplier_state, _data.supplier_country, _data.supplier_zipcode, _data.supplier_pic, _data.supplier_email, _data.supplier_phone, _data.supplier_fax, _data.supplier_whatsapp , _data.supplier_prod_family , _data.supplier_active , _data.supplier_upd_by], (err, data_)=>{  
       // db.query(query, (err, data_)=>{

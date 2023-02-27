@@ -4,6 +4,12 @@ const hbs = require('hbs');
 const web = require('./routes/web');
 const apis = require('./routes/apis');
 const app = express();
+
+//helper
+hbs.handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
+    return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
+
 // const axios = require('axios');
 const { log } = require('console');
 const {isAuthenticated} = require('./routes/functions')

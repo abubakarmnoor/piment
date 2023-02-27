@@ -9,7 +9,7 @@ var tableUS;
 var tableJapan;
 var tableUK;
 var tableAUS;
-// spinner_popup();
+spinner_popup();
 $(document).ready(function() {
     $("#fp_cp_unit").prop("disabled", true);
     $('.modal').modal('hide');
@@ -65,33 +65,36 @@ $(document).ready(function() {
     })
     
     //init
-    $("#btn_add_lampshade").on("click", function(e){
+    $("#btn_add_lampshade, #btn_copy_lampshade").on("click", function(e){
         $("#title").text("LAMPSHADE");
-        $("#fp_cp_type").val("lampshade");
+        $("input[name=fp_cp_type]").val("lampshade");
+        $("#fp_guid_copy").selectpicker('val','')
+        
     })
-    $("#btn_add_stand").on("click", function(e){
+    
+    $("#btn_add_stand, #btn_copy_stand").on("click", function(e){
         $("#title").text("STAND");
-        $("#fp_cp_type").val("stand");
+        $("input[name=fp_cp_type]").val("stand");
     })
-    $("#btn_add_euro").on("click", function(e){
+    $("#btn_add_euro, #btn_copy_euro").on("click", function(e){
         $("#title").text("EURO");
-        $("#fp_cp_type").val("euro");
+        $("input[name=fp_cp_type]").val("euro");
     })
-    $("#btn_add_us").on("click", function(e){
+    $("#btn_add_us, #btn_copy_us").on("click", function(e){
         $("#title").text("US");
-        $("#fp_cp_type").val("us");
+        $("input[name=fp_cp_type]").val("us");
     })
-    $("#btn_add_japan").on("click", function(e){
+    $("#btn_add_japan, #btn_copy_japan").on("click", function(e){
         $("#title").text("JAPAN");
-        $("#fp_cp_type").val("japan");
+        $("input[name=fp_cp_type]").val("japan");
     })
-    $("#btn_add_uk").on("click", function(e){
+    $("#btn_add_uk, #btn_copy_uk").on("click", function(e){
         $("#title").text("UK");
-        $("#fp_cp_type").val("uk");
+        $("input[name=fp_cp_type]").val("uk");
     })
-    $("#btn_add_aus").on("click", function(e){
+    $("#btn_add_aus, #btn_copy_aus").on("click", function(e){
         $("#title").text("AUS");
-        $("#fp_cp_type").val("aus");
+        $("input[name=fp_cp_type]").val("aus");
     })
    
     //number
@@ -124,6 +127,7 @@ $(document).ready(function() {
         _data.fp_cp_unit = $("#fp_cp_unit").val()
         _data.tblname = "fp_cp";
         console.log(_data);//
+        // return;
 
         //validation
         const rm_guid_ = $("#fp_cp_rm_guid").val()
@@ -197,11 +201,123 @@ $(document).ready(function() {
 
     });
 
+    //copy fp cp
+    $('#form_fp_cp_copy').submit(function(e) {
+        e.preventDefault();
+        const form = $(e.target);
+        const _data = convertFormToJSON(form);
+        _data.fp_cp_upd_by = $("#logged_user_id").text();
+        _data.tblname = "fp_cp_copy";
+        _data.ckaus = $("#ckaus").is(':checked');
+        _data.ckuk = $("#ckuk").is(':checked');
+        _data.ckjapan = $("#ckjapan").is(':checked');
+        _data.ckus = $("#ckus").is(':checked');
+        _data.ckeuro = $("#ckeuro").is(':checked');
+        _data.ckstand = $("#ckstand").is(':checked');
+        _data.cklampshade = $("#cklampshade").is(':checked');
+        
+        if (_data.fp_guid == _data.fp_guid_copy){
+            _data.cklampshade = (_data.cklampshade == true ? !(_data.fp_cp_type == 'lampshade') : _data.cklampshade);
+            _data.ckstand = (_data.ckstand == true ? !(_data.fp_cp_type == 'stand') : _data.ckstand);
+            _data.ckeuro = (_data.ckeuro == true ? !(_data.fp_cp_type == 'euro') : _data.ckeuro);
+            _data.ckus = (_data.ckus == true ? !(_data.fp_cp_type == 'us') : _data.ckus);
+            _data.ckjapan = (_data.ckjapan == true ? !(_data.fp_cp_type == 'japan') : _data.ckjapan);
+            _data.ckuk = (_data.ckuk == true ? !(_data.fp_cp_type == 'uk') : _data.ckuk);
+            _data.ckaus = (_data.ckaus == true ? !(_data.fp_cp_type == 'aus') : _data.ckaus);
+        }
+        // console.log(_data);//
+        // return;
+        
+        //validation
+        if(!_data.fp_guid_copy){
+            $("#fp_guid_copy").focus()
+            Swal.fire({
+                icon: 'warning',
+                title: '',
+                text: "Please select 1 Finish Product !"
+            })
+            $('select[name="fp_guid_copy"]').focus()
+            return;
+        }else if (!(_data.ckaus) && !(_data.ckuk) && !(_data.ckjapan) && !(_data.ckus) && !(_data.ckeuro) && !(_data.ckstand) && !(_data.cklampshade)){
+            Swal.fire({
+                icon: 'warning',
+                title: '',
+                text: "Please select 1 or more Component !"
+            })
+            return;
+        }
+        //
+
+        //confirmation
+        Swal.fire({
+            // title: 'Add more component ?',
+            text: "Do you want to copy component ?",
+            icon: 'question',
+            showDenyButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: 'No'
+          }).then((result) => {
+            $("#spinner-modal").modal('hide')  
+            if (result.isConfirmed) {
+                
+                //reset form
+                resetFormCopy();
+                // return;
+                 // ajax - save/post data
+                //  console.log(JSON.stringify(_data));
+                spinner_popup();
+                $.ajax({
+                    type:"POST", // must be POST 
+                    url: "/apis/upd", 
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify(_data),
+                    success: function(data) {
+                        $('.modal').modal('hide');  
+                        if(data.success == false){
+                            Swal.fire({
+                                icon: 'error',
+                                text: data.err.sqlMessage,
+                              })
+                            return;
+                        }
+                        
+                        //refresh
+                        refreshTable('all');
+                                
+                        Swal.fire({
+                            icon: 'success',
+                            title: '',
+                            text: "Data Copied."
+                        })
+                    }, 
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.log(errorThrown);
+                        //alert(jqXHR.status);
+                        Swal.fire({
+                            title: "Error!",
+                            text: textStatus,
+                            icon: "error"
+                        }).then(function(){
+                            $('.modal').modal('hide');    
+                        });
+                    }
+                });
+
+            } else if (result.isDenied) {
+                $('.modal').modal('hide');
+
+            }
+        })
+       
+    });
+    $(".btn_copy_comp ").on("click", function(e){
+        resetFormCopy();
+    })
     //btn popup
     $(".btn-popup").on("click", function(e){
         resetForm();
     })
-
     // Delete a record
     $('#dtTblLampshade').on('click', 'td.editor-delete', function (e) {
         e.preventDefault();
@@ -697,6 +813,10 @@ function resetForm(){
     $("input[name=fp_cp_price]").val(0);
 
 }
+function resetFormCopy(){
+    $("#fp_guid_copy").selectpicker('val',"-");
+    $("input[type=checkbox]").prop("checked",false  );
+}
 function refreshTable(type){
     if(type == "lampshade"){
         tableLampshade.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/lampshade", null, false).load();
@@ -711,6 +831,14 @@ function refreshTable(type){
     }else if(type == "uk"){
         tableUK.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/uk", null, false).load();
     }else if(type == "aus"){
+        tableAUS.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/aus", null, false).load();
+    }else if(type == "all"){
+        tableLampshade.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/lampshade", null, false).load();
+        tableStand.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/stand", null, false).load();
+        tableEuro.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/euro", null, false).load();
+        tableUS.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/us", null, false).load();
+        tableJapan.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/japan", null, false).load();
+        tableUK.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/uk", null, false).load();
         tableAUS.ajax.url("/apis/pull/fp_cp/"+fp_guid+"/aus", null, false).load();
     }
 }
