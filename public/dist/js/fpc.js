@@ -951,6 +951,18 @@ function refreshStand(){
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
             $( api.column( 7 ).footer() ).html(numberWithCommas(total));
+            
+            var total_qty_price = api
+                .column( 8 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+				
+            // Update footer by showing the total with the reference of the column index 
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 8 ).footer() ).html(numberWithCommas(total_qty_price));
+
         },
         "scrollCollapse": true,
         "paging": true, 
@@ -1014,6 +1026,18 @@ function refreshEuro(){
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
             $( api.column( 7 ).footer() ).html(numberWithCommas(col7));
+
+            var total_qty_price = api
+                .column( 8 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+				
+            // Update footer by showing the total with the reference of the column index 
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 8 ).footer() ).html(numberWithCommas(total_qty_price));
+
         },
         "scrollCollapse": true,
         "paging": true, 
@@ -1076,6 +1100,18 @@ function refreshUS(){
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
             $( api.column( 7 ).footer() ).html(numberWithCommas(col7));
+
+            var total_qty_price = api
+                .column( 8 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+				
+            // Update footer by showing the total with the reference of the column index 
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 8 ).footer() ).html(numberWithCommas(total_qty_price));
+
         },
         "scrollCollapse": true,
         "paging": true, 
@@ -1138,6 +1174,18 @@ function refreshJapan(){
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
             $( api.column( 7 ).footer() ).html(numberWithCommas(col7));
+
+            var total_qty_price = api
+                .column( 8 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+				
+            // Update footer by showing the total with the reference of the column index 
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 8 ).footer() ).html(numberWithCommas(total_qty_price));
+
         },
         "scrollCollapse": true,
         "paging": true, 
@@ -1200,6 +1248,18 @@ function refreshUK(){
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
             $( api.column( 7 ).footer() ).html(numberWithCommas(col7));
+
+            var total_qty_price = api
+                .column( 8 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+				
+            // Update footer by showing the total with the reference of the column index 
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 8 ).footer() ).html(numberWithCommas(total_qty_price));
+
         },
         "scrollCollapse": true,
         "paging": true, 
@@ -1262,6 +1322,18 @@ function refreshAUS(){
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
             $( api.column( 7 ).footer() ).html(numberWithCommas(col7));
+
+            var total_qty_price = api
+                .column( 8 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+				
+            // Update footer by showing the total with the reference of the column index 
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 8 ).footer() ).html(numberWithCommas(total_qty_price));
+            
         },
         "scrollCollapse": true,
         "paging": true, 

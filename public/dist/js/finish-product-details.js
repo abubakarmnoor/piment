@@ -64,15 +64,18 @@ $(document).ready(function() {
 
         _data.fp_sc_wholesale_sale = (_data.fp_sc_wholesale_sale).replace(/\,/g,'');
         _data.fp_sc_wholesale_profit = (_data.fp_sc_wholesale_profit).replace(/\,/g,'');
-        _data.fp_sc_wholesale_markup = (_data.fp_sc_wholesale_markup).replace(/\,/g,'');
+        // _data.fp_sc_wholesale_markup = (_data.fp_sc_wholesale_markup).replace(/\,/g,'');
+        _data.fp_sc_wholesale_markup = 0;
 
         _data.fp_sc_business_sale = (_data.fp_sc_business_sale).replace(/\,/g,'');
         _data.fp_sc_business_profit = (_data.fp_sc_business_profit).replace(/\,/g,'');
-        _data.fp_sc_business_markup = (_data.fp_sc_business_markup).replace(/\,/g,'');
-        
+        // _data.fp_sc_business_markup = (_data.fp_sc_business_markup).replace(/\,/g,'');
+        _data.fp_sc_business_markup = 0; // auto by calc
+
         _data.fp_sc_retail_sale = (_data.fp_sc_retail_sale).replace(/\,/g,'');
         _data.fp_sc_retail_profit = (_data.fp_sc_retail_profit).replace(/\,/g,'');
-        _data.fp_sc_retail_markup = (_data.fp_sc_retail_markup).replace(/\,/g,'');
+        // _data.fp_sc_retail_markup = (_data.fp_sc_retail_markup).replace(/\,/g,'');
+        _data.fp_sc_retail_markup = 0; // auto by calc
         _data.tblname = "fp";
 
         // console.log(_data);
@@ -152,23 +155,62 @@ function default_edit(data){
     $("#ck_active").prop('checked', data[0].fp_active)
 
     
-    $("input[name=fp_sc_extra_cost]").val(data[0].fp_sc_extra_cost).focusout()
-    $("input[name=fp_sc_extra_labour]").val(data[0].fp_sc_extra_labour).focusout()
-    $("input[name=fp_sc_cost]").val(data[0].fp_sc_cost).focusout()
+    $("input[name=fp_sc_extra_cost]").val(Number(data[0].fp_sc_extra_cost)).focusout()
+    $("input[name=fp_sc_extra_labour]").val(Number(data[0].fp_sc_extra_labour)).focusout()
+    $("input[name=fp_sc_cost]").val(Number(data[0].fp_sc_cost)).focusout()
+    // const total_cost = Number(data[0].fp_sc_extra_cost)+Number(data[0].fp_sc_extra_labour)+Number(data[0].fp_sc_cost);
+    // $("#total_cost").val(total_cost)
 
-    $("input[name=fp_sc_wholesale_sale]").val(data[0].fp_sc_wholesale_sale).focusout()
-    $("input[name=fp_sc_wholesale_profit]").val(data[0].fp_sc_wholesale_profit).focusout()
-    $("input[name=fp_sc_wholesale_markup]").val(data[0].fp_sc_wholesale_markup).focusout()
+    const fp_sc_wholesale_sale = Number(data[0].fp_sc_wholesale_sale);
+    $("input[name=fp_sc_wholesale_sale]").val(fp_sc_wholesale_sale).focusout()
+    // $("input[name=fp_sc_wholesale_profit]").val(Number(data[0].fp_sc_wholesale_profit)).focusout()
+    // $("input[name=fp_sc_wholesale_markup]").val(Number(data[0].fp_sc_wholesale_markup)).focusout()
 
-    $("input[name=fp_sc_business_sale]").val(data[0].fp_sc_business_sale).focusout()
-    $("input[name=fp_sc_business_profit]").val(data[0].fp_sc_business_profit).focusout()
-    $("input[name=fp_sc_business_markup]").val(data[0].fp_sc_business_markup).focusout()
+    $("input[name=fp_sc_business_sale]").val(Number(data[0].fp_sc_business_sale)).focusout()
+    $("input[name=fp_sc_business_profit]").val(Number(data[0].fp_sc_business_profit)).focusout()
+    $("input[name=fp_sc_business_markup]").val(Number(data[0].fp_sc_business_markup)).focusout()
 
-    $("input[name=fp_sc_retail_sale]").val(data[0].fp_sc_retail_sale).focusout()
-    $("input[name=fp_sc_retail_profit]").val(data[0].fp_sc_retail_profit).focusout()
-    $("input[name=fp_sc_retail_markup]").val(data[0].fp_sc_retail_markup).focusout()
+    $("input[name=fp_sc_retail_sale]").val(Number(data[0].fp_sc_retail_sale)).focusout()
+    $("input[name=fp_sc_retail_profit]").val(Number(data[0].fp_sc_retail_profit)).focusout()
+    $("input[name=fp_sc_retail_markup]").val(Number(data[0].fp_sc_retail_markup)).focusout()
     
+    calc();
 }
+
+//
+$("input[name=fp_sc_extra_cost]").change(function(){
+    calc();
+})
+$("input[name=fp_sc_extra_labour]").change(function(){
+    calc();
+})
+$("input[name=fp_sc_cost]").change(function(){
+    calc();
+})
+$("input[name=fp_sc_wholesale_sale]").change(function(){
+    calc();
+})
+//calc
+function calc(){
+    const total_cost = 
+        Number($("input[name=fp_sc_extra_cost]").val().replace(/,/g,"")) + 
+        Number($("input[name=fp_sc_extra_labour]").val().replace(/,/g,"")) +
+        Number($("input[name=fp_sc_cost]").val().replace(/,/g,""))
+    $("#total_cost").val(total_cost).focusout()
+
+    const sale_ = $("input[name=fp_sc_wholesale_sale]").val().replace(/,/g,"")
+    $("input[name=fp_sc_wholesale_profit]").val(sale_-total_cost).focusout()
+    $("#ws_markup").val((100-(total_cost/sale_)*100).toFixed(2)+'%')
+
+    const sale_b = $("input[name=fp_sc_business_sale]").val().replace(/,/g,"")
+    $("input[name=fp_sc_business_profit]").val(sale_b-total_cost).focusout()
+    $("#b_markup").val((100-(total_cost/sale_b)*100).toFixed(2)+'%')
+
+    const sale_r = $("input[name=fp_sc_retail_sale]").val().replace(/,/g,"")
+    $("input[name=fp_sc_retail_profit]").val(sale_r-total_cost).focusout()
+    $("#r_markup").val((100-(total_cost/sale_r)*100).toFixed(2)+'%')
+}
+
 //get details
 function get_details(id){
     //ajax - get details
