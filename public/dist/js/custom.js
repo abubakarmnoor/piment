@@ -111,18 +111,25 @@ function numberWithCommas(x, dec) {
 }
 
 function isNumber(event) {
+    // console.log(event);
+
     var allowed = "";
+    // console.log(event.target.value);
     if (event.target.value.includes(".")) {
-      allowed = "0123456789";
+      allowed = "0123456789.";
     }
     else if (event.target.value.includes("")) {
-        allowed = "0123456789,";  
+        allowed = "0123456789,.";  
     } else {
       allowed = "0123456789.";
     }
     if (!allowed.includes(event.key)) {
       event.preventDefault();
     }
+}
+function NumValidate(s) {
+    var rgx = /^[0-9]*\.?[0-9]*$/;
+    return s.match(rgx);
 }
 
 //reload select picker after add/upd/del

@@ -1,9 +1,11 @@
 var tableOrder, tableInv;
 var id;
+spinner_popup();
 $(document).ready(function() {
             
     //default
     // spinner_popup();
+    $('.modal').modal('hide');
     id = $("input[name=co_guid]").val()
     $("#co_client_guid").selectpicker('val',null)
     $("#co_status").selectpicker('val',null)
@@ -79,7 +81,18 @@ $(document).ready(function() {
                     }).then(function(){
                         var encodedUrl = encodeURIComponent($("input[name=co_order_id]").val());
                         get_details(undefined, encodedUrl)
-                        // $("#btn_tab_order").click();
+                        console.log('test');
+                        console.log($("input[name=co_guid]").val());
+                        if ($("input[name=co_guid]").val() !== "null") { 
+                            $("#btn_tab_order").click()
+                        }else{
+                            Swal.fire({
+                                title: 'Client Order',
+                                text: "Go to input `Order` item(s)"
+                            }) .then(function(){
+                                $("#btn_tab_order").click()
+                            })
+                        }
                     });
                 }else{
                     Swal.fire({
@@ -131,7 +144,7 @@ $(document).ready(function() {
     //validation
     $("#btn_tab_order,#btn_tab_po,#btn_tab_invoice").on("click", function(e){
         e.preventDefault();
-        const _id = $("input[name=co_guid").val();
+        const _id = $("input[name=co_guid]").val();
         // console.log(_id);
         if (_id === "null"){
             Swal.fire({
@@ -153,12 +166,13 @@ $(document).ready(function() {
         _data.id = tableOrder.row( this ).data().co_order_guid;
         _data.desc = tableOrder.row( this ).data().fp_desc;
         _data.upd_by = $("#logged_user_id").text();
+        _data.co_order_id = tableOrder.row( this ).data().co_order_id; 
         // console.log(_data);
         // console.log( table.row( this ).data().id );
 
         Swal.fire({
             title: 'Are you sure?',
-            text: "You won't be able to revert this! ("+_data.desc+")",
+            text: "You won't be able to revert this! ("+_data.co_order_id+")",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -178,7 +192,7 @@ $(document).ready(function() {
                         Swal.fire({
                             icon: "success",
                             title: "Data Deleted",
-                            text: _data.desc
+                            text: _data.co_order_id
                         }).then(function(){
                             refreshOrderTable();
                         });
@@ -332,7 +346,7 @@ function default_edit(data){
     $('#co_status').selectpicker('val',data[0].co_status)
     $("textarea[name=co_notes]").text(data[0].co_notes)
     
-    $("#btn_tab_order").click();
+    // $("#btn_tab_order").click();
     
 }
 
@@ -465,11 +479,11 @@ function initOrderTable(){
             { "data": "co_order_guid" },
             { "data": "co_order_fp_guid" },
             { "data": "fp_desc" },
-            { "data": "co_order_cost" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
-            { "data": "co_order_price" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "co_order_cost" , render: $.fn.dataTable.render.number(',', '.', 0, '')},
+            { "data": "co_order_price" , render: $.fn.dataTable.render.number(',', '.', 0, '')},
             { "data": "co_order_qty" },
-            { "data": "total_cost" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
-            { "data": "total_price" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "total_cost" , render: $.fn.dataTable.render.number(',', '.', 0, '')},
+            { "data": "total_price" , render: $.fn.dataTable.render.number(',', '.', 0, '')},
             
         ]
     });
@@ -568,4 +582,8 @@ function initInvTable(){
             { "data": "inv_info" },
         ]
     });
+}
+
+function autoOrderId(){
+    
 }

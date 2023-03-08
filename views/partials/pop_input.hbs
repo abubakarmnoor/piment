@@ -17,8 +17,25 @@
                         <label for="co_order_fp_guid">FP</label>
                         <select class="form-control selectpicker" id="co_order_fp_guid" name="co_order_fp_guid" data-live-search="true">
                             {{#each __data_fp}}
-                                <option cost="{{fp_sc_cost}}" price="{{fp_sc_business_sale}}" value={{fp_guid}}>{{fp_desc}}</option>
+                                <option cost="{{total_cost}}" price="{{fp_sc_business_sale}}" value={{fp_guid}}>{{fp_desc}}</option>
                             {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12 mb-3">
+                        <label for="co_order_fp_component">COMPONENT</label>
+                        <select class="form-control selectpicker" id="co_order_fp_component" name="co_order_fp_component" data-live-search="true">
+                            {{!-- {{#each __data_fp_component}}
+                                <option cost="{{fp_sc_cost}}" price="{{fp_sc_business_sale}}" value={{fp_guid}}>{{fp_desc}}</option>
+                            {{/each}} --}}
+                            <option value="lampshade">Lampshade</option>
+                            <option value="stand">Stand</option>
+                            <option value="euro">Euro</option>
+                            <option value="us">US</option>
+                            <option value="japan">Japan</option>
+                            <option value="uk">UK</option>
+                            <option value="aus">AUS</option>
                         </select>
                     </div>
                 </div>

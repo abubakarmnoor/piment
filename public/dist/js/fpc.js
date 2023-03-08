@@ -126,7 +126,7 @@ $(document).ready(function() {
         _data.fp_cp_price = (_data.fp_cp_price).replace(/\,/g,'');
         _data.fp_cp_unit = $("#fp_cp_unit").val()
         _data.tblname = "fp_cp";
-        console.log(_data);//
+        // console.log(_data);//
         // return;
 
         //validation
@@ -921,7 +921,7 @@ function refreshLampshade(){
             { "data": "rm_desc" },
             { "data": "unit_desc" },
             { "data": "fp_cp_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
-            { "data": "fp_cp_qty" },
+            { "data": "fp_cp_qty", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             { "data": "total_price", render: $.fn.dataTable.render.number(',', '.', 2, '')},
             
         ]
@@ -940,7 +940,17 @@ function refreshStand(){
                     typeof i === 'number' ?
                         i : 0;
             };
- 
+            var total_price = api
+                .column( 6 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+				
+            // Update footer by showing the total with the reference of the column index 
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 6 ).footer() ).html(numberWithCommas(total_price));
+
 	        var total = api
                 .column( 7 )
                 .data()
@@ -1015,7 +1025,18 @@ function refreshEuro(){
                     typeof i === 'number' ?
                         i : 0;
             };
- 
+           
+            var total_price = api
+            .column( 6 )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+            
+            // Update footer by showing the total with the reference of the column index 
+            $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 6 ).footer() ).html(numberWithCommas(total_price));
+            
 	        var col7 = api
                 .column( 7 )
                 .data()
@@ -1089,7 +1110,17 @@ function refreshUS(){
                     typeof i === 'number' ?
                         i : 0;
             };
- 
+            var total_price = api
+            .column( 6 )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+            
+            // Update footer by showing the total with the reference of the column index 
+            $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 6 ).footer() ).html(numberWithCommas(total_price));
+
 	        var col7 = api
                 .column( 7 )
                 .data()
@@ -1163,7 +1194,18 @@ function refreshJapan(){
                     typeof i === 'number' ?
                         i : 0;
             };
- 
+            
+            var total_price = api
+            .column( 6 )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+            
+            // Update footer by showing the total with the reference of the column index 
+            $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 6 ).footer() ).html(numberWithCommas(total_price));
+
 	        var col7 = api
                 .column( 7 )
                 .data()
@@ -1237,7 +1279,18 @@ function refreshUK(){
                     typeof i === 'number' ?
                         i : 0;
             };
- 
+            
+            var total_price = api
+            .column( 6 )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+            
+            // Update footer by showing the total with the reference of the column index 
+            $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 6 ).footer() ).html(numberWithCommas(total_price));
+
 	        var col7 = api
                 .column( 7 )
                 .data()
@@ -1311,7 +1364,18 @@ function refreshAUS(){
                     typeof i === 'number' ?
                         i : 0;
             };
- 
+            
+            var total_price = api
+            .column( 6 )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+            
+            // Update footer by showing the total with the reference of the column index 
+            $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 6 ).footer() ).html(numberWithCommas(total_price));
+            
 	        var col7 = api
                 .column( 7 )
                 .data()

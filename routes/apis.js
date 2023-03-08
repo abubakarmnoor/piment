@@ -367,6 +367,24 @@ router.get('/pass', async function(req,res){
   res.status(200).json({hash: hash_, pass: pass_ })
   
 })
+router.get('/auto-orderid', async function(req,res){
+  
+  try {
+    db.query(`call sporderid();`,null, function (err, data_) { 
+      if (!data_) {
+        res.status(200).json({success:false,err});
+      }else{
+        let data = data_[0]
+        res.status(200).json({success:true,data});
+        closeDbConnection(db);
+        // console.log("Db Connection close Successfully");
+      }
+    })                           
+  } catch (error) {
+    console.log("Db not connected",error);
+  }
+  
+})
 //functions
 async function hashPass(plaintextPassword) {
   const hash = await bcrypt.hash(plaintextPassword, 11);
