@@ -210,7 +210,7 @@ function calc(){
     $("#ws_markup").val(((total_cost/sale_)*100).toFixed(2)+'%')
 
     const sale_b = $("input[name=fp_sc_business_sale]").val().replace(/,/g,"")
-    $("input[name=fp_sc_business_profit]").val(sale_b-total_cost).focusout()
+    $("input[name=fp_sc_business_profit]").val((sale_b-total_cost).toFixed(2)).focusout()
     $("#b_markup").val(((total_cost/sale_b)*100).toFixed(2)+'%')
 
     const sale_r = $("input[name=fp_sc_retail_sale]").val().replace(/,/g,"")

@@ -863,11 +863,11 @@ function refreshLampshade(){
                 .reduce( function (a, b) {
                     return intVal(a) + intVal(b);
                 }, 0 );
-				
+			console.log(total_price);
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 6 ).footer() ).html(numberWithCommas(total_price));
-
+            $( api.column( 6 ).footer() ).html(numberWithCommas(Number(total_price).toFixed(2)));
+            
             var total_qty = api
                 .column( 7 )
                 .data()
@@ -877,7 +877,7 @@ function refreshLampshade(){
 				
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 7 ).footer() ).html(numberWithCommas(total_qty));
+            $( api.column( 7 ).footer() ).html(numberWithCommas(total_qty,2));
             
             var total_qty_price = api
                 .column( 8 )
@@ -888,7 +888,7 @@ function refreshLampshade(){
 				
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 8 ).footer() ).html(numberWithCommas(total_qty_price));
+            $( api.column( 8 ).footer() ).html(numberWithCommas(Number(total_qty_price).toFixed(2)));
         },
         "scrollCollapse": true,
         "paging": true, 
@@ -946,12 +946,12 @@ function refreshStand(){
                 .reduce( function (a, b) {
                     return intVal(a) + intVal(b);
                 }, 0 );
-				
+			console.log(total_price);
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 6 ).footer() ).html(numberWithCommas(total_price));
-
-	        var total = api
+            $( api.column( 6 ).footer() ).html(numberWithCommas(Number(total_price).toFixed(2)));
+            
+            var total_qty = api
                 .column( 7 )
                 .data()
                 .reduce( function (a, b) {
@@ -960,7 +960,7 @@ function refreshStand(){
 				
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 7 ).footer() ).html(numberWithCommas(total));
+            $( api.column( 7 ).footer() ).html(numberWithCommas(total_qty,2));
             
             var total_qty_price = api
                 .column( 8 )
@@ -971,7 +971,7 @@ function refreshStand(){
 				
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 8 ).footer() ).html(numberWithCommas(total_qty_price));
+            $( api.column( 8 ).footer() ).html(numberWithCommas(Number(total_qty_price).toFixed(2)));
 
         },
         "scrollCollapse": true,
@@ -1027,17 +1027,17 @@ function refreshEuro(){
             };
            
             var total_price = api
-            .column( 6 )
-            .data()
-            .reduce( function (a, b) {
-                return intVal(a) + intVal(b);
-            }, 0 );
-            
+                .column( 6 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+			console.log(total_price);
             // Update footer by showing the total with the reference of the column index 
-            $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 6 ).footer() ).html(numberWithCommas(total_price));
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 6 ).footer() ).html(numberWithCommas(Number(total_price).toFixed(2)));
             
-	        var col7 = api
+            var total_qty = api
                 .column( 7 )
                 .data()
                 .reduce( function (a, b) {
@@ -1046,8 +1046,8 @@ function refreshEuro(){
 				
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 7 ).footer() ).html(numberWithCommas(col7));
-
+            $( api.column( 7 ).footer() ).html(numberWithCommas(total_qty,2));
+            
             var total_qty_price = api
                 .column( 8 )
                 .data()
@@ -1057,7 +1057,7 @@ function refreshEuro(){
 				
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 8 ).footer() ).html(numberWithCommas(total_qty_price));
+            $( api.column( 8 ).footer() ).html(numberWithCommas(Number(total_qty_price).toFixed(2)));
 
         },
         "scrollCollapse": true,
@@ -1111,17 +1111,17 @@ function refreshUS(){
                         i : 0;
             };
             var total_price = api
-            .column( 6 )
-            .data()
-            .reduce( function (a, b) {
-                return intVal(a) + intVal(b);
-            }, 0 );
-            
+                .column( 6 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+			console.log(total_price);
             // Update footer by showing the total with the reference of the column index 
-            $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 6 ).footer() ).html(numberWithCommas(total_price));
-
-	        var col7 = api
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 6 ).footer() ).html(numberWithCommas(Number(total_price).toFixed(2)));
+            
+            var total_qty = api
                 .column( 7 )
                 .data()
                 .reduce( function (a, b) {
@@ -1130,8 +1130,8 @@ function refreshUS(){
 				
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 7 ).footer() ).html(numberWithCommas(col7));
-
+            $( api.column( 7 ).footer() ).html(numberWithCommas(total_qty,2));
+            
             var total_qty_price = api
                 .column( 8 )
                 .data()
@@ -1141,7 +1141,7 @@ function refreshUS(){
 				
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 8 ).footer() ).html(numberWithCommas(total_qty_price));
+            $( api.column( 8 ).footer() ).html(numberWithCommas(Number(total_qty_price).toFixed(2)));
 
         },
         "scrollCollapse": true,
@@ -1196,17 +1196,17 @@ function refreshJapan(){
             };
             
             var total_price = api
-            .column( 6 )
-            .data()
-            .reduce( function (a, b) {
-                return intVal(a) + intVal(b);
-            }, 0 );
-            
+                .column( 6 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+			console.log(total_price);
             // Update footer by showing the total with the reference of the column index 
-            $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 6 ).footer() ).html(numberWithCommas(total_price));
-
-	        var col7 = api
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 6 ).footer() ).html(numberWithCommas(Number(total_price).toFixed(2)));
+            
+            var total_qty = api
                 .column( 7 )
                 .data()
                 .reduce( function (a, b) {
@@ -1215,8 +1215,8 @@ function refreshJapan(){
 				
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 7 ).footer() ).html(numberWithCommas(col7));
-
+            $( api.column( 7 ).footer() ).html(numberWithCommas(total_qty,2));
+            
             var total_qty_price = api
                 .column( 8 )
                 .data()
@@ -1226,7 +1226,7 @@ function refreshJapan(){
 				
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 8 ).footer() ).html(numberWithCommas(total_qty_price));
+            $( api.column( 8 ).footer() ).html(numberWithCommas(Number(total_qty_price).toFixed(2)));
 
         },
         "scrollCollapse": true,
@@ -1281,17 +1281,17 @@ function refreshUK(){
             };
             
             var total_price = api
-            .column( 6 )
-            .data()
-            .reduce( function (a, b) {
-                return intVal(a) + intVal(b);
-            }, 0 );
-            
+                .column( 6 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+			console.log(total_price);
             // Update footer by showing the total with the reference of the column index 
-            $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 6 ).footer() ).html(numberWithCommas(total_price));
-
-	        var col7 = api
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 6 ).footer() ).html(numberWithCommas(Number(total_price).toFixed(2)));
+            
+            var total_qty = api
                 .column( 7 )
                 .data()
                 .reduce( function (a, b) {
@@ -1300,8 +1300,8 @@ function refreshUK(){
 				
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 7 ).footer() ).html(numberWithCommas(col7));
-
+            $( api.column( 7 ).footer() ).html(numberWithCommas(total_qty,2));
+            
             var total_qty_price = api
                 .column( 8 )
                 .data()
@@ -1311,7 +1311,7 @@ function refreshUK(){
 				
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 8 ).footer() ).html(numberWithCommas(total_qty_price));
+            $( api.column( 8 ).footer() ).html(numberWithCommas(Number(total_qty_price).toFixed(2)));
 
         },
         "scrollCollapse": true,
@@ -1366,17 +1366,17 @@ function refreshAUS(){
             };
             
             var total_price = api
-            .column( 6 )
-            .data()
-            .reduce( function (a, b) {
-                return intVal(a) + intVal(b);
-            }, 0 );
-            
+                .column( 6 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+			console.log(total_price);
             // Update footer by showing the total with the reference of the column index 
-            $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 6 ).footer() ).html(numberWithCommas(total_price));
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 6 ).footer() ).html(numberWithCommas(Number(total_price).toFixed(2)));
             
-	        var col7 = api
+            var total_qty = api
                 .column( 7 )
                 .data()
                 .reduce( function (a, b) {
@@ -1385,8 +1385,8 @@ function refreshAUS(){
 				
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 7 ).footer() ).html(numberWithCommas(col7));
-
+            $( api.column( 7 ).footer() ).html(numberWithCommas(total_qty,2));
+            
             var total_qty_price = api
                 .column( 8 )
                 .data()
@@ -1396,7 +1396,7 @@ function refreshAUS(){
 				
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 8 ).footer() ).html(numberWithCommas(total_qty_price));
+            $( api.column( 8 ).footer() ).html(numberWithCommas(Number(total_qty_price).toFixed(2)));
             
         },
         "scrollCollapse": true,
