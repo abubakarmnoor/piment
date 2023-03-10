@@ -190,25 +190,32 @@ $("input[name=fp_sc_cost]").change(function(){
 $("input[name=fp_sc_wholesale_sale]").change(function(){
     calc();
 })
+$("input[name=fp_sc_retail_sale]").change(function(){
+    calc();
+})
+$("input[name=fp_sc_business_sale]").change(function(){
+    calc();
+})
 //calc
 function calc(){
-    const total_cost = 
+    const total_cost = (
         Number($("input[name=fp_sc_extra_cost]").val().replace(/,/g,"")) + 
         Number($("input[name=fp_sc_extra_labour]").val().replace(/,/g,"")) +
         Number($("input[name=fp_sc_cost]").val().replace(/,/g,""))
+        ).toFixed(2)
     $("#total_cost").val(total_cost).focusout()
 
     const sale_ = $("input[name=fp_sc_wholesale_sale]").val().replace(/,/g,"")
-    $("input[name=fp_sc_wholesale_profit]").val(sale_-total_cost).focusout()
-    $("#ws_markup").val((100-(total_cost/sale_)*100).toFixed(2)+'%')
+    $("input[name=fp_sc_wholesale_profit]").val((sale_-total_cost).toFixed(2)).focusout()
+    $("#ws_markup").val(((total_cost/sale_)*100).toFixed(2)+'%')
 
     const sale_b = $("input[name=fp_sc_business_sale]").val().replace(/,/g,"")
     $("input[name=fp_sc_business_profit]").val(sale_b-total_cost).focusout()
-    $("#b_markup").val((100-(total_cost/sale_b)*100).toFixed(2)+'%')
+    $("#b_markup").val(((total_cost/sale_b)*100).toFixed(2)+'%')
 
     const sale_r = $("input[name=fp_sc_retail_sale]").val().replace(/,/g,"")
-    $("input[name=fp_sc_retail_profit]").val(sale_r-total_cost).focusout()
-    $("#r_markup").val((100-(total_cost/sale_r)*100).toFixed(2)+'%')
+    $("input[name=fp_sc_retail_profit]").val((sale_r-total_cost).toFixed(2)).focusout()
+    $("#r_markup").val(((total_cost/sale_r)*100).toFixed(2)+'%')
 }
 
 //get details
