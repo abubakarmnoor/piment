@@ -367,10 +367,10 @@ router.get('/pass', async function(req,res){
   res.status(200).json({hash: hash_, pass: pass_ })
   
 })
-router.get('/auto-orderid', async function(req,res){
+router.get('/auto-id', async function(req,res){
   
   try {
-    db.query(`call sporderid();`,null, function (err, data_) { 
+    db.query(`call spautoid();`,null, function (err, data_) { 
       if (!data_) {
         res.status(200).json({success:false,err});
       }else{

@@ -584,6 +584,34 @@ function initInvTable(){
     });
 }
 
-function autoOrderId(){
-    
+function autoClientOrderId(){
+    $('.modal').modal('show');
+    $.ajax({
+        type:"POST", // must be POST 
+        url: "/apis/auto-id", 
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data) {
+            $('.modal').modal('hide');
+            if (data.success == true){
+                $("input[name=co_order_id]").val(data.last_auto_id)
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: '',
+                    text: data.err.sqlMessage
+                })
+            }
+            
+        }, 
+        error: function(jqXHR, textStatus, errorThrown) {
+            //alert(jqXHR.status);
+            $('.modal').modal('hide');
+            Swal.fire({
+                title: "Error!",
+                text: textStatus,
+                icon: "error"
+            });
+        }
+    });
 }
