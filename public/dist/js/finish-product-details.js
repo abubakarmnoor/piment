@@ -207,15 +207,15 @@ function calc(){
 
     const sale_ = $("input[name=fp_sc_wholesale_sale]").val().replace(/,/g,"")
     $("input[name=fp_sc_wholesale_profit]").val((sale_-total_cost).toFixed(2)).focusout()
-    $("#ws_markup").val(((sale_/total_cost)).toFixed(2)+'%')
+    $("#ws_markup").val(((sale_/total_cost)).toFixed(2))
 
     const sale_b = $("input[name=fp_sc_business_sale]").val().replace(/,/g,"")
     $("input[name=fp_sc_business_profit]").val((sale_b-total_cost).toFixed(2)).focusout()
-    $("#b_markup").val(((sale_b/total_cost)).toFixed(2)+'%')
+    $("#b_markup").val(((sale_b/total_cost)).toFixed(2))
 
     const sale_r = $("input[name=fp_sc_retail_sale]").val().replace(/,/g,"")
     $("input[name=fp_sc_retail_profit]").val((sale_r-total_cost).toFixed(2)).focusout()
-    $("#r_markup").val(((sale_r/total_cost)).toFixed(2)+'%')
+    $("#r_markup").val(((sale_r/total_cost)).toFixed(2))
 }
 
 //get details
