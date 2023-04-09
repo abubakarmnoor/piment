@@ -97,6 +97,7 @@ function default_edit(data){
     $("input[name=client_fax").val(data[0].client_fax)
     $("input[name=client_whatsapp").val(data[0].client_whatsapp)
     $('#sp_activity').selectpicker('val',data[0].client_activity)
+    $("textarea[name=client_note").val(data[0].client_note)
     $("#ck_active").prop('checked', data[0].client_active)
 
 }
