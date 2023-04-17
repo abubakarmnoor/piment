@@ -151,7 +151,6 @@ function load_data_dt(_url){
     });
     $('#btn_pop_act').on('click', function(){
         // e.preventDefault();
-        alert('test btn_pop_act')
         $('#th_pop_desc').text('Activity')
         $('#lbl_pf_desc').text('Activity Desc')
         $("label[name=pop_type").text("activity")
