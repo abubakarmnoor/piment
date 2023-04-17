@@ -100,6 +100,7 @@ function default_edit(data){
     $("input[name=supplier_whatsapp").val(data[0].supplier_whatsapp)
     $('#sp_product_family').selectpicker('val',data[0].supplier_prod_family)
     $("#ck_active").prop('checked', data[0].supplier_active)
+    $("textarea[name=supplier_note").val(data[0].supplier_note)
 
 }
 //get details

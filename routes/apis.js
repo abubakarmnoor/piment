@@ -148,8 +148,8 @@ router.post('/upd',(req,res)=>{
           }
         })
       }else if (_data.tblname == 'supplier'){
-      query='call spsave_supplier (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
-      db.query(` `+query+` `,[_data.supplier_guid, _data.supplier_name, _data.supplier_address, _data.supplier_state, _data.supplier_country, _data.supplier_zipcode, _data.supplier_pic, _data.supplier_email, _data.supplier_phone, _data.supplier_fax, _data.supplier_whatsapp , _data.supplier_prod_family , _data.supplier_active , _data.supplier_upd_by], (err, data_)=>{  
+      query='call spsave_supplier (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+      db.query(` `+query+` `,[_data.supplier_guid, _data.supplier_name, _data.supplier_address, _data.supplier_state, _data.supplier_country, _data.supplier_zipcode, _data.supplier_pic, _data.supplier_email, _data.supplier_phone, _data.supplier_fax, _data.supplier_whatsapp , _data.supplier_prod_family , _data.supplier_active , _data.supplier_upd_by, _data.supplier_note], (err, data_)=>{  
       // db.query(query, (err, data_)=>{
         if (!data_){
           res.status(200).json({success:false, err})
