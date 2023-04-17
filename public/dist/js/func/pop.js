@@ -151,6 +151,7 @@ function load_data_dt(_url){
     });
     $('#btn_pop_act').on('click', function(){
         // e.preventDefault();
+        alert('test btn_pop_act')
         $('#th_pop_desc').text('Activity')
         $('#lbl_pf_desc').text('Activity Desc')
         $("label[name=pop_type").text("activity")
@@ -282,7 +283,7 @@ function load_data_dt(_url){
                     }).then(function(){
                         //location.href='/clients'
                         $("#btn_pop_clear").click();
-                        // console.log(_data.pop_type);
+                        console.log(_data.pop_type);
                         TablePop.ajax.url("/apis/pop/"+_data.pop_type, null, false).load(); // refresh pop
                         selectpicker_reload(_data.pop_type);
                     });
