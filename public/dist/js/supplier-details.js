@@ -42,7 +42,7 @@ $(document).ready(function() {
         _data.supplier_active = $("#ck_active").prop('checked')
         _data.supplier_upd_by = $("#logged_user_id").text();
         _data.tblname = "supplier";
-        //  console.log(_data);
+         console.log(_data);
 
         // ajax - save/post data
         spinner_popup();

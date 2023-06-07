@@ -171,6 +171,28 @@ function load_data_dt(_url){
         TablePop.search('');
 
     });
+    $('#btn_pop_curr').on('click', function(){
+        // e.preventDefault();
+        $('#th_pop_desc').text('Currency')
+        $('#lbl_pf_desc').text('Currency')
+        $("label[name=pop_type").text("pop-curr")
+        $("input[name=pop_desc").val("")
+        $('input[type=search]').val("");
+        TablePop.ajax.url("/apis/pop/pop-curr", null, false).load(); // pop refresh
+        TablePop.search('');
+
+    });
+    $('#btn_pop_area').on('click', function(){
+        // e.preventDefault();
+        $('#th_pop_desc').text('Area')
+        $('#lbl_pf_desc').text('Area')
+        $("label[name=pop_type").text("pop-area")
+        $("input[name=pop_desc").val("")
+        $('input[type=search]').val("");
+        TablePop.ajax.url("/apis/pop/pop-area", null, false).load(); // pop refresh
+        TablePop.search('');
+
+    });
     $('#btn_pop_inv_code').on('click', function(){
         // e.preventDefault();
         $('#th_pop_desc').text('Invoice Code')
@@ -282,7 +304,7 @@ function load_data_dt(_url){
                     }).then(function(){
                         //location.href='/clients'
                         $("#btn_pop_clear").click();
-                        console.log(_data.pop_type);
+                        // console.log(_data.pop_type);
                         TablePop.ajax.url("/apis/pop/"+_data.pop_type, null, false).load(); // refresh pop
                         selectpicker_reload(_data.pop_type);
                     });
@@ -331,6 +353,10 @@ function selectpicker_reload(id_){
         id__ = 'prod_status';//
     }else if (id_ == 'po-status'){
         id__ = 'po_status';//
+    }else if (id_ == 'pop-curr'){
+        id__ = 'co_curr';//
+    }else if (id_ == 'pop-area'){
+        id__ = 'co_area';//
     }
     
     // console.log(id_);

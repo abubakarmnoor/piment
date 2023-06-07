@@ -57,7 +57,7 @@
                                 <div class="tab-content col-md">
                                     <div class="col-sm pull-right">
                                         <a href="/client-order" type="button" class="btn btn-outline btn-primary cancel" id="btn_cancel" style="float: right; margin-top: -54px;">
-                                            <i class="fa fa-times"></i> Cancel
+                                            <i class="fa fa-long-arrow-left"></i> Back
                                         </a>
                                     </div>
                                     <div class="tab-pane active" id="tab_details"><h4>DETAILS</h4>
@@ -81,7 +81,6 @@
                                                         <label for="co_delivery_date">Delivery Date</label>
                                                         <input type="date" class="form-control" id="co_delivery_date" name="co_delivery_date" placeholder="Delivery Date" autocomplete="off" required>
                                                     </div>
-                                                    
                                                 </div>
                                                 <div class="form-group row">&nbsp;</div>
                                                 <div class="form-group">
@@ -95,6 +94,18 @@
                                                         </select>
                                                     </div>
                                                     <div class="col-md-4 mb-3">
+                                                        <label for="co_standard">STANDARD</label>
+                                                        <select class="form-control selectpicker" id="co_standard" name="co_standard" data-live-search="true">
+                                                            <option value="lampshade">Lampshade</option>
+                                                            <option value="stand">Stand</option>
+                                                            <option value="euro">Euro</option>
+                                                            <option value="us">US</option>
+                                                            <option value="japan">Japan</option>
+                                                            <option value="uk">UK</option>
+                                                            <option value="aus">AUS</option>
+                                                        </select>
+                                                    </div>
+                                                     <div class="col-md-4 mb-3">
                                                         <label for="co_status">Status</label>
                                                         <select class="form-control selectpicker" id="co_status" name="co_status" data-live-search="true">
                                                             {{!-- <option value="-">-</option> --}}
@@ -102,6 +113,40 @@
                                                                 <option value={{pop_guid}}>{{pop_desc}}</option>
                                                             {{/each}}
                                                         </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">&nbsp;</div>
+                                                <div class="form-group">
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="co_curr">Currency</label>
+                                                        <select class="form-control selectpicker" id="co_curr" name="co_curr" data-live-search="true">
+                                                            {{!-- <option value="-">-</option> --}}
+                                                            {{#each __data_pop_curr}}
+                                                                <option value={{pop_guid}}>{{pop_desc}}</option>
+                                                            {{/each}}
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="co_rate">Rate</label>
+                                                        <input type="text" class="form-control" name="co_rate" placeholder="Curr Rate" value="0" autocomplete="off">
+                                                    </div>
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="co_area">Area</label>
+                                                        <select class="form-control selectpicker" id="co_area" name="co_area" data-live-search="true">
+                                                            {{!-- <option value="-">-</option> --}}
+                                                            {{#each __data_pop_area}}
+                                                                <option value={{pop_guid}}>{{pop_desc}}</option>
+                                                            {{/each}}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">&nbsp;</div>
+                                                <div class="form-group">
+                                                    <div class="col-md-4 mb-3">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="co_vip" name="co_vip">
+                                                            <label class="form-check-label" for="co_vip">VIP</label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">&nbsp;</div>
@@ -185,7 +230,7 @@
                                                     <th>INV# Date</th>
                                                     <th>Due# Date</th>
                                                     <th>Inv# Code</th>
-                                                    <th>Cost</th>
+                                                    {{!-- <th>Cost</th> --}}
                                                     <th>Price</th>
                                                     <th>Paid Amt</th>
                                                     <th>Unpaid Amt</th>
@@ -194,7 +239,8 @@
                                             </thead>
                                             <tfoot align="right">
                                                 <tr>
-                                                    <th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+                                                    {{!-- <th></th> --}}
+                                                    <th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
                                                 </tr>
                                             </tfoot>
                                             <tbody>

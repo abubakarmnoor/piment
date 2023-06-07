@@ -22,13 +22,10 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group row">
+                {{!-- <div class="form-group row">
                     <div class="col-md-12 mb-3">
-                        <label for="co_order_fp_component">COMPONENT</label>
+                        <label for="co_order_fp_component">STANDARD</label>
                         <select class="form-control selectpicker" id="co_order_fp_component" name="co_order_fp_component" data-live-search="true">
-                            {{!-- {{#each __data_fp_component}}
-                                <option cost="{{fp_sc_cost}}" price="{{fp_sc_business_sale}}" value={{fp_guid}}>{{fp_desc}}</option>
-                            {{/each}} --}}
                             <option value="lampshade">Lampshade</option>
                             <option value="stand">Stand</option>
                             <option value="euro">Euro</option>
@@ -38,7 +35,7 @@
                             <option value="aus">AUS</option>
                         </select>
                     </div>
-                </div>
+                </div> --}}
                 <div class="form-group row">
                     <div class="col-md-4 mb-3">
                         <label>Cost</label>
@@ -112,7 +109,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-4 mb-3" style="display: none;">
                         <label>Cost</label>
                         <input type="text" class="form-control numeric" name="inv_cost" value="0" autocomplete="off" required>
                     </div>

@@ -9,8 +9,11 @@ $(document).ready(function() {
     id = $("input[name=co_guid]").val()
     $("#co_client_guid").selectpicker('val',null)
     $("#co_status").selectpicker('val',null)
+    $("#co_standard").selectpicker('val',null)
+    $("#co_curr").selectpicker('val',null)
+    $("#co_area").selectpicker('val',null)
     $('.selectpicker').selectpicker();
-    insert_element_status();insert_element_inv_code();
+    insert_element_status();insert_element_curr();insert_element_area();
     load_data_dt('/apis/pop/co-status'); //init
     initOrderTable();initInvTable();
 
@@ -26,8 +29,9 @@ $(document).ready(function() {
     }else if (location.href.includes('ZGlk')) {
         $('.page-header').text('CLIENT ORDER DETAILS');
         $("#btn_save").hide();
-        // $("#form_ :input").prop('readonly', true);
-        // $('.selectpicker').prop('disabled', true);
+        $("#form_ :input").prop('readonly', true);
+        $("#form_ :checkbox").prop('disabled', "disabled");
+        $('.selectpicker').prop('disabled', true);
         $('.selectpicker').selectpicker('refresh');
 
         // $("#ck_active").attr("disabled", true);
@@ -51,18 +55,18 @@ $(document).ready(function() {
         const form = $(e.target);
         const _data = convertFormToJSON(form);
         _data.co_upd_by = $("#logged_user_id").text();
+        _data.co_vip = ($("#co_vip").prop("checked"))
         _data.tblname = "co";
         // console.log(_data);
-        if (!_data.co_client_guid || !_data.co_status)
+        if (!_data.co_client_guid || !_data.co_status || !_data.co_standard || !_data.co_curr || !_data.co_area)
         {
             Swal.fire({
                 icon: 'warning',
                 title: 'Client Order',
-                text: (!_data.co_client_guid ? "Please select one Client" : "Please select one Status")
+                text: (!_data.co_client_guid ? "Please select one Client" : (!_data.co_standard ? "Please select one Standard" : (!_data.co_area ? "Please select one Area" : (!_data.co_curr ? "Please select one Curr" : "Please select one Status"))))
             })
             return;
         }
-        
         // ajax - save/post data
         spinner_popup();
         $.ajax({
@@ -81,8 +85,6 @@ $(document).ready(function() {
                     }).then(function(){
                         var encodedUrl = encodeURIComponent($("input[name=co_order_id]").val());
                         get_details(undefined, encodedUrl)
-                        console.log('test');
-                        console.log($("input[name=co_guid]").val());
                         if ($("input[name=co_guid]").val() !== "null") { 
                             $("#btn_tab_order").click()
                         }else{
@@ -336,6 +338,10 @@ $(document).ready(function() {
 
 //default-edit
 function default_edit(data){
+    //default
+    // $('#co_standard').selectpicker('val', -1)
+    // $('#co_status').selectpicker('val', -1)
+
     $("input[name=co_guid]").val(data[0].co_guid)
     $("input[name=co_order_id]").val(data[0].co_order_id)
     $('#co_client_guid').selectpicker('val',data[0].co_client_guid)
@@ -343,7 +349,11 @@ function default_edit(data){
     $("#co_order_date").val(_odate)
     const _ddate = formatDate(data[0].co_delivery_date);
     $("#co_delivery_date").val(_ddate)
+    $('#co_standard').selectpicker('val',data[0].co_standard)
     $('#co_status').selectpicker('val',data[0].co_status)
+    $('#co_area').selectpicker('val',data[0].co_area)
+    $("#co_curr").selectpicker('val',data[0].co_curr)
+    $("#co_vip").prop("checked", (data[0].co_vip == 1));
     $("textarea[name=co_notes]").text(data[0].co_notes)
     
     // $("#btn_tab_order").click();
@@ -377,10 +387,13 @@ function get_details(id,orid){
 
 //insert element
 function insert_element_status(){
-    $('<a href="#" type="button" class="pull-right" id="btn_pop_co_status" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(5) > div:nth-child(2) > div > div > div');
+    $('<a href="#" type="button" class="pull-right" id="btn_pop_co_status" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(5) > div:nth-child(3) > div > div > div');
 }
-function insert_element_inv_code(){
-    $('<a href="#" type="button" class="pull-right" id="btn_pop_inv_code" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_input_inv > div:nth-child(3) > div > div > div > div');
+function insert_element_curr(){
+    $('<a href="#" type="button" class="pull-right" id="btn_pop_curr" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(7) > div:nth-child(1) > div > div > div');
+}
+function insert_element_area(){
+    $('<a href="#" type="button" class="pull-right" id="btn_pop_area" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(7) > div:nth-child(3) > div > div > div');
     
 }
 
@@ -575,7 +588,7 @@ function initInvTable(){
             { "data": "inv_date" },
             { "data": "inv_due_date" },
             { "data": "inv_code_desc" },
-            { "data": "inv_cost" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            // { "data": "inv_cost" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
             { "data": "inv_price" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
             { "data": "inv_price_paid" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
             { "data": "inv_unpaid" , render: $.fn.dataTable.render.number(',', '.', 2, '')},

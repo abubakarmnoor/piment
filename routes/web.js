@@ -18,10 +18,11 @@ router.use(bodyParser.json());
 router.use(cookieParser());
 router.use(session({
 	secret: 'm43str0',
-	resave: false,
+	resave: true,
 	saveUninitialized: true,
 	cookie: { maxAge: 1000 * 60 * 60 * 24 }//1day
   }))
+  
 router.use(function (req, res, next) {
 	//console.log('app use 123');
 	res.set('Cache-Control', 'max-age=1');// 60s x 60m x24 x ? day
@@ -43,10 +44,12 @@ router.get('/client-order-details/:coid/:act', isAuthenticated, async (req, res)
 	const _olid = req.params.coid
 	const __data_pop_status = await getPopupData('co-status');
 	const __data_inv_code = await getPopupData('inv-code');
+	const __data_pop_curr = await getPopupData('pop-curr');
+	const __data_pop_area = await getPopupData('pop-area');
 	const __data_client = await getClient();
 	const __data_fp = await getFP();
 	res.render('client-order-details.hbs', {
-		tables_bs4: true, client_order_details:true, co_guid:_olid, act:_act, __data_pop_status, __data_client, _user : req.session.user, _user_id: req.session.user_id, __data_fp, __data_inv_code
+		tables_bs4: true, client_order_details:true, co_guid:_olid, act:_act, __data_pop_status, __data_client, _user : req.session.user, _user_id: req.session.user_id, __data_fp, __data_pop_curr, __data_pop_area, __data_inv_code
 	});
 });
 
@@ -288,6 +291,7 @@ router.post('/auth', (req, res) => {
 
 //functions
 function isAuthenticated (req, res, next) {
+	// console.log(req.session.user);
 	if (req.session.user) next()
 	else res.redirect('/login');//next('route')
   }

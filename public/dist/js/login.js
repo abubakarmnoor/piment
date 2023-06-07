@@ -17,7 +17,7 @@ $(document).ready(function(){
                 // data = JSON.parse(data);
                 // alert(data.success)
                 if(data && data.success){
-                    location.href='/'
+                    location.href='/?'
                 }else{
                     Swal.fire({
                         icon: "warning",
