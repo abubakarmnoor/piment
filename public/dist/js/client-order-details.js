@@ -84,7 +84,8 @@ $(document).ready(function() {
                         text: "Data Saved"
                     }).then(function(){
                         var encodedUrl = encodeURIComponent($("input[name=co_order_id]").val());
-                        get_details(undefined, encodedUrl)
+                        // get_details(undefined, encodedUrl)
+                        get_details(_data.co_guid)
                         if ($("input[name=co_guid]").val() !== "null") { 
                             $("#btn_tab_order").click()
                         }else{
@@ -363,12 +364,18 @@ function default_edit(data){
 //get details
 function get_details(id,orid){
     //ajax - get details
+    const data_ = {
+        id:id,
+        orid:orid
+    }
+    // console.log(data_);
     spinner_popup();
     //ajax
     $.ajax({
         type:"GET", 
         url: "/apis/pull/co/"+id+"/"+orid, 
         dataType: "json",
+        data: data_,
         success: function(data) {
             // console.log(data.data);
             default_edit(data.data);
