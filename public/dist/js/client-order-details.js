@@ -1,8 +1,37 @@
 var tableOrder, tableInv;
 var id;
+$("#btn_save").hide();
 spinner_popup();
-$(document).ready(function() {
-            
+$(document).ready(function() {  
+    //
+    //edit or add new
+    if (location.href.includes('ZWlk')) {
+        $('.page-header').text('CLIENT ORDER UPDATES')
+        
+        // let url = location.href;
+        // let id = getURLParameter(url, 'eid');
+        // $("#id").val(id);
+        $("#btn_save").show();
+        get_details(id,undefined);
+        
+    }else if (location.href.includes('ZGlk')) {
+        $('.page-header').text('CLIENT ORDER DETAILS');
+        $("#btn_save").hide();
+        $("#form_ :input").prop('readonly', true);
+        $("#form_ :checkbox").prop('disabled', "disabled");
+        $('.selectpicker').prop('disabled', true);
+        $('.selectpicker').selectpicker('refresh');
+
+        // $("#ck_active").attr("disabled", true);
+        //  $(".cancel").replaceWith("<a href='/client-order' type='button' class='btn btn-outline btn-primary'><i class='fa fa-long-arrow-left'></i> Back</a>");
+        get_details(id,undefined);
+        
+    
+    }else{
+        $('.page-header').text('CLIENT ORDER LIST ADD NEW')
+        
+    }
+
     //default
     // spinner_popup();
     $('.modal').modal('hide');
@@ -17,32 +46,7 @@ $(document).ready(function() {
     load_data_dt('/apis/pop/co-status'); //init
     initOrderTable();initInvTable();
 
-    //edit or add new
-    if (location.href.includes('ZWlk')) {
-        $('.page-header').text('CLIENT ORDER UPDATES')
-        
-        // let url = location.href;
-        // let id = getURLParameter(url, 'eid');
-        // $("#id").val(id);
-        get_details(id,undefined);
-        
-    }else if (location.href.includes('ZGlk')) {
-        $('.page-header').text('CLIENT ORDER DETAILS');
-        $("#btn_save").hide();
-        $("#form_ :input").prop('readonly', true);
-        $("#form_ :checkbox").prop('disabled', "disabled");
-        $('.selectpicker').prop('disabled', true);
-        $('.selectpicker').selectpicker('refresh');
-
-        // $("#ck_active").attr("disabled", true);
-        $(".cancel").replaceWith("<a href='/client-order' type='button' class='btn btn-outline btn-primary'><i class='fa fa-long-arrow-left'></i> Back</a>");
-        get_details(id,undefined);
-        
     
-    }else{
-        $('.page-header').text('CLIENT ORDER LIST ADD NEW')
-        
-    }
 
      //btn
     //save
@@ -361,6 +365,18 @@ function default_edit(data){
     
 }
 
+// btn cancel
+// $("#btn_cancel").on("click", function(){
+//     $("#btn_refresh").click();
+
+// })
+// btn cancel
+$("#btn_printout").on("click", function(e){
+    e.preventDefault()
+    // alert('print out')
+    window.open('/report-invoice/'+id)
+
+})
 //get details
 function get_details(id,orid){
     //ajax - get details

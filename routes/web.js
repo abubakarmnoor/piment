@@ -33,7 +33,11 @@ router.get('/', isAuthenticated, (req, res) => {
 		_user : req.session.user, _user_id: req.session.user_id
 	});
 });
-
+router.get('/report-invoice/:cod', isAuthenticated, (req, res) => {
+	res.render('reports/report-invoice.hbs', {
+		
+	});
+});
 router.get('/client-order', isAuthenticated, (req, res) => {
 	res.render('client-order.hbs', {
 		tables_bs4: true, client_order:true, _user : req.session.user, _user_id: req.session.user_id
@@ -292,8 +296,9 @@ router.post('/auth', (req, res) => {
 //functions
 function isAuthenticated (req, res, next) {
 	// console.log(req.session.user);
-	if (req.session.user) next()
-	else res.redirect('/login');//next('route')
+	// if (req.session.user) next()
+	// else res.redirect('/login');//next('route')
+	next()
   }
 
 module.exports = router;
