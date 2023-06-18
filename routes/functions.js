@@ -52,8 +52,8 @@ const getRMFP = async (type) => {
     }
 };
 function isAuthenticated (req, res, next) {
-	// if (req.session.user) next()
-	// else res.redirect('/login');//next('route')
+	if (req.session.user) next()
+	else res.redirect('/login');//next('route')
     next()
 }
 
