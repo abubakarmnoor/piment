@@ -296,9 +296,9 @@ router.post('/auth', (req, res) => {
 //functions
 function isAuthenticated (req, res, next) {
 	// console.log(req.session.user);
-	// if (req.session.user) next()
-	// else res.redirect('/login');//next('route')
-	next()
+	if (req.session.user) next()
+	else res.redirect('/login');//next('route')
+	// next()
   }
 
 module.exports = router;
