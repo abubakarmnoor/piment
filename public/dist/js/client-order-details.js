@@ -8,9 +8,13 @@ $(document).ready(function() {
     if (location.href.includes('ZWlk')) {
         $('.page-header').text('CLIENT ORDER UPDATES')
         
-        // let url = location.href;
-        // let id = getURLParameter(url, 'eid');
+        let url = location.href;
+        //let id = getURLParameter(url, 'eid');
+        // console.log(url.split('/'));
+        let id = url.split('/')[4]
+        // console.log(id);
         // $("#id").val(id);
+        
         $("#btn_save").show();
         get_details(id,undefined);
         
@@ -42,7 +46,7 @@ $(document).ready(function() {
     $("#co_curr").selectpicker('val',null)
     $("#co_area").selectpicker('val',null)
     $('.selectpicker').selectpicker();
-    insert_element_status();insert_element_curr();insert_element_area();
+    insert_element_status();insert_element_curr();insert_element_area();insert_element_inv_code();
     load_data_dt('/apis/pop/co-status'); //init
     initOrderTable();initInvTable();
 
@@ -144,6 +148,8 @@ $(document).ready(function() {
         $("input[name=input_for]").val("co_inv");
         $(".modal-title").text('INVOICE LIST');
         $("#form_input").hide();
+
+        $("#co_order_guid").val()
         $("#form_input_inv").show();
         resetInvForm();
     })
@@ -380,20 +386,20 @@ $("#btn_printout").on("click", function(e){
 //get details
 function get_details(id,orid){
     //ajax - get details
-    const data_ = {
-        id:id,
-        orid:orid
-    }
-    // console.log(data_);
+    // const data_ = {
+    //     id:id,
+    //     orid:orid
+    // }
     spinner_popup();
     //ajax
     $.ajax({
         type:"GET", 
         url: "/apis/pull/co/"+id+"/"+orid, 
         dataType: "json",
-        data: data_,
+        // data: data_,
         success: function(data) {
-            // console.log(data.data);
+            // console.log(data);
+            
             default_edit(data.data);
             $('.modal').modal('hide');
         }, 
@@ -417,6 +423,10 @@ function insert_element_curr(){
 }
 function insert_element_area(){
     $('<a href="#" type="button" class="pull-right" id="btn_pop_area" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_ > div:nth-child(7) > div:nth-child(3) > div > div > div');
+    
+}
+function insert_element_inv_code(){
+    $('<a href="#" type="button" class="pull-right" id="btn_pop_inv_code" data-toggle="modal" data-target="#pop-modal-form" style="margin-right: 11px"><i class="glyphicon-plus"></i> Add New</a>').insertBefore('#form_input_inv > div:nth-child(3) > div > div > div > div');
     
 }
 
