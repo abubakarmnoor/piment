@@ -35,7 +35,7 @@ const getClient = async () => {
 try {
     const resp = await axios.get(api_url+'/apis/pull/client/');
     // console.log(resp.data);
-    // return JSON.parse(JSON.stringify(resp.data.data));
+    return JSON.parse(JSON.stringify(resp.data.data));
     } catch (err) {
         // Handle Error Here
         console.error(err);
