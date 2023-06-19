@@ -90,10 +90,13 @@ $(document).ready(function (e){
         const _data = convertFormToJSON(form);
         _data.inv_upd_by = $("#logged_user_id").text();
         _data.inv_co_guid = $("input[name=co_guid]").val();
-        _data.inv_cost = (_data.inv_cost).replace(/\,/g,'')
-        _data.inv_price = (_data.inv_price).replace(/\,/g,'')
-        _data.inv_price_paid = (_data.inv_price_paid).replace(/\,/g,'')
+        _data.inv_amount = (_data.inv_amount).replace(/\,/g,'')
+        _data.inv_amount_paid = (_data.inv_amount_paid).replace(/\,/g,'')
         _data.tblname = "inv";
+
+        if (_data.inv_paid_date == ""){
+            _data.inv_paid_date = null;
+        }
         // console.log(_data);
         // return;
         // ajax - save/post data
@@ -109,7 +112,7 @@ $(document).ready(function (e){
 
         spinner_popup();
         $.ajax({
-            type:"POST", // must be POST 
+            type:"POST",
             url: "/apis/upd", 
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -204,15 +207,13 @@ function resetOrderForm(){
     $("input[name=co_order_qty]").val(0);
 
 }
-function resetInvForm(){
+function resetInvForm(invId){
     $("input[name=inv_guid]").val('');
-    $("input[name=inv_id]").val('');
-    $("input[name=inv_date]").val(null);
-    $("input[name=inv_due_date]").val(null);
+    $("input[name=inv_id]").val(invId);
     $("#inv_code").selectpicker('val',null)
-    $("input[name=inv_cost]").val(0);
-    $("input[name=inv_price]").val(0);
-    $("input[name=inv_price_paid]").val(0);
+    $("input[name=inv_amount]").val(0);
+    $("input[name=inv_amount_paid]").val(0);
+    $("input[name=inv_paid_date]").val(null);
     $("textarea[name=inv_info]").val('');
 
 }

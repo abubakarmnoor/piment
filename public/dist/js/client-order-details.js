@@ -48,7 +48,7 @@ $(document).ready(function() {
     $('.selectpicker').selectpicker();
     insert_element_status();insert_element_curr();insert_element_area();insert_element_inv_code();
     load_data_dt('/apis/pop/co-status'); //init
-    initOrderTable();initInvTable();
+    initOrderTable(); initInvTable();
 
     
 
@@ -75,6 +75,7 @@ $(document).ready(function() {
             })
             return;
         }
+        
         // ajax - save/post data
         spinner_popup();
         $.ajax({
@@ -151,7 +152,9 @@ $(document).ready(function() {
 
         $("#co_order_guid").val()
         $("#form_input_inv").show();
-        resetInvForm();
+
+        const _inv_id = ((tableInv.length > 0) ? tableInv.row(0).data().inv_id : "");
+        resetInvForm(_inv_id);
     })
 
     //validation
@@ -315,25 +318,20 @@ $(document).ready(function() {
         const _inv_id = tableInv.row( this ).data().inv_id;
         $("input[name=inv_id]").val(_inv_id);
 
-        const _inv_date = formatDate(tableInv.row( this ).data().inv_date);
-        $("#inv_date").val(_inv_date)
-        const _inv_due_date = formatDate(tableInv.row( this ).data().inv_due_date);
-        $("#inv_due_date").val(_inv_due_date)
-
         const _inv_code = tableInv.row( this ).data().inv_code;
         $("#inv_code").selectpicker('val',_inv_code)
-        const _cost = tableInv.row( this ).data().inv_cost;
-        $("input[name=inv_cost]")
-        .val(_cost)
+        const _amount = tableInv.row( this ).data().inv_amount;
+        $("input[name=inv_amount]")
+        .val(_amount)
         .focusout();
-        const _price = tableInv.row( this ).data().inv_price;
-        $("input[name=inv_price]")
-        .val(_price)
+        const _inv_amount_paid = tableInv.row( this ).data().inv_amount_paid;
+        $("input[name=inv_amount_paid]")
+        .val(_inv_amount_paid)
         .focusout();
-        const _inv_price_paid = tableInv.row( this ).data().inv_price_paid;
-        $("input[name=inv_price_paid]")
-        .val(_inv_price_paid)
-        .focusout();
+        
+        const _inv_paid_date = ((tableInv.row( this ).data().inv_paid_date) ? formatDate(tableInv.row( this ).data().inv_paid_date) : tableInv.row( this ).data().inv_paid_date);
+        $("#inv_paid_date").val(_inv_paid_date)
+        
         const _inv_info = tableInv.row( this ).data().inv_info;
         $("textarea[name=inv_info]").val(_inv_info);
 
@@ -547,17 +545,27 @@ function initInvTable(){
                     typeof i === 'number' ?
                         i : 0;
             };
-            var col8 = api
-                .column( 8 )
+            var col6 = api
+                .column( 6 )
                 .data()
                 .reduce( function (a, b) {
                     return intVal(a) + intVal(b);
                 }, 0 );
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 8 ).footer() ).html(numberWithCommas(col8));
+            $( api.column( 6 ).footer() ).html(numberWithCommas(col6));
 
-            var col9 = api
+            var col7 = api
+                .column( 7 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+            // Update footer by showing the total with the reference of the column index 
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 7 ).footer() ).html(numberWithCommas(col7));
+
+	        var col9 = api
                 .column( 9 )
                 .data()
                 .reduce( function (a, b) {
@@ -566,25 +574,6 @@ function initInvTable(){
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
             $( api.column( 9 ).footer() ).html(numberWithCommas(col9));
-
-	        var col10 = api
-                .column( 10 )
-                .data()
-                .reduce( function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0 );
-            // Update footer by showing the total with the reference of the column index 
-	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 10 ).footer() ).html(numberWithCommas(col10));
-            var col11 = api
-                .column( 11 )
-                .data()
-                .reduce( function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0 );
-            // Update footer by showing the total with the reference of the column index 
-	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 11 ).footer() ).html(numberWithCommas(col11));
         },
         "scrollCollapse": true,
         "paging": true, 
@@ -598,10 +587,13 @@ function initInvTable(){
         "columnDefs": [{
             "targets": [ 2,3 ],
             "visible": false
-        },{
-            targets:[5,6], render:function(data){
-            return moment(data).format('DD-MMM-YYYY');
-        }}],
+        },
+            {
+                targets:[8], render:function(data){
+                return moment(data).format('DD-MMM-YYYY');
+                }
+            }
+        ],
         "columns": [
             {
                 data: null,
@@ -618,12 +610,10 @@ function initInvTable(){
             { "data": "inv_guid" },
             { "data": "inv_code" },
             { "data": "inv_id" },
-            { "data": "inv_date" },
-            { "data": "inv_due_date" },
             { "data": "inv_code_desc" },
-            // { "data": "inv_cost" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
-            { "data": "inv_price" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
-            { "data": "inv_price_paid" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "inv_amount" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "inv_amount_paid" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
+            { "data": "inv_paid_date" },
             { "data": "inv_unpaid" , render: $.fn.dataTable.render.number(',', '.', 2, '')},
             { "data": "inv_info" },
         ]
