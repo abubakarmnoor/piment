@@ -2,7 +2,7 @@ $(document).ready(function(){
     //number
     // $(".numeric").on('keyup keypress focusout', function(e){
     $(".numeric").on('focusout', function(e){
-        console.log(e.type);
+        // console.log(e.type);
 
         isNumber(e)
         

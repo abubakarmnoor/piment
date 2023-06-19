@@ -152,9 +152,11 @@ $(document).ready(function() {
 
         $("#co_order_guid").val()
         $("#form_input_inv").show();
-
-        const _inv_id = ((tableInv.length > 0) ? tableInv.row(0).data().inv_id : "");
-        resetInvForm(_inv_id);
+        
+        const _inv_id = tableInv.row( 0 ).data();
+        const _inv_id_1 = ((_inv_id) ? _inv_id.inv_id : "");
+        resetInvForm(_inv_id_1);
+        
     })
 
     //validation
@@ -259,13 +261,14 @@ $(document).ready(function() {
         let _data = {};
         _data.id = tableInv.row( this ).data().inv_guid;
         _data.desc = tableInv.row( this ).data().inv_id;
+        _data.inv_code_desc = tableInv.row( this ).data().inv_code_desc;
         _data.upd_by = $("#logged_user_id").text();
         // console.log(_data);
         // console.log( table.row( this ).data().id );
 
         Swal.fire({
             title: 'Are you sure?',
-            text: "You won't be able to revert this! ("+_data.desc+")",
+            text: "You won't be able to revert this! ("+_data.inv_code_desc+")",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -285,7 +288,7 @@ $(document).ready(function() {
                         Swal.fire({
                             icon: "success",
                             title: "Data Deleted",
-                            text: _data.desc
+                            text: _data.inv_code_desc
                         }).then(function(){
                             refreshInvTable();
                         });
@@ -311,6 +314,7 @@ $(document).ready(function() {
         $(".modal-title").text('INVOICE LIST');
         $("#form_input").hide();
         $("#form_input_inv").show();
+        $("input[name=inv_id]").removeAttr("readonly");
 
         $("input[name=input_for]").val("co_inv")
         const _id = tableInv.row( this ).data().inv_guid;
@@ -651,3 +655,4 @@ function autoClientOrderId(){
         }
     });
 }
+

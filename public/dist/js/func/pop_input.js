@@ -99,6 +99,20 @@ $(document).ready(function (e){
         }
         // console.log(_data);
         // return;
+
+        //validate
+        if (_data.inv_amount < _data.inv_amount_paid){
+            Swal.fire({
+                icon: 'info',
+                title: 'Invoice',
+                text: "Paid amount cannot greater than invoice amount"
+            }).then(function(){
+                $("input[name=inv_amount_paid]")
+                // .val(_amt)
+                .focus()
+            })
+            return;
+        }
         // ajax - save/post data
         if (!_data.inv_code)
         {
@@ -146,7 +160,9 @@ $(document).ready(function (e){
                                 if ($("input[name=input_for]").val() == "co_order"){
                                     resetOrderForm();
                                 }else{
-                                    resetInvForm();
+                                    const _inv_id = tableInv.row( 0 ).data();
+                                    const _inv_id_1 = ((_inv_id) ? _inv_id.inv_id : "");
+                                    resetInvForm(_inv_id_1);
                                 }
                             } else if (result.isDenied) {
                                 $('.modal').modal('hide');
@@ -197,6 +213,38 @@ $(document).ready(function (e){
         resetInvForm();
     })
 
+    //Invoice
+    // $("input[name=inv_amount_paid]").on("change", function(){
+    //     const _amt = $("input[name=inv_amount]").val().replace(/\,/g,'')
+    //     if (_amt < $(this).val().replace(/\,/g,'')){
+    //         Swal.fire({
+    //             icon: 'info',
+    //             title: 'Invoice',
+    //             text: "Paid amount cannot greater than invoice amount"
+    //         }).then(function(){
+    //             $("input[name=inv_amount_paid]")
+    //             .val(_amt)
+    //             .focus()
+    //         })
+    //     }
+    // })
+    // $("input[name=inv_amount]").on("change", function(){
+    //     const _amt = $("input[name=inv_amount_paid]").val().replace(/\,/g,'')
+    //     // console.log(_amt);
+    //     // console.log($(this).val().replace(/\,/g,''));
+    //     if (_amt > $(this).val().replace(/\,/g,'')){
+    //         Swal.fire({
+    //             icon: 'info',
+    //             title: 'Invoice',
+    //             text: "Paid amount cannot greater than invoice amount"
+    //         }).then(function(){
+    //             $("input[name=inv_amount]")
+    //             .val(_amt)
+    //             .focus()
+    //         })
+    //     }
+    // })
+
     //end ready
 })
 
@@ -208,12 +256,18 @@ function resetOrderForm(){
 
 }
 function resetInvForm(invId){
+    // console.log(invId);
     $("input[name=inv_guid]").val('');
-    $("input[name=inv_id]").val(invId);
+    $("input[name=inv_id]").val(invId); 
     $("#inv_code").selectpicker('val',null)
     $("input[name=inv_amount]").val(0);
     $("input[name=inv_amount_paid]").val(0);
     $("input[name=inv_paid_date]").val(null);
     $("textarea[name=inv_info]").val('');
 
+    if ((invId) && invId !== ""){
+        $("input[name=inv_id]").attr("readonly", "readonly")
+    } else{
+        $("input[name=inv_id]").removeAttr("readonly")
+    }
 }
