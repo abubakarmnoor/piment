@@ -138,7 +138,6 @@ $(document).ready(function (e){
                 }else{
                     refreshInvTable();
                 }
-                
                 if (data.success == true){
                     Swal.fire({
                         icon: 'success',

@@ -33,7 +33,7 @@ $(document).ready(function() {
     
     }else{
         $('.page-header').text('CLIENT ORDER LIST ADD NEW')
-        
+        $("#btn_save").show();
     }
 
     //default
@@ -93,8 +93,13 @@ $(document).ready(function() {
                         text: "Data Saved"
                     }).then(function(){
                         var encodedUrl = encodeURIComponent($("input[name=co_order_id]").val());
-                        // get_details(undefined, encodedUrl)
-                        get_details(_data.co_guid)
+                        console.log(_data.co_guid);
+                        if (!_data.co_guid == null){
+                            get_details(_data.co_guid)
+                        }else{
+                            get_details(undefined, encodedUrl)
+                        }
+                        
                         if ($("input[name=co_guid]").val() !== "null") { 
                             $("#btn_tab_order").click()
                         }else{
@@ -213,6 +218,7 @@ $(document).ready(function() {
                             text: _data.co_order_id
                         }).then(function(){
                             refreshOrderTable();
+
                         });
                         
                     }, 
@@ -354,7 +360,6 @@ function default_edit(data){
     //default
     // $('#co_standard').selectpicker('val', -1)
     // $('#co_status').selectpicker('val', -1)
-
     $("input[name=co_guid]").val(data[0].co_guid)
     $("input[name=co_order_id]").val(data[0].co_order_id)
     $('#co_client_guid').selectpicker('val',data[0].co_client_guid)
@@ -393,15 +398,16 @@ function get_details(id,orid){
     //     orid:orid
     // }
     spinner_popup();
+    var _url = "/apis/pull/co/"+id+"/"+orid
+    console.log((_url));
     //ajax
     $.ajax({
         type:"GET", 
-        url: "/apis/pull/co/"+id+"/"+orid, 
+        url: _url, 
         dataType: "json",
         // data: data_,
         success: function(data) {
             // console.log(data);
-            
             default_edit(data.data);
             $('.modal').modal('hide');
         }, 
@@ -433,7 +439,10 @@ function insert_element_inv_code(){
 }
 
 function refreshOrderTable(){
+    
+    id = $("input[name=co_guid]").val();
     tableOrder.ajax.url("/apis/pull/co_order/"+id, null, false).load();
+    
 }
 function refreshInvTable(){
     tableInv.ajax.url("/apis/pull/inv/"+id, null, false).load();
