@@ -85,6 +85,8 @@ $(document).ready(function() {
             dataType: "json",
             data: JSON.stringify(_data),
             success: function(data) {
+                // console.log(data.data);
+
                 $('.modal').modal('hide');
                 if (data.success == true){
                     Swal.fire({
@@ -92,14 +94,14 @@ $(document).ready(function() {
                         title: 'Client Order',
                         text: "Data Saved"
                     }).then(function(){
-                        var encodedUrl = encodeURIComponent($("input[name=co_order_id]").val());
-                        console.log(_data.co_guid);
-                        if (!_data.co_guid == null){
-                            get_details(_data.co_guid)
-                        }else{
-                            get_details(undefined, encodedUrl)
-                        }
+                        // var encodedUrl = encodeURIComponent($("input[name=co_order_id]").val());
+                        // if (!_data.co_guid == null){
+                        //     get_details(_data.co_guid)
+                        // }else{
+                        //     get_details(undefined, encodedUrl)
+                        // }
                         
+                        get_details(data.data.co_guid)
                         if ($("input[name=co_guid]").val() !== "null") { 
                             $("#btn_tab_order").click()
                         }else{
