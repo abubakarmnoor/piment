@@ -203,7 +203,7 @@ $(document).ready(function (e){
         $("input[name=co_order_cost]").val(cost_).focusout();
         var price_ = $('option:selected', this).attr("price");
         $("input[name=co_order_price]").val(price_).focusout();
-        $("input[name=co_order_qty]").focus();
+        $("input[name=co_order_qty]").val(1).focus();
     })
    
     $("#btncancel").on("click", function(e){
@@ -252,6 +252,7 @@ function resetOrderForm(){
     $("input[name=co_order_cost]").val(0);
     $("input[name=co_order_price]").val(0);
     $("input[name=co_order_qty]").val(0);
+    $("textarea[name=co_order_info]").val("")
 
 }
 function resetInvForm(invId){

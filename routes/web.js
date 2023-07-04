@@ -296,10 +296,10 @@ router.post('/auth', (req, res) => {
 //functions
 function isAuthenticated (req, res, next) {
 	// console.log(req.session.user);
-	if (req.session.user) next()
-	else res.redirect('/login');//next('route')
+	// if (req.session.user) next()
+	// else res.redirect('/login');//next('route')
 	
-	// next()
+	next()
   }
 
 module.exports = router;

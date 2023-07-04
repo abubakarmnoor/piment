@@ -5,6 +5,12 @@
 {{> css}}
 
 <style>
+    #dtTbl_Order > tbody > tr.even > td:nth-child(4){
+        width: 500px;
+        word-break: break-word;
+        vertical-align: top;
+        white-space: normal !important;
+    }
     .col-md-6{
         width: 0%;
     }
@@ -182,6 +188,7 @@
                                                     <th>Id</th>
                                                     <th></th>
                                                     <th>FP</th>
+                                                    <th>Info</th>
                                                     <th>Cost</th>
                                                     <th>Price</th>
                                                     <th>Qty</th>
@@ -190,7 +197,7 @@
                                                 </tr>
                                             </thead>
                                             <tfoot align="right">
-                                                <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+                                                <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
                                             </tfoot>
                                             <tbody>
 

@@ -217,8 +217,8 @@ router.post('/upd',(req,res)=>{
         }
       })
     }else if (_data.tblname == 'co_order'){
-      query='call spsave_co_order (?, ?, ?, ?, ?, ?, ?)'
-      db.query(` `+query+` `,[_data.co_order_guid, _data.co_order_co_guid, _data.co_order_fp_guid, _data.co_order_cost, _data.co_order_price, _data.co_order_qty, _data.co_order_upd_by], (err, data_)=>{  
+      query='call spsave_co_order (?, ?, ?, ?, ?, ?, ?, ?)'
+      db.query(` `+query+` `,[_data.co_order_guid, _data.co_order_co_guid, _data.co_order_fp_guid, _data.co_order_cost, _data.co_order_price, _data.co_order_qty, _data.co_order_info, _data.co_order_upd_by], (err, data_)=>{  
       // db.query(query, (err, data_)=>{
         if (!data_){
           res.status(200).json({success:false, err})

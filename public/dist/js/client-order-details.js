@@ -259,7 +259,10 @@ $(document).ready(function() {
         .focusout();
         const _qty = tableOrder.row( this ).data().co_order_qty;
         $("input[name=co_order_qty]").val(_qty)
-        
+        const _info = tableOrder.row( this ).data().co_order_info;
+        console.log(_info);
+        $("textarea[name=co_order_info]").val(_info)
+
         $('#pop-modal-form-input').modal('show');
 
     } );
@@ -463,16 +466,7 @@ function initOrderTable(){
                         i : 0;
             };
  
-	        var col5 = api
-                .column( 5 )
-                .data()
-                .reduce( function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0 );
-            // Update footer by showing the total with the reference of the column index 
-	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 5 ).footer() ).html(numberWithCommas(col5));
-            var col6 = api
+	        var col6 = api
                 .column( 6 )
                 .data()
                 .reduce( function (a, b) {
@@ -508,6 +502,15 @@ function initOrderTable(){
             // Update footer by showing the total with the reference of the column index 
 	        $( api.column( 0 ).footer() ).html('Total');
             $( api.column( 9 ).footer() ).html(numberWithCommas(col9));
+            var col10 = api
+                .column( 10 )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+            // Update footer by showing the total with the reference of the column index 
+	        $( api.column( 0 ).footer() ).html('Total');
+            $( api.column( 10 ).footer() ).html(numberWithCommas(col10));
         },
         "scrollCollapse": true,
         "paging": true, 
@@ -538,6 +541,7 @@ function initOrderTable(){
             { "data": "co_order_guid" },
             { "data": "co_order_fp_guid" },
             { "data": "fp_desc" },
+            { "data": "co_order_info" },
             { "data": "co_order_cost" , render: $.fn.dataTable.render.number(',', '.', 0, '')},
             { "data": "co_order_price" , render: $.fn.dataTable.render.number(',', '.', 0, '')},
             { "data": "co_order_qty" },
