@@ -79,9 +79,10 @@ router.get('/pull/:tblname/:id?/:type?/:id2?', function(req,res){
       }else{
         let data = data_[0]
         res.status(200).json({success:true,data});
-        closeDbConnection(db);
+        // closeDbConnection(db);
         // console.log("Db Connection close Successfully");
       }
+      closeDbConnection(db);
     })                         
   }).catch((error)=>{
     console.log("Db not connected",error);
@@ -110,8 +111,9 @@ router.post('/upd',(req,res)=>{
           }else{
             let data = data_;
             res.status(200).json({success:true, data})
-            closeDbConnection(db)
+            // closeDbConnection(db)
           }
+          closeDbConnection(db);
         })
       }else if (_data.tblname == 'fp'){
         query='call spsave_fp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
@@ -300,8 +302,9 @@ router.post('/del/:tbl',(req,res)=>{
         }else{
           let data = data_;
           res.status(200).json({success:true, data})
-          closeDbConnection(db)
+          // closeDbConnection(db)
         }
+        closeDbConnection(db);
       })
     })
   }).catch((error)=>{
@@ -325,13 +328,14 @@ router.post('/auth', function(req, res) {
           if (!data_){
             res.status(200).json({success:false, err})
           }else{
-            closeDbConnection(db);
+            //closeDbConnection(db);
             req.session.loggedin = true;
 				    req.session.username = data_[0].login_nickname;
             res.redirect('/');
             // let data = data_;
             // res.status(200).json({success:true, data})
           }
+          closeDbConnection(db);
         })
       })
       }).catch((error)=>{
@@ -360,9 +364,10 @@ router.get('/pop/:type', function(req,res){
       }else{
         let data = data_[0]
         res.status(200).json({success:true,data});
-        closeDbConnection(db);
+        // closeDbConnection(db);
         // console.log("Db Connection close Successfully");
       }
+      closeDbConnection(db);
     })                         
   }).catch((error)=>{
     console.log("Db not connected",error);
