@@ -2,6 +2,10 @@
 var api_host = 'https://piment-admin.localpro100.com'
 //init
 $("#reportrange").css("display", "none")
+setTimeout(function(){
+    $("#main_sidebar").css({ display: "block" });
+},50)
+
 //formatDate
 function formatDate(date, display=false) {
     var d = new Date(date),
@@ -173,6 +177,5 @@ function selectpicker_refresh(id_, url_){
             icon: "error"
         });
     }
-    
     
 }

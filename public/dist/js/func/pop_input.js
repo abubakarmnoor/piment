@@ -101,7 +101,7 @@ $(document).ready(function (e){
         // return;
 
         //validate
-        if (_data.inv_amount < _data.inv_amount_paid){
+        if (Number(_data.inv_amount) < Number(_data.inv_amount_paid)){
             Swal.fire({
                 icon: 'info',
                 title: 'Invoice',
