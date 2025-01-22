@@ -1,8 +1,8 @@
 //doc ready
 var table;
 $(document).ready(function() {
-    var sdate_ = moment().subtract(29, 'days').format('YYYY-MM-DD');
-    var edate_ = moment().format('YYYY-MM-DD');;
+    var sdate_ = moment().subtract(29, 'days').format('yyyy-MM-dd');
+    var edate_ = moment().format('yyyy-MM-dd');;
     // $('.selectpicker').selectpicker();
     // insert_element_rm();
     $("input[name=stock_type]").val('rm')
@@ -97,11 +97,11 @@ $(document).ready(function() {
     
     $("#btn_refresh").on("click", function(){
         // spinner_popup();
-        var sdate_ =  moment($("input[name='daterangepicker_start']").val()).format('YYYY-MM-DD');
-        var edate_ =  moment($("input[name='daterangepicker_end']").val()).format('YYYY-MM-DD');
+        var sdate_ =  moment($("input[name='daterangepicker_start']").val()).format('yyyy-MM-dd');
+        var edate_ =  moment($("input[name='daterangepicker_end']").val()).format('yyyy-MM-dd');
         if (moment(sdate_)._isValid == false){
-            sdate_ = moment().subtract(29, 'days').format('YYYY-MM-DD');
-            edate_ = moment().format('YYYY-MM-DD');;
+            sdate_ = moment().subtract(29, 'days').format('yyyy-MM-dd');
+            edate_ = moment().format('yyyy-MM-dd');;
         }
         // console.log(sdate_);
         // console.log(edate_);
@@ -116,7 +116,7 @@ $(document).ready(function() {
 // function
 // $(function(){
 //     $(".datepicker").datepicker({
-//         format: 'yyyy-mm-dd',
+//         format: 'yyyy-MM-dd',
 //         setDate: new Date(),
 //         autoclose: true,
 //         todayHighlight: true,
