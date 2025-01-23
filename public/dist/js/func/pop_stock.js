@@ -72,6 +72,11 @@ function load_data_dt(_url){
             {
                 "targets": [ 2 ],
                 "visible": false
+            },
+            {
+                targets:[3], render:function(data){
+                    return moment(data).format('DD-MMM-YYYY');
+                }
             }
         ],  
         "columns": [

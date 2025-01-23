@@ -34,8 +34,16 @@ router.get('/', isAuthenticated, (req, res) => {
 	});
 });
 router.get('/report-invoice/:cod', isAuthenticated, (req, res) => {
+	const data_ = {
+		inv_date: "01-Jan-2025",
+		inv_client_buyer: "Setiadi, Bapak",
+		inv_client_address: "Bali, Indonesia",
+		inv_client_contact: "Setiadi, Bapak",
+		inv_client_telp: "+628231121123",
+		inv_client_email: "cust@test.com"
+	}
 	res.render('reports/report-invoice.hbs', {
-		
+		data_
 	});
 });
 router.get('/client-order', isAuthenticated, (req, res) => {

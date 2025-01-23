@@ -71,6 +71,8 @@ $(document).ready(function() {
         e.preventDefault();
         //console.log( table.row( this ).data().id );
         const _id = table.row( this ).data().co_guid;
+        console.log(_id);
+        
         location.href = "/client-order-details/"+_id+"/ZWlk";
     } );
     
