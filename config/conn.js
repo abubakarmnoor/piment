@@ -17,5 +17,5 @@ return new Promise((resolve,reject)=>{
 }
 
 module.exports.closeDbConnection =(con)=> {
-  con.destroy();
+  // con.destroy();
 }

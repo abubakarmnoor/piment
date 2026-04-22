@@ -101,11 +101,11 @@ $(document).ready(function (e){
         // return;
 
         //validate
-        if (_data.inv_amount < _data.inv_amount_paid){
+        if (parseFloat(_data.inv_amount) < parseFloat(_data.inv_amount_paid)){
             Swal.fire({
                 icon: 'info',
                 title: 'Invoice',
-                text: "Paid amount cannot greater than invoice amount"
+                text: "Paid amount cannot greater than invoice amount ( " + _data.inv_amount + " <-> " + _data.inv_amount_paid + " )"
             }).then(function(){
                 $("input[name=inv_amount_paid]")
                 // .val(_amt)
