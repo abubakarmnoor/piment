@@ -1,3 +1,5 @@
+const { log } = require("handlebars");
+
 //load data dt
 function load_data_dt(_url){
     //init
@@ -38,21 +40,21 @@ function load_data_dt(_url){
             };
  
 	        var total_qty = api
-                .column( 5 )
+                .column( 7 )
                 .data()
                 .reduce( function (a, b) {
                     return intVal(a) + intVal(b);
                 }, 0 );
             var total_price = api
-                .column( 6 )
+                .column( 5 )
                 .data()
                 .reduce( function (a, b) {
                     return intVal(a) + intVal(b);
                 }, 0 );
 			// Update footer by showing the total with the reference of the column index 
-	        $( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 5 ).footer() ).html(numberWithCommas(total_qty));
-            $( api.column( 6 ).footer() ).html(numberWithCommas(total_price));
+	        // $( api.column( 0 ).footer() ).html('Total');
+            // $( api.column( 7 ).footer() ).html(numberWithCommas(total_qty));
+            // $( api.column( 5 ).footer() ).html(numberWithCommas(total_price));
         },
         // "scrollY": "370px",
         // "searching": false,
@@ -68,7 +70,7 @@ function load_data_dt(_url){
         //"serverSide": true,
         "columnDefs": [
             {
-                "targets": [ 2 ],
+                "targets": [ 1,2,3 ],
                 "visible": false
             }
         ],  
@@ -90,12 +92,42 @@ function load_data_dt(_url){
                 className: "dt-center editor-details",
                 orderable: true
             },
-            { "data": "stock_trans_date"},
+            { "data": "stock_cat"},
+            { 
+                data: 'stock_trans_date',
+                render: function (data, type, row) {
+                    // If there's no date data, return a placeholder
+                    if (!data) return 'N/A';
+                    
+                    // If DataTables is sorting or filtering, keep the raw original format
+                    if (type === 'sort' || type === 'type') {
+                        return data; 
+                    }
+                    
+                    // Return formatted date for display using Moment.js
+                    return moment(data).format('DD-MMM-YYYY');
+                }
+            },
             { "data": "stock_info"},
-            { "data": "stock_qty", render: $.fn.dataTable.render.number(',', '.', 0, '')},
             { "data": "stock_price", render: $.fn.dataTable.render.number(',', '.', 0, '')},
+            { "data": "stock_qty", render: $.fn.dataTable.render.number(',', '.', 0, '')},
+            { "data": "stock_blc"},
             { "data": "stock_upd_by"},
-            { "data": "stock_upd_date"}
+            { 
+                data: 'stock_upd_date',
+                render: function (data, type, row) {
+                    // If there's no date data, return a placeholder
+                    if (!data) return 'N/A';
+                    
+                    // If DataTables is sorting or filtering, keep the raw original format
+                    if (type === 'sort' || type === 'type') {
+                        return data; 
+                    }
+                    
+                    // Return formatted date for display using Moment.js
+                    return moment(data).format('DD-MMM-YYYY.HH:mm:ss');
+                }
+            }
         ]
     });
     
@@ -108,9 +140,16 @@ function load_data_dt(_url){
         const _info = table_stock.row( this ).data().stock_info;
         const _trans_date = table_stock.row( this ).data().stock_trans_date;
         const _price = table_stock.row( this ).data().stock_price;
+        const _cat = table_stock.row(this).data().stock_cat;
+        console.log('test => ' + _cat);
+
         // const _type_id = table_stock.row( this ).data().stock_type_guid;
         $("input[name=stock_guid]").val(_id);
-        $("input[name=stock_trans_date]").datepicker('setDate', _trans_date);
+        
+        const _transdate = formatDate(_trans_date);
+        $("input[name=stock_trans_date]").val(_transdate)
+        // $("input[name=stock_trans_date]").datepicker('setDate', _trans_date);
+
         $("input[name=stock_qty]")
         .val(_qty)
         .focusout();
@@ -152,8 +191,9 @@ function load_data_dt(_url){
                     dataType: "json",
                     data: JSON.stringify(_data),
                     success: function(data) {
-                        // $('.modal').modal('hide');
-                        $("#spinner-modal").modal('hide')
+                        //$('.modal').modal('hide');
+                        // $("#spinner-modal").modal('hide')
+                        $('.spinner-bg').modal('hide');
                         $("#btn_pop_clear").click();
                         table_stock.ajax.url("/apis/pull/stock/"+ $("input[name=stock_type]").val()+"/"+_data.type_id, null, false).load(); // refresh
                         $("#btn_refresh").click();
@@ -214,7 +254,8 @@ function load_data_dt(_url){
             dataType: "json",
             data: JSON.stringify(_data),
             success: function(data) {
-                $("#spinner-modal").modal('hide')
+                // $("#spinner-modal").modal('hide')
+                $('.spinner-bg').modal('hide');   
                 if (data.success == true){
                     table_stock.ajax.url("/apis/pull/stock/"+ $("input[name=stock_type]").val()+"/"+_data.stock_type_guid, null, false).load(); // refresh
                     $("#btn_refresh").click();
@@ -225,6 +266,7 @@ function load_data_dt(_url){
                     }).then(function(){
                         $(".btncancel").click();
                     });
+                    
                 }else{
                     Swal.fire({
                         icon: 'error',
@@ -232,6 +274,7 @@ function load_data_dt(_url){
                         text: data.err.sqlMessage
                     })
                 }
+                
                 
             }, 
             error: function(jqXHR, textStatus, errorThrown) {
@@ -249,7 +292,7 @@ function load_data_dt(_url){
 }
 
 // functions 
-clear = function(){
+function clear(){
     // $("input[name=stock_trans_date]").datepicker('setDate', new Date());
     $("input[name=stock_trans_date]").val(null);
     $("input[name=stock_guid]").val('');

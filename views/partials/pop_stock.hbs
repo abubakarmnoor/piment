@@ -28,15 +28,15 @@
                 <div class="form-group row divhide">
                     <div class="col-md-4 mb-3">
                         <label>Trans Date</label>
-                        <input type="date" class="form-control" name="stock_trans_date" required>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label>Qty</label>
-                        <input type="number" class="form-control" name="stock_qty" placeholder="Qty" value="0" autocomplete="off" required>
+                        <input type="date" class="form-control" id="stock_trans_date" name="stock_trans_date" autocomplete="off" required>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label>Price</label>
                         <input type="text" class="form-control numeric" name="stock_price" placeholder="Price" value="0" autocomplete="off" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label>Qty</label>
+                        <input type="number" class="form-control" name="stock_qty" placeholder="Qty" value="0" autocomplete="off" required>
                     </div>
                 </div>
                 <div class="form-group row divhide">
@@ -75,17 +75,20 @@
                         <tr>
                             <th></th>
                             <th></th>
+                            <th></th>
                             <th>Id</th>
                             <th>Trans Date</th>
                             <th>Info</th>
-                            <th>Qty</th>
                             <th>Price</th>
+                            <th>Qty</th>
+                            <th>Blc</th>
                             <th>Upd By</th>
                             <th>Upd Date</th>
+                            
                         </tr>
                     </thead>
                     <tfoot align="right">
-                        <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+                        <tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
                     </tfoot>
                     <tbody>
 
