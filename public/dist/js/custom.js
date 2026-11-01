@@ -2,6 +2,17 @@
 var api_host = 'https://piment-admin.localpro100.com'
 //init
 $("#reportrange").css("display", "none")
+// alert
+$(".mainMenuAlert").click(function(){
+    alert('otw available ...')
+});
+
+// 2. Attach a click event listener to it
+button.addEventListener("click", function() {
+    // 3. Trigger the alert dialog box
+    alert("Button was clicked!");
+});
+
 //formatDate
 function formatDate(date, display=false) {
     var d = new Date(date),

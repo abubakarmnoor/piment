@@ -1,6 +1,7 @@
 //doc ready
 var table;
 $(document).ready(function() {
+    $("#form__ > div:nth-child(2) > div.col-sm-4.mb-3").hide(); // hide fp code, coz fp does'nt have code
     var sdate_ = moment().subtract(29, 'days').format('YYYY-MM-DD');
     var edate_ = moment().format('YYYY-MM-DD');;
     // $('.selectpicker').selectpicker();
@@ -60,7 +61,8 @@ $(document).ready(function() {
                 orderable: true
             },
             { "data": "prod_family" },
-            { "data": "stock_qty" }
+             { "data": "stock_price", render: $.fn.dataTable.render.number(',', '.', 0, '')},
+            { "data": "stock_qty" },
             // { "data": "rm_cost", render: $.fn.dataTable.render.number(',', '.', 0, '')},
             // { "data": "stock_upd_by" },
             // { "data": "stock_upd_date" }
